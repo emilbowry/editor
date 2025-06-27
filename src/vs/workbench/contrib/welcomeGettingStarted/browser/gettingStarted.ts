@@ -17,7 +17,9 @@ import { hiddenEntriesConfigurationKey, IResolvedWalkthrough, IResolvedWalkthrou
 import { IThemeService } from 'vs/platform/theme/common/themeService';
 import { ThemeIcon } from 'vs/base/common/themables';
 import { IKeybindingService } from 'vs/platform/keybinding/common/keybinding';
-import { firstSessionDateStorageKey, ITelemetryService, TelemetryLevel } from 'vs/platform/telemetry/common/telemetry';
+// import { firstSessionDateStorageKey, ITelemetryService, TelemetryLevel } from 'vs/platform/telemetry/common/telemetry';
+import { ITelemetryService, TelemetryLevel } from 'vs/platform/telemetry/common/telemetry';
+
 import { DomScrollableElement } from 'vs/base/browser/ui/scrollbar/scrollableElement';
 import { gettingStartedCheckedCodicon, gettingStartedUncheckedCodicon } from 'vs/workbench/contrib/welcomeGettingStarted/browser/gettingStartedIcons';
 import { IOpenerService, matchesScheme } from 'vs/platform/opener/common/opener';
@@ -75,11 +77,14 @@ import { IFeaturedExtension } from 'vs/base/common/product';
 import { IExtensionManagementService } from 'vs/platform/extensionManagement/common/extensionManagement';
 import { ExtensionIdentifier } from 'vs/platform/extensions/common/extensions';
 
+import { IPathService } from 'vs/workbench/services/path/common/pathService';
+
 const SLIDE_TRANSITION_TIME_MS = 250;
 const configurationKey = 'workbench.startupEditor';
 
 export const allWalkthroughsHiddenContext = new RawContextKey<boolean>('allWalkthroughsHidden', false);
 export const inWelcomeContext = new RawContextKey<boolean>('inWelcome', false);
+export const embedderIdentifierContext = new RawContextKey<string | undefined>('embedderIdentifier', undefined);
 
 export interface IWelcomePageStartEntry {
 	id: string;
@@ -100,6 +105,25 @@ const parsedStartEntries: IWelcomePageStartEntry[] = startEntries.map((e, i) => 
 	title: e.title,
 	when: ContextKeyExpr.deserialize(e.when) ?? ContextKeyExpr.true()
 }));
+
+function splitRecentLabel(recentLabel: string): { name: string; parentPath: string } {
+	if (recentLabel.endsWith(']')) {
+		// label with workspace suffix
+		const lastIndexOfSquareBracket = recentLabel.lastIndexOf(' [', recentLabel.length - 2);
+		if (lastIndexOfSquareBracket !== -1) {
+			const split = splitName(recentLabel.substring(0, lastIndexOfSquareBracket));
+			const remoteNameWithSpace = recentLabel.substring(lastIndexOfSquareBracket);
+			return { name: split.name + remoteNameWithSpace, parentPath: split.parentPath };
+		}
+	}
+	return splitName(recentLabel);
+}
+// type GettingStartedLayoutEventClassification = {
+// 	owner: 'bhavyau';
+// 	comment: 'Information about the layout of the welcome page';
+// 	featuredExtensions: { classification: 'SystemMetaData'; purpose: 'FeatureInsight'; comment: 'visible featured extensions' };
+// 	title: { classification: 'SystemMetaData'; purpose: 'FeatureInsight'; comment: 'featured extension title' };
+// };
 
 type GettingStartedActionClassification = {
 	command: { classification: 'PublicNonPersonalData'; purpose: 'FeatureInsight'; comment: 'The command being executed on the getting started page.' };
@@ -146,8 +170,10 @@ export class GettingStartedPage extends EditorPane {
 	private contextService: IContextKeyService;
 
 	private recentlyOpened: Promise<IRecentlyOpened>;
-	private hasScrolledToFirstCategory = false;
+	// private hasScrolledToFirstCategory = false;
 	private recentlyOpenedList?: GettingStartedIndexList<RecentEntry>;
+	private homeList?: GettingStartedIndexList<RecentEntry>;
+
 	private startList?: GettingStartedIndexList<IWelcomePageStartEntry>;
 	private gettingStartedList?: GettingStartedIndexList<IResolvedWalkthrough>;
 	private featuredExtensionsList?: GettingStartedIndexList<IFeaturedExtension>;
@@ -188,7 +214,9 @@ export class GettingStartedPage extends EditorPane {
 		@IWebviewService private readonly webviewService: IWebviewService,
 		@IWorkspaceContextService private readonly workspaceContextService: IWorkspaceContextService,
 		@IAccessibilityService private readonly accessibilityService: IAccessibilityService,
-		@IExtensionManagementService private readonly extensionManagementService: IExtensionManagementService
+		@IExtensionManagementService private readonly extensionManagementService: IExtensionManagementService,
+		@IPathService private readonly pathService: IPathService,
+
 	) {
 
 		super(GettingStartedPage.ID, telemetryService, themeService, storageService);
@@ -208,6 +236,7 @@ export class GettingStartedPage extends EditorPane {
 
 		this.contextService = this._register(contextService.createScoped(this.container));
 		inWelcomeContext.bindTo(this.contextService).set(true);
+		embedderIdentifierContext.bindTo(this.contextService).set(productService.embedderIdentifier);
 
 		this.gettingStartedCategories = this.gettingStartedService.getWalkthroughs();
 		this.featuredExtensions = this.featuredExtensionService.getExtensions();
@@ -238,28 +267,6 @@ export class GettingStartedPage extends EditorPane {
 				const installedFeaturedExtension = (await this.featuredExtensions)?.find(ext => ExtensionIdentifier.equals(ext.id, e.identifier.id));
 				if (installedFeaturedExtension) {
 					this.hideExtension(e.identifier.id);
-				}
-			}
-		}));
-
-		this._register(this.gettingStartedService.onDidAddBuiltInWalkthrough(() => {
-			rerender();
-			const someStepsComplete = this.gettingStartedCategories.some(category => category.steps.find(s => s.done));
-			if (!this.productService.openToWelcomeMainPage && !someStepsComplete && !this.hasScrolledToFirstCategory) {
-				const firstSessionDateString = this.storageService.get(firstSessionDateStorageKey, StorageScope.APPLICATION) || new Date().toUTCString();
-				const daysSinceFirstSession = ((+new Date()) - (+new Date(firstSessionDateString))) / 1000 / 60 / 60 / 24;
-				const fistContentBehaviour = daysSinceFirstSession < 1 ? 'openToFirstCategory' : 'index';
-
-				if (fistContentBehaviour === 'openToFirstCategory') {
-					const first = this.gettingStartedCategories.filter(c => !c.when || this.contextService.contextMatchesRules(c.when))[0];
-					this.hasScrolledToFirstCategory = true;
-					if (first) {
-						this.currentWalkthrough = first;
-						this.editorInput.selectedCategory = this.currentWalkthrough?.id;
-						this.buildCategorySlide(this.editorInput.selectedCategory, undefined);
-						this.setSlide('details');
-						return;
-					}
 				}
 			}
 		}));
@@ -696,10 +703,7 @@ export class GettingStartedPage extends EditorPane {
 					this.openerService.open(message, { allowCommands: true });
 				} else if (message.startsWith('setTheme:')) {
 					this.configurationService.updateValue(ThemeSettings.COLOR_THEME, message.slice('setTheme:'.length), ConfigurationTarget.USER);
-				} else if (message === 'unloaded') {
-					this.buildMediaComponent(stepId);
-				}
-				else {
+				} else {
 					console.error('Unexpected message', message);
 				}
 			}));
@@ -716,8 +720,8 @@ export class GettingStartedPage extends EditorPane {
 		}
 	}
 
-	private async selectStep(id: string | undefined, delayFocus = true) {
-		if (id && this.editorInput.selectedStep === id) { return; }
+	private async selectStep(id: string | undefined, delayFocus = true, forceRebuild = false) {
+		if (id && this.editorInput.selectedStep === id && !forceRebuild) { return; }
 
 		if (id) {
 			let stepElement = this.container.querySelector<HTMLDivElement>(`[data-step-id="${id}"]`);
@@ -820,52 +824,47 @@ export class GettingStartedPage extends EditorPane {
 		const leftColumn = $('.categories-column.categories-column-left', {},);
 		const rightColumn = $('.categories-column.categories-column-right', {},);
 
+
+		// const startList = this.buildStartList();
+		// const recentList = this.buildRecentlyOpenedList();
+		// const recentList = await this.buildRecentlyOpenedList();
 		const startList = this.buildStartList();
-		const recentList = this.buildRecentlyOpenedList();
-		const featuredExtensionList = this.buildFeaturedExtensionsList();
-		const gettingStartedList = this.buildGettingStartedWalkthroughsList();
+		const myFoldersList = await this.buildMyFoldersList(); // Use our renamed function for the left column
+		const recentList = this.buildRecentlyOpenedList(); // Use the new
+		// const gettingStartedList = this.buildGettingStartedWalkthroughsList();
 
-		const footer = $('.footer', {},
-			$('p.showOnStartup', {},
-				showOnStartupCheckbox.domNode,
-				showOnStartupLabel,
-			));
+		// const footer = $('.footer', {},
+		// 	$('p.showOnStartup', {},
+		// 		showOnStartupCheckbox.domNode,
+		// 		showOnStartupLabel,
+		// 	));
 
-		recentList.setLimit(5);
 		const layoutLists = () => {
-			if (gettingStartedList.itemCount) {
-				this.container.classList.remove('noWalkthroughs');
-				reset(leftColumn, startList.getDomElement(), recentList.getDomElement());
-				reset(rightColumn, featuredExtensionList.getDomElement(), gettingStartedList.getDomElement());
-			}
-			else {
-				this.container.classList.add('noWalkthroughs');
-				reset(leftColumn, startList.getDomElement(), recentList.getDomElement());
-				reset(rightColumn, featuredExtensionList.getDomElement());
-			}
+			// if (gettingStartedList.itemCount) {
+			// 	this.container.classList.remove('noWalkthroughs');
+			// 	reset(rightColumn, gettingStartedList.getDomElement());
+			// }
+			// else {
+			// 	this.container.classList.add('noWalkthroughs');
+			// 	reset(rightColumn);
+			// }
+			this.container.classList.remove('noWalkthroughs');
+			reset(rightColumn, recentList.getDomElement());
+
 			setTimeout(() => this.categoriesPageScrollbar?.scanDomNode(), 50);
+			layoutRecentList();
 		};
 
-		const layoutFeaturedExtension = () => {
-			if (featuredExtensionList.itemCount) {
-				this.container.classList.remove('noExtensions');
-				reset(leftColumn, startList.getDomElement(), recentList.getDomElement());
-				reset(rightColumn, featuredExtensionList.getDomElement(), gettingStartedList.getDomElement());
-			}
-			else {
-				this.container.classList.add('noExtensions');
-				reset(leftColumn, startList.getDomElement(), recentList.getDomElement());
-				reset(rightColumn, gettingStartedList.getDomElement());
-			}
-			setTimeout(() => this.categoriesPageScrollbar?.scanDomNode(), 50);
+		const layoutRecentList = () => {
+
+			myFoldersList.setLimit(5);
+			reset(leftColumn, startList.getDomElement(), myFoldersList.getDomElement());
 		};
 
-		featuredExtensionList.onDidChange(layoutFeaturedExtension);
-		layoutFeaturedExtension();
-		gettingStartedList.onDidChange(layoutLists);
 		layoutLists();
 
-		reset(this.categoriesSlide, $('.gettingStartedCategoriesContainer', {}, header, leftColumn, rightColumn, footer,));
+		reset(this.categoriesSlide, $('.gettingStartedCategoriesContainer', {}, header, leftColumn, rightColumn,));
+
 		this.categoriesPageScrollbar?.scanDomNode();
 
 		this.updateCategoryProgress();
@@ -875,29 +874,19 @@ export class GettingStartedPage extends EditorPane {
 			this.currentWalkthrough = this.gettingStartedCategories.find(category => category.id === this.editorInput.selectedCategory);
 
 			if (!this.currentWalkthrough) {
-				this.container.classList.add('loading');
-				await this.gettingStartedService.installedExtensionsRegistered;
-				this.container.classList.remove('loading');
 				this.gettingStartedCategories = this.gettingStartedService.getWalkthroughs();
-				this.currentWalkthrough = this.gettingStartedCategories.find(category => category.id === this.editorInput.selectedCategory);
+				
 			}
-
-			if (!this.currentWalkthrough) {
-				console.error('Could not restore to category ' + this.editorInput.selectedCategory + ' as it was not found');
-				this.editorInput.selectedCategory = undefined;
-				this.editorInput.selectedStep = undefined;
-			} else {
-				this.buildCategorySlide(this.editorInput.selectedCategory, this.editorInput.selectedStep);
+			else {
+				{
+					this.buildCategorySlide(this.editorInput.selectedCategory, this.editorInput.selectedStep);
+				}
 				this.setSlide('details');
 				return;
 			}
 		}
 
-		if (this.editorInput.showTelemetryNotice && this.productService.openToWelcomeMainPage) {
-			const telemetryNotice = $('p.telemetry-notice');
-			this.buildTelemetryFooter(telemetryNotice);
-			footer.appendChild(telemetryNotice);
-		}
+
 		this.setSlide('categories');
 	}
 
@@ -913,7 +902,7 @@ export class GettingStartedPage extends EditorPane {
 				windowOpenable = { workspaceUri: recent.workspace.configPath };
 			}
 
-			const { name, parentPath } = splitName(fullPath);
+			const { name, parentPath } = splitRecentLabel(fullPath);
 
 			const li = $('li');
 			const link = $('button.button-link');
@@ -922,7 +911,7 @@ export class GettingStartedPage extends EditorPane {
 			link.title = fullPath;
 			link.setAttribute('aria-label', localize('welcomePage.openFolderWithPath', "Open folder {0} with path {1}", name, parentPath));
 			link.addEventListener('click', e => {
-				this.telemetryService.publicLog2<GettingStartedActionEvent, GettingStartedActionClassification>('gettingStarted.ActionExecuted', { command: 'openRecent', argument: undefined, walkthroughId: this.currentWalkthrough?.id });
+				// this.telemetryService.publicLog2<GettingStartedActionEvent, GettingStartedActionClassification>('gettingStarted.ActionExecuted', { command: 'openRecent', argument: undefined, walkthroughId: this.currentWalkthrough?.id });
 				this.hostService.openWindow([windowOpenable], {
 					forceNewWindow: e.ctrlKey || e.metaKey,
 					remoteAuthority: recent.remoteAuthority || null // local window if remoteAuthority is not set or can not be deducted from the openable
@@ -965,7 +954,6 @@ export class GettingStartedPage extends EditorPane {
 			});
 
 		recentlyOpenedList.onDidChange(() => this.registerDispatchListeners());
-
 		this.recentlyOpened.then(({ workspaces }) => {
 			// Filter out the current workspace
 			const workspacesWithID = workspaces
@@ -977,13 +965,100 @@ export class GettingStartedPage extends EditorPane {
 			};
 
 			updateEntries();
-
 			recentlyOpenedList.register(this.labelService.onDidChangeFormatters(() => updateEntries()));
 		}).catch(onUnexpectedError);
 
 		return recentlyOpenedList;
 	}
 
+	private async buildMyFoldersList(): Promise<GettingStartedIndexList<RecentEntry>> {
+		const renderRecent = (recent: RecentEntry) => {
+			let fullPath: string;
+			let name: string;
+			let windowOpenable: IWindowOpenable;
+			if (isRecentFolder(recent)) {
+				windowOpenable = { folderUri: recent.folderUri };
+				fullPath = recent.id || this.labelService.getWorkspaceLabel(recent.folderUri, { verbose: Verbosity.LONG });
+			} else {
+				fullPath = recent.id || this.labelService.getWorkspaceLabel(recent.workspace, { verbose: Verbosity.LONG });
+				windowOpenable = { workspaceUri: recent.workspace.configPath };
+			}
+
+			name = recent.label || splitRecentLabel(fullPath).name;
+
+
+			const li = $('li');
+			const link = $('button.button-link');
+
+			link.innerText = name;
+			link.title = fullPath;
+			link.setAttribute('aria-label', localize('welcomePage.openFolderWithPath', "Open folder {0} with path {1}", fullPath));
+			link.addEventListener('click', e => {
+				this.hostService.openWindow([windowOpenable], {
+					forceNewWindow: e.ctrlKey || e.metaKey,
+					remoteAuthority: recent.remoteAuthority || null // local window if remoteAuthority is not set or can not be deducted from the openable
+				});
+				e.preventDefault();
+				e.stopPropagation();
+			});
+			li.appendChild(link);
+
+			const span = $('span');
+			span.classList.add('path');
+			span.classList.add('detail');
+			span.innerText = fullPath;
+			span.title = fullPath;
+			li.appendChild(span);
+
+			return li;
+		};
+		if (this.homeList) { this.homeList.dispose(); }
+
+		// const homeList  = new GettingStartedIndexList(
+		const homeList = this.homeList = new GettingStartedIndexList(
+
+			{
+				title: localize('Home', "Home"),
+				klass: 'recently-opened', // Keep the same CSS class for styling
+				limit: 10, // Allow more items
+				empty: $('.empty-recent', {}, localize('noHomeEntries', "No home entries found. Configure them in settings.")),
+				more: undefined,
+				renderElement: renderRecent,
+				contextService: this.contextService
+			});
+
+		// homeList.onDidChange(() => this.registerDispatchListeners());
+
+		try {
+			const homeEntriesConfig = this.configurationService.getValue<any[]>('welcomePage.homeEntries') || [];
+			const homeUri = await this.pathService.userHome();
+
+			const staticRecents: RecentEntry[] = [];
+			for (const entry of homeEntriesConfig) {
+				if (entry.path && typeof entry.path === 'string') {
+					let entryUri: URI;
+					if (entry.path.startsWith('~/')) {
+						if (!homeUri) { continue; }
+						entryUri = URI.joinPath(homeUri, entry.path.substring(2));
+					} else {
+						entryUri = URI.file(entry.path);
+					}
+
+					staticRecents.push({
+						folderUri: entryUri,
+						id: entry.path,
+						label: entry.label
+					});
+				}
+			}
+			homeList.setEntries(staticRecents);
+		} catch (error) {
+			console.error('Error building Home list from settings:', error);
+			onUnexpectedError(error);
+		}
+
+		return homeList;
+	}
 	private buildStartList(): GettingStartedIndexList<IWelcomePageStartEntry> {
 		const renderStartEntry = (entry: IWelcomePageStartEntry): HTMLElement =>
 			$('li',
@@ -1012,147 +1087,6 @@ export class GettingStartedPage extends EditorPane {
 		return startList;
 	}
 
-	private buildGettingStartedWalkthroughsList(): GettingStartedIndexList<IResolvedWalkthrough> {
-
-		const renderGetttingStaredWalkthrough = (category: IResolvedWalkthrough): HTMLElement => {
-
-			const renderNewBadge = (category.newItems || category.newEntry) && !category.isFeatured;
-			const newBadge = $('.new-badge', {});
-			if (category.newEntry) {
-				reset(newBadge, $('.new-category', {}, localize('new', "New")));
-			} else if (category.newItems) {
-				reset(newBadge, $('.new-items', {}, localize({ key: 'newItems', comment: ['Shown when a list of items has changed based on an update from a remote source'] }, "Updated")));
-			}
-
-			const featuredBadge = $('.featured-badge', {});
-			const descriptionContent = $('.description-content', {},);
-
-			if (category.isFeatured) {
-				reset(featuredBadge, $('.featured', {}, $('span.featured-icon.codicon.codicon-star-full')));
-				reset(descriptionContent, ...renderLabelWithIcons(category.description));
-			}
-
-			const titleContent = $('h3.category-title.max-lines-3', { 'x-category-title-for': category.id });
-			reset(titleContent, ...renderLabelWithIcons(category.title));
-
-			return $('button.getting-started-category' + (category.isFeatured ? '.featured' : ''),
-				{
-					'x-dispatch': 'selectCategory:' + category.id,
-					'title': category.description
-				},
-				featuredBadge,
-				$('.main-content', {},
-					this.iconWidgetFor(category),
-					titleContent,
-					renderNewBadge ? newBadge : $('.no-badge'),
-					$('a.codicon.codicon-close.hide-category-button', {
-						'tabindex': 0,
-						'x-dispatch': 'hideCategory:' + category.id,
-						'title': localize('close', "Hide"),
-						'role': 'button',
-						'aria-label': localize('closeAriaLabel', "Hide"),
-					}),
-				),
-				descriptionContent,
-				$('.category-progress', { 'x-data-category-id': category.id, },
-					$('.progress-bar-outer', { 'role': 'progressbar' },
-						$('.progress-bar-inner'))));
-		};
-
-		if (this.gettingStartedList) { this.gettingStartedList.dispose(); }
-
-		const rankWalkthrough = (e: IResolvedWalkthrough) => {
-			let rank: number | null = e.order;
-
-			if (e.isFeatured) { rank += 7; }
-			if (e.newEntry) { rank += 3; }
-			if (e.newItems) { rank += 2; }
-			if (e.recencyBonus) { rank += 4 * e.recencyBonus; }
-
-			if (this.getHiddenCategories().has(e.id)) { rank = null; }
-			return rank;
-		};
-
-		const gettingStartedList = this.gettingStartedList = new GettingStartedIndexList(
-			{
-				title: localize('walkthroughs', "Walkthroughs"),
-				klass: 'getting-started',
-				limit: 5,
-				footer: $('span.button-link.see-all-walkthroughs', { 'x-dispatch': 'seeAllWalkthroughs', 'tabindex': 0 }, localize('showAll', "More...")),
-				renderElement: renderGetttingStaredWalkthrough,
-				rankElement: rankWalkthrough,
-				contextService: this.contextService,
-			});
-
-		gettingStartedList.onDidChange(() => {
-			const hidden = this.getHiddenCategories();
-			const someWalkthroughsHidden = hidden.size || gettingStartedList.itemCount < this.gettingStartedCategories.filter(c => this.contextService.contextMatchesRules(c.when)).length;
-			this.container.classList.toggle('someWalkthroughsHidden', !!someWalkthroughsHidden);
-			this.registerDispatchListeners();
-			allWalkthroughsHiddenContext.bindTo(this.contextService).set(gettingStartedList.itemCount === 0);
-			this.updateCategoryProgress();
-		});
-
-		gettingStartedList.setEntries(this.gettingStartedCategories);
-		allWalkthroughsHiddenContext.bindTo(this.contextService).set(gettingStartedList.itemCount === 0);
-
-		return gettingStartedList;
-	}
-
-	private buildFeaturedExtensionsList(): GettingStartedIndexList<IFeaturedExtension> {
-
-		const renderFeaturedExtensions = (entry: IFeaturedExtension): HTMLElement => {
-
-			const descriptionContent = $('.featured-description-content', {},);
-
-			reset(descriptionContent, ...renderLabelWithIcons(entry.description));
-
-			const titleContent = $('h3.category-title.max-lines-3', { 'x-category-title-for': entry.id });
-			reset(titleContent, ...renderLabelWithIcons(entry.title));
-
-			return $('button.getting-started-category',
-				{
-					'x-dispatch': 'openExtensionPage:' + entry.id,
-					'title': entry.description
-				},
-				$('.main-content', {},
-					$('img.featured-icon.icon-widget', { src: entry.imagePath }),
-					titleContent,
-					$('a.codicon.codicon-close.hide-category-button', {
-						'tabindex': 0,
-						'x-dispatch': 'hideExtension:' + entry.id,
-						'title': localize('close', "Hide"),
-						'role': 'button',
-						'aria-label': localize('closeAriaLabel', "Hide"),
-					}),
-				),
-				descriptionContent);
-		};
-
-		if (this.featuredExtensionsList) {
-			this.featuredExtensionsList.dispose();
-		}
-
-		const featuredExtensionsList = this.featuredExtensionsList = new GettingStartedIndexList(
-			{
-				title: this.featuredExtensionService.title,
-				klass: 'featured-extensions',
-				limit: 5,
-				renderElement: renderFeaturedExtensions,
-				rankElement: (extension) => { if (this.getHiddenCategories().has(extension.id)) { return null; } return 0; },
-				contextService: this.contextService,
-			});
-
-		this.featuredExtensions?.then(extensions => {
-			featuredExtensionsList.setEntries(extensions);
-		});
-
-		this.featuredExtensionsList?.onDidChange(() => {
-
-			this.registerDispatchListeners();
-		});
-		return featuredExtensionsList;
-	}
 
 	layout(size: Dimension) {
 		this.detailsScrollbar?.scanDomNode();
@@ -1370,13 +1304,13 @@ export class GettingStartedPage extends EditorPane {
 			if (event.keyCode === KeyCode.UpArrow) {
 				const toExpand = category.steps.filter((step, index) => index < currentStepIndex() && this.contextService.contextMatchesRules(step.when));
 				if (toExpand.length) {
-					this.selectStep(toExpand[toExpand.length - 1].id, false);
+					this.selectStep(toExpand[toExpand.length - 1].id, false, false);
 				}
 			}
 			if (event.keyCode === KeyCode.DownArrow) {
 				const toExpand = category.steps.find((step, index) => index > currentStepIndex() && this.contextService.contextMatchesRules(step.when));
 				if (toExpand) {
-					this.selectStep(toExpand.id, false);
+					this.selectStep(toExpand.id, false, false);
 				}
 			}
 		}));
@@ -1443,7 +1377,7 @@ export class GettingStartedPage extends EditorPane {
 			if (e.affectsSome(contextKeysToWatch)) {
 				buildStepList();
 				this.registerDispatchListeners();
-				this.selectStep(this.editorInput.selectedStep, false);
+				this.selectStep(this.editorInput.selectedStep, false, true);
 			}
 		}));
 
@@ -1470,7 +1404,7 @@ export class GettingStartedPage extends EditorPane {
 		reset(this.stepsContent, categoryDescriptorComponent, stepListComponent, this.stepMediaComponent, categoryFooter);
 
 		const toExpand = category.steps.find(step => this.contextService.contextMatchesRules(step.when) && !step.done) ?? category.steps[0];
-		this.selectStep(selectedStep ?? toExpand.id, !selectedStep);
+		this.selectStep(selectedStep ?? toExpand.id, !selectedStep, true);
 
 		this.detailsScrollbar.scanDomNode();
 		this.detailsPageScrollbar?.scanDomNode();
