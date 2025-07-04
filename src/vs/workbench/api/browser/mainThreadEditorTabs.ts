@@ -198,11 +198,11 @@ export class MainThreadEditorTabs implements MainThreadEditorTabsShape {
 			};
 		}
 
-		if (editor instanceof ChatEditorInput) {
-			return {
-				kind: TabInputKind.ChatEditorInput,
-			};
-		}
+		// if (editor instanceof ChatEditorInput) {
+		// 	return {
+		// 		kind: TabInputKind.ChatEditorInput,
+		// 	};
+		// }
 
 		if (editor instanceof MultiDiffEditorInput) {
 			const diffEditors: TextDiffInputDto[] = [];
