@@ -10,7 +10,7 @@ declare module 'vscode' {
 		resolveSlashCommand(command: string, token: CancellationToken): ProviderResult<string>;
 	}
 
-	export namespace interactiveSlashCommands {
-		export function registerSlashCommandProvider(chatProviderId: string, provider: InteractiveSlashCommandProvider): Disposable;
-	}
+	// export namespace interactiveSlashCommands {
+	// 	export function registerSlashCommandProvider(chatProviderId: string, provider: InteractiveSlashCommandProvider): Disposable;
+	// }
 }

@@ -97,8 +97,8 @@ import { IExtHostLocalizationService } from 'vs/workbench/api/common/extHostLoca
 import { EditSessionIdentityMatch } from 'vs/platform/workspace/common/editSessions';
 import { ExtHostProfileContentHandlers } from 'vs/workbench/api/common/extHostProfileContentHandler';
 import { ExtHostQuickDiff } from 'vs/workbench/api/common/extHostQuickDiff';
-import { ExtHostChat } from 'vs/workbench/api/common/extHostChat';
-import { ExtHostInteractiveEditor } from 'vs/workbench/api/common/extHostInlineChat';
+// import { ExtHostChat } from 'vs/workbench/api/common/extHostChat';
+// import { ExtHostInteractiveEditor } from 'vs/workbench/api/common/extHostInlineChat';
 import { ExtHostNotebookDocumentSaveParticipant } from 'vs/workbench/api/common/extHostNotebookDocumentSaveParticipant';
 import { ExtHostSemanticSimilarity } from 'vs/workbench/api/common/extHostSemanticSimilarity';
 import { ExtHostIssueReporter } from 'vs/workbench/api/common/extHostIssueReporter';
@@ -202,8 +202,8 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 	const extHostUriOpeners = rpcProtocol.set(ExtHostContext.ExtHostUriOpeners, new ExtHostUriOpeners(rpcProtocol));
 	const extHostProfileContentHandlers = rpcProtocol.set(ExtHostContext.ExtHostProfileContentHandlers, new ExtHostProfileContentHandlers(rpcProtocol));
 	rpcProtocol.set(ExtHostContext.ExtHostInteractive, new ExtHostInteractive(rpcProtocol, extHostNotebook, extHostDocumentsAndEditors, extHostCommands, extHostLogService));
-	const extHostInteractiveEditor = rpcProtocol.set(ExtHostContext.ExtHostInlineChat, new ExtHostInteractiveEditor(rpcProtocol, extHostCommands, extHostDocuments, extHostLogService));
-	const extHostChat = rpcProtocol.set(ExtHostContext.ExtHostChat, new ExtHostChat(rpcProtocol, extHostLogService));
+	// const extHostInteractiveEditor = rpcProtocol.set(ExtHostContext.ExtHostInlineChat, new ExtHostInteractiveEditor(rpcProtocol, extHostCommands, extHostDocuments, extHostLogService));
+	// const extHostChat = rpcProtocol.set(ExtHostContext.ExtHostChat, new ExtHostChat(rpcProtocol, extHostLogService));
 	const extHostSemanticSimilarity = rpcProtocol.set(ExtHostContext.ExtHostSemanticSimilarity, new ExtHostSemanticSimilarity(rpcProtocol));
 	const extHostIssueReporter = rpcProtocol.set(ExtHostContext.ExtHostIssueReporter, new ExtHostIssueReporter(rpcProtocol));
 	const extHostStatusBar = rpcProtocol.set(ExtHostContext.ExtHostStatusBar, new ExtHostStatusBar(rpcProtocol, extHostCommands.converter));
@@ -1273,45 +1273,45 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 			}
 		};
 
-		// namespace: interactive
-		const interactive: typeof vscode.interactive = {
-			// IMPORTANT
-			// this needs to be updated whenever the API proposal changes
-			_version: 1,
+		// // namespace: interactive
+		// const interactive: typeof vscode.interactive = {
+		// 	// IMPORTANT
+		// 	// this needs to be updated whenever the API proposal changes
+		// 	_version: 1,
 
-			registerInteractiveEditorSessionProvider(provider: vscode.InteractiveEditorSessionProvider) {
-				checkProposedApiEnabled(extension, 'interactive');
-				return extHostInteractiveEditor.registerProvider(extension, provider);
-			},
-			registerInteractiveSessionProvider(id: string, provider: vscode.InteractiveSessionProvider) {
-				checkProposedApiEnabled(extension, 'interactive');
-				return extHostChat.registerChatProvider(extension, id, provider);
-			},
-			addInteractiveRequest(context: vscode.InteractiveSessionRequestArgs) {
-				checkProposedApiEnabled(extension, 'interactive');
-				return extHostChat.addChatRequest(context);
-			},
-			sendInteractiveRequestToProvider(providerId: string, message: vscode.InteractiveSessionDynamicRequest) {
-				checkProposedApiEnabled(extension, 'interactive');
-				return extHostChat.sendInteractiveRequestToProvider(providerId, message);
-			},
-			get onDidPerformUserAction() {
-				checkProposedApiEnabled(extension, 'interactiveUserActions');
-				return extHostChat.onDidPerformUserAction;
-			},
-			transferChatSession(session: vscode.InteractiveSession, toWorkspace: vscode.Uri) {
-				checkProposedApiEnabled(extension, 'interactive');
-				return extHostChat.transferChatSession(session, toWorkspace);
-			}
-		};
+		// 	registerInteractiveEditorSessionProvider(provider: vscode.InteractiveEditorSessionProvider) {
+		// 		checkProposedApiEnabled(extension, 'interactive');
+		// 		return extHostInteractiveEditor.registerProvider(extension, provider);
+		// 	},
+		// 	registerInteractiveSessionProvider(id: string, provider: vscode.InteractiveSessionProvider) {
+		// 		checkProposedApiEnabled(extension, 'interactive');
+		// 		return extHostChat.registerChatProvider(extension, id, provider);
+		// 	},
+		// 	addInteractiveRequest(context: vscode.InteractiveSessionRequestArgs) {
+		// 		checkProposedApiEnabled(extension, 'interactive');
+		// 		return extHostChat.addChatRequest(context);
+		// 	},
+		// 	sendInteractiveRequestToProvider(providerId: string, message: vscode.InteractiveSessionDynamicRequest) {
+		// 		checkProposedApiEnabled(extension, 'interactive');
+		// 		return extHostChat.sendInteractiveRequestToProvider(providerId, message);
+		// 	},
+		// 	get onDidPerformUserAction() {
+		// 		checkProposedApiEnabled(extension, 'interactiveUserActions');
+		// 		return extHostChat.onDidPerformUserAction;
+		// 	},
+		// 	transferChatSession(session: vscode.InteractiveSession, toWorkspace: vscode.Uri) {
+		// 		checkProposedApiEnabled(extension, 'interactive');
+		// 		return extHostChat.transferChatSession(session, toWorkspace);
+		// 	}
+		// };
 
-		// namespace: interactiveSlashCommands
-		const interactiveSlashCommands: typeof vscode.interactiveSlashCommands = {
-			registerSlashCommandProvider(chatProviderId: string, provider: vscode.InteractiveSlashCommandProvider) {
-				checkProposedApiEnabled(extension, 'interactiveSlashCommands');
-				return extHostChat.registerSlashCommandProvider(extension, chatProviderId, provider);
-			}
-		};
+		// // namespace: interactiveSlashCommands
+		// const interactiveSlashCommands: typeof vscode.interactiveSlashCommands = {
+		// 	registerSlashCommandProvider(chatProviderId: string, provider: vscode.InteractiveSlashCommandProvider) {
+		// 		checkProposedApiEnabled(extension, 'interactiveSlashCommands');
+		// 		return extHostChat.registerSlashCommandProvider(extension, chatProviderId, provider);
+		// 	}
+		// };
 
 		// namespace: ai
 		const ai: typeof vscode.ai = {
@@ -1331,8 +1331,8 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 			debug,
 			env,
 			extensions,
-			interactive,
-			interactiveSlashCommands,
+			// interactive,
+			// interactiveSlashCommands,
 			l10n,
 			languages,
 			notebooks,

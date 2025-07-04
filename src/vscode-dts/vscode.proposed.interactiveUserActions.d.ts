@@ -64,7 +64,7 @@ declare module 'vscode' {
 		providerId: string;
 	}
 
-	export namespace interactive {
-		export const onDidPerformUserAction: Event<InteractiveSessionUserActionEvent>;
-	}
+	// export namespace interactive {
+	// 	export const onDidPerformUserAction: Event<InteractiveSessionUserActionEvent>;
+	// }
 }

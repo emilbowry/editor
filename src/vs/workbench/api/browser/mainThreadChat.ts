@@ -11,7 +11,7 @@ import { IChatWidgetService } from 'vs/workbench/contrib/chat/browser/chat';
 import { IChatContributionService } from 'vs/workbench/contrib/chat/common/chatContributionService';
 import { IChat, IChatDynamicRequest, IChatProgress, IChatRequest, IChatResponse, IChatService } from 'vs/workbench/contrib/chat/common/chatService';
 import { IExtHostContext, extHostNamedCustomer } from 'vs/workbench/services/extensions/common/extHostCustomers';
-
+// [XXX: Removing MainThreadChat]
 @extHostNamedCustomer(MainContext.MainThreadChat)
 export class MainThreadChat extends Disposable implements MainThreadChatShape {
 

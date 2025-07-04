@@ -171,17 +171,17 @@ declare module 'vscode' {
 		metadata?: any;
 	}
 
-	export namespace interactive {
-		// current version of the proposal.
-		export const _version: 1 | number;
+	// export namespace interactive {
+	// 	// current version of the proposal.
+	// 	export const _version: 1 | number;
 
-		export function registerInteractiveSessionProvider(id: string, provider: InteractiveSessionProvider): Disposable;
-		export function addInteractiveRequest(context: InteractiveSessionRequestArgs): void;
+	// 	export function registerInteractiveSessionProvider(id: string, provider: InteractiveSessionProvider): Disposable;
+	// 	export function addInteractiveRequest(context: InteractiveSessionRequestArgs): void;
 
-		export function sendInteractiveRequestToProvider(providerId: string, message: InteractiveSessionDynamicRequest): void;
+	// 	export function sendInteractiveRequestToProvider(providerId: string, message: InteractiveSessionDynamicRequest): void;
 
-		export function registerInteractiveEditorSessionProvider(provider: InteractiveEditorSessionProvider): Disposable;
+	// 	export function registerInteractiveEditorSessionProvider(provider: InteractiveEditorSessionProvider): Disposable;
 
-		export function transferChatSession(session: InteractiveSession, toWorkspace: Uri): void;
-	}
+	// 	export function transferChatSession(session: InteractiveSession, toWorkspace: Uri): void;
+	// }
 }
