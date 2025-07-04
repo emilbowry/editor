@@ -12,15 +12,19 @@ import * as htmlContent from '../../../base/common/htmlContent.js';
 import { DisposableStore } from '../../../base/common/lifecycle.js';
 import { ResourceMap, ResourceSet } from '../../../base/common/map.js';
 import * as marked from '../../../base/common/marked/marked.js';
-import { parse, revive } from '../../../base/common/marshalling.js';
-import { MarshalledId } from '../../../base/common/marshallingIds.js';
+// import { parse, revive } from '../../../base/common/marshalling.js';
+import { parse } from '../../../base/common/marshalling.js';
+
+// import { MarshalledId } from '../../../base/common/marshallingIds.js';
 import { Mimes } from '../../../base/common/mime.js';
 import { cloneAndChange } from '../../../base/common/objects.js';
 import { IPrefixTreeNode, WellDefinedPrefixTree } from '../../../base/common/prefixTree.js';
-import { basename } from '../../../base/common/resources.js';
-import { ThemeIcon } from '../../../base/common/themables.js';
+// import { basename } from '../../../base/common/resources.js';
+// import { ThemeIcon } from '../../../base/common/themables.js';
 import { isDefined, isEmptyObject, isNumber, isString, isUndefinedOrNull } from '../../../base/common/types.js';
-import { URI, UriComponents, isUriComponents } from '../../../base/common/uri.js';
+// import { URI, UriComponents, isUriComponents } from '../../../base/common/uri.js';
+import { URI, UriComponents } from '../../../base/common/uri.js';
+
 import { IURITransformer } from '../../../base/common/uriIpc.js';
 import { generateUuid } from '../../../base/common/uuid.js';
 import { RenderLineNumbersType } from '../../../editor/common/config/editorOptions.js';
@@ -33,18 +37,20 @@ import * as languageSelector from '../../../editor/common/languageSelector.js';
 import * as languages from '../../../editor/common/languages.js';
 import { EndOfLineSequence, TrackedRangeStickiness } from '../../../editor/common/model.js';
 import { ITextEditorOptions } from '../../../platform/editor/common/editor.js';
-import { IExtensionDescription, IRelaxedExtensionDescription } from '../../../platform/extensions/common/extensions.js';
+// import { IExtensionDescription, IRelaxedExtensionDescription } from '../../../platform/extensions/common/extensions.js';
+import { IExtensionDescription } from '../../../platform/extensions/common/extensions.js';
+
 import { IMarkerData, IRelatedInformation, MarkerSeverity, MarkerTag } from '../../../platform/markers/common/markers.js';
 import { ProgressLocation as MainProgressLocation } from '../../../platform/progress/common/progress.js';
 import { DEFAULT_EDITOR_ASSOCIATION, SaveReason } from '../../common/editor.js';
 import { IViewBadge } from '../../common/views.js';
-import { IChatAgentRequest, IChatAgentResult } from '../../contrib/chat/common/chatAgents.js';
-import { IChatRequestDraft } from '../../contrib/chat/common/chatEditingService.js';
-import { IChatRequestVariableEntry, isImageVariableEntry } from '../../contrib/chat/common/chatVariableEntries.js';
-import { IChatAgentMarkdownContentWithVulnerability, IChatCodeCitation, IChatCommandButton, IChatConfirmation, IChatContentInlineReference, IChatContentReference, IChatExtensionsContent, IChatFollowup, IChatMarkdownContent, IChatMoveMessage, IChatPrepareToolInvocationPart, IChatProgressMessage, IChatResponseCodeblockUriPart, IChatTaskDto, IChatTaskResult, IChatTextEdit, IChatTreeData, IChatUserActionEvent, IChatWarningMessage } from '../../contrib/chat/common/chatService.js';
-import { IToolData, IToolResult } from '../../contrib/chat/common/languageModelToolsService.js';
-import * as chatProvider from '../../contrib/chat/common/languageModels.js';
-import { IChatMessageDataPart, IChatResponseDataPart, IChatResponsePromptTsxPart, IChatResponseTextPart } from '../../contrib/chat/common/languageModels.js';
+// import { IChatAgentRequest, IChatAgentResult } from '../../contrib/chat/common/chatAgents.js';
+// import { IChatRequestDraft } from '../../contrib/chat/common/chatEditingService.js';
+// import { IChatRequestVariableEntry, isImageVariableEntry } from '../../contrib/chat/common/chatVariableEntries.js';
+// import { IChatAgentMarkdownContentWithVulnerability, IChatCodeCitation, IChatCommandButton, IChatConfirmation, IChatContentInlineReference, IChatContentReference, IChatExtensionsContent, IChatFollowup, IChatMarkdownContent, IChatMoveMessage, IChatPrepareToolInvocationPart, IChatProgressMessage, IChatResponseCodeblockUriPart, IChatTaskDto, IChatTaskResult, IChatTextEdit, IChatTreeData, IChatUserActionEvent, IChatWarningMessage } from '../../contrib/chat/common/chatService.js';
+// import { IToolData, IToolResult } from '../../contrib/chat/common/languageModelToolsService.js';
+// import * as chatProvider from '../../contrib/chat/common/languageModels.js';
+// import { IChatMessageDataPart, IChatResponseDataPart, IChatResponsePromptTsxPart, IChatResponseTextPart } from '../../contrib/chat/common/languageModels.js';
 import { DebugTreeItemCollapsibleState, IDebugVisualizationTreeItem } from '../../contrib/debug/common/debug.js';
 import * as notebooks from '../../contrib/notebook/common/notebookCommon.js';
 import { CellEditType } from '../../contrib/notebook/common/notebookCommon.js';
@@ -54,17 +60,19 @@ import { TestId } from '../../contrib/testing/common/testId.js';
 import { CoverageDetails, DetailType, ICoverageCount, IFileCoverage, ISerializedTestResults, ITestErrorMessage, ITestItem, ITestRunProfileReference, ITestTag, TestMessageType, TestResultItem, TestRunProfileBitset, denamespaceTestTag, namespaceTestTag } from '../../contrib/testing/common/testTypes.js';
 import { EditorGroupColumn } from '../../services/editor/common/editorGroupColumn.js';
 import { ACTIVE_GROUP, SIDE_GROUP } from '../../services/editor/common/editorService.js';
-import { checkProposedApiEnabled, isProposedApiEnabled } from '../../services/extensions/common/extensions.js';
-import { Dto, SerializableObjectWithBuffers } from '../../services/extensions/common/proxyIdentifier.js';
+// import { checkProposedApiEnabled, isProposedApiEnabled } from '../../services/extensions/common/extensions.js';
+// import { Dto, SerializableObjectWithBuffers } from '../../services/extensions/common/proxyIdentifier.js';
+import { Dto } from '../../services/extensions/common/proxyIdentifier.js';
+
 import * as extHostProtocol from './extHost.protocol.js';
 import { CommandsConverter } from './extHostCommands.js';
 import { getPrivateApiFor } from './extHostTestingPrivateApi.js';
 import * as types from './extHostTypes.js';
-import { LanguageModelDataPart, LanguageModelPromptTsxPart, LanguageModelTextPart } from './extHostTypes.js';
-import { ChatAgentLocation } from '../../contrib/chat/common/constants.js';
+// import { LanguageModelDataPart, LanguageModelPromptTsxPart, LanguageModelTextPart } from './extHostTypes.js';
+// import { ChatAgentLocation } from '../../contrib/chat/common/constants.js';
 import { AiSettingsSearchResult, AiSettingsSearchResultKind } from '../../services/aiSettingsSearch/common/aiSettingsSearch.js';
-import { McpServerLaunch, McpServerTransportType } from '../../contrib/mcp/common/mcpTypes.js';
-import { ILogService } from '../../../platform/log/common/log.js';
+// import { McpServerLaunch, McpServerTransportType } from '../../contrib/mcp/common/mcpTypes.js';
+// import { ILogService } from '../../../platform/log/common/log.js';
 
 export namespace Command {
 
@@ -1117,6 +1125,11 @@ export namespace CompletionItemTag {
 	}
 }
 
+export namespace IconPath {
+	export function fromThemeIcon(iconPath: vscode.ThemeIcon): languages.IconPath {
+		return iconPath;
+	}
+}
 export namespace CompletionCommand {
 	export function from(c: vscode.Command | { command: vscode.Command; icon: vscode.ThemeIcon }, converter: CommandsConverter, disposables: DisposableStore): { command: extHostProtocol.ICommandDto; icon?: languages.IconPath } {
 		if ('icon' in c && 'command' in c) {
@@ -3385,11 +3398,6 @@ export namespace DebugTreeItem {
 // 	}
 // }
 
-export namespace IconPath {
-	export function fromThemeIcon(iconPath: vscode.ThemeIcon): languages.IconPath {
-		return iconPath;
-	}
-}
 
 export namespace AiSettingsSearch {
 	export function fromSettingsSearchResult(result: vscode.SettingsSearchResult): AiSettingsSearchResult {
@@ -3437,4 +3445,4 @@ export namespace AiSettingsSearch {
 // 				}
 // 		);
 // 	}
-// }
+}
