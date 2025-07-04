@@ -9,7 +9,9 @@ import { Codicon } from '../../../../../base/common/codicons.js';
 import { ErrorNoTelemetry } from '../../../../../base/common/errors.js';
 import { Emitter, Event } from '../../../../../base/common/event.js';
 import { Iterable } from '../../../../../base/common/iterator.js';
-import { Disposable, DisposableStore, dispose, IDisposable, toDisposable } from '../../../../../base/common/lifecycle.js';
+// import { Disposable, DisposableStore, dispose, IDisposable, toDisposable } from '../../../../../base/common/lifecycle.js';
+import { Disposable, DisposableStore, dispose, IDisposable } from '../../../../../base/common/lifecycle.js';
+
 import { LinkedList } from '../../../../../base/common/linkedList.js';
 import { ResourceMap } from '../../../../../base/common/map.js';
 import { derived, IObservable, observableValueOpts, runOnChange, ValueWithChangeEventFromObservable } from '../../../../../base/common/observable.js';
@@ -338,12 +340,12 @@ export class ChatEditingService extends Disposable implements IChatEditingServic
 		return this._chatRelatedFilesProviders.size > 0;
 	}
 
-	registerRelatedFilesProvider(handle: number, provider: IChatRelatedFilesProvider): IDisposable {
-		this._chatRelatedFilesProviders.set(handle, provider);
-		return toDisposable(() => {
-			this._chatRelatedFilesProviders.delete(handle);
-		});
-	}
+	// registerRelatedFilesProvider(handle: number, provider: IChatRelatedFilesProvider): IDisposable {
+	// 	this._chatRelatedFilesProviders.set(handle, provider);
+	// 	return toDisposable(() => {
+	// 		this._chatRelatedFilesProviders.delete(handle);
+	// 	});
+	// }
 
 	async getRelatedFiles(chatSessionId: string, prompt: string, files: URI[], token: CancellationToken): Promise<{ group: string; files: IChatRelatedFile[] }[] | undefined> {
 		const providers = Array.from(this._chatRelatedFilesProviders.values());

@@ -41,7 +41,7 @@ export interface IChatEditingService {
 	//#region related files
 
 	hasRelatedFilesProviders(): boolean;
-	registerRelatedFilesProvider(handle: number, provider: IChatRelatedFilesProvider): IDisposable;
+	// registerRelatedFilesProvider(handle: number, provider: IChatRelatedFilesProvider): IDisposable;
 	getRelatedFiles(chatSessionId: string, prompt: string, files: URI[], token: CancellationToken): Promise<{ group: string; files: IChatRelatedFile[] }[] | undefined>;
 
 	//#endregion
