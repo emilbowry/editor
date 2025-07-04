@@ -34,7 +34,7 @@ import { IWorkspaceContextService } from 'vs/platform/workspace/common/workspace
 import { onUnexpectedError } from 'vs/base/common/errors';
 import { ILabelService, Verbosity } from 'vs/platform/label/common/label';
 import { IWindowOpenable } from 'vs/platform/window/common/window';
-import { splitName } from 'vs/base/common/labels';
+import { splitRecentLabel } from 'vs/base/common/labels';
 import { IHostService } from 'vs/workbench/services/host/browser/host';
 import { isMacintosh } from 'vs/base/common/platform';
 import { Delayer, Throttler } from 'vs/base/common/async';
@@ -106,18 +106,18 @@ const parsedStartEntries: IWelcomePageStartEntry[] = startEntries.map((e, i) => 
 	when: ContextKeyExpr.deserialize(e.when) ?? ContextKeyExpr.true()
 }));
 
-function splitRecentLabel(recentLabel: string): { name: string; parentPath: string } {
-	if (recentLabel.endsWith(']')) {
-		// label with workspace suffix
-		const lastIndexOfSquareBracket = recentLabel.lastIndexOf(' [', recentLabel.length - 2);
-		if (lastIndexOfSquareBracket !== -1) {
-			const split = splitName(recentLabel.substring(0, lastIndexOfSquareBracket));
-			const remoteNameWithSpace = recentLabel.substring(lastIndexOfSquareBracket);
-			return { name: split.name + remoteNameWithSpace, parentPath: split.parentPath };
-		}
-	}
-	return splitName(recentLabel);
-}
+// function splitRecentLabel(recentLabel: string): { name: string; parentPath: string } {
+// 	if (recentLabel.endsWith(']')) {
+// 		// label with workspace suffix
+// 		const lastIndexOfSquareBracket = recentLabel.lastIndexOf(' [', recentLabel.length - 2);
+// 		if (lastIndexOfSquareBracket !== -1) {
+// 			const split = splitName(recentLabel.substring(0, lastIndexOfSquareBracket));
+// 			const remoteNameWithSpace = recentLabel.substring(lastIndexOfSquareBracket);
+// 			return { name: split.name + remoteNameWithSpace, parentPath: split.parentPath };
+// 		}
+// 	}
+// 	return splitName(recentLabel);
+// }
 // type GettingStartedLayoutEventClassification = {
 // 	owner: 'bhavyau';
 // 	comment: 'Information about the layout of the welcome page';
@@ -359,19 +359,19 @@ export class GettingStartedPage extends EditorPane {
 		}
 	}
 
-	async makeCategoryVisibleWhenAvailable(categoryID: string, stepId?: string) {
-		if (!this.gettingStartedCategories.some(c => c.id === categoryID)) {
-			await this.gettingStartedService.installedExtensionsRegistered;
-			this.gettingStartedCategories = this.gettingStartedService.getWalkthroughs();
-		}
+	// async makeCategoryVisibleWhenAvailable(categoryID: string, stepId?: string) {
+	// 	if (!this.gettingStartedCategories.some(c => c.id === categoryID)) {
+	// 		await this.gettingStartedService.installedExtensionsRegistered;
+	// 		this.gettingStartedCategories = this.gettingStartedService.getWalkthroughs();
+	// 	}
 
-		const ourCategory = this.gettingStartedCategories.find(c => c.id === categoryID);
-		if (!ourCategory) {
-			throw Error('Could not find category with ID: ' + categoryID);
-		}
+	// 	const ourCategory = this.gettingStartedCategories.find(c => c.id === categoryID);
+	// 	if (!ourCategory) {
+	// 		throw Error('Could not find category with ID: ' + categoryID);
+	// 	}
 
-		this.scrollToCategory(categoryID, stepId);
-	}
+	// 	this.scrollToCategory(categoryID, stepId);
+	// }
 
 	private registerDispatchListeners() {
 		this.dispatchListeners.clear();
