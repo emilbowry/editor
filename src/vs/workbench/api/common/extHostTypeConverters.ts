@@ -63,7 +63,7 @@ import * as types from './extHostTypes.js';
 import { LanguageModelDataPart, LanguageModelPromptTsxPart, LanguageModelTextPart } from './extHostTypes.js';
 import { ChatAgentLocation } from '../../contrib/chat/common/constants.js';
 import { AiSettingsSearchResult, AiSettingsSearchResultKind } from '../../services/aiSettingsSearch/common/aiSettingsSearch.js';
-import { McpServerLaunch, McpServerTransportType } from '../../contrib/mcp/common/mcpTypes.js';
+// import { McpServerLaunch, McpServerTransportType } from '../../contrib/mcp/common/mcpTypes.js';
 import { ILogService } from '../../../platform/log/common/log.js';
 
 export namespace Command {
@@ -3414,27 +3414,27 @@ export namespace AiSettingsSearch {
 	}
 }
 
-export namespace McpServerDefinition {
-	function isHttpConfig(candidate: vscode.McpServerDefinition): candidate is vscode.McpHttpServerDefinition {
-		return !!(candidate as vscode.McpHttpServerDefinition).uri;
-	}
+// export namespace McpServerDefinition {
+// 	function isHttpConfig(candidate: vscode.McpServerDefinition): candidate is vscode.McpHttpServerDefinition {
+// 		return !!(candidate as vscode.McpHttpServerDefinition).uri;
+// 	}
 
-	export function from(item: vscode.McpServerDefinition): McpServerLaunch.Serialized {
-		return McpServerLaunch.toSerialized(
-			isHttpConfig(item)
-				? {
-					type: McpServerTransportType.HTTP,
-					uri: item.uri,
-					headers: Object.entries(item.headers),
-				}
-				: {
-					type: McpServerTransportType.Stdio,
-					cwd: item.cwd?.fsPath,
-					args: item.args,
-					command: item.command,
-					env: item.env,
-					envFile: undefined,
-				}
-		);
-	}
-}
+// 	export function from(item: vscode.McpServerDefinition): McpServerLaunch.Serialized {
+// 		return McpServerLaunch.toSerialized(
+// 			isHttpConfig(item)
+// 				? {
+// 					type: McpServerTransportType.HTTP,
+// 					uri: item.uri,
+// 					headers: Object.entries(item.headers),
+// 				}
+// 				: {
+// 					type: McpServerTransportType.Stdio,
+// 					cwd: item.cwd?.fsPath,
+// 					args: item.args,
+// 					command: item.command,
+// 					env: item.env,
+// 					envFile: undefined,
+// 				}
+// 		);
+// 	}
+// }
