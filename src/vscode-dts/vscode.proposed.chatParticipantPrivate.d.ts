@@ -161,9 +161,9 @@ declare module 'vscode' {
 		level?: ChatErrorLevel;
 	}
 
-	export namespace chat {
-		export function createDynamicChatParticipant(id: string, dynamicProps: DynamicChatParticipantProps, handler: ChatExtendedRequestHandler): ChatParticipant;
-	}
+	// export namespace chat {
+	// 	export function createDynamicChatParticipant(id: string, dynamicProps: DynamicChatParticipantProps, handler: ChatExtendedRequestHandler): ChatParticipant;
+	// }
 
 	/**
 	 * These don't get set on the ChatParticipant after creation, like other props, because they are typically defined in package.json and we want them at the time of creation.
@@ -175,9 +175,9 @@ declare module 'vscode' {
 		fullName?: string;
 	}
 
-	export namespace lm {
-		export function registerIgnoredFileProvider(provider: LanguageModelIgnoredFileProvider): Disposable;
-	}
+	// export namespace lm {
+	// 	export function registerIgnoredFileProvider(provider: LanguageModelIgnoredFileProvider): Disposable;
+	// }
 
 	export interface LanguageModelIgnoredFileProvider {
 		provideFileIgnored(uri: Uri, token: CancellationToken): ProviderResult<boolean>;
@@ -245,11 +245,11 @@ declare module 'vscode' {
 		provideParticipantDetection(chatRequest: ChatRequest, context: ChatContext, options: { participants?: ChatParticipantMetadata[]; location: ChatLocation }, token: CancellationToken): ProviderResult<ChatParticipantDetectionResult>;
 	}
 
-	export namespace chat {
-		export function registerChatParticipantDetectionProvider(participantDetectionProvider: ChatParticipantDetectionProvider): Disposable;
+	// export namespace chat {
+	// 	export function registerChatParticipantDetectionProvider(participantDetectionProvider: ChatParticipantDetectionProvider): Disposable;
 
-		export const onDidDisposeChatSession: Event<string>;
-	}
+	// 	export const onDidDisposeChatSession: Event<string>;
+	// }
 
 	// #endregion
 

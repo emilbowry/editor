@@ -41,9 +41,9 @@ declare module 'vscode' {
 		provideEmbeddingVector(strings: string[], token: CancellationToken): ProviderResult<number[][]>;
 	}
 
-	export namespace ai {
-		export function getRelatedInformation(query: string, types: RelatedInformationType[], token: CancellationToken): Thenable<RelatedInformationResult[]>;
-		export function registerRelatedInformationProvider(type: RelatedInformationType, provider: RelatedInformationProvider): Disposable;
-		export function registerEmbeddingVectorProvider(model: string, provider: EmbeddingVectorProvider): Disposable;
-	}
+	// export namespace ai {
+	// 	export function getRelatedInformation(query: string, types: RelatedInformationType[], token: CancellationToken): Thenable<RelatedInformationResult[]>;
+	// 	export function registerRelatedInformationProvider(type: RelatedInformationType, provider: RelatedInformationProvider): Disposable;
+	// 	export function registerEmbeddingVectorProvider(model: string, provider: EmbeddingVectorProvider): Disposable;
+	// }
 }

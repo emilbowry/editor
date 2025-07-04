@@ -29,7 +29,7 @@ import { checkProposedApiEnabled, isProposedApiEnabled } from '../../services/ex
 import { ProxyIdentifier } from '../../services/extensions/common/proxyIdentifier.js';
 import { ExcludeSettingOptions, TextSearchCompleteMessageType, TextSearchContext2, TextSearchMatch2, AISearchKeyword } from '../../services/search/common/searchExtTypes.js';
 import { CandidatePortSource, ExtHostContext, ExtHostLogLevelServiceShape, MainContext } from './extHost.protocol.js';
-import { ExtHostRelatedInformation } from './extHostAiRelatedInformation.js';
+// import { ExtHostRelatedInformation } from './extHostAiRelatedInformation.js';
 import { ExtHostApiCommands } from './extHostApiCommands.js';
 import { IExtHostApiDeprecationService } from './extHostApiDeprecationService.js';
 import { IExtHostAuthentication } from './extHostAuthentication.js';
@@ -53,7 +53,7 @@ import { ExtHostDocuments } from './extHostDocuments.js';
 import { IExtHostDocumentsAndEditors } from './extHostDocumentsAndEditors.js';
 import { IExtHostEditorTabs } from './extHostEditorTabs.js';
 // import { ExtHostEmbeddings } from './extHostEmbedding.js';
-import { ExtHostAiEmbeddingVector } from './extHostEmbeddingVector.js';
+// import { ExtHostAiEmbeddingVector } from './extHostEmbeddingVector.js';
 import { Extension, IExtHostExtensionService } from './extHostExtensionService.js';
 import { ExtHostFileSystem } from './extHostFileSystem.js';
 import { IExtHostConsumerFileSystem } from './extHostFileSystemConsumer.js';
@@ -110,7 +110,7 @@ import { ExtHostWebviewPanels } from './extHostWebviewPanels.js';
 import { ExtHostWebviewViews } from './extHostWebviewView.js';
 import { IExtHostWindow } from './extHostWindow.js';
 import { IExtHostWorkspace } from './extHostWorkspace.js';
-import { ExtHostAiSettingsSearch } from './extHostAiSettingsSearch.js';
+// import { ExtHostAiSettingsSearch } from './extHostAiSettingsSearch.js';
 
 export interface IExtensionRegistries {
 	mine: ExtensionDescriptionRegistry;
@@ -219,9 +219,9 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 	rpcProtocol.set(ExtHostContext.ExtHostInteractive, new ExtHostInteractive(rpcProtocol, extHostNotebook, extHostDocumentsAndEditors, extHostCommands, extHostLogService));
 	// const extHostLanguageModelTools = rpcProtocol.set(ExtHostContext.ExtHostLanguageModelTools, new ExtHostLanguageModelTools(rpcProtocol, extHostLanguageModels));
 	// const extHostChatAgents2 = rpcProtocol.set(ExtHostContext.ExtHostChatAgents2, new ExtHostChatAgents2(rpcProtocol, extHostLogService, extHostCommands, extHostDocuments, extHostLanguageModels, extHostDiagnostics, extHostLanguageModelTools));
-	const extHostAiRelatedInformation = rpcProtocol.set(ExtHostContext.ExtHostAiRelatedInformation, new ExtHostRelatedInformation(rpcProtocol));
-	const extHostAiEmbeddingVector = rpcProtocol.set(ExtHostContext.ExtHostAiEmbeddingVector, new ExtHostAiEmbeddingVector(rpcProtocol));
-	const extHostAiSettingsSearch = rpcProtocol.set(ExtHostContext.ExtHostAiSettingsSearch, new ExtHostAiSettingsSearch(rpcProtocol));
+	// const extHostAiRelatedInformation = rpcProtocol.set(ExtHostContext.ExtHostAiRelatedInformation, new ExtHostRelatedInformation(rpcProtocol));
+	// const extHostAiEmbeddingVector = rpcProtocol.set(ExtHostContext.ExtHostAiEmbeddingVector, new ExtHostAiEmbeddingVector(rpcProtocol));
+	// const extHostAiSettingsSearch = rpcProtocol.set(ExtHostContext.ExtHostAiSettingsSearch, new ExtHostAiSettingsSearch(rpcProtocol));
 	const extHostStatusBar = rpcProtocol.set(ExtHostContext.ExtHostStatusBar, new ExtHostStatusBar(rpcProtocol, extHostCommands.converter));
 	// const extHostSpeech = rpcProtocol.set(ExtHostContext.ExtHostSpeech, new ExtHostSpeech(rpcProtocol));
 	// const extHostEmbeddings = rpcProtocol.set(ExtHostContext.ExtHostEmbeddings, new ExtHostEmbeddings(rpcProtocol));
@@ -1422,33 +1422,33 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 			}
 		};
 
-		// // namespace: interactive
-		// const interactive: typeof vscode.interactive = {
-		// 	transferActiveChat(toWorkspace: vscode.Uri) {
-		// 		checkProposedApiEnabled(extension, 'interactive');
-		// 		return extHostChatAgents2.transferActiveChat(toWorkspace);
-		// 	}
-		// };
-
-		// namespace: ai
-		const ai: typeof vscode.ai = {
-			getRelatedInformation(query: string, types: vscode.RelatedInformationType[]): Thenable<vscode.RelatedInformationResult[]> {
-				checkProposedApiEnabled(extension, 'aiRelatedInformation');
-				return extHostAiRelatedInformation.getRelatedInformation(extension, query, types);
-			},
-			registerRelatedInformationProvider(type: vscode.RelatedInformationType, provider: vscode.RelatedInformationProvider) {
-				checkProposedApiEnabled(extension, 'aiRelatedInformation');
-				return extHostAiRelatedInformation.registerRelatedInformationProvider(extension, type, provider);
-			},
-			registerEmbeddingVectorProvider(model: string, provider: vscode.EmbeddingVectorProvider) {
-				checkProposedApiEnabled(extension, 'aiRelatedInformation');
-				return extHostAiEmbeddingVector.registerEmbeddingVectorProvider(extension, model, provider);
-			},
-			registerSettingsSearchProvider(provider: vscode.SettingsSearchProvider) {
-				checkProposedApiEnabled(extension, 'aiSettingsSearch');
-				return extHostAiSettingsSearch.registerSettingsSearchProvider(extension, provider);
+		// namespace: interactive
+		const interactive: typeof vscode.interactive = {
+			transferActiveChat(toWorkspace: vscode.Uri) {
+				checkProposedApiEnabled(extension, 'interactive');
+			// 	return extHostChatAgents2.transferActiveChat(toWorkspace);
 			}
 		};
+
+		// namespace: ai
+		// const ai: typeof vscode.ai = {
+		// 	getRelatedInformation(query: string, types: vscode.RelatedInformationType[]): Thenable<vscode.RelatedInformationResult[]> {
+		// 		checkProposedApiEnabled(extension, 'aiRelatedInformation');
+		// 		return extHostAiRelatedInformation.getRelatedInformation(extension, query, types);
+		// 	},
+		// 	registerRelatedInformationProvider(type: vscode.RelatedInformationType, provider: vscode.RelatedInformationProvider) {
+		// 		checkProposedApiEnabled(extension, 'aiRelatedInformation');
+		// 		return extHostAiRelatedInformation.registerRelatedInformationProvider(extension, type, provider);
+		// 	},
+		// 	registerEmbeddingVectorProvider(model: string, provider: vscode.EmbeddingVectorProvider) {
+		// 		checkProposedApiEnabled(extension, 'aiRelatedInformation');
+		// 		return extHostAiEmbeddingVector.registerEmbeddingVectorProvider(extension, model, provider);
+		// 	},
+		// 	registerSettingsSearchProvider(provider: vscode.SettingsSearchProvider) {
+		// 		checkProposedApiEnabled(extension, 'aiSettingsSearch');
+		// 		return extHostAiSettingsSearch.registerSettingsSearchProvider(extension, provider);
+		// 	}
+		// };
 
 		// // namespace: chatregisterMcpServerDefinitionProvider
 		// const chat: typeof vscode.chat = {
@@ -1483,6 +1483,8 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 		// };
 
 		// namespace: lm
+	// namespace: lm
+		// const lm: typeof vscode.lm = {}
 		// const lm: typeof vscode.lm = {
 		// 	selectChatModels: (selector) => {
 		// 		return extHostLanguageModels.selectLanguageModels(extension, selector ?? {});
@@ -1535,19 +1537,19 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 		// 	}
 		// };
 
-		// // namespace: speech
+		// namespace: speech
 		// const speech: typeof vscode.speech = {
-		// 	registerSpeechProvider(id: string, provider: vscode.SpeechProvider) {
-		// 		checkProposedApiEnabled(extension, 'speech');
-		// 		return extHostSpeech.registerProvider(extension.identifier, id, provider);
-		// 	}
+		// 	// registerSpeechProvider(id: string, provider: vscode.SpeechProvider) {
+		// 	// 	checkProposedApiEnabled(extension, 'speech');
+		// 	// 	return extHostSpeech.registerProvider(extension.identifier, id, provider);
+		// 	// }
 		// };
 
 		// eslint-disable-next-line local/code-no-dangerous-type-assertions
 		return <typeof vscode>{
 			version: initData.version,
 			// namespaces
-			ai,
+			// ai,
 			authentication,
 			commands,
 			comments,
@@ -1555,7 +1557,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 			debug,
 			env,
 			extensions,
-			// interactive,
+			interactive,
 			l10n,
 			languages,
 			// lm,

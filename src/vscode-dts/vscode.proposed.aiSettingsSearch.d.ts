@@ -25,7 +25,7 @@ declare module 'vscode' {
 		provideSettingsSearchResults(query: string, option: SettingsSearchProviderOptions, progress: Progress<SettingsSearchResult>, token: CancellationToken): Thenable<void>;
 	}
 
-	export namespace ai {
-		export function registerSettingsSearchProvider(provider: SettingsSearchProvider): Disposable;
-	}
+	// export namespace ai {
+	// 	export function registerSettingsSearchProvider(provider: SettingsSearchProvider): Disposable;
+	// }
 }

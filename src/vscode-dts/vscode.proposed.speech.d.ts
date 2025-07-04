@@ -67,8 +67,8 @@ declare module 'vscode' {
 		provideKeywordRecognitionSession(token: CancellationToken): ProviderResult<KeywordRecognitionSession>;
 	}
 
-	export namespace speech {
+	// export namespace speech {
 
-		export function registerSpeechProvider(id: string, provider: SpeechProvider): Disposable;
-	}
+	// 	export function registerSpeechProvider(id: string, provider: SpeechProvider): Disposable;
+	// }
 }
