@@ -23,7 +23,7 @@ declare module 'vscode' {
 		provideRelatedFiles(chatRequest: ChatRequestDraft, token: CancellationToken): ProviderResult<ChatRelatedFile[]>;
 	}
 
-	export namespace chat {
-		export function registerRelatedFilesProvider(provider: ChatRelatedFilesProvider, metadata: ChatRelatedFilesProviderMetadata): Disposable;
-	}
+// 	export namespace chat {
+// 		export function registerRelatedFilesProvider(provider: ChatRelatedFilesProvider, metadata: ChatRelatedFilesProviderMetadata): Disposable;
+// 	}
 }

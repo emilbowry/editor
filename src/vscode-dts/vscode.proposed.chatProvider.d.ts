@@ -133,11 +133,11 @@ declare module 'vscode' {
 		provideTokenCount(model: T, text: string | LanguageModelChatMessage | LanguageModelChatMessage2, token: CancellationToken): Thenable<number>;
 	}
 
-	export namespace lm {
+	// export namespace lm {
 
-		//
-		// export function registerChatModelProvider(vendor: string, provider: LanguageModelChatProvider2): Disposable;
-	}
+	// 	//
+	// 	// export function registerChatModelProvider(vendor: string, provider: LanguageModelChatProvider2): Disposable;
+	// }
 
 
 
@@ -237,9 +237,9 @@ declare module 'vscode' {
 		extensions?: string[];
 	}
 
-	export namespace lm {
+	// export namespace lm {
 
-		export function registerChatModelProvider(id: string, provider: LanguageModelChatProvider, metadata: ChatResponseProviderMetadata): Disposable;
-	}
+	// 	export function registerChatModelProvider(id: string, provider: LanguageModelChatProvider, metadata: ChatResponseProviderMetadata): Disposable;
+	// }
 
 }
