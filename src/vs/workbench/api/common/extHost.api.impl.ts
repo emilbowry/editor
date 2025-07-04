@@ -1148,12 +1148,12 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 				checkProposedApiEnabled(extension, 'textSearchProvider');
 				return extHostSearch.registerTextSearchProviderOld(scheme, provider);
 			},
-			registerAITextSearchProvider: (scheme: string, provider: vscode.AITextSearchProvider) => {
-				// there are some dependencies on textSearchProvider, so we need to check for both
-				checkProposedApiEnabled(extension, 'aiTextSearchProvider');
-				checkProposedApiEnabled(extension, 'textSearchProvider2');
-				return extHostSearch.registerAITextSearchProvider(scheme, provider);
-			},
+			// registerAITextSearchProvider: (scheme: string, provider: vscode.AITextSearchProvider) => {
+			// 	// there are some dependencies on textSearchProvider, so we need to check for both
+			// 	checkProposedApiEnabled(extension, 'aiTextSearchProvider');
+			// 	checkProposedApiEnabled(extension, 'textSearchProvider2');
+			// 	return extHostSearch.registerAITextSearchProvider(scheme, provider);
+			// },
 			registerFileSearchProvider2: (scheme: string, provider: vscode.FileSearchProvider2) => {
 				checkProposedApiEnabled(extension, 'fileSearchProvider2');
 				return extHostSearch.registerFileSearchProvider(scheme, provider);

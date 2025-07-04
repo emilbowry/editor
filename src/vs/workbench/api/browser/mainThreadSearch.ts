@@ -12,7 +12,7 @@ import { extHostNamedCustomer, IExtHostContext } from '../../services/extensions
 import { IFileMatch, IFileQuery, IRawFileMatch2, ISearchComplete, ISearchCompleteStats, ISearchProgressItem, ISearchQuery, ISearchResultProvider, ISearchService, ITextQuery, QueryType, SearchProviderType } from '../../services/search/common/search.js';
 import { ExtHostContext, ExtHostSearchShape, MainContext, MainThreadSearchShape } from '../common/extHost.protocol.js';
 import { revive } from '../../../base/common/marshalling.js';
-import * as Constants from '../../contrib/search/common/constants.js';
+// import * as Constants from '../../contrib/search/common/constants.js';
 import { IContextKeyService } from '../../../platform/contextkey/common/contextkey.js';
 import { AISearchKeyword } from '../../services/search/common/searchExtTypes.js';
 
@@ -42,10 +42,10 @@ export class MainThreadSearch implements MainThreadSearchShape {
 		this._searchProvider.set(handle, new RemoteSearchProvider(this._searchService, SearchProviderType.text, scheme, handle, this._proxy));
 	}
 
-	$registerAITextSearchProvider(handle: number, scheme: string): void {
-		Constants.SearchContext.hasAIResultProvider.bindTo(this.contextKeyService).set(true);
-		this._searchProvider.set(handle, new RemoteSearchProvider(this._searchService, SearchProviderType.aiText, scheme, handle, this._proxy));
-	}
+	// $registerAITextSearchProvider(handle: number, scheme: string): void {
+	// 	Constants.SearchContext.hasAIResultProvider.bindTo(this.contextKeyService).set(true);
+	// 	this._searchProvider.set(handle, new RemoteSearchProvider(this._searchService, SearchProviderType.aiText, scheme, handle, this._proxy));
+	// }
 
 	$registerFileSearchProvider(handle: number, scheme: string): void {
 		this._searchProvider.set(handle, new RemoteSearchProvider(this._searchService, SearchProviderType.file, scheme, handle, this._proxy));
