@@ -34,7 +34,7 @@ import * as extHostProtocol from 'vs/workbench/api/common/extHost.protocol';
 import { getPrivateApiFor } from 'vs/workbench/api/common/extHostTestingPrivateApi';
 import { DEFAULT_EDITOR_ASSOCIATION, SaveReason } from 'vs/workbench/common/editor';
 import { IViewBadge } from 'vs/workbench/common/views';
-import { IChatFollowup, IChatReplyFollowup, IChatResponseCommandFollowup } from 'vs/workbench/contrib/chat/common/chatService';
+// import { IChatFollowup, IChatReplyFollowup, IChatResponseCommandFollowup } from 'vs/workbench/contrib/chat/common/chatService';
 import * as notebooks from 'vs/workbench/contrib/notebook/common/notebookCommon';
 import { ICellRange } from 'vs/workbench/contrib/notebook/common/notebookRange';
 import * as search from 'vs/workbench/contrib/search/common/search';
@@ -2118,40 +2118,40 @@ export namespace DataTransfer {
 	}
 }
 
-export namespace ChatReplyFollowup {
-	export function to(followup: IChatReplyFollowup): vscode.InteractiveSessionReplyFollowup {
-		return {
-			message: followup.message,
-			metadata: followup.metadata,
-			title: followup.title,
-			tooltip: followup.tooltip,
-		};
-	}
+// export namespace ChatReplyFollowup {
+// 	export function to(followup: IChatReplyFollowup): vscode.InteractiveSessionReplyFollowup {
+// 		return {
+// 			message: followup.message,
+// 			metadata: followup.metadata,
+// 			title: followup.title,
+// 			tooltip: followup.tooltip,
+// 		};
+// 	}
 
-	export function from(followup: vscode.InteractiveSessionReplyFollowup): IChatReplyFollowup {
-		return {
-			kind: 'reply',
-			message: followup.message,
-			metadata: followup.metadata,
-			title: followup.title,
-			tooltip: followup.tooltip,
-		};
-	}
-}
+// 	export function from(followup: vscode.InteractiveSessionReplyFollowup): IChatReplyFollowup {
+// 		return {
+// 			kind: 'reply',
+// 			message: followup.message,
+// 			metadata: followup.metadata,
+// 			title: followup.title,
+// 			tooltip: followup.tooltip,
+// 		};
+// 	}
+// }
 
-export namespace ChatFollowup {
-	export function from(followup: string | vscode.InteractiveSessionFollowup): IChatFollowup {
-		if (typeof followup === 'string') {
-			return <IChatReplyFollowup>{ title: followup, message: followup, kind: 'reply' };
-		} else if ('commandId' in followup) {
-			return <IChatResponseCommandFollowup>{
-				kind: 'command',
-				title: followup.title ?? '',
-				commandId: followup.commandId ?? '',
-				args: followup.args
-			};
-		} else {
-			return ChatReplyFollowup.from(followup);
-		}
-	}
-}
+// export namespace ChatFollowup {
+// 	export function from(followup: string | vscode.InteractiveSessionFollowup): IChatFollowup {
+// 		if (typeof followup === 'string') {
+// 			return <IChatReplyFollowup>{ title: followup, message: followup, kind: 'reply' };
+// 		} else if ('commandId' in followup) {
+// 			return <IChatResponseCommandFollowup>{
+// 				kind: 'command',
+// 				title: followup.title ?? '',
+// 				commandId: followup.commandId ?? '',
+// 				args: followup.args
+// 			};
+// 		} else {
+// 			return ChatReplyFollowup.from(followup);
+// 		}
+// 	}
+// }

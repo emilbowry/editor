@@ -5,7 +5,7 @@
 
 import { timeout } from 'vs/base/common/async';
 import { KeyCode, KeyMod } from 'vs/base/common/keyCodes';
-import { ICodeEditor } from 'vs/editor/browser/editorBrowser';
+// import { ICodeEditor } from 'vs/editor/browser/editorBrowser';
 import { EditorExtensionsRegistry } from 'vs/editor/browser/editorExtensions';
 import { EditorContextKeys } from 'vs/editor/common/editorContextKeys';
 import { localize } from 'vs/nls';
@@ -17,9 +17,11 @@ import { InputFocusedContextKey } from 'vs/platform/contextkey/common/contextkey
 import { ServicesAccessor } from 'vs/platform/instantiation/common/instantiation';
 import { KeybindingWeight } from 'vs/platform/keybinding/common/keybindingsRegistry';
 import { Registry } from 'vs/platform/registry/common/platform';
-import { InlineChatController } from 'vs/workbench/contrib/inlineChat/browser/inlineChatController';
-import { CTX_INLINE_CHAT_FOCUSED, CTX_INLINE_CHAT_INNER_CURSOR_LAST } from 'vs/workbench/contrib/inlineChat/common/inlineChat';
-import { INotebookActionContext, INotebookCellActionContext, NotebookAction, NotebookCellAction, NOTEBOOK_EDITOR_WIDGET_ACTION_WEIGHT, findTargetCellEditor } from 'vs/workbench/contrib/notebook/browser/controller/coreActions';
+// import { InlineChatController } from 'vs/workbench/contrib/inlineChat/browser/inlineChatController';
+// import { CTX_INLINE_CHAT_FOCUSED, CTX_INLINE_CHAT_INNER_CURSOR_LAST } from 'vs/workbench/contrib/inlineChat/common/inlineChat';
+// import { INotebookActionContext, INotebookCellActionContext, NotebookAction, NotebookCellAction, NOTEBOOK_EDITOR_WIDGET_ACTION_WEIGHT, findTargetCellEditor } from 'vs/workbench/contrib/notebook/browser/controller/coreActions';
+import { INotebookActionContext, INotebookCellActionContext, NotebookAction, NotebookCellAction, NOTEBOOK_EDITOR_WIDGET_ACTION_WEIGHT } from 'vs/workbench/contrib/notebook/browser/controller/coreActions';
+
 import { CellEditState } from 'vs/workbench/contrib/notebook/browser/notebookBrowser';
 import { CellKind, NOTEBOOK_EDITOR_CURSOR_BOUNDARY } from 'vs/workbench/contrib/notebook/common/notebookCommon';
 import { NOTEBOOK_CELL_HAS_OUTPUTS, NOTEBOOK_CELL_MARKDOWN_EDIT_MODE, NOTEBOOK_CELL_TYPE, NOTEBOOK_CURSOR_NAVIGATION_MODE, NOTEBOOK_EDITOR_FOCUSED, NOTEBOOK_OUTPUT_FOCUSED } from 'vs/workbench/contrib/notebook/common/notebookContextKeys';
@@ -78,39 +80,39 @@ registerAction2(class FocusNextCellAction extends NotebookCellAction {
 					mac: { primary: KeyMod.WinCtrl | KeyMod.CtrlCmd | KeyCode.DownArrow, },
 					weight: KeybindingWeight.WorkbenchContrib
 				},
-				{
-					when: ContextKeyExpr.and(
-						NOTEBOOK_EDITOR_FOCUSED,
-						CONTEXT_ACCESSIBILITY_MODE_ENABLED.negate(),
-						ContextKeyExpr.equals('config.notebook.navigation.allowNavigateToSurroundingCells', true),
-						ContextKeyExpr.and(
-							ContextKeyExpr.has(InputFocusedContextKey),
-							NOTEBOOK_EDITOR_CURSOR_BOUNDARY.notEqualsTo('top'),
-							NOTEBOOK_EDITOR_CURSOR_BOUNDARY.notEqualsTo('none'),
-						),
-						CTX_INLINE_CHAT_FOCUSED,
-						CTX_INLINE_CHAT_INNER_CURSOR_LAST,
-						EditorContextKeys.isEmbeddedDiffEditor.negate()
-					),
-					primary: KeyCode.DownArrow,
-					weight: KeybindingWeight.EditorCore
-				},
-				{
-					when: ContextKeyExpr.and(
-						NOTEBOOK_EDITOR_FOCUSED,
-						CONTEXT_ACCESSIBILITY_MODE_ENABLED.negate(),
-						ContextKeyExpr.equals('config.notebook.navigation.allowNavigateToSurroundingCells', true),
-						ContextKeyExpr.and(
-							NOTEBOOK_CELL_TYPE.isEqualTo('markup'),
-							NOTEBOOK_CELL_MARKDOWN_EDIT_MODE.isEqualTo(false),
-							NOTEBOOK_CURSOR_NAVIGATION_MODE),
-						CTX_INLINE_CHAT_FOCUSED,
-						CTX_INLINE_CHAT_INNER_CURSOR_LAST,
-						EditorContextKeys.isEmbeddedDiffEditor.negate()
-					),
-					primary: KeyCode.DownArrow,
-					weight: KeybindingWeight.EditorCore
-				}
+				// {
+				// 	when: ContextKeyExpr.and(
+				// 		NOTEBOOK_EDITOR_FOCUSED,
+				// 		CONTEXT_ACCESSIBILITY_MODE_ENABLED.negate(),
+				// 		ContextKeyExpr.equals('config.notebook.navigation.allowNavigateToSurroundingCells', true),
+				// 		ContextKeyExpr.and(
+				// 			ContextKeyExpr.has(InputFocusedContextKey),
+				// 			NOTEBOOK_EDITOR_CURSOR_BOUNDARY.notEqualsTo('top'),
+				// 			NOTEBOOK_EDITOR_CURSOR_BOUNDARY.notEqualsTo('none'),
+				// 		),
+				// 		CTX_INLINE_CHAT_FOCUSED,
+				// 		CTX_INLINE_CHAT_INNER_CURSOR_LAST,
+				// 		EditorContextKeys.isEmbeddedDiffEditor.negate()
+				// 	),
+				// 	primary: KeyCode.DownArrow,
+				// 	weight: KeybindingWeight.EditorCore
+				// // },
+				// {
+				// 	when: ContextKeyExpr.and(
+				// 		NOTEBOOK_EDITOR_FOCUSED,
+				// 		CONTEXT_ACCESSIBILITY_MODE_ENABLED.negate(),
+				// 		ContextKeyExpr.equals('config.notebook.navigation.allowNavigateToSurroundingCells', true),
+				// 		ContextKeyExpr.and(
+				// 			NOTEBOOK_CELL_TYPE.isEqualTo('markup'),
+				// 			NOTEBOOK_CELL_MARKDOWN_EDIT_MODE.isEqualTo(false),
+				// 			NOTEBOOK_CURSOR_NAVIGATION_MODE),
+				// 		CTX_INLINE_CHAT_FOCUSED,
+				// 		CTX_INLINE_CHAT_INNER_CURSOR_LAST,
+				// 		EditorContextKeys.isEmbeddedDiffEditor.negate()
+				// 	),
+				// 	primary: KeyCode.DownArrow,
+				// 	weight: KeybindingWeight.EditorCore
+				// }
 			]
 		});
 	}
@@ -129,17 +131,17 @@ registerAction2(class FocusNextCellAction extends NotebookCellAction {
 			return;
 		}
 
-		const focusEditorLine = activeCell.textBuffer.getLineCount();
-		const targetCell = (context.cell ?? context.selectedCells?.[0]);
-		const foundEditor: ICodeEditor | undefined = targetCell ? findTargetCellEditor(context, targetCell) : undefined;
+		// const focusEditorLine = activeCell.textBuffer.getLineCount();
+		// const targetCell = (context.cell ?? context.selectedCells?.[0]);
+		// const foundEditor: ICodeEditor | undefined = targetCell ? findTargetCellEditor(context, targetCell) : undefined;
 
-		if (foundEditor && foundEditor.hasTextFocus() && InlineChatController.get(foundEditor)?.getWidgetPosition()?.lineNumber === focusEditorLine) {
-			InlineChatController.get(foundEditor)?.focus();
-		} else {
-			const newCell = editor.cellAt(idx + 1);
-			const newFocusMode = newCell.cellKind === CellKind.Markup && newCell.getEditState() === CellEditState.Preview ? 'container' : 'editor';
-			await editor.focusNotebookCell(newCell, newFocusMode, { focusEditorLine: 1 });
-		}
+		// if (foundEditor && foundEditor.hasTextFocus() && InlineChatController.get(foundEditor)?.getWidgetPosition()?.lineNumber === focusEditorLine) {
+		// 	// InlineChatController.get(foundEditor)?.focus();
+		// } else {
+		const newCell = editor.cellAt(idx + 1);
+		const newFocusMode = newCell.cellKind === CellKind.Markup && newCell.getEditState() === CellEditState.Preview ? 'container' : 'editor';
+		await editor.focusNotebookCell(newCell, newFocusMode, { focusEditorLine: 1 });
+		// }
 	}
 });
 
@@ -205,11 +207,11 @@ registerAction2(class FocusPreviousCellAction extends NotebookCellAction {
 		const focusEditorLine = newCell.textBuffer.getLineCount();
 		await editor.focusNotebookCell(newCell, newFocusMode, { focusEditorLine: focusEditorLine });
 
-		const foundEditor: ICodeEditor | undefined = findTargetCellEditor(context, newCell);
+		// const foundEditor: ICodeEditor | undefined = findTargetCellEditor(context, newCell);
 
-		if (foundEditor && InlineChatController.get(foundEditor)?.getWidgetPosition()?.lineNumber === focusEditorLine) {
-			InlineChatController.get(foundEditor)?.focus();
-		}
+		// if (foundEditor && InlineChatController.get(foundEditor)?.getWidgetPosition()?.lineNumber === focusEditorLine) {
+		// 	InlineChatController.get(foundEditor)?.focus();
+		// }
 	}
 });
 

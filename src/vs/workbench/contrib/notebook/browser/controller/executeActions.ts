@@ -16,8 +16,8 @@ import { ContextKeyExpr } from 'vs/platform/contextkey/common/contextkey';
 import { ServicesAccessor } from 'vs/platform/instantiation/common/instantiation';
 import { EditorsOrder } from 'vs/workbench/common/editor';
 import { IDebugService } from 'vs/workbench/contrib/debug/common/debug';
-import { InlineChatController } from 'vs/workbench/contrib/inlineChat/browser/inlineChatController';
-import { CTX_INLINE_CHAT_FOCUSED } from 'vs/workbench/contrib/inlineChat/common/inlineChat';
+// import { InlineChatController } from 'vs/workbench/contrib/inlineChat/browser/inlineChatController';
+// import { CTX_INLINE_CHAT_FOCUSED } from 'vs/workbench/contrib/inlineChat/common/inlineChat';
 import { insertCell } from 'vs/workbench/contrib/notebook/browser/controller/cellOperations';
 import { CELL_TITLE_CELL_GROUP_ID, CellToolbarOrder, INotebookActionContext, INotebookCellActionContext, INotebookCellToolbarActionContext, INotebookCommandContext, NOTEBOOK_EDITOR_WIDGET_ACTION_WEIGHT, NotebookAction, NotebookCellAction, NotebookMultiCellAction, cellExecutionArgs, executeNotebookCondition, getContextFromActiveEditor, getContextFromUri, parseMultiCellExecutionArgs } from 'vs/workbench/contrib/notebook/browser/controller/coreActions';
 import { CellEditState, CellFocusMode, EXECUTE_CELL_COMMAND_ID } from 'vs/workbench/contrib/notebook/browser/notebookBrowser';
@@ -102,12 +102,12 @@ async function runCell(editorGroupsService: IEditorGroupsService, context: INote
 		return;
 	}
 
-	const controller = InlineChatController.get(foundEditor);
-	if (!controller) {
-		return;
-	}
-
-	controller.createSnapshot();
+	// const controller = InlineChatController.get(foundEditor);
+	// if (!controller) {
+	// 	return;
+	// }
+	return;
+	// controller.createSnapshot();
 }
 
 registerAction2(class RenderAllMarkdownCellsAction extends NotebookAction {
@@ -439,7 +439,7 @@ registerAction2(class ExecuteCellSelectBelow extends NotebookCellAction {
 			keybinding: {
 				when: ContextKeyExpr.and(
 					NOTEBOOK_CELL_LIST_FOCUSED,
-					CTX_INLINE_CHAT_FOCUSED.negate()
+					// CTX_INLINE_CHAT_FOCUSED.negate()
 				),
 				primary: KeyMod.Shift | KeyCode.Enter,
 				weight: NOTEBOOK_EDITOR_WIDGET_ACTION_WEIGHT

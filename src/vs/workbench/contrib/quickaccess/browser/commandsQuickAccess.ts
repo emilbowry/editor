@@ -34,8 +34,8 @@ import { stripIcons } from 'vs/base/common/iconLabels';
 import { isFirefox } from 'vs/base/browser/browser';
 import { IProductService } from 'vs/platform/product/common/productService';
 import { ISemanticSimilarityService } from 'vs/workbench/services/semanticSimilarity/common/semanticSimilarityService';
-import { IChatService } from 'vs/workbench/contrib/chat/common/chatService';
-import { ASK_QUICK_QUESTION_ACTION_ID } from 'vs/workbench/contrib/chat/browser/actions/chatQuickInputActions';
+// import { IChatService } from 'vs/workbench/contrib/chat/common/chatService';
+// import { ASK_QUICK_QUESTION_ACTION_ID } from 'vs/workbench/contrib/chat/browser/actions/chatQuickInputActions';
 
 export class CommandsQuickAccessProvider extends AbstractEditorCommandsQuickAccessProvider {
 
@@ -75,7 +75,7 @@ export class CommandsQuickAccessProvider extends AbstractEditorCommandsQuickAcce
 		@IPreferencesService private readonly preferencesService: IPreferencesService,
 		@IProductService private readonly productService: IProductService,
 		@ISemanticSimilarityService private readonly semanticSimilarityService: ISemanticSimilarityService,
-		@IChatService private readonly chatService: IChatService
+		// @IChatService private readonly chatService: IChatService
 	) {
 		super({
 			showAlias: !Language.isDefaultVariant(),
@@ -194,14 +194,14 @@ export class CommandsQuickAccessProvider extends AbstractEditorCommandsQuickAcce
 			});
 		}
 
-		const info = this.chatService.getProviderInfos()[0];
-		if (info) {
-			additionalPicks.push({
-				label: localize('askXInChat', "Ask {0}: {1}", info.displayName, filter),
-				commandId: ASK_QUICK_QUESTION_ACTION_ID,
-				args: [filter]
-			});
-		}
+		// const info = this.chatService.getProviderInfos()[0];
+		// if (info) {
+		// 	additionalPicks.push({
+		// 		label: localize('askXInChat', "Ask {0}: {1}", info.displayName, filter),
+		// 		commandId: ASK_QUICK_QUESTION_ACTION_ID,
+		// 		args: [filter]
+		// 	});
+		// }
 
 		return additionalPicks;
 	}

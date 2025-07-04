@@ -20,7 +20,7 @@ import { IKeybindingService } from 'vs/platform/keybinding/common/keybinding';
 import { IEditorGroupsService } from 'vs/workbench/services/editor/common/editorGroupsService';
 import { IContentActionHandler, renderFormattedText } from 'vs/base/browser/formattedTextRenderer';
 import { ApplyFileSnippetAction } from 'vs/workbench/contrib/snippets/browser/commands/fileTemplateSnippets';
-import { IInlineChatSessionService } from 'vs/workbench/contrib/inlineChat/browser/inlineChatSession';
+// import { IInlineChatSessionService } from 'vs/workbench/contrib/inlineChat/browser/inlineChatSession';
 
 const $ = dom.$;
 
@@ -38,7 +38,7 @@ export class UntitledTextEditorHintContribution implements IEditorContribution {
 		@ICommandService private readonly commandService: ICommandService,
 		@IConfigurationService private readonly configurationService: IConfigurationService,
 		@IKeybindingService private readonly keybindingService: IKeybindingService,
-		@IInlineChatSessionService inlineChatSessionService: IInlineChatSessionService,
+		// @IInlineChatSessionService inlineChatSessionService: IInlineChatSessionService,
 	) {
 		this.toDispose = [];
 		this.toDispose.push(this.editor.onDidChangeModel(() => this.update()));
@@ -48,11 +48,11 @@ export class UntitledTextEditorHintContribution implements IEditorContribution {
 				this.update();
 			}
 		}));
-		this.toDispose.push(inlineChatSessionService.onWillStartSession(editor => {
-			if (this.editor === editor) {
-				this.untitledTextHintContentWidget?.dispose();
-			}
-		}));
+		// this.toDispose.push(inlineChatSessionService.onWillStartSession(editor => {
+		// 	if (this.editor === editor) {
+		// 		this.untitledTextHintContentWidget?.dispose();
+		// 	}
+		// }));
 	}
 
 	private update(): void {
