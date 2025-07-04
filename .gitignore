@@ -17,3 +17,5 @@ vscode.db
 /.profile-oss
 /cli/target
 product.overrides.json
+/build/
+/src/vs/workbench/contrib/chat/
