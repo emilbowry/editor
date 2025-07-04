@@ -1034,7 +1034,30 @@ class NotebookSelectAllFindMatches extends NotebookAction {
 		});
 	}
 
-	override async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void> {
+	// override async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void> {
+	// 	const editorService = accessor.get(IEditorService);
+
+	// 	const editor = getNotebookEditorFromEditorPane(editorService.activeEditorPane);
+	// 	if (!editor) {
+	// 		return;
+	// 	}
+
+	// 	if (!context.cell) {
+	// 		return;
+	// 	}
+
+	// 	const cursorController = editor.getContribution<NotebookMultiCursorController>(NotebookMultiCursorController.id);
+	// 	const findController = editor.getContribution<NotebookFindContrib>(NotebookFindContrib.id);
+
+	// 	if (findController.widget.isFocused) {
+	// 		const findModel = findController.widget.findModel;
+	// 		cursorController.selectAllMatches(context.cell, findModel.findMatches);
+	// 	} else {
+	// 		cursorController.selectAllMatches(context.cell);
+	// 	}
+
+	// }
+	async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void> {
 		const editorService = accessor.get(IEditorService);
 
 		const editor = getNotebookEditorFromEditorPane(editorService.activeEditorPane);
@@ -1081,7 +1104,22 @@ class NotebookAddMatchToMultiSelectionAction extends NotebookAction {
 		});
 	}
 
-	override async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void> {
+	// override async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void> {
+	// 	const editorService = accessor.get(IEditorService);
+	// 	const editor = getNotebookEditorFromEditorPane(editorService.activeEditorPane);
+
+	// 	if (!editor) {
+	// 		return;
+	// 	}
+
+	// 	if (!context.cell) {
+	// 		return;
+	// 	}
+
+	// 	const controller = editor.getContribution<NotebookMultiCursorController>(NotebookMultiCursorController.id);
+	// 	controller.findAndTrackNextSelection(context.cell);
+	// }
+	async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void> {
 		const editorService = accessor.get(IEditorService);
 		const editor = getNotebookEditorFromEditorPane(editorService.activeEditorPane);
 
@@ -1120,7 +1158,18 @@ class NotebookExitMultiSelectionAction extends NotebookAction {
 		});
 	}
 
-	override async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void> {
+	// override async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void> {
+	// 	const editorService = accessor.get(IEditorService);
+	// 	const editor = getNotebookEditorFromEditorPane(editorService.activeEditorPane);
+
+	// 	if (!editor) {
+	// 		return;
+	// 	}
+
+	// 	const controller = editor.getContribution<NotebookMultiCursorController>(NotebookMultiCursorController.id);
+	// 	controller.resetToIdleState();
+	// }
+	async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void> {
 		const editorService = accessor.get(IEditorService);
 		const editor = getNotebookEditorFromEditorPane(editorService.activeEditorPane);
 
@@ -1163,7 +1212,18 @@ class NotebookDeleteLeftMultiSelectionAction extends NotebookAction {
 		});
 	}
 
-	override async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void> {
+	// override async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void> {
+	// 	const editorService = accessor.get(IEditorService);
+	// 	const editor = getNotebookEditorFromEditorPane(editorService.activeEditorPane);
+
+	// 	if (!editor) {
+	// 		return;
+	// 	}
+
+	// 	const controller = editor.getContribution<NotebookMultiCursorController>(NotebookMultiCursorController.id);
+	// 	controller.deleteLeft();
+	// }
+	async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void> {
 		const editorService = accessor.get(IEditorService);
 		const editor = getNotebookEditorFromEditorPane(editorService.activeEditorPane);
 
@@ -1206,7 +1266,7 @@ class NotebookDeleteRightMultiSelectionAction extends NotebookAction {
 		});
 	}
 
-	override async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void> {
+	async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void> {
 		const editorService = accessor.get(IEditorService);
 		const nbEditor = getNotebookEditorFromEditorPane(editorService.activeEditorPane);
 		if (!nbEditor) {
@@ -1223,6 +1283,24 @@ class NotebookDeleteRightMultiSelectionAction extends NotebookAction {
 		const controller = nbEditor.getContribution<NotebookMultiCursorController>(NotebookMultiCursorController.id);
 		controller.deleteRight();
 	}
+
+	// override async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void> {
+	// 	const editorService = accessor.get(IEditorService);
+	// 	const nbEditor = getNotebookEditorFromEditorPane(editorService.activeEditorPane);
+	// 	if (!nbEditor) {
+	// 		return;
+	// 	}
+	// 	const cellEditor = nbEditor.activeCodeEditor;
+	// 	if (!cellEditor) {
+	// 		return;
+	// 	}
+
+	// 	// need to run the command manually since we are overriding the command, this ensures proper cursor animation behavior
+	// 	CoreEditingCommands.DeleteRight.runEditorCommand(accessor, cellEditor, null);
+
+	// 	const controller = nbEditor.getContribution<NotebookMultiCursorController>(NotebookMultiCursorController.id);
+	// 	controller.deleteRight();
+	// }
 }
 
 class NotebookMultiCursorUndoRedoContribution extends Disposable {

@@ -9,7 +9,9 @@ import { Action2, IAction2Options, MenuId, MenuRegistry } from '../../../../../p
 import { ContextKeyExpr } from '../../../../../platform/contextkey/common/contextkey.js';
 import { ServicesAccessor } from '../../../../../platform/instantiation/common/instantiation.js';
 import { KeybindingWeight } from '../../../../../platform/keybinding/common/keybindingsRegistry.js';
-import { getNotebookEditorFromEditorPane, IActiveNotebookEditor, ICellViewModel, cellRangeToViewCells, ICellOutputViewModel } from '../notebookBrowser.js';
+import { getNotebookEditorFromEditorPane, IActiveNotebookEditor, ICellViewModel, ICellOutputViewModel } from '../notebookBrowser.js';
+// import { getNotebookEditorFromEditorPane, IActiveNotebookEditor, ICellViewModel, cellRangeToViewCells, ICellOutputViewModel } from '../notebookBrowser.js';
+
 import { INTERACTIVE_WINDOW_IS_ACTIVE_EDITOR, NOTEBOOK_EDITOR_EDITABLE, NOTEBOOK_EDITOR_FOCUSED, NOTEBOOK_IS_ACTIVE_EDITOR, NOTEBOOK_KERNEL_COUNT, NOTEBOOK_KERNEL_SOURCE_COUNT, REPL_NOTEBOOK_IS_ACTIVE_EDITOR } from '../../common/notebookContextKeys.js';
 import { ICellRange, isICellRange } from '../../common/notebookRange.js';
 import { IEditorService } from '../../../../services/editor/common/editorService.js';
@@ -166,10 +168,10 @@ export abstract class NotebookAction extends Action2 {
 			}
 		}
 
-		return this.runWithContext(accessor, context);
+		// return this.runWithContext(accessor, context);
 	}
 
-	abstract runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void>;
+	// abstract runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void>;
 
 	private isNotebookActionContext(context?: unknown): context is INotebookActionContext {
 		return !!context && !!(context as INotebookActionContext).notebookEditor;
@@ -211,7 +213,7 @@ export abstract class NotebookMultiCellAction extends Action2 {
 		return undefined;
 	}
 
-	abstract runWithContext(accessor: ServicesAccessor, context: INotebookCommandContext | INotebookCellToolbarActionContext): Promise<void>;
+	// abstract runWithContext(accessor: ServicesAccessor, context: INotebookCommandContext | INotebookCellToolbarActionContext): Promise<void>;
 
 	/**
 	 * The action/command args are resolved in following order
@@ -220,33 +222,33 @@ export abstract class NotebookMultiCellAction extends Action2 {
 	 * `run(accessor, undefined)` from keyboard shortcuts, command palatte, etc
 	 */
 	async run(accessor: ServicesAccessor, ...additionalArgs: any[]): Promise<void> {
-		const context = additionalArgs[0];
+		// const context = additionalArgs[0];
 
-		sendEntryTelemetry(accessor, this.desc.id, context);
+		// sendEntryTelemetry(accessor, this.desc.id, context);
 
-		const isFromCellToolbar = isCellToolbarContext(context);
-		if (isFromCellToolbar) {
-			return this.runWithContext(accessor, context);
-		}
+		// // const isFromCellToolbar = isCellToolbarContext(context);
+		// // if (isFromCellToolbar) {
+		// // 	return this.runWithContext(accessor, context);
+		// // }
 
-		// handle parsed args
-		const parsedArgs = this.parseArgs(accessor, ...additionalArgs);
-		if (parsedArgs) {
-			return this.runWithContext(accessor, parsedArgs);
-		}
+		// // handle parsed args
+		// const parsedArgs = this.parseArgs(accessor, ...additionalArgs);
+		// // if (parsedArgs) {
+		// // 	return this.runWithContext(accessor, parsedArgs);
+		// // }
 
-		// no parsed args, try handle active editor
-		const editor = getEditorFromArgsOrActivePane(accessor);
-		if (editor) {
-			const selectedCellRange: ICellRange[] = editor.getSelections().length === 0 ? [editor.getFocus()] : editor.getSelections();
+		// // no parsed args, try handle active editor
+		// const editor = getEditorFromArgsOrActivePane(accessor);
+		// if (editor) {
+		// 	const selectedCellRange: ICellRange[] = editor.getSelections().length === 0 ? [editor.getFocus()] : editor.getSelections();
 
 
-			return this.runWithContext(accessor, {
-				ui: false,
-				notebookEditor: editor,
-				selectedCells: cellRangeToViewCells(editor, selectedCellRange)
-			});
-		}
+		// 	// return this.runWithContext(accessor, {
+		// 	// 	ui: false,
+		// 	// 	notebookEditor: editor,
+		// 	// 	selectedCells: cellRangeToViewCells(editor, selectedCellRange)
+		// 	// });
+		// }
 	}
 }
 
@@ -262,23 +264,23 @@ export abstract class NotebookCellAction<T = INotebookCellActionContext> extends
 	override async run(accessor: ServicesAccessor, context?: INotebookCellActionContext, ...additionalArgs: any[]): Promise<void> {
 		sendEntryTelemetry(accessor, this.desc.id, context);
 
-		if (this.isCellActionContext(context)) {
-			return this.runWithContext(accessor, context);
-		}
+		// if (this.isCellActionContext(context)) {
+		// 	return this.runWithContext(accessor, context);
+		// }
 
-		const contextFromArgs = this.getCellContextFromArgs(accessor, context, ...additionalArgs);
+		// const contextFromArgs = this.getCellContextFromArgs(accessor, context, ...additionalArgs);
 
-		if (contextFromArgs) {
-			return this.runWithContext(accessor, contextFromArgs);
-		}
+		// if (contextFromArgs) {
+		// 	return this.runWithContext(accessor, contextFromArgs);
+		// }
 
-		const activeEditorContext = this.getEditorContextFromArgsOrActive(accessor);
-		if (this.isCellActionContext(activeEditorContext)) {
-			return this.runWithContext(accessor, activeEditorContext);
-		}
+		// const activeEditorContext = this.getEditorContextFromArgsOrActive(accessor);
+		// if (this.isCellActionContext(activeEditorContext)) {
+		// 	return this.runWithContext(accessor, activeEditorContext);
+		// }
 	}
 
-	abstract override runWithContext(accessor: ServicesAccessor, context: INotebookCellActionContext): Promise<void>;
+	// abstract override runWithContext(accessor: ServicesAccessor, context: INotebookCellActionContext): Promise<void>;
 }
 
 export const executeNotebookCondition = ContextKeyExpr.or(ContextKeyExpr.greater(NOTEBOOK_KERNEL_COUNT.key, 0), ContextKeyExpr.greater(NOTEBOOK_KERNEL_SOURCE_COUNT.key, 0));

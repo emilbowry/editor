@@ -13,8 +13,8 @@ import { INotebookEditor, INotebookEditorContribution } from '../../notebookBrow
 import { registerNotebookContribution } from '../../notebookEditorExtensions.js';
 import { CodeCellViewModel } from '../../viewModel/codeCellViewModel.js';
 import { Event } from '../../../../../../base/common/event.js';
-import { IChatAgentService } from '../../../../chat/common/chatAgents.js';
-import { ChatAgentLocation } from '../../../../chat/common/constants.js';
+// import { IChatAgentService } from '../../../../chat/common/chatAgents.js';
+// import { ChatAgentLocation } from '../../../../chat/common/constants.js';
 import { autorun } from '../../../../../../base/common/observable.js';
 
 export class CellDiagnostics extends Disposable implements INotebookEditorContribution {
@@ -29,14 +29,14 @@ export class CellDiagnostics extends Disposable implements INotebookEditorContri
 		private readonly notebookEditor: INotebookEditor,
 		@INotebookExecutionStateService private readonly notebookExecutionStateService: INotebookExecutionStateService,
 		@IMarkerService private readonly markerService: IMarkerService,
-		@IChatAgentService private readonly chatAgentService: IChatAgentService,
+		// @IChatAgentService private readonly chatAgentService: IChatAgentService,
 		@IConfigurationService private readonly configurationService: IConfigurationService
 	) {
 		super();
 
 		this.updateEnabled();
 
-		this._register(chatAgentService.onDidChangeAgents(() => this.updateEnabled()));
+		// this._register(chatAgentService.onDidChangeAgents(() => this.updateEnabled()));
 		this._register(configurationService.onDidChangeConfiguration((e) => {
 			if (e.affectsConfiguration(NotebookSetting.cellFailureDiagnostics)) {
 				this.updateEnabled();
@@ -45,8 +45,9 @@ export class CellDiagnostics extends Disposable implements INotebookEditorContri
 	}
 
 	private hasNotebookAgent(): boolean {
-		const agents = this.chatAgentService.getAgents();
-		return !!agents.find(agent => agent.locations.includes(ChatAgentLocation.Notebook));
+		return false;
+		// const agents = this.chatAgentService.getAgents();
+		// return !!agents.find(agent => agent.locations.includes(ChatAgentLocation.Notebook));
 	}
 
 	private updateEnabled() {

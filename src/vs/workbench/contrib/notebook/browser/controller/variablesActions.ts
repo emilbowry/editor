@@ -62,7 +62,12 @@ registerAction2(class OpenVariablesViewAction extends NotebookAction {
 		});
 	}
 
-	override async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext) {
+	// override async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext) {
+	// 	const variableViewId = 'workbench.notebook.variables';
+	// 	accessor.get(IViewsService).openView(variableViewId, true);
+	// }
+
+	async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext) {
 		const variableViewId = 'workbench.notebook.variables';
 		accessor.get(IViewsService).openView(variableViewId, true);
 	}

@@ -7,4 +7,4 @@
 // exists because including it into terminalContribExports would cause a circular dependency on
 // startup
 export { TerminalChatContextKeys } from '../terminalContrib/chat/browser/terminalChat.js';
-export { TerminalChatController } from '../terminalContrib/chat/browser/terminalChatController.js';
+// export { TerminalChatController } from '../terminalContrib/chat/browser/terminalChatController.js';

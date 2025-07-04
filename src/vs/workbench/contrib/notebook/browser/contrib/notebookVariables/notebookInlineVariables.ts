@@ -641,11 +641,17 @@ registerAction2(class ClearNotebookInlineValues extends NotebookAction {
 		});
 	}
 
-	override runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void> {
+	// override runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void> {
+	// 	const editor = context.notebookEditor;
+	// 	const controller = editor.getContribution<NotebookInlineVariablesController>(NotebookInlineVariablesController.id);
+	// 	controller.clearNotebookInlineDecorations();
+	// 	return Promise.resolve();
+	// }
+
+	async runWithContext(accessor: ServicesAccessor, context: INotebookActionContext): Promise<void> {
 		const editor = context.notebookEditor;
 		const controller = editor.getContribution<NotebookInlineVariablesController>(NotebookInlineVariablesController.id);
 		controller.clearNotebookInlineDecorations();
 		return Promise.resolve();
 	}
-
 });

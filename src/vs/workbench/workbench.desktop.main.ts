@@ -169,8 +169,8 @@ import './contrib/multiDiffEditor/browser/multiDiffEditor.contribution.js';
 import './contrib/remoteTunnel/electron-browser/remoteTunnel.contribution.js';
 
 // Chat
-import './contrib/chat/electron-browser/chat.contribution.js';
-import './contrib/inlineChat/electron-browser/inlineChat.contribution.js';
+// import './contrib/chat/electron-browser/chat.contribution.js';
+// import './contrib/inlineChat/electron-browser/inlineChat.contribution.js';
 // Encryption
 import './contrib/encryption/electron-browser/encryption.contribution.js';
 
@@ -178,7 +178,7 @@ import './contrib/encryption/electron-browser/encryption.contribution.js';
 import './contrib/emergencyAlert/electron-browser/emergencyAlert.contribution.js';
 
 // MCP
-import './contrib/mcp/electron-browser/mcp.contribution.js';
+// import './contrib/mcp/electron-browser/mcp.contribution.js';
 
 //#endregion
 

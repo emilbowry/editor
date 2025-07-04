@@ -16,7 +16,7 @@ import { isGroupEditorMoveEvent } from '../../common/editor/editorGroupModel.js'
 import { EditorInput } from '../../common/editor/editorInput.js';
 import { SideBySideEditorInput } from '../../common/editor/sideBySideEditorInput.js';
 import { AbstractTextResourceEditorInput } from '../../common/editor/textResourceEditorInput.js';
-import { ChatEditorInput } from '../../contrib/chat/browser/chatEditorInput.js';
+// import { ChatEditorInput } from '../../contrib/chat/browser/chatEditorInput.js';
 import { CustomEditorInput } from '../../contrib/customEditor/browser/customEditorInput.js';
 import { InteractiveEditorInput } from '../../contrib/interactive/browser/interactiveEditorInput.js';
 import { MergeEditorInput } from '../../contrib/mergeEditor/browser/mergeEditorInput.js';
@@ -198,11 +198,11 @@ export class MainThreadEditorTabs implements MainThreadEditorTabsShape {
 			};
 		}
 
-		if (editor instanceof ChatEditorInput) {
-			return {
-				kind: TabInputKind.ChatEditorInput,
-			};
-		}
+		// if (editor instanceof ChatEditorInput) {
+		// 	return {
+		// 		kind: TabInputKind.ChatEditorInput,
+		// 	};
+		// }
 
 		if (editor instanceof MultiDiffEditorInput) {
 			const diffEditors: TextDiffInputDto[] = [];

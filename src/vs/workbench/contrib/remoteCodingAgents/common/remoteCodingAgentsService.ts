@@ -5,10 +5,12 @@
 
 import { Disposable } from '../../../../base/common/lifecycle.js';
 import { Event } from '../../../../base/common/event.js';
-import { ContextKeyExpr, IContextKey, IContextKeyService } from '../../../../platform/contextkey/common/contextkey.js';
+// import { ContextKeyExpr, IContextKey, IContextKeyService } from '../../../../platform/contextkey/common/contextkey.js';
+import { ContextKeyExpr, IContextKeyService } from '../../../../platform/contextkey/common/contextkey.js';
+
 import { InstantiationType, registerSingleton } from '../../../../platform/instantiation/common/extensions.js';
 import { createDecorator } from '../../../../platform/instantiation/common/instantiation.js';
-import { ChatContextKeys } from '../../chat/common/chatContextKeys.js';
+// import { ChatContextKeys } from '../../chat/common/chatContextKeys.js';
 
 export interface IRemoteCodingAgent {
 	id: string;
@@ -30,7 +32,7 @@ export const IRemoteCodingAgentsService = createDecorator<IRemoteCodingAgentsSer
 
 export class RemoteCodingAgentsService extends Disposable implements IRemoteCodingAgentsService {
 	readonly _serviceBrand: undefined;
-	private readonly _ctxHasRemoteCodingAgent: IContextKey<boolean>;
+	// private readonly _ctxHasRemoteCodingAgent: IContextKey<boolean>;
 	private readonly agents: IRemoteCodingAgent[] = [];
 	private readonly contextKeys = new Set<string>();
 
@@ -38,7 +40,7 @@ export class RemoteCodingAgentsService extends Disposable implements IRemoteCodi
 		@IContextKeyService private readonly contextKeyService: IContextKeyService
 	) {
 		super();
-		this._ctxHasRemoteCodingAgent = ChatContextKeys.hasRemoteCodingAgent.bindTo(this.contextKeyService);
+		// this._ctxHasRemoteCodingAgent = ChatContextKeys.hasRemoteCodingAgent.bindTo(this.contextKeyService);
 
 		// Listen for context changes and re-evaluate agent availability
 		this._register(Event.filter(contextKeyService.onDidChangeContext, e => e.affectsSome(this.contextKeys))(() => {
@@ -88,8 +90,8 @@ export class RemoteCodingAgentsService extends Disposable implements IRemoteCodi
 	}
 
 	private updateContextKeys(): void {
-		const hasAvailableAgent = this.getAvailableAgents().length > 0;
-		this._ctxHasRemoteCodingAgent.set(hasAvailableAgent);
+		// const hasAvailableAgent = this.getAvailableAgents().length > 0;
+		// this._ctxHasRemoteCodingAgent.set(hasAvailableAgent);
 	}
 }
 

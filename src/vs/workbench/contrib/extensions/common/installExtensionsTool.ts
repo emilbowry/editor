@@ -45,16 +45,16 @@ export class InstallExtensionsTool implements IToolImpl {
 	) { }
 
 	async prepareToolInvocation(context: IToolInvocationPreparationContext, token: CancellationToken): Promise<IPreparedToolInvocation | undefined> {
-		const parameters = context.parameters as InputParams;
+		// const parameters = context.parameters as InputParams;
 		return {
 			confirmationMessages: {
 				title: localize('installExtensionsTool.confirmationTitle', 'Install Extensions'),
 				message: new MarkdownString(localize('installExtensionsTool.confirmationMessage', "Review the suggested extensions and click the **Install** button for each extension you wish to add. Once you have finished installing the selected extensions, click **Continue** to proceed.")),
 			},
-			toolSpecificData: {
-				kind: 'extensions',
-				extensions: parameters.ids
-			}
+			// toolSpecificData: {
+			// 	kind: 'extensions',
+			// 	extensions: parameters.ids
+			// }
 		};
 	}
 

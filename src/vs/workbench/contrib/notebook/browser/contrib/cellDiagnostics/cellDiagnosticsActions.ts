@@ -15,9 +15,9 @@ import { KeybindingWeight } from '../../../../../../platform/keybinding/common/k
 import { INotebookCellActionContext, NotebookCellAction, findTargetCellEditor } from '../../controller/coreActions.js';
 import { CodeCellViewModel } from '../../viewModel/codeCellViewModel.js';
 import { NOTEBOOK_CELL_EDITOR_FOCUSED, NOTEBOOK_CELL_FOCUSED, NOTEBOOK_CELL_HAS_ERROR_DIAGNOSTICS } from '../../../common/notebookContextKeys.js';
-import { InlineChatController } from '../../../../inlineChat/browser/inlineChatController.js';
-import { showChatView } from '../../../../chat/browser/chat.js';
-import { IViewsService } from '../../../../../services/views/common/viewsService.js';
+// import { InlineChatController } from '../../../../inlineChat/browser/inlineChatController.js';
+// import { showChatView } from '../../../../chat/browser/chat.js';
+// import { IViewsService } from '../../../../../services/views/common/viewsService.js';
 
 export const OPEN_CELL_FAILURE_ACTIONS_COMMAND_ID = 'notebook.cell.openFailureActions';
 export const FIX_CELL_ERROR_COMMAND_ID = 'notebook.cell.chat.fixError';
@@ -85,11 +85,11 @@ registerAction2(class extends NotebookCellAction {
 				context.notebookEditor.setCellEditorSelection(context.cell, Range.lift(location));
 				const editor = findTargetCellEditor(context, context.cell);
 				if (editor) {
-					const controller = InlineChatController.get(editor);
-					const message = error.name ? `${error.name}: ${error.message}` : error.message;
-					if (controller) {
-						await controller.run({ message: '/fix ' + message, initialRange: location, autoSend: true });
-					}
+					// const controller = InlineChatController.get(editor);
+					// const message = error.name ? `${error.name}: ${error.message}` : error.message;
+					// if (controller) {
+					// 	await controller.run({ message: '/fix ' + message, initialRange: location, autoSend: true });
+					// }
 				}
 			}
 		}
@@ -108,14 +108,14 @@ registerAction2(class extends NotebookCellAction {
 
 	async runWithContext(accessor: ServicesAccessor, context: INotebookCellActionContext): Promise<void> {
 		if (context.cell instanceof CodeCellViewModel) {
-			const error = context.cell.executionErrorDiagnostic.get();
-			if (error?.message) {
-				const viewsService = accessor.get(IViewsService);
-				const chatWidget = await showChatView(viewsService);
-				const message = error.name ? `${error.name}: ${error.message}` : error.message;
-				// TODO: can we add special prompt instructions? e.g. use "%pip install"
-				chatWidget?.acceptInput('@workspace /explain ' + message,);
-			}
+			// const error = context.cell.executionErrorDiagnostic.get();
+			// if (error?.message) {
+			// 	const viewsService = accessor.get(IViewsService);
+			// 	// const chatWidget = await showChatView(viewsService);
+			// 	const message = error.name ? `${error.name}: ${error.message}` : error.message;
+			// 	// TODO: can we add special prompt instructions? e.g. use "%pip install"
+			// 	// chatWidget?.acceptInput('@workspace /explain ' + message,);
+			// }
 		}
 	}
 });
