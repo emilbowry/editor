@@ -35,7 +35,7 @@ import { IExtHostApiDeprecationService } from './extHostApiDeprecationService.js
 import { IExtHostAuthentication } from './extHostAuthentication.js';
 import { ExtHostBulkEdits } from './extHostBulkEdits.js';
 import { ExtHostChatAgents2 } from './extHostChatAgents2.js';
-import { ExtHostChatStatus } from './extHostChatStatus.js';
+// import { ExtHostChatStatus } from './extHostChatStatus.js';
 import { ExtHostClipboard } from './extHostClipboard.js';
 import { ExtHostEditorInsets } from './extHostCodeInsets.js';
 import { ExtHostCodeMapper } from './extHostCodeMapper.js';
@@ -236,7 +236,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 	const extHostClipboard = new ExtHostClipboard(rpcProtocol);
 	const extHostMessageService = new ExtHostMessageService(rpcProtocol, extHostLogService);
 	const extHostDialogs = new ExtHostDialogs(rpcProtocol);
-	const extHostChatStatus = new ExtHostChatStatus(rpcProtocol);
+	// const extHostChatStatus = new ExtHostChatStatus(rpcProtocol);
 
 	// Register API-ish commands
 	ExtHostApiCommands.register(extHostCommands);
@@ -938,10 +938,10 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 				checkProposedApiEnabled(extension, 'nativeWindowHandle');
 				return extHostWindow.nativeHandle;
 			},
-			createChatStatusItem: (id: string) => {
-				checkProposedApiEnabled(extension, 'chatStatusItem');
-				return extHostChatStatus.createChatStatusItem(extension, id);
-			},
+			// createChatStatusItem: (id: string) => {
+			// 	checkProposedApiEnabled(extension, 'chatStatusItem');
+			// 	return extHostChatStatus.createChatStatusItem(extension, id);
+			// },
 		};
 
 		// namespace: workspace

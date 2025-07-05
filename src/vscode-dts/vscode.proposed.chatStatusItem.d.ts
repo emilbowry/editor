@@ -56,6 +56,6 @@ declare module 'vscode' {
 		 *
 		 * @returns A new chat status item.
 		 */
-		export function createChatStatusItem(id: string): ChatStatusItem;
+		// export function createChatStatusItem(id: string): ChatStatusItem;
 	}
 }
