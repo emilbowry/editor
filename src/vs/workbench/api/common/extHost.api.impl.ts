@@ -86,7 +86,7 @@ import { ExtHostSCM } from './extHostSCM.js';
 import { IExtHostSearch } from './extHostSearch.js';
 import { IExtHostSecretState } from './extHostSecretState.js';
 import { ExtHostShare } from './extHostShare.js';
-import { ExtHostSpeech } from './extHostSpeech.js';
+// import { ExtHostSpeech } from './extHostSpeech.js';
 import { ExtHostStatusBar } from './extHostStatusBar.js';
 import { IExtHostStorage } from './extHostStorage.js';
 import { IExtensionStoragePaths } from './extHostStoragePaths.js';
@@ -223,7 +223,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 	const extHostAiEmbeddingVector = rpcProtocol.set(ExtHostContext.ExtHostAiEmbeddingVector, new ExtHostAiEmbeddingVector(rpcProtocol));
 	const extHostAiSettingsSearch = rpcProtocol.set(ExtHostContext.ExtHostAiSettingsSearch, new ExtHostAiSettingsSearch(rpcProtocol));
 	const extHostStatusBar = rpcProtocol.set(ExtHostContext.ExtHostStatusBar, new ExtHostStatusBar(rpcProtocol, extHostCommands.converter));
-	const extHostSpeech = rpcProtocol.set(ExtHostContext.ExtHostSpeech, new ExtHostSpeech(rpcProtocol));
+	// const extHostSpeech = rpcProtocol.set(ExtHostContext.ExtHostSpeech, new ExtHostSpeech(rpcProtocol));
 	const extHostEmbeddings = rpcProtocol.set(ExtHostContext.ExtHostEmbeddings, new ExtHostEmbeddings(rpcProtocol));
 	rpcProtocol.set(ExtHostContext.ExtHostMcp, accessor.get(IExtHostMpcService));
 
@@ -1535,13 +1535,13 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 			}
 		};
 
-		// namespace: speech
-		const speech: typeof vscode.speech = {
-			registerSpeechProvider(id: string, provider: vscode.SpeechProvider) {
-				checkProposedApiEnabled(extension, 'speech');
-				return extHostSpeech.registerProvider(extension.identifier, id, provider);
-			}
-		};
+		// // namespace: speech
+		// const speech: typeof vscode.speech = {
+		// 	registerSpeechProvider(id: string, provider: vscode.SpeechProvider) {
+		// 		checkProposedApiEnabled(extension, 'speech');
+		// 		return extHostSpeech.registerProvider(extension.identifier, id, provider);
+		// 	}
+		// };
 
 		// eslint-disable-next-line local/code-no-dangerous-type-assertions
 		return <typeof vscode>{
@@ -1561,7 +1561,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 			lm,
 			notebooks,
 			scm,
-			speech,
+			// speech,
 			tasks,
 			tests,
 			window,

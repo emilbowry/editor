@@ -72,7 +72,7 @@ import { ISCMHistoryOptions } from '../../contrib/scm/common/history.js';
 import { InputValidationType } from '../../contrib/scm/common/scm.js';
 import { IWorkspaceSymbol, NotebookPriorityInfo } from '../../contrib/search/common/search.js';
 import { IRawClosedNotebookFileMatch } from '../../contrib/search/common/searchNotebookHelpers.js';
-import { IKeywordRecognitionEvent, ISpeechProviderMetadata, ISpeechToTextEvent, ITextToSpeechEvent } from '../../contrib/speech/common/speechService.js';
+// import { IKeywordRecognitionEvent, ISpeechProviderMetadata, ISpeechToTextEvent, ITextToSpeechEvent } from '../../contrib/speech/common/speechService.js';
 import { CoverageDetails, ExtensionRunTestsRequest, ICallProfileRunHandler, IFileCoverage, ISerializedTestResults, IStartControllerTests, ITestItem, ITestMessage, ITestRunProfile, ITestRunTask, ResolvedTestRunRequest, TestControllerCapability, TestMessageFollowupRequest, TestMessageFollowupResponse, TestResultState, TestsDiffOp } from '../../contrib/testing/common/testTypes.js';
 import { Timeline, TimelineChangeEvent, TimelineOptions, TimelineProviderDescriptor } from '../../contrib/timeline/common/timeline.js';
 import { TypeHierarchyItem } from '../../contrib/typeHierarchy/common/typeHierarchy.js';
@@ -1233,26 +1233,26 @@ export interface MainThreadNotebookRenderersShape extends IDisposable {
 export interface MainThreadInteractiveShape extends IDisposable {
 }
 
-export interface MainThreadSpeechShape extends IDisposable {
-	$registerProvider(handle: number, identifier: string, metadata: ISpeechProviderMetadata): void;
-	$unregisterProvider(handle: number): void;
+// export interface MainThreadSpeechShape extends IDisposable {
+// 	$registerProvider(handle: number, identifier: string, metadata: ISpeechProviderMetadata): void;
+// 	$unregisterProvider(handle: number): void;
 
-	$emitSpeechToTextEvent(session: number, event: ISpeechToTextEvent): void;
-	$emitTextToSpeechEvent(session: number, event: ITextToSpeechEvent): void;
-	$emitKeywordRecognitionEvent(session: number, event: IKeywordRecognitionEvent): void;
-}
+// 	$emitSpeechToTextEvent(session: number, event: ISpeechToTextEvent): void;
+// 	$emitTextToSpeechEvent(session: number, event: ITextToSpeechEvent): void;
+// 	$emitKeywordRecognitionEvent(session: number, event: IKeywordRecognitionEvent): void;
+// }
 
-export interface ExtHostSpeechShape {
-	$createSpeechToTextSession(handle: number, session: number, language?: string): Promise<void>;
-	$cancelSpeechToTextSession(session: number): Promise<void>;
+// export interface ExtHostSpeechShape {
+// 	$createSpeechToTextSession(handle: number, session: number, language?: string): Promise<void>;
+// 	$cancelSpeechToTextSession(session: number): Promise<void>;
 
-	$createTextToSpeechSession(handle: number, session: number, language?: string): Promise<void>;
-	$synthesizeSpeech(session: number, text: string): Promise<void>;
-	$cancelTextToSpeechSession(session: number): Promise<void>;
+// 	$createTextToSpeechSession(handle: number, session: number, language?: string): Promise<void>;
+// 	$synthesizeSpeech(session: number, text: string): Promise<void>;
+// 	$cancelTextToSpeechSession(session: number): Promise<void>;
 
-	$createKeywordRecognitionSession(handle: number, session: number): Promise<void>;
-	$cancelKeywordRecognitionSession(session: number): Promise<void>;
-}
+// 	$createKeywordRecognitionSession(handle: number, session: number): Promise<void>;
+// 	$cancelKeywordRecognitionSession(session: number): Promise<void>;
+// }
 
 export interface MainThreadLanguageModelsShape extends IDisposable {
 	$registerLanguageModelProvider(handle: number, identifier: string, metadata: ILanguageModelChatMetadata): void;
@@ -3142,7 +3142,7 @@ export const MainContext = {
 	MainThreadStatusBar: createProxyIdentifier<MainThreadStatusBarShape>('MainThreadStatusBar'),
 	MainThreadSecretState: createProxyIdentifier<MainThreadSecretStateShape>('MainThreadSecretState'),
 	MainThreadStorage: createProxyIdentifier<MainThreadStorageShape>('MainThreadStorage'),
-	MainThreadSpeech: createProxyIdentifier<MainThreadSpeechShape>('MainThreadSpeechProvider'),
+	// MainThreadSpeech: createProxyIdentifier<MainThreadSpeechShape>('MainThreadSpeechProvider'),
 	MainThreadTelemetry: createProxyIdentifier<MainThreadTelemetryShape>('MainThreadTelemetry'),
 	MainThreadTerminalService: createProxyIdentifier<MainThreadTerminalServiceShape>('MainThreadTerminalService'),
 	MainThreadTerminalShellIntegration: createProxyIdentifier<MainThreadTerminalShellIntegrationShape>('MainThreadTerminalShellIntegration'),
@@ -3238,7 +3238,7 @@ export const ExtHostContext = {
 	ExtHostChatAgents2: createProxyIdentifier<ExtHostChatAgentsShape2>('ExtHostChatAgents'),
 	ExtHostLanguageModelTools: createProxyIdentifier<ExtHostLanguageModelToolsShape>('ExtHostChatSkills'),
 	ExtHostChatProvider: createProxyIdentifier<ExtHostLanguageModelsShape>('ExtHostChatProvider'),
-	ExtHostSpeech: createProxyIdentifier<ExtHostSpeechShape>('ExtHostSpeech'),
+	// ExtHostSpeech: createProxyIdentifier<ExtHostSpeechShape>('ExtHostSpeech'),
 	ExtHostEmbeddings: createProxyIdentifier<ExtHostEmbeddingsShape>('ExtHostEmbeddings'),
 	ExtHostAiRelatedInformation: createProxyIdentifier<ExtHostAiRelatedInformationShape>('ExtHostAiRelatedInformation'),
 	ExtHostAiEmbeddingVector: createProxyIdentifier<ExtHostAiEmbeddingVectorShape>('ExtHostAiEmbeddingVector'),
