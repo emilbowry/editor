@@ -38,7 +38,7 @@ import { ExtHostChatAgents2 } from './extHostChatAgents2.js';
 // import { ExtHostChatStatus } from './extHostChatStatus.js';
 import { ExtHostClipboard } from './extHostClipboard.js';
 import { ExtHostEditorInsets } from './extHostCodeInsets.js';
-import { ExtHostCodeMapper } from './extHostCodeMapper.js';
+// import { ExtHostCodeMapper } from './extHostCodeMapper.js';
 import { IExtHostCommands } from './extHostCommands.js';
 import { createExtHostComments } from './extHostComments.js';
 import { ExtHostConfigProvider, IExtHostConfiguration } from './extHostConfiguration.js';
@@ -198,7 +198,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 	const extHostDiagnostics = rpcProtocol.set(ExtHostContext.ExtHostDiagnostics, new ExtHostDiagnostics(rpcProtocol, extHostLogService, extHostFileSystemInfo, extHostDocumentsAndEditors));
 	const extHostLanguages = rpcProtocol.set(ExtHostContext.ExtHostLanguages, new ExtHostLanguages(rpcProtocol, extHostDocuments, extHostCommands.converter, uriTransformer));
 	const extHostLanguageFeatures = rpcProtocol.set(ExtHostContext.ExtHostLanguageFeatures, new ExtHostLanguageFeatures(rpcProtocol, uriTransformer, extHostDocuments, extHostCommands, extHostDiagnostics, extHostLogService, extHostApiDeprecation, extHostTelemetry));
-	const extHostCodeMapper = rpcProtocol.set(ExtHostContext.ExtHostCodeMapper, new ExtHostCodeMapper(rpcProtocol));
+	// const extHostCodeMapper = rpcProtocol.set(ExtHostContext.ExtHostCodeMapper, new ExtHostCodeMapper(rpcProtocol));
 	const extHostFileSystem = rpcProtocol.set(ExtHostContext.ExtHostFileSystem, new ExtHostFileSystem(rpcProtocol, extHostLanguageFeatures));
 	const extHostFileSystemEvent = rpcProtocol.set(ExtHostContext.ExtHostFileSystemEventService, new ExtHostFileSystemEventService(rpcProtocol, extHostLogService, extHostDocumentsAndEditors));
 	const extHostQuickOpen = rpcProtocol.set(ExtHostContext.ExtHostQuickOpen, createExtHostQuickOpen(rpcProtocol, extHostWorkspace, extHostCommands));
@@ -1457,10 +1457,10 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 			// 	// no longer supported
 			// 	return { dispose() { } };
 			// },
-			registerMappedEditsProvider2(provider: vscode.MappedEditsProvider2) {
-				checkProposedApiEnabled(extension, 'mappedEditsProvider');
-				return extHostCodeMapper.registerMappedEditsProvider(extension, provider);
-			},
+			// registerMappedEditsProvider2(provider: vscode.MappedEditsProvider2) {
+			// 	checkProposedApiEnabled(extension, 'mappedEditsProvider');
+			// 	return extHostCodeMapper.registerMappedEditsProvider(extension, provider);
+			// },
 			// createChatParticipant(id: string, handler: vscode.ChatExtendedRequestHandler) {
 			// 	return extHostChatAgents2.createChatAgent(extension, id, handler);
 			// },
@@ -1482,7 +1482,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 			// }
 		};
 
-		// namespace: lm
+		// // namespace: lm
 		// const lm: typeof vscode.lm = {
 		// 	// selectChatModels: (selector) => {
 		// 	// 	return extHostLanguageModels.selectLanguageModels(extension, selector ?? {});

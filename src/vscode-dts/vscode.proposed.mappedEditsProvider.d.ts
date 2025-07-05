@@ -105,6 +105,6 @@ declare module 'vscode' {
 		 */
 		// export function registerMappedEditsProvider(documentSelector: DocumentSelector, provider: MappedEditsProvider): Disposable;
 
-		export function registerMappedEditsProvider2(provider: MappedEditsProvider2): Disposable;
+		// export function registerMappedEditsProvider2(provider: MappedEditsProvider2): Disposable;
 	}
 }

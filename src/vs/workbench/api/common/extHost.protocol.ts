@@ -3185,7 +3185,7 @@ export const MainContext = {
 };
 
 export const ExtHostContext = {
-	ExtHostCodeMapper: createProxyIdentifier<ExtHostCodeMapperShape>('ExtHostCodeMapper'),
+	// ExtHostCodeMapper: createProxyIdentifier<ExtHostCodeMapperShape>('ExtHostCodeMapper'),
 	ExtHostCommands: createProxyIdentifier<ExtHostCommandsShape>('ExtHostCommands'),
 	ExtHostConfiguration: createProxyIdentifier<ExtHostConfigurationShape>('ExtHostConfiguration'),
 	ExtHostDiagnostics: createProxyIdentifier<ExtHostDiagnosticsShape>('ExtHostDiagnostics'),
