@@ -54,7 +54,9 @@ import { SaveReason } from '../../common/editor.js';
 import { IRevealOptions, ITreeItem, IViewBadge } from '../../common/views.js';
 import { CallHierarchyItem } from '../../contrib/callHierarchy/common/callHierarchy.js';
 import { IChatAgentMetadata, IChatAgentRequest, IChatAgentResult } from '../../contrib/chat/common/chatAgents.js';
-import { ICodeMapperRequest, ICodeMapperResult } from '../../contrib/chat/common/chatCodeMapperService.js';
+// import { ICodeMapperRequest, ICodeMapperResult } from '../../contrib/chat/common/chatCodeMapperService.js';
+import { ICodeMapperRequest } from '../../contrib/chat/common/chatCodeMapperService.js';
+
 // import { ICodeMapperRequest } from '../../contrib/chat/common/chatCodeMapperService.js';
 
 import { IChatRelatedFile, IChatRelatedFileProviderMetadata as IChatRelatedFilesProviderMetadata, IChatRequestDraft } from '../../contrib/chat/common/chatEditingService.js';
@@ -1807,9 +1809,9 @@ export interface ICodeMapperRequestDto extends Dto<ICodeMapperRequest> {
 	requestId: string;
 }
 
-export interface ExtHostCodeMapperShape {
-	$mapCode(handle: number, request: ICodeMapperRequestDto, token: CancellationToken): Promise<ICodeMapperResult | null | undefined>;
-}
+// export interface ExtHostCodeMapperShape {
+// 	$mapCode(handle: number, request: ICodeMapperRequestDto, token: CancellationToken): Promise<ICodeMapperResult | null | undefined>;
+// }
 
 export interface ExtHostCommandsShape {
 	$executeContributedCommand(id: string, ...args: any[]): Promise<unknown>;
