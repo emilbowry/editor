@@ -5,14 +5,18 @@
 
 import { CancellationToken } from '../../../base/common/cancellation.js';
 import { Disposable, DisposableMap } from '../../../base/common/lifecycle.js';
-import { ExtHostAiRelatedInformationShape, ExtHostContext, MainContext, MainThreadAiRelatedInformationShape } from '../common/extHost.protocol.js';
+// import { ExtHostAiRelatedInformationShape, ExtHostContext, MainContext, MainThreadAiRelatedInformationShape } from '../common/extHost.protocol.js';
+import { MainContext, MainThreadAiRelatedInformationShape } from '../common/extHost.protocol.js';
+
 import { RelatedInformationType } from '../common/extHostTypes.js';
-import { IAiRelatedInformationProvider, IAiRelatedInformationService, RelatedInformationResult } from '../../services/aiRelatedInformation/common/aiRelatedInformation.js';
+// import { IAiRelatedInformationProvider, IAiRelatedInformationService, RelatedInformationResult } from '../../services/aiRelatedInformation/common/aiRelatedInformation.js';
+import {  IAiRelatedInformationService, RelatedInformationResult } from '../../services/aiRelatedInformation/common/aiRelatedInformation.js';
+
 import { IExtHostContext, extHostNamedCustomer } from '../../services/extensions/common/extHostCustomers.js';
 
 @extHostNamedCustomer(MainContext.MainThreadAiRelatedInformation)
 export class MainThreadAiRelatedInformation extends Disposable implements MainThreadAiRelatedInformationShape {
-	private readonly _proxy: ExtHostAiRelatedInformationShape;
+	// private readonly _proxy: ExtHostAiRelatedInformationShape;
 	private readonly _registrations = this._register(new DisposableMap<number>());
 
 	constructor(
@@ -20,7 +24,7 @@ export class MainThreadAiRelatedInformation extends Disposable implements MainTh
 		@IAiRelatedInformationService private readonly _aiRelatedInformationService: IAiRelatedInformationService,
 	) {
 		super();
-		this._proxy = context.getProxy(ExtHostContext.ExtHostAiRelatedInformation);
+		// this._proxy = context.getProxy(ExtHostContext.ExtHostAiRelatedInformation);
 	}
 
 	$getAiRelatedInformation(query: string, types: RelatedInformationType[]): Promise<RelatedInformationResult[]> {
@@ -29,12 +33,12 @@ export class MainThreadAiRelatedInformation extends Disposable implements MainTh
 	}
 
 	$registerAiRelatedInformationProvider(handle: number, type: RelatedInformationType): void {
-		const provider: IAiRelatedInformationProvider = {
-			provideAiRelatedInformation: (query, token) => {
-				return this._proxy.$provideAiRelatedInformation(handle, query, token);
-			},
-		};
-		this._registrations.set(handle, this._aiRelatedInformationService.registerAiRelatedInformationProvider(type, provider));
+		// const provider: IAiRelatedInformationProvider = {
+		// 	provideAiRelatedInformation: (query, token) => {
+		// 		// return this._proxy.$provideAiRelatedInformation(handle, query, token);
+		// 	},
+		// };
+		// this._registrations.set(handle, this._aiRelatedInformationService.registerAiRelatedInformationProvider(type, provider));
 	}
 
 	$unregisterAiRelatedInformationProvider(handle: number): void {
