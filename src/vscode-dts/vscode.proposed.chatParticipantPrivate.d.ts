@@ -248,7 +248,7 @@ declare module 'vscode' {
 	export namespace chat {
 		export function registerChatParticipantDetectionProvider(participantDetectionProvider: ChatParticipantDetectionProvider): Disposable;
 
-		export const onDidDisposeChatSession: Event<string>;
+		// export const onDidDisposeChatSession: Event<string>;
 	}
 
 	// #endregion
