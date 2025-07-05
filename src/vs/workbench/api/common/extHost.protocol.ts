@@ -2018,14 +2018,14 @@ export interface MainThreadAiSettingsSearchShape {
 	$handleSearchResult(handle: number, result: AiSettingsSearchResult): void;
 }
 
-export interface ExtHostAiEmbeddingVectorShape {
-	$provideAiEmbeddingVector(handle: number, strings: string[], token: CancellationToken): Promise<number[][]>;
-}
+// export interface ExtHostAiEmbeddingVectorShape {
+// 	$provideAiEmbeddingVector(handle: number, strings: string[], token: CancellationToken): Promise<number[][]>;
+// }
 
-export interface MainThreadAiEmbeddingVectorShape {
-	$registerAiEmbeddingVectorProvider(model: string, handle: number): void;
-	$unregisterAiEmbeddingVectorProvider(handle: number): void;
-}
+// export interface MainThreadAiEmbeddingVectorShape {
+// 	$registerAiEmbeddingVectorProvider(model: string, handle: number): void;
+// 	$unregisterAiEmbeddingVectorProvider(handle: number): void;
+// }
 
 export interface ExtHostSecretStateShape {
 	$onDidChangePassword(e: { extensionId: string; key: string }): Promise<void>;
@@ -3183,7 +3183,7 @@ export const MainContext = {
 	MainThreadLocalization: createProxyIdentifier<MainThreadLocalizationShape>('MainThreadLocalizationShape'),
 	MainThreadMcp: createProxyIdentifier<MainThreadMcpShape>('MainThreadMcpShape'),
 	MainThreadAiRelatedInformation: createProxyIdentifier<MainThreadAiRelatedInformationShape>('MainThreadAiRelatedInformation'),
-	MainThreadAiEmbeddingVector: createProxyIdentifier<MainThreadAiEmbeddingVectorShape>('MainThreadAiEmbeddingVector'),
+	// MainThreadAiEmbeddingVector: createProxyIdentifier<MainThreadAiEmbeddingVectorShape>('MainThreadAiEmbeddingVector'),
 	// MainThreadChatStatus: createProxyIdentifier<MainThreadChatStatusShape>('MainThreadChatStatus'),
 	MainThreadAiSettingsSearch: createProxyIdentifier<MainThreadAiSettingsSearchShape>('MainThreadAiSettingsSearch'),
 };
