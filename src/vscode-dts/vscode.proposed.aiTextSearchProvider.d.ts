@@ -36,6 +36,6 @@ declare module 'vscode' {
 		 * @param provider The provider.
 		 * @return A {@link Disposable} that unregisters this provider when being disposed.
 		 */
-		export function registerAITextSearchProvider(scheme: string, provider: AITextSearchProvider): Disposable;
+		// export function registerAITextSearchProvider(scheme: string, provider: AITextSearchProvider): Disposable;
 	}
 }
