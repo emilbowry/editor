@@ -103,7 +103,7 @@ declare module 'vscode' {
 		/**
 		 * @deprecated Use `MappedEditsProvider2` instead.
 		 */
-		export function registerMappedEditsProvider(documentSelector: DocumentSelector, provider: MappedEditsProvider): Disposable;
+		// export function registerMappedEditsProvider(documentSelector: DocumentSelector, provider: MappedEditsProvider): Disposable;
 
 		export function registerMappedEditsProvider2(provider: MappedEditsProvider2): Disposable;
 	}

@@ -1452,11 +1452,11 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 
 		// namespace: chatregisterMcpServerDefinitionProvider
 		const chat: typeof vscode.chat = {
-			registerMappedEditsProvider(_selector: vscode.DocumentSelector, _provider: vscode.MappedEditsProvider) {
-				checkProposedApiEnabled(extension, 'mappedEditsProvider');
-				// no longer supported
-				return { dispose() { } };
-			},
+			// registerMappedEditsProvider(_selector: vscode.DocumentSelector, _provider: vscode.MappedEditsProvider) {
+			// 	checkProposedApiEnabled(extension, 'mappedEditsProvider');
+			// 	// no longer supported
+			// 	return { dispose() { } };
+			// },
 			registerMappedEditsProvider2(provider: vscode.MappedEditsProvider2) {
 				checkProposedApiEnabled(extension, 'mappedEditsProvider');
 				return extHostCodeMapper.registerMappedEditsProvider(extension, provider);
