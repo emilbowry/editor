@@ -64,7 +64,7 @@ import { ExtHostInteractive } from './extHostInteractive.js';
 import { ExtHostLabelService } from './extHostLabelService.js';
 import { ExtHostLanguageFeatures } from './extHostLanguageFeatures.js';
 // import { ExtHostLanguageModelTools } from './extHostLanguageModelTools.js';
-import { IExtHostLanguageModels } from './extHostLanguageModels.js';
+// import { IExtHostLanguageModels } from './extHostLanguageModels.js';
 import { ExtHostLanguages } from './extHostLanguages.js';
 import { IExtHostLocalizationService } from './extHostLocalizationService.js';
 import { IExtHostManagedSockets } from './extHostManagedSockets.js';
@@ -149,7 +149,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 	const extHostManagedSockets = accessor.get(IExtHostManagedSockets);
 	const extHostProgress = accessor.get(IExtHostProgress);
 	const extHostAuthentication = accessor.get(IExtHostAuthentication);
-	const extHostLanguageModels = accessor.get(IExtHostLanguageModels);
+	// const extHostLanguageModels = accessor.get(IExtHostLanguageModels);
 	// const extHostMcp = accessor.get(IExtHostMpcService);
 
 	// register addressable instances
@@ -168,7 +168,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 	rpcProtocol.set(ExtHostContext.ExtHostManagedSockets, extHostManagedSockets);
 	rpcProtocol.set(ExtHostContext.ExtHostProgress, extHostProgress);
 	rpcProtocol.set(ExtHostContext.ExtHostAuthentication, extHostAuthentication);
-	rpcProtocol.set(ExtHostContext.ExtHostChatProvider, extHostLanguageModels);
+	// rpcProtocol.set(ExtHostContext.ExtHostChatProvider, extHostLanguageModels);
 
 	// automatically create and register addressable instances
 	const extHostDecorations = rpcProtocol.set(ExtHostContext.ExtHostDecorations, accessor.get(IExtHostDecorations));

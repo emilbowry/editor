@@ -17,7 +17,7 @@ import { StatusBarItemsExtensionPoint } from './statusBarExtensionPoint.js';
 // --- mainThread participants
 import './mainThreadLocalization.js';
 import './mainThreadBulkEdits.js';
-import './mainThreadLanguageModels.js';
+// import './mainThreadLanguageModels.js';
 // import './mainThreadChatAgents2.js';
 // import './mainThreadChatCodeMapper.js';
 // import './mainThreadLanguageModelTools.js';
