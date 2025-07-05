@@ -16,9 +16,9 @@ import { IConfigurationService } from '../../../../../platform/configuration/com
 import { ContextKeyExpr } from '../../../../../platform/contextkey/common/contextkey.js';
 import { ServicesAccessor } from '../../../../../platform/instantiation/common/instantiation.js';
 import { IDebugService } from '../../../debug/common/debug.js';
-import { CTX_INLINE_CHAT_FOCUSED } from '../../../inlineChat/common/inlineChat.js';
+// import { CTX_INLINE_CHAT_FOCUSED } from '../../../inlineChat/common/inlineChat.js';
 import { insertCell } from './cellOperations.js';
-import { NotebookChatController } from './chat/notebookChatController.js';
+// import { NotebookChatController } from './chat/notebookChatController.js';
 import { CELL_TITLE_CELL_GROUP_ID, CellToolbarOrder, INotebookActionContext, INotebookCellActionContext, INotebookCellToolbarActionContext, INotebookCommandContext, NOTEBOOK_EDITOR_WIDGET_ACTION_WEIGHT, NotebookAction, NotebookCellAction, NotebookMultiCellAction, cellExecutionArgs, getContextFromActiveEditor, getContextFromUri, parseMultiCellExecutionArgs } from './coreActions.js';
 import { CellEditState, CellFocusMode, EXECUTE_CELL_COMMAND_ID, IActiveNotebookEditor, ICellViewModel, IFocusNotebookCellOptions, ScrollToRevealBehavior } from '../notebookBrowser.js';
 import * as icons from '../notebookIcons.js';
@@ -297,20 +297,20 @@ registerAction2(class ExecuteCell extends NotebookMultiCellAction {
 			await context.notebookEditor.focusNotebookCell(context.cell, 'container', { skipReveal: true });
 		}
 
-		const chatController = NotebookChatController.get(context.notebookEditor);
-		const editingCell = chatController?.getEditingCell();
-		if (chatController?.hasFocus() && editingCell) {
-			const group = editorGroupsService.activeGroup;
+		// const chatController = NotebookChatController.get(context.notebookEditor);
+		// const editingCell = chatController?.getEditingCell();
+		// if (chatController?.hasFocus() && editingCell) {
+		// 	const group = editorGroupsService.activeGroup;
 
-			if (group) {
-				if (group.activeEditor) {
-					group.pinEditor(group.activeEditor);
-				}
-			}
+		// 	if (group) {
+		// 		if (group.activeEditor) {
+		// 			group.pinEditor(group.activeEditor);
+		// 		}
+		// 	}
 
-			await context.notebookEditor.executeNotebookCells([editingCell]);
-			return;
-		}
+		// 	await context.notebookEditor.executeNotebookCells([editingCell]);
+		// 	return;
+		// }
 
 		await runCell(editorGroupsService, context, editorService);
 	}
@@ -525,7 +525,7 @@ registerAction2(class ExecuteCellSelectBelow extends NotebookCellAction {
 			keybinding: {
 				when: ContextKeyExpr.and(
 					NOTEBOOK_CELL_LIST_FOCUSED,
-					CTX_INLINE_CHAT_FOCUSED.negate()
+					// CTX_INLINE_CHAT_FOCUSED.negate()
 				),
 				primary: KeyMod.Shift | KeyCode.Enter,
 				weight: NOTEBOOK_EDITOR_WIDGET_ACTION_WEIGHT

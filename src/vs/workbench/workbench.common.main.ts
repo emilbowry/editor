@@ -373,7 +373,7 @@ import './contrib/userDataProfile/browser/userDataProfile.contribution.js';
 import './contrib/editSessions/browser/editSessions.contribution.js';
 
 // Remote Coding Agents
-import './contrib/remoteCodingAgents/browser/remoteCodingAgents.contribution.js';
+// import './contrib/remoteCodingAgents/browser/remoteCodingAgents.contribution.js';
 
 // Code Actions
 import './contrib/codeActions/browser/codeActions.contribution.js';

@@ -213,7 +213,7 @@ class AuthenticationExtensionsContribution extends Disposable implements IWorkbe
 // 			});
 // 		}
 // 	}
-}
+// }
 
 registerWorkbenchContribution2(AuthenticationContribution.ID, AuthenticationContribution, WorkbenchPhase.AfterRestored);
 registerWorkbenchContribution2(AuthenticationUsageContribution.ID, AuthenticationUsageContribution, WorkbenchPhase.Eventually);

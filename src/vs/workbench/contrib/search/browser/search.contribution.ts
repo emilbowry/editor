@@ -32,7 +32,7 @@ import { CommandsRegistry } from '../../../../platform/commands/common/commands.
 import { assertType } from '../../../../base/common/types.js';
 import { getWorkspaceSymbols, IWorkspaceSymbol } from '../common/search.js';
 import * as Constants from '../common/constants.js';
-import { SearchChatContextContribution } from './chatContributions.js';
+// import { SearchChatContextContribution } from './chatContributions.js';
 
 import './searchActionsCopy.js';
 import './searchActionsFind.js';
@@ -43,7 +43,7 @@ import './searchActionsTopBar.js';
 import './searchActionsTextQuickAccess.js';
 import { TEXT_SEARCH_QUICK_ACCESS_PREFIX, TextSearchQuickAccess } from './quickTextSearch/textSearchQuickAccess.js';
 import { Extensions, IConfigurationMigrationRegistry } from '../../../common/configuration.js';
-import { registerWorkbenchContribution2, WorkbenchPhase } from '../../../common/contributions.js';
+// import { registerWorkbenchContribution2, WorkbenchPhase } from '../../../common/contributions.js';
 
 registerSingleton(ISearchViewModelWorkbenchService, SearchViewModelWorkbenchService, InstantiationType.Delayed);
 registerSingleton(ISearchHistoryService, SearchHistoryService, InstantiationType.Delayed);
@@ -52,7 +52,7 @@ replaceContributions();
 notebookSearchContributions();
 searchWidgetContributions();
 
-registerWorkbenchContribution2(SearchChatContextContribution.ID, SearchChatContextContribution, WorkbenchPhase.AfterRestored);
+// registerWorkbenchContribution2(SearchChatContextContribution.ID, SearchChatContextContribution, WorkbenchPhase.AfterRestored);
 
 const SEARCH_MODE_CONFIG = 'search.mode';
 

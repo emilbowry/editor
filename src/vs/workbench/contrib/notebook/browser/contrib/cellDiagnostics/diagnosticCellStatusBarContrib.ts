@@ -15,8 +15,9 @@ import { registerNotebookContribution } from '../../notebookEditorExtensions.js'
 import { CodeCellViewModel } from '../../viewModel/codeCellViewModel.js';
 import { INotebookCellStatusBarItem, CellStatusbarAlignment } from '../../../common/notebookCommon.js';
 import { ICellExecutionError } from '../../../common/notebookExecutionStateService.js';
-import { IChatAgentService } from '../../../../chat/common/chatAgents.js';
-import { ChatAgentLocation } from '../../../../chat/common/constants.js';
+// import { assertReturnsAllDefined } from '../../../../../../base/common/types.js';
+// import { IChatAgentService } from '../../../../chat/common/chatAgents.js';
+// import { ChatAgentLocation } from '../../../../chat/common/constants.js';
 
 export class DiagnosticCellStatusBarContrib extends Disposable implements INotebookEditorContribution {
 	static id: string = 'workbench.notebook.statusBar.diagtnostic';
@@ -43,15 +44,16 @@ class DiagnosticCellStatusBarItem extends Disposable {
 		private readonly _notebookViewModel: INotebookViewModel,
 		private readonly cell: CodeCellViewModel,
 		@IKeybindingService private readonly keybindingService: IKeybindingService,
-		@IChatAgentService private readonly chatAgentService: IChatAgentService,
+		// @IChatAgentService private readonly chatAgentService: IChatAgentService,
 	) {
 		super();
 		this._register(autorun((reader) => this.updateSparkleItem(reader.readObservable(cell.executionErrorDiagnostic))));
 	}
 
 	private hasNotebookAgent(): boolean {
-		const agents = this.chatAgentService.getAgents();
-		return !!agents.find(agent => agent.locations.includes(ChatAgentLocation.Notebook));
+		return false;
+		// const agents = this.chatAgentService.getAgents();
+		// return !!agents.find(agent => agent.locations.includes(ChatAgentLocation.Notebook));
 	}
 
 	private async updateSparkleItem(error: ICellExecutionError | undefined) {

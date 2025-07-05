@@ -68,7 +68,7 @@ import { ExtHostLanguageFeatures } from './extHostLanguageFeatures.js';
 import { ExtHostLanguages } from './extHostLanguages.js';
 import { IExtHostLocalizationService } from './extHostLocalizationService.js';
 import { IExtHostManagedSockets } from './extHostManagedSockets.js';
-import { IExtHostMpcService } from './extHostMcp.js';
+// import { IExtHostMpcService } from './extHostMcp.js';
 import { ExtHostMessageService } from './extHostMessageService.js';
 import { ExtHostNotebookController } from './extHostNotebook.js';
 import { ExtHostNotebookDocumentSaveParticipant } from './extHostNotebookDocumentSaveParticipant.js';

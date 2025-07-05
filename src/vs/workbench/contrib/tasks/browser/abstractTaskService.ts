@@ -84,10 +84,10 @@ import { IPathService } from '../../../services/path/common/pathService.js';
 import { IPreferencesService } from '../../../services/preferences/common/preferences.js';
 import { IRemoteAgentService } from '../../../services/remote/common/remoteAgentService.js';
 import { isCancellationError } from '../../../../base/common/errors.js';
-import { IChatService } from '../../chat/common/chatService.js';
-import { ChatAgentLocation, ChatModeKind } from '../../chat/common/constants.js';
-import { CHAT_OPEN_ACTION_ID } from '../../chat/browser/actions/chatActions.js';
-import { IChatAgentService } from '../../chat/common/chatAgents.js';
+// import { IChatService } from '../../chat/common/chatService.js';
+// import { ChatAgentLocation, ChatModeKind } from '../../chat/common/constants.js';
+// import { CHAT_OPEN_ACTION_ID } from '../../chat/browser/actions/chatActions.js';
+// import { IChatAgentService } from '../../chat/common/chatAgents.js';
 
 
 const QUICKOPEN_HISTORY_LIMIT_CONFIG = 'task.quickOpen.history';
@@ -286,8 +286,8 @@ export abstract class AbstractTaskService extends Disposable implements ITaskSer
 		@ILifecycleService private readonly _lifecycleService: ILifecycleService,
 		@IRemoteAgentService remoteAgentService: IRemoteAgentService,
 		@IInstantiationService private readonly _instantiationService: IInstantiationService,
-		@IChatService private readonly _chatService: IChatService,
-		@IChatAgentService private readonly _chatAgentService: IChatAgentService
+		// @IChatService private readonly _chatService: IChatService,
+		// @IChatAgentService private readonly _chatAgentService: IChatAgentService
 	) {
 		super();
 		this._whenTaskSystemReady = Event.toPromise(this.onDidChangeTaskSystemInfo);
@@ -699,44 +699,44 @@ export abstract class AbstractTaskService extends Disposable implements ITaskSer
 			if (userRequested) {
 				this._outputService.showChannel(this._outputChannel.id, true);
 			} else {
-				const chatEnabled = this._chatService.isEnabled(ChatAgentLocation.Panel);
+				// const chatEnabled = this._chatService.isEnabled(ChatAgentLocation.Panel);
 				const actions = [];
-				if (chatEnabled && errorMessage) {
-					const beforeJSONregex = /^(.*?)\s*\{[\s\S]*$/;
-					const matches = errorMessage.match(beforeJSONregex);
-					if (matches && matches.length > 1) {
-						const message = matches[1];
-						const customMessage = message === errorMessage
-							? `\`${message}\``
-							: `\`${message}\`\n\`\`\`json${errorMessage}\`\`\``;
+				// if (chatEnabled && errorMessage) {
+				// 	const beforeJSONregex = /^(.*?)\s*\{[\s\S]*$/;
+				// 	const matches = errorMessage.match(beforeJSONregex);
+				// 	if (matches && matches.length > 1) {
+				// 		const message = matches[1];
+				// 		const customMessage = message === errorMessage
+				// 			? `\`${message}\``
+				// 			: `\`${message}\`\n\`\`\`json${errorMessage}\`\`\``;
 
 
-						const defaultAgent = this._chatAgentService.getDefaultAgent(ChatAgentLocation.Panel);
-						const providerName = defaultAgent?.fullName;
-						if (providerName) {
-							actions.push({
-								label: nls.localize('troubleshootWithChat', "Fix with {0}", providerName),
-								run: async () => {
-									this._commandService.executeCommand(CHAT_OPEN_ACTION_ID, {
-										mode: ChatModeKind.Agent,
-										query: `Fix this task configuration error: ${customMessage}`
-									});
-								}
-							});
-						}
-					}
-				}
+				// 		// const defaultAgent = this._chatAgentService.getDefaultAgent(ChatAgentLocation.Panel);
+				// 		// const providerName = defaultAgent?.fullName;
+				// 		// if (providerName) {
+				// 		// 	actions.push({
+				// 		// 		label: nls.localize('troubleshootWithChat', "Fix with {0}", providerName),
+				// 		// 		run: async () => {
+				// 		// 			this._commandService.executeCommand(CHAT_OPEN_ACTION_ID, {
+				// 		// 				mode: ChatModeKind.Agent,
+				// 		// 				query: `Fix this task configuration error: ${customMessage}`
+				// 		// 			});
+				// 		// 		}
+				// 		// 	});
+				// 		// }
+				// 	}
+				// }
 				actions.push({
 					label: nls.localize('showOutput', "Show Output"),
 					run: () => {
 						this._outputService.showChannel(this._outputChannel.id, true);
 					}
 				});
-				if (chatEnabled && actions.length > 1) {
-					this._notificationService.prompt(Severity.Warning, nls.localize('taskServiceOutputPromptChat', 'There are task errors. Use chat to fix them or view the output for details.'), actions);
-				} else {
-					this._notificationService.prompt(Severity.Warning, nls.localize('taskServiceOutputPrompt', 'There are task errors. See the output for details.'), actions);
-				}
+				// if (chatEnabled && actions.length > 1) {
+				// 	this._notificationService.prompt(Severity.Warning, nls.localize('taskServiceOutputPromptChat', 'There are task errors. Use chat to fix them or view the output for details.'), actions);
+				// } else {
+				this._notificationService.prompt(Severity.Warning, nls.localize('taskServiceOutputPrompt', 'There are task errors. See the output for details.'), actions);
+				// }
 			}
 		}
 	}

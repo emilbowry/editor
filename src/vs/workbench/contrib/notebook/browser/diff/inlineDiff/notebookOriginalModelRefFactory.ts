@@ -3,8 +3,115 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
+
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+// Pinched form chat
+import { IDisposable } from '../../../../../../base/common/lifecycle.js';
+import { IObservable } from '../../../../../../base/common/observable.js';
+import { URI } from '../../../../../..//base/common/uri.js';
+import { IEditorPane } from '../../../../../common/editor.js';
+
+
+
+export const enum ModifiedFileEntryState {
+	Modified,
+	Accepted,
+	Rejected,
+}
+
+// /**
+//  * Represents a part of a change
+//  */
+export interface IModifiedFileEntryChangeHunk {
+	accept(): Promise<boolean>;
+	reject(): Promise<boolean>;
+}
+
+export interface IModifiedFileEntryEditorIntegration extends IDisposable {
+
+	/**
+	 * The index of a change
+	 */
+	currentIndex: IObservable<number>;
+
+	/**
+	 * Reveal the first (`true`) or last (`false`) change
+	 */
+	reveal(firstOrLast: boolean, preserveFocus?: boolean): void;
+
+	/**
+	 * Go to next change and increate `currentIndex`
+	 * @param wrap When at the last, start over again or not
+	 * @returns If it went next
+	 */
+	next(wrap: boolean): boolean;
+
+	/**
+	 * @see `next`
+	 */
+	previous(wrap: boolean): boolean;
+
+	/**
+	 * Enable the accessible diff viewer for this editor
+	 */
+	enableAccessibleDiffView(): void;
+
+	/**
+	 * Accept the change given or the nearest
+	 * @param change An opaque change object
+	 */
+	acceptNearestChange(change?: IModifiedFileEntryChangeHunk): Promise<void>;
+
+	/**
+	 * @see `acceptNearestChange`
+	 */
+	rejectNearestChange(change?: IModifiedFileEntryChangeHunk): Promise<void>;
+
+	/**
+	 * Toggle between diff-editor and normal editor
+	 * @param change An opaque change object
+	 * @param show Optional boolean to control if the diff should show
+	 */
+	toggleDiff(change: IModifiedFileEntryChangeHunk | undefined, show?: boolean): Promise<void>;
+}
+
+export interface IModifiedFileEntry {
+	readonly entryId: string;
+	readonly originalURI: URI;
+	readonly modifiedURI: URI;
+
+	readonly lastModifyingRequestId: string;
+
+	readonly state: IObservable<ModifiedFileEntryState>;
+	// readonly isCurrentlyBeingModifiedBy: IObservable<IChatResponseModel | undefined>;
+	// readonly lastModifyingResponse: IObservable<IChatResponseModel | undefined>;
+	readonly rewriteRatio: IObservable<number>;
+
+	readonly waitsForLastEdits: IObservable<boolean>;
+
+	accept(): Promise<void>;
+	reject(): Promise<void>;
+
+	reviewMode: IObservable<boolean>;
+	autoAcceptController: IObservable<{ total: number; remaining: number; cancel(): void } | undefined>;
+	enableReviewModeUntilSettled(): void;
+
+	/**
+	 * Number of changes for this file
+	 */
+	readonly changesCount: IObservable<number>;
+
+	getEditorIntegration(editor: IEditorPane): IModifiedFileEntryEditorIntegration;
+}
+
+
+
+
 import { AsyncReferenceCollection, IReference, ReferenceCollection } from '../../../../../../base/common/lifecycle.js';
-import { IModifiedFileEntry } from '../../../../chat/common/chatEditingService.js';
+// import { IModifiedFileEntry } from '../../../../chat/common/chatEditingService.js';
 import { INotebookService } from '../../../common/notebookService.js';
 import { bufferToStream, VSBuffer } from '../../../../../../base/common/buffer.js';
 import { NotebookTextModel } from '../../../common/model/notebookTextModel.js';
