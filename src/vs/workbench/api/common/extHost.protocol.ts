@@ -83,7 +83,7 @@ import { CoverageDetails, ExtensionRunTestsRequest, ICallProfileRunHandler, IFil
 import { Timeline, TimelineChangeEvent, TimelineOptions, TimelineProviderDescriptor } from '../../contrib/timeline/common/timeline.js';
 import { TypeHierarchyItem } from '../../contrib/typeHierarchy/common/typeHierarchy.js';
 // import { RelatedInformationResult, RelatedInformationType } from '../../services/aiRelatedInformation/common/aiRelatedInformation.js';
-import { AiSettingsSearchProviderOptions, AiSettingsSearchResult } from '../../services/aiSettingsSearch/common/aiSettingsSearch.js';
+// import { AiSettingsSearchProviderOptions, AiSettingsSearchResult } from '../../services/aiSettingsSearch/common/aiSettingsSearch.js';
 import { AuthenticationSession, AuthenticationSessionAccount, AuthenticationSessionsChangeEvent, IAuthenticationCreateSessionOptions, IAuthenticationGetSessionsOptions } from '../../services/authentication/common/authentication.js';
 import { EditorGroupColumn } from '../../services/editor/common/editorGroupColumn.js';
 import { IExtensionDescriptionDelta, IStaticWorkspaceData } from '../../services/extensions/common/extensionHostProtocol.js';
@@ -2008,15 +2008,15 @@ export interface ExtHostAuthenticationShape {
 // 	$unregisterAiRelatedInformationProvider(handle: number): void;
 // }
 
-export interface ExtHostAiSettingsSearchShape {
-	$startSearch(handle: number, query: string, option: AiSettingsSearchProviderOptions, token: CancellationToken): Promise<void>;
-}
+// export interface ExtHostAiSettingsSearchShape {
+// 	$startSearch(handle: number, query: string, option: AiSettingsSearchProviderOptions, token: CancellationToken): Promise<void>;
+// }
 
-export interface MainThreadAiSettingsSearchShape {
-	$registerAiSettingsSearchProvider(handle: number): void;
-	$unregisterAiSettingsSearchProvider(handle: number): void;
-	$handleSearchResult(handle: number, result: AiSettingsSearchResult): void;
-}
+// export interface MainThreadAiSettingsSearchShape {
+// 	$registerAiSettingsSearchProvider(handle: number): void;
+// 	$unregisterAiSettingsSearchProvider(handle: number): void;
+// 	$handleSearchResult(handle: number, result: AiSettingsSearchResult): void;
+// }
 
 // export interface ExtHostAiEmbeddingVectorShape {
 // 	$provideAiEmbeddingVector(handle: number, strings: string[], token: CancellationToken): Promise<number[][]>;
@@ -3185,7 +3185,7 @@ export const MainContext = {
 	// MainThreadAiRelatedInformation: createProxyIdentifier<MainThreadAiRelatedInformationShape>('MainThreadAiRelatedInformation'),
 	// MainThreadAiEmbeddingVector: createProxyIdentifier<MainThreadAiEmbeddingVectorShape>('MainThreadAiEmbeddingVector'),
 	// MainThreadChatStatus: createProxyIdentifier<MainThreadChatStatusShape>('MainThreadChatStatus'),
-	MainThreadAiSettingsSearch: createProxyIdentifier<MainThreadAiSettingsSearchShape>('MainThreadAiSettingsSearch'),
+	// MainThreadAiSettingsSearch: createProxyIdentifier<MainThreadAiSettingsSearchShape>('MainThreadAiSettingsSearch'),
 };
 
 export const ExtHostContext = {
