@@ -1423,12 +1423,12 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 		};
 
 		// namespace: interactive
-		const interactive: typeof vscode.interactive = {
-			transferActiveChat(toWorkspace: vscode.Uri) {
-				checkProposedApiEnabled(extension, 'interactive');
-				return extHostChatAgents2.transferActiveChat(toWorkspace);
-			}
-		};
+		// const interactive: typeof vscode.interactive = {
+		// 	transferActiveChat(toWorkspace: vscode.Uri) {
+		// 		checkProposedApiEnabled(extension, 'interactive');
+		// 		return extHostChatAgents2.transferActiveChat(toWorkspace);
+		// 	}
+		// };
 
 		// namespace: ai
 		const ai: typeof vscode.ai = {
@@ -1555,7 +1555,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 			debug,
 			env,
 			extensions,
-			interactive,
+			// interactive,
 			l10n,
 			languages,
 			lm,
