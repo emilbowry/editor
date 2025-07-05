@@ -20381,7 +20381,7 @@ declare module 'vscode' {
 		 * @param selector A chat model selector. When omitted all chat models are returned.
 		 * @returns An array of chat models, can be empty!
 		 */
-		export function selectChatModels(selector?: LanguageModelChatSelector): Thenable<LanguageModelChat[]>;
+		// export function selectChatModels(selector?: LanguageModelChatSelector): Thenable<LanguageModelChat[]>;
 
 		/**
 		 * Register a LanguageModelTool. The tool must also be registered in the package.json `languageModelTools` contribution
