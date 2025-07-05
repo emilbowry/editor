@@ -13,7 +13,9 @@ import { ToggleActionViewItem } from '../../../../base/browser/ui/toggle/toggle.
 import { ITreeElement } from '../../../../base/browser/ui/tree/tree.js';
 import { CodeWindow } from '../../../../base/browser/window.js';
 import { Action } from '../../../../base/common/actions.js';
-import { CancelablePromise, createCancelablePromise, Delayer, raceTimeout } from '../../../../base/common/async.js';
+// import { CancelablePromise, createCancelablePromise, Delayer, raceTimeout } from '../../../../base/common/async.js';
+import { Delayer, raceTimeout } from '../../../../base/common/async.js';
+
 import { CancellationToken, CancellationTokenSource } from '../../../../base/common/cancellation.js';
 import { Color } from '../../../../base/common/color.js';
 import { fromNow } from '../../../../base/common/date.js';
@@ -97,7 +99,7 @@ interface IFocusEventFromScroll extends KeyboardEvent {
 const searchBoxLabel = localize('SearchSettings.AriaLabel', "Search settings");
 const SEARCH_TOC_BEHAVIOR_KEY = 'workbench.settings.settingsSearchTocBehavior';
 
-const SHOW_AI_RESULTS_ENABLED_LABEL = localize('showAiResultsEnabled', "Show AI-recommended results");
+// const SHOW_AI_RESULTS_ENABLED_LABEL = localize('showAiResultsEnabled', "Show AI-recommended results");
 const SHOW_AI_RESULTS_DISABLED_LABEL = localize('showAiResultsDisabled', "No AI results available at this time...");
 
 const SETTINGS_EDITOR_STATE_KEY = 'settingsEditorState';
@@ -189,7 +191,7 @@ export class SettingsEditor2 extends EditorPane {
 
 	private searchDelayer: Delayer<void>;
 	private searchInProgress: CancellationTokenSource | null = null;
-	private aiSearchPromise: CancelablePromise<void> | null = null;
+	// private aiSearchPromise: CancelablePromise<void> | null = null;
 
 	private showAiResultsAction: Action | null = null;
 
@@ -1821,22 +1823,22 @@ export class SettingsEditor2 extends EditorPane {
 			}
 
 			// Kick off an AI search in the background. We purposely do not await it.
-			if (this.aiSearchPromise) {
-				this.aiSearchPromise.cancel();
-			}
-			this.aiSearchPromise = createCancelablePromise(token => {
-				return this.doAiSearch(query, token).then((results) => {
-					if (results && this.showAiResultsAction) {
-						this.showAiResultsAction.enabled = true;
-						this.showAiResultsAction.label = SHOW_AI_RESULTS_ENABLED_LABEL;
-						this.renderResultCountMessages(true);
-					}
-				}).catch(e => {
-					if (!isCancellationError(e)) {
-						this.logService.trace('Error during AI settings search:', e);
-					}
-				});
-			});
+			// if (this.aiSearchPromise) {
+			// 	this.aiSearchPromise.cancel();
+			// }
+			// this.aiSearchPromise = createCancelablePromise(token => {
+			// 	return this.doAiSearch(query, token).then((results) => {
+			// 		if (results && this.showAiResultsAction) {
+			// 			this.showAiResultsAction.enabled = true;
+			// 			this.showAiResultsAction.label = SHOW_AI_RESULTS_ENABLED_LABEL;
+			// 			this.renderResultCountMessages(true);
+			// 		}
+			// 	}).catch(e => {
+			// 		if (!isCancellationError(e)) {
+			// 			this.logService.trace('Error during AI settings search:', e);
+			// 		}
+			// 	});
+			// });
 
 			this.onDidFinishSearch(expandResults, progressRunner);
 		});
@@ -1868,42 +1870,42 @@ export class SettingsEditor2 extends EditorPane {
 		return this.searchWithProvider(SearchResultIdx.Remote, remoteSearchProvider, token);
 	}
 
-	private async doAiSearch(query: string, token: CancellationToken): Promise<ISearchResult | null> {
-		const aiSearchProvider = this.preferencesSearchService.getAiSearchProvider(query);
-		if (!aiSearchProvider) {
-			return null;
-		}
+	// private async doAiSearch(query: string, token: CancellationToken): Promise<ISearchResult | null> {
+	// 	const aiSearchProvider = this.preferencesSearchService.getAiSearchProvider(query);
+	// 	if (!aiSearchProvider) {
+	// 		return null;
+	// 	}
 
-		const embeddingsResults = await this.searchWithProvider(SearchResultIdx.Embeddings, aiSearchProvider, token);
-		if (!embeddingsResults || token.isCancellationRequested) {
-			return null;
-		}
+	// 	const embeddingsResults = await this.searchWithProvider(SearchResultIdx.Embeddings, aiSearchProvider, token);
+	// 	if (!embeddingsResults || token.isCancellationRequested) {
+	// 		return null;
+	// 	}
 
-		const llmResults = await this.getLLMRankedResults(query, token);
-		if (token.isCancellationRequested) {
-			return null;
-		}
+	// 	const llmResults = await this.getLLMRankedResults(query, token);
+	// 	if (token.isCancellationRequested) {
+	// 		return null;
+	// 	}
 
-		return {
-			filterMatches: embeddingsResults.filterMatches.concat(llmResults?.filterMatches ?? []),
-			exactMatch: false
-		};
-	}
+	// 	return {
+	// 		filterMatches: embeddingsResults.filterMatches.concat(llmResults?.filterMatches ?? []),
+	// 		exactMatch: false
+	// 	};
+	// }
 
-	private async getLLMRankedResults(query: string, token: CancellationToken): Promise<ISearchResult | null> {
-		const aiSearchProvider = this.preferencesSearchService.getAiSearchProvider(query);
-		if (!aiSearchProvider) {
-			return null;
-		}
+	// private async getLLMRankedResults(query: string, token: CancellationToken): Promise<ISearchResult | null> {
+	// 	const aiSearchProvider = this.preferencesSearchService.getAiSearchProvider(query);
+	// 	if (!aiSearchProvider) {
+	// 		return null;
+	// 	}
 
-		const result = await aiSearchProvider.getLLMRankedResults(token);
-		if (!result || token.isCancellationRequested) {
-			return null;
-		}
+	// 	const result = await aiSearchProvider.getLLMRankedResults(token);
+	// 	if (!result || token.isCancellationRequested) {
+	// 		return null;
+	// 	}
 
-		this.searchResultModel!.setResult(SearchResultIdx.AiSelected, result);
-		return result;
-	}
+	// 	this.searchResultModel!.setResult(SearchResultIdx.AiSelected, result);
+	// 	return result;
+	// }
 
 	private async searchWithProvider(type: SearchResultIdx, searchProvider: ISearchProvider, token: CancellationToken): Promise<ISearchResult | null> {
 		const result = await this._searchPreferencesModel(this.defaultSettingsEditorModel, searchProvider, token);

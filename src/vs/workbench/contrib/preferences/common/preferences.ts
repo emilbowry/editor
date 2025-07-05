@@ -40,7 +40,7 @@ export interface IPreferencesSearchService {
 
 	getLocalSearchProvider(filter: string): ISearchProvider;
 	getRemoteSearchProvider(filter: string, newExtensionsOnly?: boolean): ISearchProvider | undefined;
-	getAiSearchProvider(filter: string): IAiSearchProvider | undefined;
+	// getAiSearchProvider(filter: string): IAiSearchProvider | undefined;
 }
 
 export interface ISearchProvider {
