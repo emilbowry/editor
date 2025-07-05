@@ -9,9 +9,11 @@ import { CancellationToken } from '../../../base/common/cancellation.js';
 import { CancellationError } from '../../../base/common/errors.js';
 import { IDisposable, toDisposable } from '../../../base/common/lifecycle.js';
 import { revive } from '../../../base/common/marshalling.js';
-import { generateUuid } from '../../../base/common/uuid.js';
+// import { generateUuid } from '../../../base/common/uuid.js';
 import { IExtensionDescription } from '../../../platform/extensions/common/extensions.js';
-import { IPreparedToolInvocation, isToolInvocationContext, IToolInvocation, IToolInvocationContext, IToolInvocationPreparationContext, IToolResult } from '../../contrib/chat/common/languageModelToolsService.js';
+// import { IPreparedToolInvocation, isToolInvocationContext, IToolInvocation, IToolInvocationContext, IToolInvocationPreparationContext, IToolResult } from '../../contrib/chat/common/languageModelToolsService.js';
+import { IPreparedToolInvocation, IToolInvocation, IToolInvocationPreparationContext, IToolResult } from '../../contrib/chat/common/languageModelToolsService.js';
+
 import { ExtensionEditToolId, InternalEditToolId } from '../../contrib/chat/common/tools/editFileTool.js';
 import { InternalFetchWebPageToolId } from '../../contrib/chat/common/tools/tools.js';
 import { checkProposedApiEnabled, isProposedApiEnabled } from '../../services/extensions/common/extensions.js';
@@ -83,38 +85,38 @@ export class ExtHostLanguageModelTools implements ExtHostLanguageModelToolsShape
 		return await fn(input, token);
 	}
 
-	async invokeTool(extension: IExtensionDescription, toolId: string, options: vscode.LanguageModelToolInvocationOptions<any>, token?: CancellationToken): Promise<vscode.LanguageModelToolResult> {
-		const callId = generateUuid();
-		if (options.tokenizationOptions) {
-			this._tokenCountFuncs.set(callId, options.tokenizationOptions.countTokens);
-		}
+	// async invokeTool(extension: IExtensionDescription, toolId: string, options: vscode.LanguageModelToolInvocationOptions<any>, token?: CancellationToken): Promise<vscode.LanguageModelToolResult> {
+	// 	const callId = generateUuid();
+	// 	if (options.tokenizationOptions) {
+	// 		this._tokenCountFuncs.set(callId, options.tokenizationOptions.countTokens);
+	// 	}
 
-		try {
-			if (options.toolInvocationToken && !isToolInvocationContext(options.toolInvocationToken)) {
-				throw new Error(`Invalid tool invocation token`);
-			}
+	// 	try {
+	// 		if (options.toolInvocationToken && !isToolInvocationContext(options.toolInvocationToken)) {
+	// 			throw new Error(`Invalid tool invocation token`);
+	// 		}
 
-			if ((toolId === InternalEditToolId || toolId === ExtensionEditToolId) && !isProposedApiEnabled(extension, 'chatParticipantPrivate')) {
-				throw new Error(`Invalid tool: ${toolId}`);
-			}
+	// 		if ((toolId === InternalEditToolId || toolId === ExtensionEditToolId) && !isProposedApiEnabled(extension, 'chatParticipantPrivate')) {
+	// 			throw new Error(`Invalid tool: ${toolId}`);
+	// 		}
 
-			// Making the round trip here because not all tools were necessarily registered in this EH
-			const result = await this._proxy.$invokeTool({
-				toolId,
-				callId,
-				parameters: options.input,
-				tokenBudget: options.tokenizationOptions?.tokenBudget,
-				context: options.toolInvocationToken as IToolInvocationContext | undefined,
-				chatRequestId: isProposedApiEnabled(extension, 'chatParticipantPrivate') ? options.chatRequestId : undefined,
-				chatInteractionId: isProposedApiEnabled(extension, 'chatParticipantPrivate') ? options.chatInteractionId : undefined,
-			}, token);
+	// 		// // Making the round trip here because not all tools were necessarily registered in this EH
+	// 		// const result = await this._proxy.$invokeTool({
+	// 		// 	toolId,
+	// 		// 	callId,
+	// 		// 	parameters: options.input,
+	// 		// 	tokenBudget: options.tokenizationOptions?.tokenBudget,
+	// 		// 	context: options.toolInvocationToken as IToolInvocationContext | undefined,
+	// 		// 	chatRequestId: isProposedApiEnabled(extension, 'chatParticipantPrivate') ? options.chatRequestId : undefined,
+	// 		// 	chatInteractionId: isProposedApiEnabled(extension, 'chatParticipantPrivate') ? options.chatInteractionId : undefined,
+	// 		// }, token);
 
-			const dto: Dto<IToolResult> = result instanceof SerializableObjectWithBuffers ? result.value : result;
-			return typeConvert.LanguageModelToolResult2.to(revive(dto));
-		} finally {
-			this._tokenCountFuncs.delete(callId);
-		}
-	}
+	// 		// const dto: Dto<IToolResult> = result instanceof SerializableObjectWithBuffers ? result.value : result;
+	// 		// return typeConvert.LanguageModelToolResult2.to(revive(dto));
+	// 	} finally {
+	// 		this._tokenCountFuncs.delete(callId);
+	// 	}
+	// }
 
 	$onDidChangeTools(tools: IToolDataDto[]): void {
 

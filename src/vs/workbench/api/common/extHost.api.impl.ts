@@ -34,7 +34,7 @@ import { ExtHostApiCommands } from './extHostApiCommands.js';
 import { IExtHostApiDeprecationService } from './extHostApiDeprecationService.js';
 import { IExtHostAuthentication } from './extHostAuthentication.js';
 import { ExtHostBulkEdits } from './extHostBulkEdits.js';
-import { ExtHostChatAgents2 } from './extHostChatAgents2.js';
+// import { ExtHostChatAgents2 } from './extHostChatAgents2.js';
 // import { ExtHostChatStatus } from './extHostChatStatus.js';
 import { ExtHostClipboard } from './extHostClipboard.js';
 import { ExtHostEditorInsets } from './extHostCodeInsets.js';
@@ -63,7 +63,7 @@ import { IExtHostInitDataService } from './extHostInitDataService.js';
 import { ExtHostInteractive } from './extHostInteractive.js';
 import { ExtHostLabelService } from './extHostLabelService.js';
 import { ExtHostLanguageFeatures } from './extHostLanguageFeatures.js';
-import { ExtHostLanguageModelTools } from './extHostLanguageModelTools.js';
+// import { ExtHostLanguageModelTools } from './extHostLanguageModelTools.js';
 import { IExtHostLanguageModels } from './extHostLanguageModels.js';
 import { ExtHostLanguages } from './extHostLanguages.js';
 import { IExtHostLocalizationService } from './extHostLocalizationService.js';
@@ -217,8 +217,8 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 	const extHostUriOpeners = rpcProtocol.set(ExtHostContext.ExtHostUriOpeners, new ExtHostUriOpeners(rpcProtocol));
 	const extHostProfileContentHandlers = rpcProtocol.set(ExtHostContext.ExtHostProfileContentHandlers, new ExtHostProfileContentHandlers(rpcProtocol));
 	rpcProtocol.set(ExtHostContext.ExtHostInteractive, new ExtHostInteractive(rpcProtocol, extHostNotebook, extHostDocumentsAndEditors, extHostCommands, extHostLogService));
-	const extHostLanguageModelTools = rpcProtocol.set(ExtHostContext.ExtHostLanguageModelTools, new ExtHostLanguageModelTools(rpcProtocol, extHostLanguageModels));
-	const extHostChatAgents2 = rpcProtocol.set(ExtHostContext.ExtHostChatAgents2, new ExtHostChatAgents2(rpcProtocol, extHostLogService, extHostCommands, extHostDocuments, extHostLanguageModels, extHostDiagnostics, extHostLanguageModelTools));
+	// const extHostLanguageModelTools = rpcProtocol.set(ExtHostContext.ExtHostLanguageModelTools, new ExtHostLanguageModelTools(rpcProtocol, extHostLanguageModels));
+	// const extHostChatAgents2 = rpcProtocol.set(ExtHostContext.ExtHostChatAgents2, new ExtHostChatAgents2(rpcProtocol, extHostLogService, extHostCommands, extHostDocuments, extHostLanguageModels, extHostDiagnostics, extHostLanguageModelTools));
 	// const extHostAiRelatedInformation = rpcProtocol.set(ExtHostContext.ExtHostAiRelatedInformation, new ExtHostRelatedInformation(rpcProtocol));
 	// const extHostAiEmbeddingVector = rpcProtocol.set(ExtHostContext.ExtHostAiEmbeddingVector, new ExtHostAiEmbeddingVector(rpcProtocol));
 	// const extHostAiSettingsSearch = rpcProtocol.set(ExtHostContext.ExtHostAiSettingsSearch, new ExtHostAiSettingsSearch(rpcProtocol));
@@ -1450,37 +1450,37 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 		// 	// }
 		// };
 
-		// namespace: chatregisterMcpServerDefinitionProvider
-		const chat: typeof vscode.chat = {
-			// registerMappedEditsProvider(_selector: vscode.DocumentSelector, _provider: vscode.MappedEditsProvider) {
-			// 	checkProposedApiEnabled(extension, 'mappedEditsProvider');
-			// 	// no longer supported
-			// 	return { dispose() { } };
-			// },
-			// registerMappedEditsProvider2(provider: vscode.MappedEditsProvider2) {
-			// 	checkProposedApiEnabled(extension, 'mappedEditsProvider');
-			// 	return extHostCodeMapper.registerMappedEditsProvider(extension, provider);
-			// },
-			// createChatParticipant(id: string, handler: vscode.ChatExtendedRequestHandler) {
-			// 	return extHostChatAgents2.createChatAgent(extension, id, handler);
-			// },
-			// createDynamicChatParticipant(id: string, dynamicProps: vscode.DynamicChatParticipantProps, handler: vscode.ChatExtendedRequestHandler): vscode.ChatParticipant {
-			// 	checkProposedApiEnabled(extension, 'chatParticipantPrivate');
-			// 	return extHostChatAgents2.createDynamicChatAgent(extension, id, dynamicProps, handler);
-			// },
-			registerChatParticipantDetectionProvider(provider: vscode.ChatParticipantDetectionProvider) {
-				checkProposedApiEnabled(extension, 'chatParticipantPrivate');
-				return extHostChatAgents2.registerChatParticipantDetectionProvider(extension, provider);
-			},
-			// registerRelatedFilesProvider(provider: vscode.ChatRelatedFilesProvider, metadata: vscode.ChatRelatedFilesProviderMetadata) {
-			// 	checkProposedApiEnabled(extension, 'chatEditing');
-			// 	return extHostChatAgents2.registerRelatedFilesProvider(extension, provider, metadata);
-			// },
-			// onDidDisposeChatSession: (listeners, thisArgs?, disposables?) => {
-			// 	checkProposedApiEnabled(extension, 'chatParticipantPrivate');
-			// 	return _asExtensionEvent(extHostChatAgents2.onDidDisposeChatSession)(listeners, thisArgs, disposables);
-			// }
-		};
+		// // namespace: chatregisterMcpServerDefinitionProvider
+		// const chat: typeof vscode.chat = {
+		// 	// registerMappedEditsProvider(_selector: vscode.DocumentSelector, _provider: vscode.MappedEditsProvider) {
+		// 	// 	checkProposedApiEnabled(extension, 'mappedEditsProvider');
+		// 	// 	// no longer supported
+		// 	// 	return { dispose() { } };
+		// 	// },
+		// 	// registerMappedEditsProvider2(provider: vscode.MappedEditsProvider2) {
+		// 	// 	checkProposedApiEnabled(extension, 'mappedEditsProvider');
+		// 	// 	return extHostCodeMapper.registerMappedEditsProvider(extension, provider);
+		// 	// },
+		// 	// createChatParticipant(id: string, handler: vscode.ChatExtendedRequestHandler) {
+		// 	// 	return extHostChatAgents2.createChatAgent(extension, id, handler);
+		// 	// },
+		// 	// createDynamicChatParticipant(id: string, dynamicProps: vscode.DynamicChatParticipantProps, handler: vscode.ChatExtendedRequestHandler): vscode.ChatParticipant {
+		// 	// 	checkProposedApiEnabled(extension, 'chatParticipantPrivate');
+		// 	// 	return extHostChatAgents2.createDynamicChatAgent(extension, id, dynamicProps, handler);
+		// 	// },
+		// 	// registerChatParticipantDetectionProvider(provider: vscode.ChatParticipantDetectionProvider) {
+		// 	// 	checkProposedApiEnabled(extension, 'chatParticipantPrivate');
+		// 	// 	return extHostChatAgents2.registerChatParticipantDetectionProvider(extension, provider);
+		// 	// },
+		// 	// registerRelatedFilesProvider(provider: vscode.ChatRelatedFilesProvider, metadata: vscode.ChatRelatedFilesProviderMetadata) {
+		// 	// 	checkProposedApiEnabled(extension, 'chatEditing');
+		// 	// 	return extHostChatAgents2.registerRelatedFilesProvider(extension, provider, metadata);
+		// 	// },
+		// 	// onDidDisposeChatSession: (listeners, thisArgs?, disposables?) => {
+		// 	// 	checkProposedApiEnabled(extension, 'chatParticipantPrivate');
+		// 	// 	return _asExtensionEvent(extHostChatAgents2.onDidDisposeChatSession)(listeners, thisArgs, disposables);
+		// 	// }
+		// };
 
 		// // namespace: lm
 		// const lm: typeof vscode.lm = {
@@ -1551,7 +1551,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 			authentication,
 			commands,
 			comments,
-			chat,
+			// chat,
 			debug,
 			env,
 			extensions,

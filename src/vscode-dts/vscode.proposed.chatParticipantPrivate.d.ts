@@ -245,11 +245,11 @@ declare module 'vscode' {
 		provideParticipantDetection(chatRequest: ChatRequest, context: ChatContext, options: { participants?: ChatParticipantMetadata[]; location: ChatLocation }, token: CancellationToken): ProviderResult<ChatParticipantDetectionResult>;
 	}
 
-	export namespace chat {
-		export function registerChatParticipantDetectionProvider(participantDetectionProvider: ChatParticipantDetectionProvider): Disposable;
+	// export namespace chat {
+	// 	export function registerChatParticipantDetectionProvider(participantDetectionProvider: ChatParticipantDetectionProvider): Disposable;
 
-		// export const onDidDisposeChatSession: Event<string>;
-	}
+	// 	// export const onDidDisposeChatSession: Event<string>;
+	// }
 
 	// #endregion
 
