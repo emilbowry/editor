@@ -239,7 +239,7 @@ declare module 'vscode' {
 
 	export namespace lm {
 
-		export function registerChatModelProvider(id: string, provider: LanguageModelChatProvider, metadata: ChatResponseProviderMetadata): Disposable;
+		// export function registerChatModelProvider(id: string, provider: LanguageModelChatProvider, metadata: ChatResponseProviderMetadata): Disposable;
 	}
 
 }

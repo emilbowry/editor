@@ -20354,7 +20354,7 @@ declare module 'vscode' {
 		/**
 		 * An event that is fired when the set of available chat models changes.
 		 */
-		export const onDidChangeChatModels: Event<void>;
+		// export const onDidChangeChatModels: Event<void>;
 
 		/**
 		 * Select chat models by a {@link LanguageModelChatSelector selector}. This can yield multiple or no chat models and

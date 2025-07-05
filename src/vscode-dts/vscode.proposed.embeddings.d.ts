@@ -14,9 +14,9 @@ declare module 'vscode' {
 	// TODO@API strictly not the right namespace...
 	export namespace lm {
 
-		export const embeddingModels: string[];
+		// export const embeddingModels: string[];
 
-		export const onDidChangeEmbeddingModels: Event<void>;
+		// export const onDidChangeEmbeddingModels: Event<void>;
 
 		export function computeEmbeddings(embeddingsModel: string, input: string, token?: CancellationToken): Thenable<Embedding>;
 
@@ -28,6 +28,6 @@ declare module 'vscode' {
 	}
 
 	export namespace lm {
-		export function registerEmbeddingsProvider(embeddingsModel: string, provider: EmbeddingsProvider): Disposable;
+		// export function registerEmbeddingsProvider(embeddingsModel: string, provider: EmbeddingsProvider): Disposable;
 	}
 }

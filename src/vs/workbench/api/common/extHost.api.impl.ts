@@ -1487,26 +1487,26 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 			// selectChatModels: (selector) => {
 			// 	return extHostLanguageModels.selectLanguageModels(extension, selector ?? {});
 			// },
-			onDidChangeChatModels: (listener, thisArgs?, disposables?) => {
-				return extHostLanguageModels.onDidChangeProviders(listener, thisArgs, disposables);
-			},
-			registerChatModelProvider: (id, provider, metadata) => {
-				checkProposedApiEnabled(extension, 'chatProvider');
-				return extHostLanguageModels.registerLanguageModel(extension, id, provider, metadata);
-			},
+			// onDidChangeChatModels: (listener, thisArgs?, disposables?) => {
+			// 	return extHostLanguageModels.onDidChangeProviders(listener, thisArgs, disposables);
+			// },
+			// registerChatModelProvider: (id, provider, metadata) => {
+			// 	checkProposedApiEnabled(extension, 'chatProvider');
+			// 	return extHostLanguageModels.registerLanguageModel(extension, id, provider, metadata);
+			// },
 			// --- embeddings
-			get embeddingModels() {
-				checkProposedApiEnabled(extension, 'embeddings');
-				return extHostEmbeddings.embeddingsModels;
-			},
-			onDidChangeEmbeddingModels: (listener, thisArgs?, disposables?) => {
-				checkProposedApiEnabled(extension, 'embeddings');
-				return extHostEmbeddings.onDidChange(listener, thisArgs, disposables);
-			},
-			registerEmbeddingsProvider(embeddingsModel, provider) {
-				checkProposedApiEnabled(extension, 'embeddings');
-				return extHostEmbeddings.registerEmbeddingsProvider(extension, embeddingsModel, provider);
-			},
+			// get embeddingModels() {
+			// 	checkProposedApiEnabled(extension, 'embeddings');
+			// 	return extHostEmbeddings.embeddingsModels;
+			// },
+			// onDidChangeEmbeddingModels: (listener, thisArgs?, disposables?) => {
+			// 	checkProposedApiEnabled(extension, 'embeddings');
+			// 	return extHostEmbeddings.onDidChange(listener, thisArgs, disposables);
+			// },
+			// registerEmbeddingsProvider(embeddingsModel, provider) {
+			// 	checkProposedApiEnabled(extension, 'embeddings');
+			// 	return extHostEmbeddings.registerEmbeddingsProvider(extension, embeddingsModel, provider);
+			// },
 			async computeEmbeddings(embeddingsModel, input, token?): Promise<any> {
 				checkProposedApiEnabled(extension, 'embeddings');
 				if (typeof input === 'string') {
