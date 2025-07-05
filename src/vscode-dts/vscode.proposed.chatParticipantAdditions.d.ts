@@ -309,12 +309,12 @@ declare module 'vscode' {
 		};
 	}
 
-	export namespace chat {
-		/**
-		 * Create a chat participant with the extended progress type
-		 */
-		export function createChatParticipant(id: string, handler: ChatExtendedRequestHandler): ChatParticipant;
-	}
+	// export namespace chat {
+	// 	/**
+	// 	 * Create a chat participant with the extended progress type
+	// 	 */
+	// 	// export function createChatParticipant(id: string, handler: ChatExtendedRequestHandler): ChatParticipant;
+	// }
 
 	/*
 	 * User action events
