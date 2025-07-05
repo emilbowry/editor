@@ -150,7 +150,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 	const extHostProgress = accessor.get(IExtHostProgress);
 	const extHostAuthentication = accessor.get(IExtHostAuthentication);
 	const extHostLanguageModels = accessor.get(IExtHostLanguageModels);
-	const extHostMcp = accessor.get(IExtHostMpcService);
+	// const extHostMcp = accessor.get(IExtHostMpcService);
 
 	// register addressable instances
 	rpcProtocol.set(ExtHostContext.ExtHostFileSystemInfo, extHostFileSystemInfo);
@@ -1515,24 +1515,24 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 					return extHostEmbeddings.computeEmbeddings(embeddingsModel, input, token);
 				}
 			},
-			registerTool<T>(name: string, tool: vscode.LanguageModelTool<T>) {
-				return extHostLanguageModelTools.registerTool(extension, name, tool);
-			},
-			invokeTool<T>(name: string, parameters: vscode.LanguageModelToolInvocationOptions<T>, token?: vscode.CancellationToken) {
-				return extHostLanguageModelTools.invokeTool(extension, name, parameters, token);
-			},
-			get tools() {
-				return extHostLanguageModelTools.getTools(extension);
-			},
-			fileIsIgnored(uri: vscode.Uri, token?: vscode.CancellationToken) {
-				return extHostLanguageModels.fileIsIgnored(extension, uri, token);
-			},
-			registerIgnoredFileProvider(provider: vscode.LanguageModelIgnoredFileProvider) {
-				return extHostLanguageModels.registerIgnoredFileProvider(extension, provider);
-			},
-			registerMcpServerDefinitionProvider(id, provider) {
-				return extHostMcp.registerMcpConfigurationProvider(extension, id, provider);
-			}
+			// registerTool<T>(name: string, tool: vscode.LanguageModelTool<T>) {
+			// 	return extHostLanguageModelTools.registerTool(extension, name, tool);
+			// },
+			// invokeTool<T>(name: string, parameters: vscode.LanguageModelToolInvocationOptions<T>, token?: vscode.CancellationToken) {
+			// 	return extHostLanguageModelTools.invokeTool(extension, name, parameters, token);
+			// },
+			// get tools() {
+			// 	return extHostLanguageModelTools.getTools(extension);
+			// },
+			// fileIsIgnored(uri: vscode.Uri, token?: vscode.CancellationToken) {
+			// 	return extHostLanguageModels.fileIsIgnored(extension, uri, token);
+			// },
+			// registerIgnoredFileProvider(provider: vscode.LanguageModelIgnoredFileProvider) {
+			// 	return extHostLanguageModels.registerIgnoredFileProvider(extension, provider);
+			// },
+			// registerMcpServerDefinitionProvider(id, provider) {
+			// 	return extHostMcp.registerMcpConfigurationProvider(extension, id, provider);
+			// }
 		};
 
 		// // namespace: speech

@@ -423,9 +423,9 @@ declare module 'vscode' {
 		readonly unhelpfulReason?: string;
 	}
 
-	export namespace lm {
-		export function fileIsIgnored(uri: Uri, token?: CancellationToken): Thenable<boolean>;
-	}
+	// export namespace lm {
+	// 	export function fileIsIgnored(uri: Uri, token?: CancellationToken): Thenable<boolean>;
+	// }
 
 	export interface ChatVariableValue {
 		/**

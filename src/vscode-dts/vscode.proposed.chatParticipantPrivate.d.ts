@@ -175,9 +175,9 @@ declare module 'vscode' {
 		fullName?: string;
 	}
 
-	export namespace lm {
-		export function registerIgnoredFileProvider(provider: LanguageModelIgnoredFileProvider): Disposable;
-	}
+	// export namespace lm {
+	// 	// export function registerIgnoredFileProvider(provider: LanguageModelIgnoredFileProvider): Disposable;
+	// }
 
 	export interface LanguageModelIgnoredFileProvider {
 		provideFileIgnored(uri: Uri, token: CancellationToken): ProviderResult<boolean>;

@@ -27,7 +27,7 @@ declare module 'vscode' {
 		provideEmbeddings(input: string[], token: CancellationToken): ProviderResult<Embedding[]>;
 	}
 
-	export namespace lm {
-		// export function registerEmbeddingsProvider(embeddingsModel: string, provider: EmbeddingsProvider): Disposable;
-	}
+	// export namespace lm {
+	// 	// export function registerEmbeddingsProvider(embeddingsModel: string, provider: EmbeddingsProvider): Disposable;
+	// }
 }
