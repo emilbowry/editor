@@ -92,11 +92,11 @@ declare module 'vscode' {
 	 * Interface for providing mapped edits for a given document.
 	 */
 	export interface MappedEditsProvider2 {
-		provideMappedEdits(
-			request: MappedEditsRequest,
-			result: MappedEditsResponseStream,
-			token: CancellationToken
-		): ProviderResult<MappedEditsResult>;
+		// provideMappedEdits(
+		// 	request: MappedEditsRequest,
+		// 	result: MappedEditsResponseStream,
+		// 	token: CancellationToken
+		// ): ProviderResult<MappedEditsResult>;
 	}
 
 	namespace chat {
