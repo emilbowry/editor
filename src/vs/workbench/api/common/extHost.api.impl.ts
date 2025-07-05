@@ -53,7 +53,7 @@ import { ExtHostDocuments } from './extHostDocuments.js';
 import { IExtHostDocumentsAndEditors } from './extHostDocumentsAndEditors.js';
 import { IExtHostEditorTabs } from './extHostEditorTabs.js';
 import { ExtHostEmbeddings } from './extHostEmbedding.js';
-import { ExtHostAiEmbeddingVector } from './extHostEmbeddingVector.js';
+// import { ExtHostAiEmbeddingVector } from './extHostEmbeddingVector.js';
 import { Extension, IExtHostExtensionService } from './extHostExtensionService.js';
 import { ExtHostFileSystem } from './extHostFileSystem.js';
 import { IExtHostConsumerFileSystem } from './extHostFileSystemConsumer.js';
@@ -220,7 +220,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 	const extHostLanguageModelTools = rpcProtocol.set(ExtHostContext.ExtHostLanguageModelTools, new ExtHostLanguageModelTools(rpcProtocol, extHostLanguageModels));
 	const extHostChatAgents2 = rpcProtocol.set(ExtHostContext.ExtHostChatAgents2, new ExtHostChatAgents2(rpcProtocol, extHostLogService, extHostCommands, extHostDocuments, extHostLanguageModels, extHostDiagnostics, extHostLanguageModelTools));
 	// const extHostAiRelatedInformation = rpcProtocol.set(ExtHostContext.ExtHostAiRelatedInformation, new ExtHostRelatedInformation(rpcProtocol));
-	const extHostAiEmbeddingVector = rpcProtocol.set(ExtHostContext.ExtHostAiEmbeddingVector, new ExtHostAiEmbeddingVector(rpcProtocol));
+	// const extHostAiEmbeddingVector = rpcProtocol.set(ExtHostContext.ExtHostAiEmbeddingVector, new ExtHostAiEmbeddingVector(rpcProtocol));
 	// const extHostAiSettingsSearch = rpcProtocol.set(ExtHostContext.ExtHostAiSettingsSearch, new ExtHostAiSettingsSearch(rpcProtocol));
 	const extHostStatusBar = rpcProtocol.set(ExtHostContext.ExtHostStatusBar, new ExtHostStatusBar(rpcProtocol, extHostCommands.converter));
 	// const extHostSpeech = rpcProtocol.set(ExtHostContext.ExtHostSpeech, new ExtHostSpeech(rpcProtocol));
@@ -1431,24 +1431,24 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 		// };
 
 		// namespace: ai
-		const ai: typeof vscode.ai = {
-			// getRelatedInformation(query: string, types: vscode.RelatedInformationType[]): Thenable<vscode.RelatedInformationResult[]> {
-			// 	checkProposedApiEnabled(extension, 'aiRelatedInformation');
-			// 	return extHostAiRelatedInformation.getRelatedInformation(extension, query, types);
-			// },
-			// registerRelatedInformationProvider(type: vscode.RelatedInformationType, provider: vscode.RelatedInformationProvider) {
-			// 	checkProposedApiEnabled(extension, 'aiRelatedInformation');
-			// 	return extHostAiRelatedInformation.registerRelatedInformationProvider(extension, type, provider);
-			// },
-			registerEmbeddingVectorProvider(model: string, provider: vscode.EmbeddingVectorProvider) {
-				checkProposedApiEnabled(extension, 'aiRelatedInformation');
-				return extHostAiEmbeddingVector.registerEmbeddingVectorProvider(extension, model, provider);
-			},
-			// registerSettingsSearchProvider(provider: vscode.SettingsSearchProvider) {
-			// 	checkProposedApiEnabled(extension, 'aiSettingsSearch');
-			// 	return extHostAiSettingsSearch.registerSettingsSearchProvider(extension, provider);
-			// }
-		};
+		// const ai: typeof vscode.ai = {
+		// 	// getRelatedInformation(query: string, types: vscode.RelatedInformationType[]): Thenable<vscode.RelatedInformationResult[]> {
+		// 	// 	checkProposedApiEnabled(extension, 'aiRelatedInformation');
+		// 	// 	return extHostAiRelatedInformation.getRelatedInformation(extension, query, types);
+		// 	// },
+		// 	// registerRelatedInformationProvider(type: vscode.RelatedInformationType, provider: vscode.RelatedInformationProvider) {
+		// 	// 	checkProposedApiEnabled(extension, 'aiRelatedInformation');
+		// 	// 	return extHostAiRelatedInformation.registerRelatedInformationProvider(extension, type, provider);
+		// 	// },
+		// 	// registerEmbeddingVectorProvider(model: string, provider: vscode.EmbeddingVectorProvider) {
+		// 	// 	checkProposedApiEnabled(extension, 'aiRelatedInformation');
+		// 	// 	return extHostAiEmbeddingVector.registerEmbeddingVectorProvider(extension, model, provider);
+		// 	// },
+		// 	// registerSettingsSearchProvider(provider: vscode.SettingsSearchProvider) {
+		// 	// 	checkProposedApiEnabled(extension, 'aiSettingsSearch');
+		// 	// 	return extHostAiSettingsSearch.registerSettingsSearchProvider(extension, provider);
+		// 	// }
+		// };
 
 		// namespace: chatregisterMcpServerDefinitionProvider
 		const chat: typeof vscode.chat = {
@@ -1547,7 +1547,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 		return <typeof vscode>{
 			version: initData.version,
 			// namespaces
-			ai,
+			// ai,
 			authentication,
 			commands,
 			comments,
