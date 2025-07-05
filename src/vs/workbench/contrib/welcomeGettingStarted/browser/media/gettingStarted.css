@@ -30,7 +30,19 @@
 	object-fit: contain;
 	pointer-events: none;
 }
+/* In media/gettingStarted.css */
 
+.notebook-preview-container {
+	margin-top: 20px;
+	padding: 10px 15px;
+	border: 1px solid var(--vscode-notebook-cellBorderColor, var(--vscode-contrastBorder));
+	border-radius: 4px;
+	background-color: var(--vscode-notebook-cellEditorBackground, var(--vscode-editor-background));
+}
+
+.notebook-preview-container h3 {
+    margin-top: 0;
+}
 .monaco-workbench .part.editor > .content .gettingStartedContainer {
 	font-size: 13px;
 }

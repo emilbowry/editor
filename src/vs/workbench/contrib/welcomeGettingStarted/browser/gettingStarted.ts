@@ -75,8 +75,9 @@ import { AccessibilityVerbositySettingId } from '../../accessibility/browser/acc
 import { AccessibleViewAction } from '../../accessibility/browser/accessibleViewActions.js';
 import { KeybindingLabel } from '../../../../base/browser/ui/keybindingLabel/keybindingLabel.js';
 import { ScrollbarVisibility } from '../../../../base/common/scrollable.js';
-// import { IGettingStartedExperimentService } from './gettingStartedExpService.js';
-// new
+import { FileAccess } from '../../../../base/common/network.js';
+
+
 import { IPathService } from '../../../services/path/common/pathService.js';
 const SLIDE_TRANSITION_TIME_MS = 250;
 const configurationKey = 'workbench.startupEditor';
@@ -904,7 +905,43 @@ export class GettingStartedPage extends EditorPane {
 		// 		showOnStartupCheckbox.domNode,
 		// 		showOnStartupLabel,
 		// 	));
+		// Create the footer element which will contain our markdown
 
+		const footer = $('.footer', {});
+
+		const mdRenderer = this.instantiationService.createInstance(MarkdownRenderer, {});
+
+		// Asynchronously load the markdown file and render it.
+		(async () => {
+			try {
+				// 1. Create a URI to the file using the FileAccess helper.
+				//    This correctly resolves the path for the running application.
+				// const markdownURI = URI.parse('./defaultMessage.md');
+				const markdownURI = FileAccess.asFileUri('vs/workbench/contrib/welcomeGettingStarted/browser/defaultMessage.md');
+				// const markdownUri = FileAccess.asFileUri('vs/workbench/contrib/welcome/gettingStarted/browser/defaultMessage.md');
+
+				// 2. Use the injected file service to read the file's content.
+				const fileContent = await this.fileService.readFile(markdownURI);
+				const defaultMessageMarkdown = fileContent.value.toString();
+
+				// 3. Render the loaded content.
+				const renderedContents = this.categoriesSlideDisposables.add(mdRenderer.render({ value: defaultMessageMarkdown, isTrusted: true }));
+				footer.append(renderedContents.element);
+
+			} catch (error) {
+				console.error('Error loading defaultMessage.md:', error);
+				// Optional: Render a fallback message on error
+				const fallbackMarkdown = '### Error\n\nCould not load scratchpad content.';
+				const renderedContents = this.categoriesSlideDisposables.add(mdRenderer.render({ value: fallbackMarkdown, isTrusted: true }));
+				footer.append(renderedContents.element);
+			}
+		})();
+		// Instantiate a markdown renderer
+		// const mdRenderer = this.instantiationService.createInstance(MarkdownRenderer, {});
+		// Render the markdown and add it to the disposables store to be cleaned up properly
+		// const renderedContents = this.categoriesSlideDisposables.add(mdRenderer.render({ value: defaultMessageMarkdown, isTrusted: true }));
+		// Append the rendered markdown to our footer element
+		// footer.append(renderedContents.element);
 		const layoutLists = () => {
 			// if (gettingStartedList.itemCount) {
 			// 	this.container.classList.remove('noWalkthroughs');
@@ -937,8 +974,8 @@ export class GettingStartedPage extends EditorPane {
 		// gettingStartedList.onDidChange(layoutLists);
 		layoutLists();
 
-		reset(this.categoriesSlide, $('.gettingStartedCategoriesContainer', {}, header, leftColumn, rightColumn,));
-
+		// reset(this.categoriesSlide, $('.gettingStartedCategoriesContainer', {}, header, leftColumn, rightColumn,));
+		reset(this.categoriesSlide, $('.gettingStartedCategoriesContainer', {}, header, leftColumn, rightColumn, footer));
 		this.categoriesPageScrollbar?.scanDomNode();
 
 		this.updateCategoryProgress();
