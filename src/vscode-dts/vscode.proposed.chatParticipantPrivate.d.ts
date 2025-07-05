@@ -161,9 +161,9 @@ declare module 'vscode' {
 		level?: ChatErrorLevel;
 	}
 
-	export namespace chat {
-		export function createDynamicChatParticipant(id: string, dynamicProps: DynamicChatParticipantProps, handler: ChatExtendedRequestHandler): ChatParticipant;
-	}
+	// export namespace chat {
+	// 	export function createDynamicChatParticipant(id: string, dynamicProps: DynamicChatParticipantProps, handler: ChatExtendedRequestHandler): ChatParticipant;
+	// }
 
 	/**
 	 * These don't get set on the ChatParticipant after creation, like other props, because they are typically defined in package.json and we want them at the time of creation.
