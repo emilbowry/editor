@@ -20,7 +20,6 @@ import { NotebookPriorityInfo } from '../../search/common/search.js';
 import { INotebookFileMatchNoModel } from '../../search/common/searchNotebookHelpers.js';
 import { SnapshotContext } from '../../../services/workingCopy/common/fileWorkingCopy.js';
 
-
 export const INotebookService = createDecorator<INotebookService>('notebookService');
 
 export interface INotebookContentProvider {

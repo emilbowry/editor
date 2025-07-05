@@ -340,7 +340,6 @@ export class MarkNavigationAddon extends Disposable implements IMarkTracker, ITe
 		}
 	}
 
-
 	private _scrollState: { viewportY: number } | undefined;
 
 	saveScrollState(): void {

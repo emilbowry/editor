@@ -72,7 +72,6 @@ export class ConfigureLanguageBasedSettingsAction extends Action {
 	}
 }
 
-// Register a command that gets all settings
 CommandsRegistry.registerCommand({
 	id: '_getAllSettings',
 	handler: () => {

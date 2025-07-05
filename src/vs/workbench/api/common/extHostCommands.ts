@@ -120,7 +120,6 @@ export class ExtHostCommands implements ExtHostCommandsShape {
 
 	registerApiCommand(apiCommand: ApiCommand): extHostTypes.Disposable {
 
-
 		const registration = this.registerCommand(false, apiCommand.id, async (...apiArgs) => {
 
 			const internalArgs = apiCommand.args.map((arg, i) => {
@@ -390,7 +389,6 @@ export class CommandsConverter implements extHostTypeConverter.Command.ICommands
 			result.id = apiCommand.internalId;
 			result.arguments = apiCommand.args.map((arg, i) => arg.convert(command.arguments && command.arguments[i]));
 
-
 		} else if (isNonEmptyArray(command.arguments)) {
 			// we have a contributed command with arguments. that
 			// means we don't want to send the arguments around
@@ -426,7 +424,6 @@ export class CommandsConverter implements extHostTypeConverter.Command.ICommands
 		}
 	}
 
-
 	getActualCommand(...args: any[]): vscode.Command | undefined {
 		return this._cache.get(args[0]);
 	}
@@ -442,7 +439,6 @@ export class CommandsConverter implements extHostTypeConverter.Command.ICommands
 	}
 
 }
-
 
 export class ApiCommandArgument<V, O = V> {
 

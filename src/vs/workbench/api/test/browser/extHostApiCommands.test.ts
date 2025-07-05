@@ -302,7 +302,6 @@ suite('ExtHostLanguageFeatureCommands', function () {
 		assert.strictEqual(edits.length, 1);
 	});
 
-
 	// --- rename
 	test('vscode.prepareRename', async function () {
 		disposables.push(extHost.registerRenameProvider(nullExtensionDescription, defaultSelector, new class implements vscode.RenameProvider {
@@ -400,7 +399,6 @@ suite('ExtHostLanguageFeatureCommands', function () {
 			});
 		});
 	});
-
 
 	test('Definition, back and forth (sorting & de-deduping)', function () {
 
@@ -706,7 +704,6 @@ suite('ExtHostLanguageFeatureCommands', function () {
 
 	test('"vscode.executeDocumentHighlights" API has stopped returning DocumentHighlight[]#200056', async function () {
 
-
 		disposables.push(extHost.registerDocumentHighlightProvider(nullExtensionDescription, defaultSelector, <vscode.DocumentHighlightProvider>{
 			provideDocumentHighlights() {
 				return [
@@ -882,7 +879,6 @@ suite('ExtHostLanguageFeatureCommands', function () {
 
 	testApiCmd('Suggest, resolve completion items', async function () {
 
-
 		let resolveCount = 0;
 
 		disposables.push(extHost.registerCompletionItemProvider(nullExtensionDescription, defaultSelector, <vscode.CompletionItemProvider>{
@@ -915,8 +911,6 @@ suite('ExtHostLanguageFeatureCommands', function () {
 	});
 
 	testApiCmd('"vscode.executeCompletionItemProvider" doesnot return a preselect field #53749', async function () {
-
-
 
 		disposables.push(extHost.registerCompletionItemProvider(nullExtensionDescription, defaultSelector, <vscode.CompletionItemProvider>{
 			provideCompletionItems(): any {
@@ -1293,7 +1287,6 @@ suite('ExtHostLanguageFeatureCommands', function () {
 		assert.strictEqual(links1[0].tooltip, 'Link Tooltip');
 	});
 
-
 	test('Color provider', function () {
 
 		disposables.push(extHost.registerColorProvider(nullExtensionDescription, defaultSelector, <vscode.DocumentColorProvider>{
@@ -1537,7 +1530,6 @@ suite('ExtHostLanguageFeatureCommands', function () {
 	// --- type hierarchy
 
 	test('TypeHierarchy, back and forth', async function () {
-
 
 		disposables.push(extHost.registerTypeHierarchyProvider(nullExtensionDescription, defaultSelector, new class implements vscode.TypeHierarchyProvider {
 			prepareTypeHierarchy(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken): vscode.ProviderResult<vscode.TypeHierarchyItem[]> {

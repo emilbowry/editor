@@ -239,7 +239,6 @@ export class ExtHostTesting extends Disposable implements ExtHostTestingShape {
 		return this.observer.checkout();
 	}
 
-
 	/**
 	 * Implements vscode.test.runTests
 	 */
@@ -590,7 +589,6 @@ export class ExtHostTesting extends Disposable implements ExtHostTestingShape {
 	}
 }
 
-// Deadline after being requested by a user that a test run is forcibly cancelled.
 const RUN_CANCEL_DEADLINE = 10_000;
 
 const enum TestRunTrackerState {

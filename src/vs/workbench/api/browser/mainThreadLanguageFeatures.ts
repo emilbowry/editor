@@ -1035,7 +1035,6 @@ export class MainThreadLanguageFeatures extends Disposable implements MainThread
 		}));
 	}
 
-
 	// --- document drop Edits
 
 	private readonly _documentOnDropEditProviders = new Map<number, MainThreadDocumentOnDropEditProvider>();

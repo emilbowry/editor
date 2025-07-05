@@ -34,7 +34,6 @@ import { IWorkbenchContribution, IWorkbenchContributionsRegistry, Extensions as 
 import { INotebookService } from '../../../common/notebookService.js';
 import { CodeActionParticipantUtils } from '../saveParticipants/saveParticipants.js';
 
-// format notebook
 registerAction2(class extends Action2 {
 	constructor() {
 		super({
@@ -113,7 +112,6 @@ registerAction2(class extends Action2 {
 	}
 });
 
-// format cell
 registerEditorAction(class FormatCellAction extends EditorAction {
 	constructor() {
 		super({

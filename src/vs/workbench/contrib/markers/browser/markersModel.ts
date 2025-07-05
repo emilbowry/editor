@@ -34,7 +34,6 @@ function compareResourceMarkers(a: ResourceMarkers, b: ResourceMarkers): number 
 	return res;
 }
 
-
 export class ResourceMarkers {
 
 	readonly path: string;

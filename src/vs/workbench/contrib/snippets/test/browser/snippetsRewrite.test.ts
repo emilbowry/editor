@@ -29,7 +29,6 @@ suite('SnippetRewrite', function () {
 		assertRewrite('$foo and $foo', '${1:foo} and ${1:foo}');
 		assertRewrite('$1 and $SELECTION and $foo', '$1 and ${SELECTION} and ${2:foo}');
 
-
 		assertRewrite(
 			[
 				'for (var ${index} = 0; ${index} < ${array}.length; ${index}++) {',

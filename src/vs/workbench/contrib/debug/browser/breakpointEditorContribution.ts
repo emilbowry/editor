@@ -377,7 +377,6 @@ export class BreakpointEditorContribution implements IBreakpointEditorContributi
 			}));
 		}
 
-
 		this.toDispose.push(this.editor.onDidChangeModel(async () => {
 			this.closeBreakpointWidget();
 			await this.setDecorations();

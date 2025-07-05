@@ -103,7 +103,6 @@ class DocumentSymbolBreadcrumbsSource implements IBreadcrumbsDataSource<Document
 	}
 }
 
-
 class DocumentSymbolsOutline implements IOutline<DocumentSymbolItem> {
 
 	private readonly _disposables = new DisposableStore();
@@ -182,7 +181,6 @@ class DocumentSymbolsOutline implements IOutline<DocumentSymbolItem> {
 			options,
 			quickPickDataSource: { getQuickPickElements: () => { throw new Error('not implemented'); } }
 		};
-
 
 		// update as language, model, providers changes
 		this._disposables.add(_languageFeaturesService.documentSymbolProvider.onDidChange(_ => this._createOutline()));

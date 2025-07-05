@@ -38,8 +38,6 @@ import { ExtHostTelemetry, IExtHostTelemetry } from './extHostTelemetry.js';
 import * as typeConvert from './extHostTypeConverters.js';
 import { CodeAction, CodeActionKind, CompletionList, DataTransfer, Disposable, DocumentDropOrPasteEditKind, DocumentSymbol, InlineCompletionsDisposeReasonKind, InlineCompletionTriggerKind, InternalDataTransferItem, Location, NewSymbolNameTriggerKind, Range, SemanticTokens, SemanticTokensEdit, SemanticTokensEdits, SnippetString, SymbolInformation, SyntaxTokenType } from './extHostTypes.js';
 
-// --- adapter
-
 class DocumentSymbolAdapter {
 
 	constructor(
@@ -554,7 +552,6 @@ class CodeActionAdapter {
 		if (!this._provider.resolveCodeAction) {
 			return {}; // this should not happen...
 		}
-
 
 		const resolvedItem = (await this._provider.resolveCodeAction(item, token)) ?? item;
 
@@ -2113,7 +2110,6 @@ export class ExtHostLanguageFeatures implements extHostProtocol.ExtHostLanguageF
 		this._proxy = mainContext.getProxy(extHostProtocol.MainContext.MainThreadLanguageFeatures);
 	}
 
-
 	private _transformDocumentSelector(selector: vscode.DocumentSelector, extension: IExtensionDescription): Array<extHostProtocol.IDocumentFilterDto> {
 		return typeConvert.DocumentSelector.from(selector, this._uriTransformer, extension);
 	}
@@ -2387,7 +2383,6 @@ export class ExtHostLanguageFeatures implements extHostProtocol.ExtHostLanguageF
 		store.add(this._createDisposable(handle));
 		return store;
 	}
-
 
 	$provideCodeActions(handle: number, resource: UriComponents, rangeOrSelection: IRange | ISelection, context: languages.CodeActionContext, token: CancellationToken): Promise<extHostProtocol.ICodeActionListDto | undefined> {
 		return this._withAdapter(handle, CodeActionAdapter, adapter => adapter.provideCodeActions(URI.revive(resource), rangeOrSelection, context, token), undefined, token);

@@ -18,7 +18,6 @@ import { IIssueFormService, IWorkbenchIssueService } from '../common/issue.js';
 import { BaseIssueContribution } from '../common/issue.contribution.js';
 import { LifecyclePhase } from '../../../services/lifecycle/common/lifecycle.js';
 
-
 class WebIssueContribution extends BaseIssueContribution {
 	constructor(@IProductService productService: IProductService, @IConfigurationService configurationService: IConfigurationService) {
 		super(productService, configurationService);

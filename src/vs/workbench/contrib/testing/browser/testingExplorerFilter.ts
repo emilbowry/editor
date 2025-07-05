@@ -142,7 +142,6 @@ export class TestingExplorerFilter extends BaseActionViewItem {
 		));
 	}
 
-
 	/**
 	 * Focuses the filter input.
 	 */
@@ -172,7 +171,6 @@ export class TestingExplorerFilter extends BaseActionViewItem {
 		this.filtersAction.checked = this.testService.excluded.hasAny;
 	}
 }
-
 
 class FiltersDropdownMenuActionViewItem extends DropdownMenuActionViewItem {
 

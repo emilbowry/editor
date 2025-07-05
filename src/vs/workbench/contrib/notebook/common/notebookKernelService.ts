@@ -27,7 +27,6 @@ export interface INotebookKernelMatchResult {
 	readonly hidden: INotebookKernel[];
 }
 
-
 export interface INotebookKernelChangeEvent {
 	label?: true;
 	description?: true;

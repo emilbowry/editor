@@ -195,4 +195,3 @@ export const terminalSuggestConfiguration: IStringDictionary<IConfigurationPrope
 
 };
 
-

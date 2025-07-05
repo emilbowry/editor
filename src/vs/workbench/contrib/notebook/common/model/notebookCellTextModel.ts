@@ -91,7 +91,6 @@ export class NotebookCellTextModel extends Disposable implements ICell {
 			return;
 		}
 
-
 		this._hasLanguageSetExplicitly = true;
 		this._setLanguageInternal(newLanguage);
 	}
@@ -519,7 +518,6 @@ function computeRunStartTimeAdjustment(oldMetadata: NotebookCellInternalMetadata
 	}
 }
 
-
 export function getFormattedMetadataJSON(transientCellMetadata: TransientCellMetadata | undefined, metadata: NotebookCellMetadata, language?: string, sortKeys?: boolean): string {
 	let filteredMetadata: { [key: string]: any } = {};
 
@@ -549,7 +547,6 @@ export function getFormattedMetadataJSON(transientCellMetadata: TransientCellMet
 
 	return metadataSource;
 }
-
 
 /**
  * Sort the JSON to ensure when diffing, the JSON keys are sorted & matched correctly in diff view.

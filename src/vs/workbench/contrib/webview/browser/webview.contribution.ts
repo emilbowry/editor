@@ -13,7 +13,6 @@ import { IWebviewService, IWebview } from './webview.js';
 import { WebviewInput } from '../../webviewPanel/browser/webviewEditorInput.js';
 import { IEditorService } from '../../../services/editor/common/editorService.js';
 
-
 const PRIORITY = 100;
 
 function overrideCommandForWebview(command: MultiCommand | undefined, f: (webview: IWebview) => void) {

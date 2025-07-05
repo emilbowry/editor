@@ -121,8 +121,6 @@ export interface IDebugViewWithVariables extends IView {
 	readonly treeSelection: IExpression[];
 }
 
-// raw
-
 export interface IRawModelUpdate {
 	sessionId: string;
 	threads: DebugProtocol.Thread[];
@@ -140,8 +138,6 @@ export interface IRawStoppedDetails {
 	framesErrorMessage?: string;
 	hitBreakpointIds?: number[];
 }
-
-// model
 
 export interface ITreeElement {
 	getId(): string;
@@ -521,7 +517,6 @@ export interface IThread extends ITreeElement {
 	 */
 	getCallStack(): ReadonlyArray<IStackFrame>;
 
-
 	/**
 	 * Gets the top stack frame that is not hidden if the callstack has already been received from the debug adapter
 	 */
@@ -693,8 +688,6 @@ export interface IExceptionInfo {
 	readonly details?: DebugProtocol.ExceptionDetails;
 }
 
-// model interfaces
-
 export interface IViewModel extends ITreeElement {
 	/**
 	 * Returns the focused debug session or undefined if no session is stopped.
@@ -785,8 +778,6 @@ export interface IBreakpointsChangeEvent {
 	changed?: Array<IBreakpoint | IFunctionBreakpoint | IDataBreakpoint | IInstructionBreakpoint>;
 	sessionOnly: boolean;
 }
-
-// Debug configuration interfaces
 
 export interface IDebugConfiguration {
 	allowBreakpointsEverywhere: boolean;
@@ -1120,8 +1111,6 @@ export interface ILaunch {
 	openConfigFile(options: { preserveFocus: boolean; type?: string; suppressInitialConfigs?: boolean }, token?: CancellationToken): Promise<{ editor: IEditorPane | null; created: boolean }>;
 }
 
-// Debug service interfaces
-
 export const IDebugService = createDecorator<IDebugService>('debugService');
 
 export interface IDebugService {
@@ -1334,7 +1323,6 @@ export interface IDebugService {
 	runTo(uri: uri, lineNumber: number, column?: number): Promise<void>;
 }
 
-// Editor interfaces
 export const enum BreakpointWidgetContext {
 	CONDITION = 0,
 	HIT_COUNT = 1,
@@ -1383,7 +1371,6 @@ export const enum DebugVisualizationType {
 export type MainThreadDebugVisualization =
 	| { type: DebugVisualizationType.Command }
 	| { type: DebugVisualizationType.Tree; id: string };
-
 
 export const enum DebugTreeItemCollapsibleState {
 	None = 0,

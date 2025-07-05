@@ -588,7 +588,6 @@ registerAction2(class extends Action2 {
 	}
 });
 
-
 registerAction2(class extends NotebookCellAction {
 	constructor() {
 		super(

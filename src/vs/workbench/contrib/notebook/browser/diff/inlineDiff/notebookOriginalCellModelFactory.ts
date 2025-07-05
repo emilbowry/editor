@@ -11,14 +11,12 @@ import { URI } from '../../../../../../base/common/uri.js';
 import { ILanguageService } from '../../../../../../editor/common/languages/language.js';
 import { IModelService } from '../../../../../../editor/common/services/model.js';
 
-
 export const INotebookOriginalCellModelFactory = createDecorator<INotebookOriginalCellModelFactory>('INotebookOriginalCellModelFactory');
 
 export interface INotebookOriginalCellModelFactory {
 	readonly _serviceBrand: undefined;
 	getOrCreate(uri: URI, cellValue: string, language: string, cellKind: CellKind): IReference<ITextModel>;
 }
-
 
 export class OriginalNotebookCellModelReferenceCollection extends ReferenceCollection<ITextModel> {
 	constructor(@IModelService private readonly modelService: IModelService,
@@ -49,5 +47,4 @@ export class OriginalNotebookCellModelFactory implements INotebookOriginalCellMo
 		return this._data.acquire(uri.toString(), uri, cellValue, language, cellKind);
 	}
 }
-
 

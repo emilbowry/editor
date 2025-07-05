@@ -111,11 +111,9 @@
 	white-space: pre;
 }
 
-
 .review-widget .body .review-comment .review-comment-contents .author {
 	line-height: 22px;
 }
-
 
 .review-widget .body .review-comment .review-comment-contents .isPending {
 	line-height: 22px;
@@ -264,7 +262,6 @@
 	margin-left: -1px;
 	word-wrap: break-word;
 }
-
 
 .review-widget .body .comment-additional-actions {
 	margin: 10px 20px;

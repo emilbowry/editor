@@ -168,7 +168,6 @@ export interface ITaskProcessEndedDTO {
 	exitCode: number | undefined;
 }
 
-
 export interface ITaskFilterDTO {
 	version?: string;
 	type?: string;

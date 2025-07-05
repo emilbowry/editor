@@ -392,7 +392,6 @@ export class UserDataProfilesWorkbenchContribution extends Disposable implements
 		return disposables;
 	}
 
-
 	private registerCreateFromCurrentProfileAction(): void {
 		const that = this;
 		this._register(registerAction2(class CreateFromCurrentProfileAction extends Action2 {

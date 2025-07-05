@@ -46,7 +46,6 @@ function toTreeItemLabel(label: any, extension: IExtensionDescription): ITreeIte
 	return undefined;
 }
 
-
 export class ExtHostTreeViews extends Disposable implements ExtHostTreeViewsShape {
 
 	private treeViews: Map<string, ExtHostTreeView<any>> = new Map<string, ExtHostTreeView<any>>();

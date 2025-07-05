@@ -80,7 +80,6 @@ enum ViewType {
 	Webview = 'webview'
 }
 
-
 interface IUserFriendlyViewDescriptor {
 	type?: ViewType;
 
@@ -521,7 +520,6 @@ class ViewsExtensionHandler implements IWorkbenchContribution {
 						weight,
 						accessibilityHelpContent
 					};
-
 
 					viewIds.add(viewDescriptor.id);
 					viewDescriptors.push(viewDescriptor);

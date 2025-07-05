@@ -620,7 +620,6 @@ export class UserDataSyncWorkbenchContribution extends Disposable implements IWo
 			label: getSyncAreaLabel(SyncResource.Prompts)
 		}];
 
-
 		return result;
 	}
 

@@ -51,7 +51,6 @@ export class LspCompletionProviderAddon extends Disposable implements ITerminalA
 		const lineNum = this._textVirtualModel.object.textEditorModel.getLineCount();
 		const positionVirtualDocument = new Position(lineNum, column);
 
-
 		// TODO: Scan back to start of nearest word like other providers? Is this needed for `ILanguageFeaturesService`?
 		const completions: ITerminalCompletion[] = [];
 		if (this._provider && this._provider._debugDisplayName !== 'wordbasedCompletions') {

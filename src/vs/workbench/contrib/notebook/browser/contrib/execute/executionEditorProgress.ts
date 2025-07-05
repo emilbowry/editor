@@ -77,5 +77,4 @@ export class ExecutionEditorProgressController extends Disposable implements INo
 	}
 }
 
-
 registerNotebookContribution(ExecutionEditorProgressController.id, ExecutionEditorProgressController);

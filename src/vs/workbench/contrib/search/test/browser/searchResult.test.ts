@@ -483,7 +483,6 @@ suite('SearchResult', () => {
 		assert.deepStrictEqual(getFileMatchAtIndex(root2, 0).parent(), root2);
 		assert.deepStrictEqual(getFileMatchAtIndex(root2, 0).closestRoot, root2);
 
-
 		const root3DownstreamFiles = root3.allDownstreamFileMatches();
 		const root3Level3Folder = getFolderMatchAtIndex(getFolderMatchAtIndex(root3, 0), 0);
 		assert.deepStrictEqual(root3DownstreamFiles, [...root3.fileMatchesIterator(), ...getFolderMatchAtIndex(root3Level3Folder, 0).fileMatchesIterator(), ...getFolderMatchAtIndex(root3Level3Folder, 1).fileMatchesIterator()].flat());

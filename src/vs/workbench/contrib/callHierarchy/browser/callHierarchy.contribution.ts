@@ -258,7 +258,6 @@ registerAction2(class extends EditorAction2 {
 	}
 });
 
-
 registerAction2(class extends EditorAction2 {
 
 	constructor() {
@@ -277,7 +276,6 @@ registerAction2(class extends EditorAction2 {
 		return CallHierarchyController.get(editor)?.startCallHierarchyFromCallHierarchy();
 	}
 });
-
 
 registerAction2(class extends EditorAction2 {
 

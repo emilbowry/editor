@@ -314,7 +314,6 @@ class RuntimeStatusMarkdownRenderer extends Disposable implements IExtensionFeat
 	}
 }
 
-
 interface ILayoutParticipant {
 	layout(height?: number, width?: number): void;
 }

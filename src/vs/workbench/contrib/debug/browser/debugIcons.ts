@@ -47,7 +47,6 @@ export const debugBreakpointUnsupported = registerIcon('debug-breakpoint-unsuppo
 
 export const allBreakpoints = [breakpoint, functionBreakpoint, conditionalBreakpoint, dataBreakpoint, logBreakpoint];
 
-
 export const debugStackframe = registerIcon('debug-stackframe', Codicon.debugStackframe, localize('debugStackframe', 'Icon for a stackframe shown in the editor glyph margin.'));
 export const debugStackframeFocused = registerIcon('debug-stackframe-focused', Codicon.debugStackframeFocused, localize('debugStackframeFocused', 'Icon for a focused stackframe  shown in the editor glyph margin.'));
 

@@ -50,7 +50,6 @@ export interface IRenderVariableOptions {
 	highlights?: IHighlight[];
 }
 
-
 const MAX_VALUE_RENDER_LENGTH_IN_VIEWLET = 1024;
 const booleanRegex = /^(true|false)$/i;
 const stringRegex = /^(['"]).*\1$/;

@@ -45,7 +45,7 @@ import { IOpenerService } from '../../../../platform/opener/common/opener.js';
 import { IProductService } from '../../../../platform/product/common/productService.js';
 import { IQuickInputService } from '../../../../platform/quickinput/common/quickInput.js';
 import { IStorageService, StorageScope, StorageTarget, WillSaveStateReason } from '../../../../platform/storage/common/storage.js';
-// import { ITelemetryService, TelemetryLevel, firstSessionDateStorageKey } from '../../../../platform/telemetry/common/telemetry.js';
+
 import { ITelemetryService, TelemetryLevel } from '../../../../platform/telemetry/common/telemetry.js';
 
 import { getTelemetryLevel } from '../../../../platform/telemetry/common/telemetryUtils.js';
@@ -75,8 +75,7 @@ import { AccessibilityVerbositySettingId } from '../../accessibility/browser/acc
 import { AccessibleViewAction } from '../../accessibility/browser/accessibleViewActions.js';
 import { KeybindingLabel } from '../../../../base/browser/ui/keybindingLabel/keybindingLabel.js';
 import { ScrollbarVisibility } from '../../../../base/common/scrollable.js';
-// import { IGettingStartedExperimentService } from './gettingStartedExpService.js';
-// new
+
 import { IPathService } from '../../../services/path/common/pathService.js';
 const SLIDE_TRANSITION_TIME_MS = 250;
 const configurationKey = 'workbench.startupEditor';
@@ -103,20 +102,6 @@ const parsedStartEntries: IWelcomePageStartEntry[] = startEntries.map((e, i) => 
 	title: e.title,
 	when: ContextKeyExpr.deserialize(e.when) ?? ContextKeyExpr.true()
 }));
-
-// type GettingStartedActionClassification = {
-// 	command: { classification: 'PublicNonPersonalData'; purpose: 'FeatureInsight'; comment: 'The command being executed on the getting started page.' };
-// 	walkthroughId: { classification: 'PublicNonPersonalData'; purpose: 'FeatureInsight'; comment: 'The walkthrough which the command is in' };
-// 	argument: { classification: 'PublicNonPersonalData'; purpose: 'FeatureInsight'; comment: 'The arguments being passed to the command' };
-// 	owner: 'lramos15';
-// 	comment: 'Help understand what actions are most commonly taken on the getting started page';
-// };
-
-// type GettingStartedActionEvent = {
-// 	command: string;
-// 	walkthroughId: string | undefined;
-// 	argument: string | undefined;
-// };
 
 type RecentEntry = (IRecentFolder | IRecentWorkspace) & { id: string };
 
@@ -202,8 +187,6 @@ export class GettingStartedPage extends EditorPane {
 		// new
 
 		@IPathService private readonly pathService: IPathService,
-
-
 
 	) {
 
@@ -1100,7 +1083,6 @@ export class GettingStartedPage extends EditorPane {
 
 			name = recent.label || splitRecentLabel(fullPath).name;
 
-
 			const li = $('li');
 			const link = $('button.button-link');
 
@@ -1525,7 +1507,6 @@ export class GettingStartedPage extends EditorPane {
 		super.clearInput();
 	}
 
-
 	private selectStepByIndex(newIndex: number, steps: IResolvedWalkthroughStep[], direction: number) {
 		// this.telemetryService.publicLog2<GettingStartedActionEvent, GettingStartedActionClassification>('gettingStarted.ActionExecuted', { command: 'selectTask', argument: steps[newIndex].id, walkthroughId: this.currentWalkthrough?.id });
 		const currentIndex = steps.findIndex(step => step.id === this.editorInput.selectedStep);
@@ -1552,7 +1533,6 @@ export class GettingStartedPage extends EditorPane {
 				dot.classList.remove('active');
 			}
 		});
-
 
 		if (currentIndex === newIndex) {
 			return; // No change
@@ -1961,7 +1941,6 @@ export class GettingStartedPage extends EditorPane {
 
 		const step = this.currentWalkthrough?.steps.find(step => step.id === stepId);
 		if (!step) { return; }
-
 
 		const effectiveStepId = stepId.match(/^([^.]+)\./)?.[1] ?? stepId;
 		const selectedSlide = this.stepsContent.querySelector(`.step-slide[data-step="${effectiveStepId}"]`);

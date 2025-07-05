@@ -516,7 +516,6 @@ export interface ICellMetadataEdit {
 	metadata: NotebookCellMetadata;
 }
 
-// These types are nullable because we need to use 'null' on the EH side so it is JSON-stringified
 export type NullablePartialNotebookCellMetadata = {
 	[Key in keyof Partial<NotebookCellMetadata>]: NotebookCellMetadata[Key] | null
 };
@@ -569,7 +568,6 @@ export interface ICellMoveEdit {
 export type IImmediateCellEditOperation = ICellOutputEditByHandle | ICellPartialMetadataEditByHandle | ICellOutputItemEdit | ICellPartialInternalMetadataEdit | ICellPartialInternalMetadataEditByHandle | ICellPartialMetadataEdit;
 export type ICellEditOperation = IImmediateCellEditOperation | ICellReplaceEdit | ICellOutputEdit | ICellMetadataEdit | ICellPartialMetadataEdit | ICellPartialInternalMetadataEdit | IDocumentMetadataEdit | ICellMoveEdit | ICellOutputItemEdit | ICellLanguageEdit;
 
-
 export interface IWorkspaceNotebookCellEdit {
 	metadata?: WorkspaceEditMetadata;
 	resource: URI;
@@ -588,7 +586,6 @@ export interface NotebookData {
 	readonly cells: ICellDto2[];
 	readonly metadata: NotebookDocumentMetadata;
 }
-
 
 export interface INotebookContributionData {
 	extension?: ExtensionIdentifier;
@@ -974,7 +971,6 @@ export interface INotebookCellStatusBarItemProvider {
 	provideCellStatusBarItems(uri: URI, index: number, token: CancellationToken): Promise<INotebookCellStatusBarItemList | undefined>;
 }
 
-
 export interface INotebookDiffResult {
 	cellsDiff: IDiffResult;
 	metadataChanged: boolean;
@@ -1100,7 +1096,6 @@ export function isTextStreamMime(mimeType: string) {
 	return ['application/vnd.code.notebook.stdout', 'application/vnd.code.notebook.stderr'].includes(mimeType);
 }
 
-
 const textDecoder = new TextDecoder();
 
 /**
@@ -1155,8 +1150,6 @@ function compressStreamBuffer(streams: Uint8Array[]) {
 	});
 	return didCompress;
 }
-
-
 
 /**
  * Took this from jupyter/notebook

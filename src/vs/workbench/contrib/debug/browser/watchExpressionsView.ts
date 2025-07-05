@@ -280,7 +280,6 @@ class WatchExpressionsDataSource extends AbstractExpressionDataSource<IDebugServ
 	}
 }
 
-
 export class WatchExpressionsRenderer extends AbstractExpressionsRenderer {
 
 	static readonly ID = 'watchexpression';

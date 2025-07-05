@@ -43,21 +43,8 @@ interface IRenderResult {
 	initRenderIsSynchronous: false;
 }
 
-// DOM structure
 //
-//  #output
-//  |
-//  |  #output-inner-container
-//  |                        |  #cell-output-toolbar
-//  |                        |  #output-element
-//  |                        |  #output-element
-//  |                        |  #output-element
-//  |  #output-inner-container
-//  |                        |  #cell-output-toolbar
-//  |                        |  #output-element
-//  |  #output-inner-container
-//  |                        |  #cell-output-toolbar
-//  |                        |  #output-element
+
 class CellOutputElement extends Disposable {
 	private readonly toolbarDisposables = this._register(new DisposableStore());
 
@@ -223,7 +210,6 @@ class CellOutputElement extends Disposable {
 		}
 
 		this.renderedOutputContainer = DOM.append(innerContainer, DOM.$('.rendered-output'));
-
 
 		this.renderResult = renderer
 			? { type: RenderOutputType.Extension, renderer, source: this.output, mimeType: selectedPresentation.mimeType }

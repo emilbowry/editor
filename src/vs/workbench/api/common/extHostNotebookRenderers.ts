@@ -10,7 +10,6 @@ import { ExtHostNotebookController } from './extHostNotebook.js';
 import { ExtHostNotebookEditor } from './extHostNotebookEditor.js';
 import * as vscode from 'vscode';
 
-
 export class ExtHostNotebookRenderers implements ExtHostNotebookRenderersShape {
 	private readonly _rendererMessageEmitters = new Map<string /* rendererId */, Emitter<{ editor: vscode.NotebookEditor; message: unknown }>>();
 	private readonly proxy: MainThreadNotebookRenderersShape;

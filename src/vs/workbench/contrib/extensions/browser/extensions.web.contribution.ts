@@ -11,7 +11,6 @@ import { RuntimeExtensionsEditor } from './browserRuntimeExtensionsEditor.js';
 import { RuntimeExtensionsInput } from '../common/runtimeExtensionsInput.js';
 import { EditorExtensions } from '../../../common/editor.js';
 
-// Running Extensions
 Registry.as<IEditorPaneRegistry>(EditorExtensions.EditorPane).registerEditorPane(
 	EditorPaneDescriptor.create(RuntimeExtensionsEditor, RuntimeExtensionsEditor.ID, localize('runtimeExtension', "Running Extensions")),
 	[new SyncDescriptor(RuntimeExtensionsInput)]

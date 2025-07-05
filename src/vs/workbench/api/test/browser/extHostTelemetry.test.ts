@@ -176,7 +176,6 @@ suite('ExtHostTelemetry', function () {
 		assert.strictEqual(functionSpy.dataArr.length, 3);
 		assert.strictEqual(functionSpy.exceptionArr.length, 1);
 
-
 		// Assert not flushed
 		assert.strictEqual(functionSpy.flushCalled, false);
 
@@ -206,7 +205,6 @@ suite('ExtHostTelemetry', function () {
 		logger.logError(new Error('test-error'), { 'test-data': 'test-data' });
 		assert.strictEqual(functionSpy.dataArr.length, 3);
 		assert.strictEqual(functionSpy.exceptionArr.length, 1);
-
 
 		// Assert not flushed
 		assert.strictEqual(functionSpy.flushCalled, false);
@@ -244,7 +242,6 @@ suite('ExtHostTelemetry', function () {
 		logger.dispose();
 		assert.strictEqual(functionSpy.flushCalled, true);
 	});
-
 
 	test('Ensure logger properly cleans PII', function () {
 		const functionSpy: TelemetryLoggerSpy = { dataArr: [], exceptionArr: [], flushCalled: false };

@@ -459,7 +459,6 @@ export class ReviewZoneWidget extends ZoneWidget implements ICommentThreadWidget
 			this._commentThreadDisposables.push(onDidChangeInitialCollapsibleState);
 		}
 
-
 		this._commentThreadDisposables.push(this._commentThread.onDidChangeState(() => {
 			const borderColor =
 				getCommentThreadWidgetStateColor(this._commentThread.state, this.themeService.getColorTheme()) || Color.transparent;

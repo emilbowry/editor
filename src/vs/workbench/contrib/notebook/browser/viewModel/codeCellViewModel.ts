@@ -23,7 +23,6 @@ import { CellKind, INotebookFindOptions, NotebookCellOutputsSplice } from '../..
 import { ICellExecutionError, ICellExecutionStateChangedEvent } from '../../common/notebookExecutionStateService.js';
 import { INotebookService } from '../../common/notebookService.js';
 import { BaseCellViewModel } from './baseCellViewModel.js';
-// import { IInlineChatSessionService } from '../../../inlineChat/browser/inlineChatSessionService.js';
 
 export const outputDisplayLimit = 500;
 

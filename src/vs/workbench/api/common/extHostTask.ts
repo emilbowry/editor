@@ -199,7 +199,6 @@ export namespace CustomExecutionDTO {
 	}
 }
 
-
 export namespace TaskHandleDTO {
 	export function from(value: types.Task, workspaceService?: IExtHostWorkspace): tasks.ITaskHandleDTO {
 		let folder: UriComponents | string;

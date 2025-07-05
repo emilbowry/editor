@@ -19,7 +19,6 @@ import { ILanguageService } from '../../../../editor/common/languages/language.j
 import { IExtensionService } from '../../../services/extensions/common/extensions.js';
 import { gettingStartedContentRegistry } from '../common/gettingStartedContent.js';
 
-
 export class GettingStartedDetailsRenderer {
 	private mdCache = new ResourceMap<string>();
 	private svgCache = new ResourceMap<string>();

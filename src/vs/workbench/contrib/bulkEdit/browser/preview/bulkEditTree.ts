@@ -32,8 +32,6 @@ import { AriaRole } from '../../../../../base/browser/ui/aria/aria.js';
 import { IInstantiationService } from '../../../../../platform/instantiation/common/instantiation.js';
 import * as css from '../../../../../base/browser/cssValue.js';
 
-// --- VIEW MODEL
-
 export interface ICheckable {
 	isChecked(): boolean;
 	setChecked(value: boolean): void;
@@ -193,8 +191,6 @@ export class TextEditElement implements ICheckable {
 
 export type BulkEditElement = CategoryElement | FileElement | TextEditElement;
 
-// --- DATA SOURCE
-
 export class BulkEditDataSource implements IAsyncDataSource<BulkFileOperations, BulkEditElement> {
 
 	public groupByFile: boolean = true;
@@ -278,7 +274,6 @@ export class BulkEditDataSource implements IAsyncDataSource<BulkFileOperations, 
 	}
 }
 
-
 export class BulkEditSorter implements ITreeSorter<BulkEditElement> {
 
 	compare(a: BulkEditElement, b: BulkEditElement): number {
@@ -297,8 +292,6 @@ export class BulkEditSorter implements ITreeSorter<BulkEditElement> {
 export function compareBulkFileOperations(a: BulkFileOperation, b: BulkFileOperation): number {
 	return compare(a.uri.toString(), b.uri.toString());
 }
-
-// --- ACCESSI
 
 export class BulkEditAccessibilityProvider implements IListAccessibilityProvider<BulkEditElement> {
 
@@ -378,8 +371,6 @@ export class BulkEditAccessibilityProvider implements IListAccessibilityProvider
 	}
 }
 
-// --- IDENT
-
 export class BulkEditIdentityProvider implements IIdentityProvider<BulkEditElement> {
 
 	getId(element: BulkEditElement): { toString(): string } {
@@ -392,8 +383,6 @@ export class BulkEditIdentityProvider implements IIdentityProvider<BulkEditEleme
 		}
 	}
 }
-
-// --- RENDERER
 
 class CategoryElementTemplate {
 
@@ -432,7 +421,6 @@ export class CategoryElementRenderer implements ITreeRenderer<CategoryElement, F
 			const className = ThemeIcon.asClassName(metadata.iconPath);
 			template.icon.className = className ? `theme-icon ${className}` : '';
 			template.icon.style.color = metadata.iconPath.color ? this._themeService.getColorTheme().getColor(metadata.iconPath.color.id)?.toString() ?? '' : '';
-
 
 		} else if (URI.isUri(metadata.iconPath)) {
 			// background-image
@@ -632,7 +620,6 @@ class TextEditElementTemplate {
 				this._icon.className = className ? `theme-icon ${className}` : '';
 				this._icon.style.color = iconPath.color ? this._themeService.getColorTheme().getColor(iconPath.color.id)?.toString() ?? '' : '';
 
-
 			} else if (URI.isUri(iconPath)) {
 				// background-image
 				this._icon.className = 'uri-icon';
@@ -688,7 +675,6 @@ export class BulkEditDelegate implements IListVirtualDelegate<BulkEditElement> {
 		}
 	}
 }
-
 
 export class BulkEditNaviLabelProvider implements IKeyboardNavigationLabelProvider<BulkEditElement> {
 

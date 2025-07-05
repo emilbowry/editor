@@ -15,7 +15,6 @@ import { IWorkbenchContribution } from '../../../common/contributions.js';
 import { Range } from '../../../../editor/common/core/range.js';
 import { ILanguageFeaturesService } from '../../../../editor/common/services/languageFeatures.js';
 
-
 export class ExtensionsCompletionItemsProvider extends Disposable implements IWorkbenchContribution {
 	constructor(
 		@IExtensionManagementService private readonly extensionManagementService: IExtensionManagementService,

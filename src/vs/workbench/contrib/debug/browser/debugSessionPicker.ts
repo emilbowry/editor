@@ -13,7 +13,6 @@ import { IPickerDebugItem } from '../common/loadedScriptsPicker.js';
 import { IViewsService } from '../../../services/views/common/viewsService.js';
 import { ICommandService } from '../../../../platform/commands/common/commands.js';
 
-
 export async function showDebugSessionMenu(accessor: ServicesAccessor, selectAndStartID: string) {
 	const quickInputService = accessor.get(IQuickInputService);
 	const debugService = accessor.get(IDebugService);
@@ -87,7 +86,6 @@ function _getPicksAndActiveItem(filter: string, selectAndStartID: string, debugS
 	return { picks: debugConsolePicks, activeItems };
 }
 
-
 function _getSessionInfo(session: IDebugSession): { label: string; description: string; ariaLabel: string } {
 	const label = (!session.configuration.name.length) ? session.name : session.configuration.name;
 	const parentName = session.compact ? undefined : session.parentSession?.configuration.name;
@@ -120,5 +118,4 @@ function _createPick(session: IDebugSession, filter: string, debugService: IDebu
 	}
 	return undefined;
 }
-
 

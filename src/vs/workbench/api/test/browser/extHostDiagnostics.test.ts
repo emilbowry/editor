@@ -57,7 +57,6 @@ suite('ExtHostDiagnostics', () => {
 		assert.throws(() => collection.set(URI.parse('aa:bb'), undefined!));
 	});
 
-
 	test('diagnostic collection, forEach, clear, has', function () {
 		let collection = new DiagnosticCollection('test', 'test', 100, 100, versionProvider, extUri, new DiagnosticsShape(), new Emitter());
 		assert.strictEqual(collection.name, 'test');
@@ -124,7 +123,6 @@ suite('ExtHostDiagnostics', () => {
 
 		collection.dispose();
 	});
-
 
 	test('diagnostics collection, set with dupliclated tuples', function () {
 		const collection = new DiagnosticCollection('test', 'test', 100, 100, versionProvider, extUri, new DiagnosticsShape(), new Emitter());
@@ -313,7 +311,6 @@ suite('ExtHostDiagnostics', () => {
 		}, new Emitter());
 
 		const diag = new Diagnostic(new Range(0, 0, 1, 1), 'Hello');
-
 
 		collection.set([
 			[URI.parse('aa:bb1'), [diag]],
@@ -522,7 +519,6 @@ suite('ExtHostDiagnostics', () => {
 				}
 			});
 
-
 			//
 			const uri = URI.parse('foo:bar');
 			const data: IMarkerData[] = [{
@@ -595,7 +591,6 @@ suite('ExtHostDiagnostics', () => {
 
 		assert.strictEqual(diags.getDiagnostics(uriInSensitive)?.length, 1);
 		assert.strictEqual(diags.getDiagnostics(uriInSensitiveUpper)?.length, 1);
-
 
 		const fromForEach: URI[] = [];
 		col.forEach(uri => fromForEach.push(uri));

@@ -372,7 +372,6 @@ suite('SnippetsService', function () {
 		const completions = await asCompletionModel(model, new Position(1, 1), provider);
 		assert.strictEqual(completions.items.length, 1);
 
-
 		await provider.provideCompletionItems(model, new Position(2, 2), defaultCompletionContext).then(result => {
 			assert.strictEqual(result.suggestions.length, 1);
 		});
@@ -923,7 +922,6 @@ suite('SnippetsService', function () {
 		assert.strictEqual(result.suggestions.length, 1);
 		assert.strictEqual((<SnippetCompletion>result.suggestions[0]).label.label, '^y');
 
-
 		const completions = await asCompletionModel(model, new Position(1, 5), provider, { triggerKind: CompletionTriggerKind.Invoke });
 		assert.strictEqual(completions.items.length, 1);
 		assert.strictEqual(completions.items[0].textLabel, '^y');
@@ -960,7 +958,6 @@ suite('SnippetsService', function () {
 			new Snippet(false, ['fooLang'], 'reg', '#region', '', 'value', '', SnippetSource.User, generateUuid()),
 		]);
 
-
 		const provider = new SnippetCompletionProvider(languageService, snippetService, disposables.add(new TestLanguageConfigurationService()));
 		const model = instantiateTextModel(instantiationService, 'function abc(w)', 'fooLang');
 		const result = await provider.provideCompletionItems(
@@ -989,7 +986,6 @@ suite('SnippetsService', function () {
 		)!;
 
 		assert.strictEqual(result.suggestions.length, 3);
-
 
 		model.applyEdits([EditOperation.insert(new Position(1, 3), '.')]);
 		assert.strictEqual(model.getValue(), 'di.');

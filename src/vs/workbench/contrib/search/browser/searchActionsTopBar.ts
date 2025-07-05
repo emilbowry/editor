@@ -154,7 +154,6 @@ registerAction2(class ClearSearchResultsAction extends Action2 {
 	}
 });
 
-
 registerAction2(class ViewAsTreeAction extends Action2 {
 	constructor() {
 		super({

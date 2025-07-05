@@ -129,8 +129,6 @@ suite('Comments View', function () {
 		commentService.registerCommentController('test', new TestCommentController());
 	});
 
-
-
 	test('collapse all', async function () {
 		const view = instantiationService.createInstance(CommentsPanel, { id: 'comments', title: 'Comments' });
 		view.render();

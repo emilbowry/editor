@@ -23,9 +23,6 @@ import { IWorkbenchEnvironmentService } from '../../services/environment/common/
 import { IExtensionManagementServerService } from '../../services/extensionManagement/common/extensionManagement.js';
 import { IExtensionManifestPropertiesService } from '../../services/extensions/common/extensionManifestPropertiesService.js';
 
-
-// this class contains the commands that the CLI server is reying on
-
 CommandsRegistry.registerCommand('_remoteCLI.openExternal', function (accessor: ServicesAccessor, uri: UriComponents | string): Promise<boolean> {
 	const openerService = accessor.get(IOpenerService);
 	return openerService.open(isString(uri) ? uri : URI.revive(uri), { openExternal: true, allowTunneling: true });

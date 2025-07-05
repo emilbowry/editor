@@ -354,7 +354,6 @@ export class NotebookProviderInfoStore extends Disposable {
 		return disposables;
 	}
 
-
 	private _clear(): void {
 		this._contributedEditors.clear();
 		this._contributedEditorDisposables.clear();
@@ -684,7 +683,6 @@ export class NotebookService extends Disposable implements INotebookService {
 		this._viewTypeCache = this._memento.getMemento(StorageScope.WORKSPACE, StorageTarget.MACHINE);
 	}
 
-
 	getEditorTypes(): IEditorType[] {
 		return [...this.notebookProviderInfoStore].map(info => ({
 			id: info.id,
@@ -786,7 +784,6 @@ export class NotebookService extends Disposable implements INotebookService {
 		return this._notebookProviders.get(selected.id);
 	}
 
-
 	private _persistMementos(): void {
 		this._memento.saveMemento();
 	}
@@ -836,10 +833,8 @@ export class NotebookService extends Disposable implements INotebookService {
 			throw new Error('CANNOT open file notebook with this provider');
 		}
 
-
 		const bytes = stream ? await streamToBuffer(stream) : VSBuffer.fromByteArray([]);
 		const data = await info.serializer.dataToNotebook(bytes);
-
 
 		const notebookModel = this._instantiationService.createInstance(NotebookTextModel, info.viewType, uri, data.cells, data.metadata, info.serializer.options);
 		const modelData = new ModelData(notebookModel, this._onWillDisposeDocument.bind(this));

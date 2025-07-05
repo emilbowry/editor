@@ -340,12 +340,10 @@ export class NotebookViewModel extends Disposable implements EditorFoldingStateD
 			this._onDidChangeSelection.fire(e);
 		}));
 
-
 		const viewCellCount = this.isRepl ? this._notebook.cells.length - 1 : this._notebook.cells.length;
 		for (let i = 0; i < viewCellCount; i++) {
 			this._viewCells.push(createCellViewModel(this._instantiationService, this, this._notebook.cells[i], this._viewContext));
 		}
-
 
 		this._viewCells.forEach(cell => {
 			this._handleToViewCellMapping.set(cell.handle, cell);

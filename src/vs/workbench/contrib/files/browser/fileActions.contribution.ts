@@ -28,8 +28,6 @@ import { IExplorerService } from './files.js';
 import { Codicon } from '../../../../base/common/codicons.js';
 import { Categories } from '../../../../platform/action/common/actionCommonCategories.js';
 
-// Contribute Global Actions
-
 registerAction2(GlobalCompareResourcesAction);
 registerAction2(FocusFilesExplorer);
 registerAction2(ShowActiveFileInExplorer);
@@ -42,7 +40,6 @@ registerAction2(SetActiveEditorWriteableInSession);
 registerAction2(ToggleActiveEditorReadonlyInSession);
 registerAction2(ResetActiveEditorReadonlyInSession);
 
-// Commands
 CommandsRegistry.registerCommand('_files.windowOpen', openWindowCommand);
 CommandsRegistry.registerCommand('_files.newWindow', newWindowCommand);
 
@@ -159,7 +156,6 @@ export const revealInSideBarCommand = {
 	title: nls.localize('revealInSideBar', "Reveal in Explorer View")
 };
 
-// Editor Title Context Menu
 appendEditorTitleContextMenuItem(COPY_PATH_COMMAND_ID, copyPathCommand.title, ResourceContextKey.IsFileSystemResource, '1_cutcopypaste', true);
 appendEditorTitleContextMenuItem(COPY_RELATIVE_PATH_COMMAND_ID, copyRelativePathCommand.title, ResourceContextKey.IsFileSystemResource, '1_cutcopypaste', true);
 appendEditorTitleContextMenuItem(revealInSideBarCommand.id, revealInSideBarCommand.title, ResourceContextKey.IsFileSystemResource, '2_files', false, 1);
@@ -176,7 +172,6 @@ export function appendEditorTitleContextMenuItem(id: string, title: string, when
 	});
 }
 
-// Editor Title Menu for Conflict Resolution
 appendSaveConflictEditorTitleAction('workbench.files.action.acceptLocalChanges', nls.localize('acceptLocalChanges', "Use your changes and overwrite file contents"), Codicon.check, -10, acceptLocalChangesCommand);
 appendSaveConflictEditorTitleAction('workbench.files.action.revertLocalChanges', nls.localize('revertLocalChanges', "Discard your changes and revert to file contents"), Codicon.discard, -9, revertLocalChangesCommand);
 
@@ -193,8 +188,6 @@ function appendSaveConflictEditorTitleAction(id: string, title: string, icon: Th
 		order
 	});
 }
-
-// Menu registration - command palette
 
 export function appendToCommandPalette({ id, title, category, metadata }: ICommandAction, when?: ContextKeyExpression): void {
 	MenuRegistry.appendMenuItem(MenuId.CommandPalette, {
@@ -282,8 +275,6 @@ appendToCommandPalette({
 	title: NEW_UNTITLED_FILE_LABEL,
 	category: Categories.File
 });
-
-// Menu registration - open editors
 
 const isFileOrUntitledResourceContextKey = ContextKeyExpr.or(ResourceContextKey.IsFileSystemResource, ResourceContextKey.Scheme.isEqualTo(Schemas.untitled));
 
@@ -470,8 +461,6 @@ MenuRegistry.appendMenuItem(MenuId.OpenEditorsContext, {
 		title: nls.localize('closeAll', "Close All")
 	}
 });
-
-// Menu registration - explorer
 
 MenuRegistry.appendMenuItem(MenuId.ExplorerContext, {
 	group: 'navigation',
@@ -667,13 +656,10 @@ MenuRegistry.appendMenuItem(MenuId.ExplorerContext, {
 	when: ContextKeyExpr.and(ExplorerRootContext.toNegated(), ExplorerResourceMoveableToTrash.toNegated())
 });
 
-// Empty Editor Group / Editor Tabs Container Context Menu
 for (const menuId of [MenuId.EmptyEditorGroupContext, MenuId.EditorTabsBarContext]) {
 	MenuRegistry.appendMenuItem(menuId, { command: { id: NEW_UNTITLED_FILE_COMMAND_ID, title: nls.localize('newFile', "New Text File") }, group: '1_file', order: 10 });
 	MenuRegistry.appendMenuItem(menuId, { command: { id: 'workbench.action.quickOpen', title: nls.localize('openFile', "Open File...") }, group: '1_file', order: 20 });
 }
-
-// File menu
 
 MenuRegistry.appendMenuItem(MenuId.MenubarFileMenu, {
 	group: '1_new',
@@ -749,8 +735,6 @@ MenuRegistry.appendMenuItem(MenuId.MenubarFileMenu, {
 	order: 2
 });
 
-// Go to menu
-
 MenuRegistry.appendMenuItem(MenuId.MenubarGoMenu, {
 	group: '3_global_nav',
 	command: {
@@ -759,9 +743,6 @@ MenuRegistry.appendMenuItem(MenuId.MenubarGoMenu, {
 	},
 	order: 1
 });
-
-
-// Chat used attachment anchor context menu
 
 MenuRegistry.appendMenuItem(MenuId.ChatAttachmentsContext, {
 	group: 'navigation',
@@ -790,8 +771,6 @@ MenuRegistry.appendMenuItem(MenuId.ChatAttachmentsContext, {
 	command: copyRelativePathCommand,
 	when: ResourceContextKey.IsFileSystemResource
 });
-
-// Chat resource anchor attachments/anchors context menu
 
 for (const menuId of [MenuId.ChatInlineResourceAnchorContext, MenuId.ChatInputResourceAttachmentContext]) {
 	MenuRegistry.appendMenuItem(menuId, {

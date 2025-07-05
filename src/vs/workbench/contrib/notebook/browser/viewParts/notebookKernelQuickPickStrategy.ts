@@ -96,7 +96,6 @@ function toKernelQuickPick(kernel: INotebookKernel, selected: INotebookKernel | 
 	return res;
 }
 
-
 abstract class KernelPickerStrategyBase implements IKernelPickerStrategy {
 	constructor(
 		protected readonly _notebookKernelService: INotebookKernelService,
@@ -134,7 +133,6 @@ abstract class KernelPickerStrategyBase implements IKernelPickerStrategy {
 			this._selecteKernel(notebook, newKernel);
 			return true;
 		}
-
 
 		const localDisposableStore = new DisposableStore();
 		const quickPick = localDisposableStore.add(this._quickInputService.createQuickPick<KernelQuickPickItem>({ useSeparators: true }));

@@ -2726,7 +2726,6 @@ export function parseExitResult(
 	return { code, message };
 }
 
-
 export class TerminalInstanceColorProvider implements IXtermColorProvider {
 	constructor(
 		private readonly _target: IReference<TerminalLocation | undefined>,

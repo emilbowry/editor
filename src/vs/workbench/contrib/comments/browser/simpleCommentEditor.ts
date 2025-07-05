@@ -11,7 +11,6 @@ import { IContextKeyService, RawContextKey, IContextKey } from '../../../../plat
 import { IInstantiationService } from '../../../../platform/instantiation/common/instantiation.js';
 import { ICommandService } from '../../../../platform/commands/common/commands.js';
 
-// Allowed Editor Contributions:
 import { MenuPreventer } from '../../codeEditor/browser/menuPreventer.js';
 import { EditorDictation } from '../../codeEditor/browser/dictation/editorDictation.js';
 import { ContextMenuController } from '../../../../editor/contrib/contextmenu/browser/contextmenu.js';

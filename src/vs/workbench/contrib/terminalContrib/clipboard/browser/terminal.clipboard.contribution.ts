@@ -27,8 +27,6 @@ import { KeybindingWeight } from '../../../../../platform/keybinding/common/keyb
 import { terminalStrings } from '../../../terminal/common/terminalStrings.js';
 import { isString } from '../../../../../base/common/types.js';
 
-// #region Terminal Contributions
-
 export class TerminalClipboardContribution extends Disposable implements ITerminalContribution {
 	static readonly ID = 'terminal.clipboard';
 
@@ -168,13 +166,8 @@ export class TerminalClipboardContribution extends Disposable implements ITermin
 
 registerTerminalContribution(TerminalClipboardContribution.ID, TerminalClipboardContribution, false);
 
-// #endregion
-
-// #region Actions
-
 const terminalAvailableWhenClause = ContextKeyExpr.or(TerminalContextKeys.processSupported, TerminalContextKeys.terminalHasBeenCreated);
 
-// TODO: Move these commands into this terminalContrib/
 registerActiveInstanceAction({
 	id: TerminalCommandId.CopyLastCommand,
 	title: localize2('workbench.action.terminal.copyLastCommand', "Copy Last Command"),
@@ -235,7 +228,6 @@ registerActiveInstanceAction({
 	}
 });
 
-// Some commands depend on platform features
 if (BrowserFeatures.clipboard.writeText) {
 	registerActiveXtermAction({
 		id: TerminalCommandId.CopySelection,
@@ -312,4 +304,3 @@ if (BrowserFeatures.clipboard.readText && isLinux) {
 	});
 }
 
-// #endregion

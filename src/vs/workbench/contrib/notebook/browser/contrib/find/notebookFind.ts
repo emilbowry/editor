@@ -116,7 +116,6 @@ function getSearchStringOptions(editor: ICodeEditor, opts: IFindStartOptions) {
 	return undefined;
 }
 
-
 StartFindAction.addImplementation(100, (accessor: ServicesAccessor, codeEditor: ICodeEditor, args: any) => {
 	const editorService = accessor.get(IEditorService);
 	const editor = getNotebookEditorFromEditorPane(editorService.activeEditorPane);

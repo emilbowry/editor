@@ -147,7 +147,6 @@ export class SearchEditor extends AbstractTextCodeEditor<SearchEditorViewState> 
 		);
 	}
 
-
 	private createQueryEditor(container: HTMLElement, scopedInstantiationService: IInstantiationService, inputBoxFocusedContextKey: IContextKey<boolean>) {
 		const searchEditorInputboxStyles = getInputBoxStyle({ inputBorder: searchEditorTextInputBorder });
 

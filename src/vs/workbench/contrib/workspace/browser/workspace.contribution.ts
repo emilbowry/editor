@@ -79,7 +79,6 @@ export class WorkspaceTrustContextKeys extends Disposable implements IWorkbenchC
 
 Registry.as<IWorkbenchContributionsRegistry>(WorkbenchExtensions.Workbench).registerWorkbenchContribution(WorkspaceTrustContextKeys, LifecyclePhase.Restored);
 
-
 /*
  * Trust Request via Service UX handler
  */
@@ -201,7 +200,6 @@ export class WorkspaceTrustRequestHandler extends Disposable implements IWorkben
 				})()
 			});
 
-
 			// Dialog result
 			switch (result) {
 				case 'ContinueWithTrust':
@@ -221,7 +219,6 @@ export class WorkspaceTrustRequestHandler extends Disposable implements IWorkben
 		}));
 	}
 }
-
 
 /*
  * Trust UX and Startup Handler
@@ -545,7 +542,6 @@ export class WorkspaceTrustUXHandler extends Disposable implements IWorkbenchCon
 		}
 	}
 
-
 	private get bannerSetting(): 'always' | 'untilDismissed' | 'never' {
 		const result = this.configurationService.getValue<'always' | 'untilDismissed' | 'never'>(WORKSPACE_TRUST_BANNER);
 
@@ -637,7 +633,6 @@ export class WorkspaceTrustUXHandler extends Disposable implements IWorkbenchCon
 registerWorkbenchContribution2(WorkspaceTrustRequestHandler.ID, WorkspaceTrustRequestHandler, WorkbenchPhase.BlockRestore);
 Registry.as<IWorkbenchContributionsRegistry>(WorkbenchExtensions.Workbench).registerWorkbenchContribution(WorkspaceTrustUXHandler, LifecyclePhase.Restored);
 
-
 /**
  * Trusted Workspace GUI Editor
  */
@@ -670,12 +665,9 @@ Registry.as<IEditorPaneRegistry>(EditorExtensions.EditorPane).registerEditorPane
 	]
 );
 
-
 /*
  * Actions
  */
-
-// Configure Workspace Trust Settings
 
 const CONFIGURE_TRUST_COMMAND_ID = 'workbench.trust.configure';
 const WORKSPACES_CATEGORY = localize2('workspacesCategory', 'Workspaces');
@@ -695,8 +687,6 @@ registerAction2(class extends Action2 {
 		accessor.get(IPreferencesService).openUserSettings({ jsonEditor: false, query: `@tag:${WORKSPACE_TRUST_SETTING_TAG}` });
 	}
 });
-
-// Manage Workspace Trust
 
 registerAction2(class extends Action2 {
 	constructor() {
@@ -719,7 +709,6 @@ registerAction2(class extends Action2 {
 		return;
 	}
 });
-
 
 /*
  * Configuration

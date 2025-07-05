@@ -16,9 +16,9 @@ import { IConfigurationService } from '../../../../../platform/configuration/com
 import { ContextKeyExpr } from '../../../../../platform/contextkey/common/contextkey.js';
 import { ServicesAccessor } from '../../../../../platform/instantiation/common/instantiation.js';
 import { IDebugService } from '../../../debug/common/debug.js';
-// import { CTX_INLINE_CHAT_FOCUSED } from '../../../inlineChat/common/inlineChat.js';
+
 import { insertCell } from './cellOperations.js';
-// import { NotebookChatController } from './chat/notebookChatController.js';
+
 import { CELL_TITLE_CELL_GROUP_ID, CellToolbarOrder, INotebookActionContext, INotebookCellActionContext, INotebookCellToolbarActionContext, INotebookCommandContext, NOTEBOOK_EDITOR_WIDGET_ACTION_WEIGHT, NotebookAction, NotebookCellAction, NotebookMultiCellAction, cellExecutionArgs, getContextFromActiveEditor, getContextFromUri, parseMultiCellExecutionArgs } from './coreActions.js';
 import { CellEditState, CellFocusMode, EXECUTE_CELL_COMMAND_ID, IActiveNotebookEditor, ICellViewModel, IFocusNotebookCellOptions, ScrollToRevealBehavior } from '../notebookBrowser.js';
 import * as icons from '../notebookIcons.js';
@@ -43,7 +43,6 @@ const RENDER_ALL_MARKDOWN_CELLS = 'notebook.renderAllMarkdownCells';
 const REVEAL_RUNNING_CELL = 'notebook.revealRunningCell';
 const REVEAL_LAST_FAILED_CELL = 'notebook.revealLastFailedCell';
 
-// If this changes, update getCodeCellExecutionContextKeyService to match
 export const executeCondition = ContextKeyExpr.and(
 	NOTEBOOK_CELL_TYPE.isEqualTo('code'),
 	ContextKeyExpr.or(
@@ -700,7 +699,6 @@ registerAction2(class InterruptNotebook extends CancelNotebook {
 		});
 	}
 });
-
 
 MenuRegistry.appendMenuItem(MenuId.NotebookToolbar, {
 	title: localize('revealRunningCellShort', "Go To"),

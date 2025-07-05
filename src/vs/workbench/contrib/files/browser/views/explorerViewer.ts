@@ -1063,7 +1063,6 @@ export class FilesRenderer implements ICompressibleTreeRenderer<ExplorerItem, Fu
 			extraClasses: realignNestedChildren ? [...extraClasses, 'align-nest-icon-with-parent-icon'] : extraClasses,
 		};
 
-
 		const parent = stat.name ? dirname(stat.resource) : stat.resource;
 		const value = stat.name || '';
 
@@ -1450,7 +1449,6 @@ export class FilesFilter implements ITreeFilter<ExplorerItem, FuzzyScore> {
 	}
 }
 
-// Explorer Sorter
 export class FileSorter implements ITreeSorter<ExplorerItem> {
 
 	constructor(

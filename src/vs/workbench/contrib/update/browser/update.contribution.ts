@@ -30,8 +30,6 @@ workbench.registerWorkbenchContribution(ProductContribution, LifecyclePhase.Rest
 workbench.registerWorkbenchContribution(UpdateContribution, LifecyclePhase.Restored);
 workbench.registerWorkbenchContribution(SwitchProductQualityContribution, LifecyclePhase.Restored);
 
-// Release notes
-
 export class ShowCurrentReleaseNotesAction extends Action2 {
 
 	constructor() {
@@ -98,8 +96,6 @@ export class ShowCurrentReleaseNotesFromCurrentFileAction extends Action2 {
 
 registerAction2(ShowCurrentReleaseNotesAction);
 registerAction2(ShowCurrentReleaseNotesFromCurrentFileAction);
-
-// Update
 
 export class CheckForUpdateAction extends Action2 {
 

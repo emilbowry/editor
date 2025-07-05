@@ -58,7 +58,6 @@ class ImplictKernelSelector implements IDisposable {
 			}
 		}));
 
-
 		// IMPLICITLY select a suggested kernel when users start to hover. This should
 		// be a strong enough hint that the user wants to interact with the notebook. Maybe
 		// add more triggers like goto-providers or completion-providers
@@ -160,7 +159,6 @@ class KernelStatus extends Disposable implements IWorkbenchContribution {
 			));
 
 			this._kernelInfoElement.add(kernel.onDidChange(() => this._showKernelStatus(notebook)));
-
 
 		} else {
 			// multiple kernels -> show selection hint

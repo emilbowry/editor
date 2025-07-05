@@ -239,7 +239,6 @@ export class DebugSession implements IDebugSession {
 		return this._options.suppressDebugView ?? false;
 	}
 
-
 	get autoExpandLazyVariables(): boolean {
 		// This tiny helper avoids converting the entire debug model to use service injection
 		const screenReaderOptimized = this.accessibilityService.isScreenReaderOptimized();
@@ -1090,7 +1089,6 @@ export class DebugSession implements IDebugSession {
 				await this.fetchThreads();
 			}
 		}));
-
 
 		const statusQueue = this.statusQueue;
 		this.rawListeners.add(this.raw.onDidStop(event => this.handleStop(event.body)));

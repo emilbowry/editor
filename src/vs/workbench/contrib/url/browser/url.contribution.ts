@@ -83,7 +83,6 @@ registerWorkbenchContribution2(
 	WorkbenchPhase.BlockRestore // registration only
 );
 
-
 const configurationRegistry = Registry.as<IConfigurationRegistry>(ConfigurationExtensions.Configuration);
 configurationRegistry.registerConfiguration({
 	...workbenchConfigurationNodeBase,

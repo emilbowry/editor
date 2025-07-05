@@ -27,7 +27,6 @@ import { NotebookDocumentMetadataTextModel } from '../../common/model/notebookMe
 
 const PropertyHeaderHeight = 25;
 
-// From `.monaco-editor .diff-hidden-lines .center` in src/vs/editor/browser/widget/diffEditor/style.css
 export const HeightOfHiddenLinesRegionInDiffEditor = 24;
 
 export const DefaultLineHeight = 17;
@@ -102,7 +101,6 @@ export class DiffElementPlaceholderViewModel extends DiffElementViewModelBase {
 		this._unfoldHiddenCells.fire();
 	}
 }
-
 
 export class NotebookDocumentMetadataViewModel extends DiffElementViewModelBase {
 	public readonly originalMetadata: NotebookDocumentMetadataTextModel;
@@ -301,7 +299,6 @@ export class NotebookDocumentMetadataViewModel extends DiffElementViewModelBase 
 		this._sourceEditorViewState = viewState;
 	}
 }
-
 
 export abstract class DiffElementCellViewModelBase extends DiffElementViewModelBase {
 	public cellFoldingState: PropertyFoldingState;
@@ -942,7 +939,6 @@ export class SingleSideDiffElementViewModel extends DiffElementCellViewModelBase
 	getNestedCellViewModel(diffSide: DiffSide): DiffNestedCellViewModel {
 		return this.type === 'insert' ? this.modified! : this.original!;
 	}
-
 
 	checkIfOutputsModified(): false | { reason: string | undefined } {
 		return false;

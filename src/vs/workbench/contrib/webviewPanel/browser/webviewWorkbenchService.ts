@@ -160,7 +160,6 @@ export class LazilyResolvedWebviewEditorInput extends WebviewInput {
 	}
 }
 
-
 class RevivalPool {
 	private _awaitingRevival: Array<{
 		readonly input: WebviewInput;
@@ -202,7 +201,6 @@ class RevivalPool {
 		}
 	}
 }
-
 
 export class WebviewEditorService extends Disposable implements IWebviewWorkbenchService {
 	declare readonly _serviceBrand: undefined;

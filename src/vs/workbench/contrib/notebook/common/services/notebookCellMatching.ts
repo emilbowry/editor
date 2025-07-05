@@ -6,7 +6,6 @@
 import { computeLevenshteinDistance } from '../../../../../base/common/diff/diff.js';
 import { CellKind } from '../notebookCommon.js';
 
-
 type EditCount = number;
 type OriginalIndex = number;
 type ModifiedIndex = number;
@@ -123,7 +122,6 @@ export function matchCellBasedOnSimilarties(modifiedCells: ICell[], originalCell
 			}
 		});
 
-
 		const modifiedCell = modifiedCells[i];
 		/**
 		 * I.e. Assume you have the following
@@ -142,7 +140,6 @@ export function matchCellBasedOnSimilarties(modifiedCells: ICell[], originalCell
 			result.original = result.possibleOriginal;
 			return;
 		}
-
 
 		/**
 		 * I.e. Assume you have the following

@@ -203,7 +203,6 @@ export class DefaultFormatter extends Disposable implements IWorkbenchContributi
 			return;
 		}
 
-
 		const document = editor.getModel();
 		const formatter = getRealAndSyntheticDocumentFormattersOrdered(this._languageFeaturesService.documentFormattingEditProvider, this._languageFeaturesService.documentRangeFormattingEditProvider, document);
 
@@ -261,7 +260,6 @@ Registry.as<IConfigurationRegistry>(ConfigurationExtensions.Configuration).regis
 interface IIndexedPick extends IQuickPickItem {
 	index: number;
 }
-
 
 async function showFormatterPick(accessor: ServicesAccessor, model: ITextModel, formatters: FormattingEditProvider[]): Promise<number | undefined> {
 	const quickPickService = accessor.get(IQuickInputService);

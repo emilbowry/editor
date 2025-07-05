@@ -94,7 +94,6 @@ class NotebookModelReferenceCollection extends ReferenceCollection<Promise<IReso
 		const model = this._instantiationService.createInstance(SimpleNotebookEditorModel, uri, hasAssociatedFilePath, notebookType, workingCopyManager, isScratchpadView);
 		const result = await model.load({ limits });
 
-
 		// Whenever a notebook model is dirty we automatically reference it so that
 		// we can ensure that at least one reference exists. That guarantees that
 		// a model with unsaved changes is never disposed.

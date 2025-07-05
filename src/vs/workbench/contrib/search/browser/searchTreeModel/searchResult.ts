@@ -194,7 +194,6 @@ export class SearchResultImpl extends Disposable implements ISearchResult {
 		folderMatch?.unbindNotebookEditorWidget(editor, resource);
 	}
 
-
 	add(allRaw: IFileMatch[], searchInstanceID: string, ai: boolean, silent: boolean = false): void {
 		this._plainTextSearchResult.hidden = false;
 

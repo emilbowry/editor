@@ -42,7 +42,7 @@ jsonRegistry.registerSchema(launchSchemaId, launchSchema);
 
 const DEBUG_SELECTED_CONFIG_NAME_KEY = 'debug.selectedconfigname';
 const DEBUG_SELECTED_ROOT = 'debug.selectedroot';
-// Debug type is only stored if a dynamic configuration is used for better restore
+
 const DEBUG_SELECTED_TYPE = 'debug.selectedtype';
 const DEBUG_RECENT_DYNAMIC_CONFIGURATIONS = 'debug.recentdynamicconfigurations';
 const ON_DEBUG_DYNAMIC_CONFIGURATIONS_NAME = 'onDebugDynamicConfigurations';
@@ -574,7 +574,6 @@ abstract class AbstractLaunch implements ILaunch {
 
 		return content;
 	}
-
 
 	get hidden(): boolean {
 		return false;

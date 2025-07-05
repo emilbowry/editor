@@ -77,7 +77,6 @@ const viewContainer = Registry.as<IViewContainersRegistry>(ViewContainerExtensio
 	hideIfEmpty: true,
 }, ViewContainerLocation.Sidebar);
 
-
 const testResultsViewContainer = Registry.as<IViewContainersRegistry>(ViewContainerExtensions.ViewContainersRegistry).registerViewContainer({
 	id: Testing.ResultsPanelId,
 	title: localize2('testResultsPanelName', "Test Results"),
@@ -88,7 +87,6 @@ const testResultsViewContainer = Registry.as<IViewContainersRegistry>(ViewContai
 }, ViewContainerLocation.Panel, { doNotRegisterOpenCommand: true });
 
 const viewsRegistry = Registry.as<IViewsRegistry>(ViewContainerExtensions.ViewsRegistry);
-
 
 viewsRegistry.registerViews([{
 	id: Testing.ResultsViewId,

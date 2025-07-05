@@ -4531,7 +4531,6 @@ declare module 'vscode' {
 		 */
 		provideDocumentRangeFormattingEdits(document: TextDocument, range: Range, options: FormattingOptions, token: CancellationToken): ProviderResult<TextEdit[]>;
 
-
 		/**
 		 * Provide formatting edits for multiple ranges in a document.
 		 *
@@ -5183,7 +5182,6 @@ declare module 'vscode' {
 		 */
 		resolveCompletionItem?(item: T, token: CancellationToken): ProviderResult<T>;
 	}
-
 
 	/**
 	 * The inline completion item provider interface defines the contract between extensions and
@@ -6265,7 +6263,6 @@ declare module 'vscode' {
 		 */
 		readonly dropMimeTypes: readonly string[];
 	}
-
 
 	/**
 	 * The reason why paste edits were requested.
@@ -8250,7 +8247,6 @@ declare module 'vscode' {
 		 */
 		provideFileDecoration(uri: Uri, token: CancellationToken): ProviderResult<FileDecoration>;
 	}
-
 
 	/**
 	 * In a remote window the extension kind describes if an extension
@@ -15128,7 +15124,6 @@ declare module 'vscode' {
 		 */
 		export function registerDocumentPasteEditProvider(selector: DocumentSelector, provider: DocumentPasteEditProvider, metadata: DocumentPasteProviderMetadata): Disposable;
 
-
 		/**
 		 * Set a {@link LanguageConfiguration language configuration} for a language.
 		 *
@@ -17896,7 +17891,6 @@ declare module 'vscode' {
 		removeSession(sessionId: string): Thenable<void>;
 	}
 
-
 	/**
 	 * Namespace for authentication.
 	 */
@@ -19903,7 +19897,6 @@ declare module 'vscode' {
 	 */
 	export type ChatResponsePart = ChatResponseMarkdownPart | ChatResponseFileTreePart | ChatResponseAnchorPart
 		| ChatResponseProgressPart | ChatResponseReferencePart | ChatResponseCommandButtonPart;
-
 
 	/**
 	 * Namespace for chat functionality. Users interact with chat participants by sending messages

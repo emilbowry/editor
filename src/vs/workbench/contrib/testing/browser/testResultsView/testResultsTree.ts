@@ -51,7 +51,6 @@ import { TestUriType, buildTestUri } from '../../common/testingUri.js';
 import { IEditorService } from '../../../../services/editor/common/editorService.js';
 import { TestId } from '../../common/testId.js';
 
-
 interface ITreeElement {
 	type: string;
 	context: unknown;
@@ -179,7 +178,6 @@ class TestCaseElement implements ITreeElement {
 	public get outputSubject() {
 		return new TestOutputSubject(this.results, this.taskIndex, this.test);
 	}
-
 
 	constructor(
 		public readonly results: ITestResult,
@@ -620,7 +618,6 @@ export class OutputPeekTree extends Disposable {
 			}
 		}));
 
-
 		this._register(this.tree.onContextMenu(e => this.onContextMenu(e)));
 
 		this._register(this.tree.onDidChangeCollapseState(e => {
@@ -975,7 +972,6 @@ class TreeActionsProvider {
 				));
 			}
 		}
-
 
 		const contextOverlay = this.contextKeyService.createOverlay(contextKeys);
 		const result = { primary, secondary };

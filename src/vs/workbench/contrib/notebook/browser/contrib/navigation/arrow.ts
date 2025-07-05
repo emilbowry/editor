@@ -5,7 +5,7 @@
 
 import { timeout } from '../../../../../../base/common/async.js';
 import { KeyCode, KeyMod } from '../../../../../../base/common/keyCodes.js';
-// import { ICodeEditor } from '../../../../../../editor/browser/editorBrowser.js';
+
 import { EditorExtensionsRegistry } from '../../../../../../editor/browser/editorExtensions.js';
 import { EditorContextKeys } from '../../../../../../editor/common/editorContextKeys.js';
 import { localize } from '../../../../../../nls.js';
@@ -17,9 +17,7 @@ import { InputFocusedContextKey, IsWindowsContext } from '../../../../../../plat
 import { ServicesAccessor } from '../../../../../../platform/instantiation/common/instantiation.js';
 import { KeybindingWeight } from '../../../../../../platform/keybinding/common/keybindingsRegistry.js';
 import { Registry } from '../../../../../../platform/registry/common/platform.js';
-// import { InlineChatController } from '../../../../inlineChat/browser/inlineChatController.js';
-// import { CTX_NOTEBOOK_CHAT_OUTER_FOCUS_POSITION } from '../../controller/chat/notebookChatContext.js';
-// import { INotebookActionContext, INotebookCellActionContext, NotebookAction, NotebookCellAction, NOTEBOOK_EDITOR_WIDGET_ACTION_WEIGHT, findTargetCellEditor } from '../../controller/coreActions.js';
+
 import { INotebookActionContext, INotebookCellActionContext, NotebookAction, NotebookCellAction, NOTEBOOK_EDITOR_WIDGET_ACTION_WEIGHT } from '../../controller/coreActions.js';
 
 import { CellEditState } from '../../notebookBrowser.js';
@@ -147,7 +145,6 @@ registerAction2(class FocusNextCellAction extends NotebookCellAction {
 	}
 });
 
-
 registerAction2(class FocusPreviousCellAction extends NotebookCellAction {
 	constructor() {
 		super({
@@ -226,7 +223,6 @@ registerAction2(class FocusPreviousCellAction extends NotebookCellAction {
 	}
 });
 
-
 registerAction2(class extends NotebookAction {
 	constructor() {
 		super({
@@ -241,7 +237,7 @@ registerAction2(class extends NotebookAction {
 				{
 					when: ContextKeyExpr.and(
 						NOTEBOOK_EDITOR_FOCUSED, ContextKeyExpr.not(InputFocusedContextKey), 
-// CTX_NOTEBOOK_CHAT_OUTER_FOCUS_POSITION.isEqualTo('')
+
 					),
 					mac: { primary: KeyMod.CtrlCmd | KeyCode.UpArrow },
 					weight: KeybindingWeight.WorkbenchContrib
@@ -298,7 +294,6 @@ registerAction2(class extends NotebookAction {
 		}
 	}
 });
-
 
 registerAction2(class extends NotebookCellAction {
 	constructor() {
@@ -465,14 +460,12 @@ registerAction2(class extends NotebookCellAction {
 	}
 });
 
-
 function getPageSize(context: INotebookCellActionContext) {
 	const editor = context.notebookEditor;
 	const layoutInfo = editor.getViewModel().layoutInfo;
 	const lineHeight = layoutInfo?.fontInfo.lineHeight || 17;
 	return Math.max(1, Math.floor((layoutInfo?.height || 0) / lineHeight) - 2);
 }
-
 
 Registry.as<IConfigurationRegistry>(ConfigurationExtensions.Configuration).registerConfiguration({
 	id: 'notebook',

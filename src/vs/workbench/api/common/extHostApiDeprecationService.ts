@@ -63,7 +63,6 @@ export class ExtHostApiDeprecationService implements IExtHostApiDeprecationServi
 	}
 }
 
-
 export const NullApiDeprecationService = Object.freeze(new class implements IExtHostApiDeprecationService {
 	declare readonly _serviceBrand: undefined;
 

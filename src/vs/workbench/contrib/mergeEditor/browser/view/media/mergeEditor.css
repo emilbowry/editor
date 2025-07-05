@@ -71,7 +71,6 @@
 	margin-left: auto;
 }
 
-
 .monaco-workbench .merge-editor .code-view > .container {
 	display: flex;
 	flex-direction: row;
@@ -158,7 +157,6 @@
 	border-right: 0;
 }
 
-
 .focused .accept-conflict-group.monaco-custom-toggle {
 	border: 1px solid var(--vscode-mergeEditor-conflict-unhandledFocused-border);
 }
@@ -230,7 +228,6 @@
 	white-space: nowrap;
 	overflow: hidden;
 }
-
 
 .focused.conflict-zone .conflict-zone-root {
 	border: 1px solid var(--vscode-mergeEditor-conflict-unhandledFocused-border);

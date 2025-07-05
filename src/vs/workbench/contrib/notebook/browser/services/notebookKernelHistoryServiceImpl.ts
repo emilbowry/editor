@@ -65,7 +65,6 @@ export class NotebookKernelHistoryService extends Disposable implements INoteboo
 
 		recentKeynels.set(key, key, Touch.AsOld);
 
-
 		if (recentKeynels.size > MAX_KERNELS_IN_HISTORY) {
 			const reserved = [...recentKeynels.entries()].slice(0, MAX_KERNELS_IN_HISTORY);
 			recentKeynels.fromJSON(reserved);

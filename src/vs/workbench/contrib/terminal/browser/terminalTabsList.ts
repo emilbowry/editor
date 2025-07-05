@@ -552,7 +552,6 @@ interface ITerminalTabEntryTemplate {
 	readonly elementDisposables: DisposableStore;
 }
 
-
 class TerminalTabsAccessibilityProvider implements IListAccessibilityProvider<ITerminalInstance> {
 	constructor(
 		@ITerminalGroupService private readonly _terminalGroupService: ITerminalGroupService,

@@ -6,7 +6,6 @@
 import { BrandedService } from '../../../../platform/instantiation/common/instantiation.js';
 import { INotebookEditor, INotebookEditorContribution, INotebookEditorContributionCtor, INotebookEditorContributionDescription } from './notebookBrowser.js';
 
-
 class EditorContributionRegistry {
 	public static readonly INSTANCE = new EditorContributionRegistry();
 	private readonly editorContributions: INotebookEditorContributionDescription[];

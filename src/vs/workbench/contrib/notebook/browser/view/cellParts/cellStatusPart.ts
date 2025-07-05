@@ -35,7 +35,6 @@ import type { IManagedHoverTooltipMarkdownString } from '../../../../../../base/
 
 const $ = DOM.$;
 
-
 export class CellEditorStatusBar extends CellContentPart {
 	readonly statusBarContainer: HTMLElement;
 
@@ -130,7 +129,6 @@ export class CellEditorStatusBar extends CellContentPart {
 			}
 		}));
 	}
-
 
 	override didRenderCell(element: ICellViewModel): void {
 		if (this._notebookEditor.hasModel()) {

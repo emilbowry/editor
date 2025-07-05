@@ -140,7 +140,6 @@ export class NotebookSearchService implements INotebookSearchService {
 		const allPriorityInfo: Map<string, NotebookPriorityInfo[]> = new Map();
 		const contributedNotebookTypes = this.notebookService.getContributedNotebookTypes();
 
-
 		userAssociations.forEach(association => {
 
 			// we gather the editor associations here, but cannot check them until we actually have the files that the glob matches
@@ -249,7 +248,6 @@ export class NotebookSearchService implements INotebookSearchService {
 					includeOutput: query.contentPattern.notebookInfo?.isInNotebookCellOutput ?? true,
 				}, token, false, true, searchID);
 
-
 			if (matches.length) {
 				if (askMax && matches.length >= askMax) {
 					limitHit = true;
@@ -281,7 +279,6 @@ export class NotebookSearchService implements INotebookSearchService {
 		};
 	}
 
-
 	private getLocalNotebookWidgets(): Array<NotebookEditorWidget> {
 		const notebookWidgets = this.notebookEditorService.retrieveAllExistingWidgets();
 		return notebookWidgets
@@ -289,5 +286,4 @@ export class NotebookSearchService implements INotebookSearchService {
 			.filter((val): val is NotebookEditorWidget => !!val && val.hasModel());
 	}
 }
-
 

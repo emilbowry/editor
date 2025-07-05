@@ -64,7 +64,7 @@ import { ContentHoverController } from '../../../../editor/contrib/hover/browser
 import { GlyphHoverController } from '../../../../editor/contrib/hover/browser/glyphHoverController.js';
 import { ReplInputHintContentWidget } from './replInputHintContentWidget.js';
 import { ServiceCollection } from '../../../../platform/instantiation/common/serviceCollection.js';
-// import { INLINE_CHAT_ID } from '../../inlineChat/common/inlineChat.js';
+
 import { ReplEditorControl } from '../../replNotebook/browser/replEditor.js';
 
 const DECORATION_KEY = 'interactiveInputDecoration';
@@ -73,7 +73,6 @@ const INTERACTIVE_EDITOR_VIEW_STATE_PREFERENCE_KEY = 'InteractiveEditorViewState
 const INPUT_CELL_VERTICAL_PADDING = 8;
 const INPUT_CELL_HORIZONTAL_PADDING_RIGHT = 10;
 const INPUT_EDITOR_PADDING = 8;
-
 
 export interface InteractiveEditorViewState {
 	readonly notebook?: INotebookEditorViewState;
@@ -486,7 +485,6 @@ export class InteractiveEditor extends EditorPane implements IEditorPaneWithScro
 
 		this._widgetDisposableStore.add(this._codeEditorWidget.onDidChangeCursorPosition(e => this._onDidChangeSelection.fire({ reason: this._toEditorPaneSelectionChangeReason(e) })));
 		this._widgetDisposableStore.add(this._codeEditorWidget.onDidChangeModelContent(() => this._onDidChangeSelection.fire({ reason: EditorPaneSelectionChangeReason.EDIT })));
-
 
 		this._widgetDisposableStore.add(this._notebookKernelService.onDidChangeNotebookAffinity(this._syncWithKernel, this));
 		this._widgetDisposableStore.add(this._notebookKernelService.onDidChangeSelectedNotebooks(this._syncWithKernel, this));

@@ -23,7 +23,6 @@ suite('toISCMHistoryItemViewModelArray', () => {
 		assert.strictEqual(viewModels.length, 0);
 	});
 
-
 	/**
 	 *	* a
 	 */
@@ -372,7 +371,6 @@ suite('toISCMHistoryItemViewModelArray', () => {
 		assert.strictEqual(viewModels[5].outputSwimlanes[1].id, 'g');
 		assert.strictEqual(viewModels[5].outputSwimlanes[1].color, colorRegistry[2]);
 	});
-
 
 	/**
 	 * 	* a(b,c)

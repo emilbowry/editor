@@ -1150,8 +1150,6 @@ export class NotebookCellList extends WorkbenchList<CellViewModel> implements ID
 	}
 	//#endregion
 
-
-
 	/**
 	 * Reveals the specified offset of the given cell in the center of the viewport.
 	 * This enables revealing locations in the output as well as the input.
@@ -1473,7 +1471,6 @@ export class NotebookCellList extends WorkbenchList<CellViewModel> implements ID
 		this._visibleRanges = [];
 	}
 }
-
 
 export class ListViewInfoAccessor extends Disposable {
 	constructor(

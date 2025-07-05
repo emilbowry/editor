@@ -11,7 +11,6 @@ import { ContextKeyEqualsExpr } from '../../../../platform/contextkey/common/con
 import { ServicesAccessor } from '../../../../platform/instantiation/common/instantiation.js';
 import { AccessibilityVerbositySettingId } from '../../accessibility/browser/accessibilityConfiguration.js';
 
-
 export class MergeEditorAccessibilityHelpProvider implements IAccessibleViewImplementation {
 	readonly name = 'mergeEditor';
 	readonly type = AccessibleViewType.Help;

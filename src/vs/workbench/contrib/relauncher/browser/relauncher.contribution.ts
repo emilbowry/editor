@@ -22,7 +22,6 @@ import { IExtensionService } from '../../../services/extensions/common/extension
 import { IHostService } from '../../../services/host/browser/host.js';
 import { LifecyclePhase } from '../../../services/lifecycle/common/lifecycle.js';
 import { IUserDataSyncWorkbenchService } from '../../../services/userDataSync/common/userDataSync.js';
-// import { ChatConfiguration } from '../../chat/common/constants.js';
 
 interface IConfiguration extends IWindowsConfiguration {
 	update?: { mode?: string };

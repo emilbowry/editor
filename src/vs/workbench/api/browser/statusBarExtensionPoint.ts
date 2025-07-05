@@ -24,9 +24,6 @@ import { asStatusBarItemIdentifier } from '../common/extHostTypes.js';
 import { STATUS_BAR_ERROR_ITEM_BACKGROUND, STATUS_BAR_WARNING_ITEM_BACKGROUND } from '../../common/theme.js';
 import { IManagedHoverTooltipMarkdownString } from '../../../base/browser/ui/hover/hover.js';
 
-
-// --- service
-
 export const IExtensionStatusBarItemService = createDecorator<IExtensionStatusBarItemService>('IExtensionStatusBarItemService');
 
 export interface IExtensionStatusBarItemChangeEvent {
@@ -56,7 +53,6 @@ export interface IExtensionStatusBarItemService {
 
 	getEntries(): Iterable<ExtensionStatusBarEntry>;
 }
-
 
 class ExtensionStatusBarItemService implements IExtensionStatusBarItemService {
 
@@ -167,8 +163,6 @@ class ExtensionStatusBarItemService implements IExtensionStatusBarItemService {
 }
 
 registerSingleton(IExtensionStatusBarItemService, ExtensionStatusBarItemService, InstantiationType.Delayed);
-
-// --- extension point and reading of it
 
 interface IUserFriendlyStatusItemEntry {
 	id: string;

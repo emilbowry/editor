@@ -38,7 +38,6 @@ import { IWorkingCopyIdentifier } from '../../../services/workingCopy/common/wor
 import { EditorInput } from '../../../common/editor/editorInput.js';
 import { getActiveElement } from '../../../../base/browser/dom.js';
 
-
 const OpenInEditorCommandId = 'search.action.openInEditor';
 const OpenNewEditorToSideCommandId = 'search.action.openNewEditorToSide';
 const FocusQueryEditorWidgetCommandId = 'search.action.focusQueryEditorWidget';
@@ -54,8 +53,6 @@ const DecreaseSearchEditorContextLinesCommandId = 'decreaseSearchEditorContextLi
 const RerunSearchEditorSearchCommandId = 'rerunSearchEditorSearch';
 const CleanSearchEditorStateCommandId = 'cleanSearchEditorState';
 const SelectAllSearchEditorMatchesCommandId = 'selectAllSearchEditorMatches';
-
-
 
 //#region Editor Descriptior
 Registry.as<IEditorPaneRegistry>(EditorExtensions.EditorPane).registerEditorPane(

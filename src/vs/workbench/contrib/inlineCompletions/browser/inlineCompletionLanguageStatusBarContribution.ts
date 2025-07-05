@@ -29,7 +29,6 @@ export class InlineCompletionLanguageStatusBarContribution extends Disposable im
 	) {
 		super();
 
-
 		this._activeEditor = observableFromEvent(this, _editorService.onDidActiveEditorChange, () => this._editorService.activeTextEditorControl);
 		this._state = derived(this, reader => {
 			const editor = this._activeEditor.read(reader);

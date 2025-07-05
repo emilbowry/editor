@@ -699,7 +699,6 @@ export class MergeEditor extends AbstractTextEditor<IMergeEditorViewState> {
 		return { ...result, input1State, input2State, focusIndex };
 	}
 
-
 	protected tracksEditorViewState(input: EditorInput): boolean {
 		return input instanceof MergeEditorInput;
 	}
@@ -720,7 +719,6 @@ export interface IMergeEditorLayout {
 	readonly showBaseAtTop: boolean;
 }
 
-// TODO use PersistentStore
 class MergeEditorLayoutStore {
 	private static readonly _key = 'mergeEditor/layout';
 	private _value: IMergeEditorLayout = { kind: 'mixed', showBase: false, showBaseAtTop: true };

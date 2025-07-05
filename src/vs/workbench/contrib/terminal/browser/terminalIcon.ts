@@ -17,7 +17,6 @@ import { ansiColorMap } from '../common/terminalColorRegistry.js';
 import { createStyleSheet } from '../../../../base/browser/domStylesheets.js';
 import { DisposableStore, IDisposable } from '../../../../base/common/lifecycle.js';
 
-
 export function getColorClass(colorKey: string): string;
 export function getColorClass(profile: ITerminalProfile): string;
 export function getColorClass(terminal: ITerminalInstance): string | undefined;

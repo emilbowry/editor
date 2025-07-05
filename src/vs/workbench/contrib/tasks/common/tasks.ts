@@ -20,8 +20,6 @@ import { TerminalExitReason } from '../../../../platform/terminal/common/termina
 import { Codicon } from '../../../../base/common/codicons.js';
 import { registerIcon } from '../../../../platform/theme/common/iconRegistry.js';
 
-
-
 export const USER_TASKS_GROUP_KEY = 'settings';
 
 export const TASK_RUNNING_STATE = new RawContextKey<boolean>('taskRunning', false, nls.localize('tasks.taskRunningContext', "Whether a task is currently running."));
@@ -167,7 +165,6 @@ export enum RevealProblemKind {
 	 * Never reveals the problems panel when this task is executed.
 	 */
 	Never = 1,
-
 
 	/**
 	 * Only reveals the problems panel if a problem is found.
@@ -1113,8 +1110,6 @@ export class TaskSorter {
 	}
 }
 
-
-
 export const enum TaskRunType {
 	SingleRun = 'singleRun',
 	Background = 'background'
@@ -1123,8 +1118,6 @@ export const enum TaskRunType {
 export interface ITaskChangedEvent {
 	kind: TaskEventKind.Changed;
 }
-
-
 
 export enum TaskEventKind {
 	/** Indicates that a task's properties or configuration have changed */

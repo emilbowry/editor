@@ -138,7 +138,6 @@ export class TerminalProfileService extends Disposable implements ITerminalProfi
 		}
 	}
 
-
 	@throttle(2000)
 	refreshAvailableProfiles(): void {
 		this._refreshAvailableProfilesNow();

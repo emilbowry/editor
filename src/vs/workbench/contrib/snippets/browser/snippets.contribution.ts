@@ -24,21 +24,17 @@ import { Extensions, IConfigurationRegistry } from '../../../../platform/configu
 import './tabCompletion.js';
 import { editorConfigurationBaseNode } from '../../../../editor/common/config/editorConfigurationSchema.js';
 
-// service
 registerSingleton(ISnippetsService, SnippetsService, InstantiationType.Delayed);
 
-// actions
 registerAction2(InsertSnippetAction);
 CommandsRegistry.registerCommandAlias('editor.action.showSnippets', 'editor.action.insertSnippet');
 registerAction2(SurroundWithSnippetEditorAction);
 registerAction2(ApplyFileSnippetAction);
 registerAction2(ConfigureSnippetsAction);
 
-// workbench contribs
 const workbenchContribRegistry = Registry.as<IWorkbenchContributionsRegistry>(WorkbenchExtensions.Workbench);
 workbenchContribRegistry.registerWorkbenchContribution(SnippetCodeActions, LifecyclePhase.Restored);
 
-// config
 Registry
 	.as<IConfigurationRegistry>(Extensions.Configuration)
 	.registerConfiguration({
@@ -52,8 +48,6 @@ Registry
 		}
 	});
 
-
-// schema
 const languageScopeSchemaId = 'vscode://schemas/snippets';
 
 const snippetSchemaProperties: IJSONSchemaMap = {
@@ -95,7 +89,6 @@ const languageScopeSchema: IJSONSchema = {
 		additionalProperties: false
 	}
 };
-
 
 const globalSchemaId = 'vscode://schemas/global-snippets';
 const globalSchema: IJSONSchema = {

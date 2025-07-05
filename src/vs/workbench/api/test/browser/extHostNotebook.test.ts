@@ -110,7 +110,6 @@ suite('NotebookCell#Document', function () {
 		disposables.add(extHostDocuments);
 	});
 
-
 	test('cell document is vscode.TextDocument', async function () {
 
 		assert.strictEqual(notebook.apiNotebook.cellCount, 2);
@@ -361,7 +360,6 @@ suite('NotebookCell#Document', function () {
 		assert.strictEqual(event.contentChanges[0].addedCells[1].document.isClosed, false);
 	});
 
-
 	test('Opening a notebook results in VS Code firing the event onDidChangeActiveNotebookEditor twice #118470', function () {
 		let count = 0;
 		disposables.add(extHostNotebooks.onDidChangeActiveNotebookEditor(() => count += 1));
@@ -449,7 +447,6 @@ suite('NotebookCell#Document', function () {
 				]
 			}]
 		}), false, undefined);
-
 
 		const event = await p;
 
@@ -588,7 +585,6 @@ suite('NotebookCell#Document', function () {
 		await replaceOutputs(1, '1', [{ mime: 'text/plain', valueBytes: VSBuffer.fromString('foo') }]);
 		await appendOutputItem(1, '1', [{ mime: 'text/plain', valueBytes: VSBuffer.fromString('bar') }]);
 		await appendOutputItem(1, '1', [{ mime: 'text/plain', valueBytes: VSBuffer.fromString('baz') }]);
-
 
 		assert.strictEqual(notebook.apiNotebook.cellAt(1).outputs.length, 1);
 		assert.strictEqual(notebook.apiNotebook.cellAt(1).outputs[0].items.length, 3);

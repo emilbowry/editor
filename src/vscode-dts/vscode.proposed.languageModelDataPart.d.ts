@@ -3,8 +3,6 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-// version: 3
-
 declare module 'vscode' {
 
 	export interface LanguageModelChat {
@@ -126,7 +124,6 @@ declare module 'vscode' {
 		 */
 		constructor(callId: string, content: Array<LanguageModelTextPart | LanguageModelPromptTsxPart | LanguageModelDataPart | unknown>);
 	}
-
 
 	/**
 	 * A tool that can be invoked by a call to a {@link LanguageModelChat}.

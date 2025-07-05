@@ -191,7 +191,6 @@ export interface IHandleResult {
 	continue: boolean;
 }
 
-
 export async function getResource(filename: string, matcher: ProblemMatcher, fileService?: IFileService): Promise<URI> {
 	const kind = matcher.fileLocation;
 	let fullPath: string | undefined;
@@ -1859,7 +1858,6 @@ class ProblemMatcherRegistryImpl implements IProblemMatcherRegistry {
 	private readyPromise: Promise<void>;
 	private readonly _onMatchersChanged: Emitter<void> = new Emitter<void>();
 	public readonly onMatcherChanged: Event<void> = this._onMatchersChanged.event;
-
 
 	constructor() {
 		this.matchers = Object.create(null);

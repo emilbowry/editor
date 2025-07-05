@@ -9,7 +9,6 @@ import { createDecorator } from '../../../../platform/instantiation/common/insta
 import { IExtensionTerminalProfile, ITerminalContributions, ITerminalProfileContribution } from '../../../../platform/terminal/common/terminal.js';
 import { URI } from '../../../../base/common/uri.js';
 
-// terminal extension point
 const terminalsExtPoint = extensionsRegistry.ExtensionsRegistry.registerExtensionPoint<ITerminalContributions>(terminalContributionsDescriptor);
 
 export interface ITerminalContributionService {

@@ -96,7 +96,6 @@ function __vsc_cmd_executed --on-event fish_preexec
 	set --global _vsc_has_cmd
 end
 
-
 # Escape a value for use in the 'P' ("Property") or 'E' ("Command Line") sequences.
 # Backslashes are doubled and non-alphanumeric characters are hex encoded.
 function __vsc_escape_value

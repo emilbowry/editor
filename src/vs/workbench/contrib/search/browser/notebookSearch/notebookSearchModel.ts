@@ -149,7 +149,6 @@ export class CellMatch implements ICellMatch {
 		// TODO: add webview results to context
 	}
 
-
 	setCellModel(cell: ICellViewModel) {
 		this._cell = cell;
 	}
@@ -173,7 +172,6 @@ export class CellMatch implements ICellMatch {
 }
 
 export class NotebookCompatibleFileMatch extends FileMatchImpl implements INotebookFileInstanceMatch {
-
 
 	private _notebookEditorWidget: NotebookEditorWidget | null = null;
 	private _editorWidgetListener: IDisposable | null = null;
@@ -247,7 +245,6 @@ export class NotebookCompatibleFileMatch extends FileMatchImpl implements INoteb
 			this._notebookEditorWidget.revealRangeInCenterIfOutsideViewportAsync(match.cell, match.range());
 		}
 	}
-
 
 	bindNotebookEditorWidget(widget: NotebookEditorWidget) {
 		if (this._notebookEditorWidget === widget) {
@@ -411,7 +408,6 @@ export class NotebookCompatibleFileMatch extends FileMatchImpl implements INoteb
 		}
 	}
 
-
 	override matches(): ISearchTreeMatch[] {
 		const matches = Array.from(this._cellMatches.values()).flatMap((e) => e.matches());
 		return [...super.matches(), ...matches];
@@ -441,7 +437,6 @@ export class NotebookCompatibleFileMatch extends FileMatchImpl implements INoteb
 	cellMatches(): ICellMatch[] {
 		return Array.from(this._cellMatches.values());
 	}
-
 
 	override createMatches(): void {
 		const model = this.modelService.getModel(this._resource);
@@ -502,7 +497,6 @@ export class NotebookCompatibleFileMatch extends FileMatchImpl implements INoteb
 	}
 
 }
-// text search to notebook matches
 
 export function textSearchMatchesToNotebookMatches(textSearchMatches: ITextSearchMatch[], cell: CellMatch): MatchInNotebook[] {
 	const notebookMatches: MatchInNotebook[] = [];

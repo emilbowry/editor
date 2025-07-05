@@ -155,7 +155,6 @@ export function getUriFromSource(raw: DebugProtocol.Source, path: string | undef
 		}));
 	};
 
-
 	try {
 		return _getUriFromSource(path);
 	} catch (err) {

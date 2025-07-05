@@ -2364,7 +2364,6 @@ function escapeInvisibleChars(enumValue: string): string {
 		.replace(/\r/g, '\\r');
 }
 
-
 export class SettingsTreeFilter implements ITreeFilter<SettingsTreeElement> {
 	constructor(
 		private viewState: ISettingsEditorViewState,

@@ -756,7 +756,6 @@ export class NotebookCellOutline implements IOutline<OutlineEntry> {
 			return Disposable.None;
 		}
 
-
 		if (entry.range) {
 			const range = Range.lift(entry.range);
 			widget.revealRangeInCenterIfOutsideViewportAsync(entry.cell, range);

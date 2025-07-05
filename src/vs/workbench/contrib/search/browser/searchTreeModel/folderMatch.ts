@@ -539,7 +539,6 @@ export class FolderMatchWorkspaceRootImpl extends FolderMatchWithResourceImpl im
 	}
 }
 
-// currently, no support for AI results in out-of-workspace files
 export class FolderMatchNoRootImpl extends FolderMatchImpl implements ISearchTreeFolderMatchNoRoot {
 	constructor(_id: string, _index: number, _query: ITextQuery, _parent: ITextSearchHeading,
 		@IReplaceService replaceService: IReplaceService,

@@ -256,7 +256,6 @@ class Snapper {
 		return result;
 	}
 
-
 	private _enrichResult(result: IToken[], themesResult: IThemesResult): void {
 		const index: { [themeName: string]: number } = {};
 		const themeNames = Object.keys(themesResult);

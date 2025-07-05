@@ -1409,7 +1409,6 @@ class SettingsEditorContribution extends Disposable {
 	}
 }
 
-
 function getEditorGroupFromArguments(accessor: ServicesAccessor, args: unknown[]): IEditorGroup | undefined {
 	const context = resolveCommandsContext(args, accessor.get(IEditorService), accessor.get(IEditorGroupsService), accessor.get(IListService));
 	return context.groupedEditors[0]?.group;
@@ -1420,8 +1419,6 @@ registerWorkbenchContribution2(PreferencesContribution.ID, PreferencesContributi
 registerWorkbenchContribution2(SettingsEditorTitleContribution.ID, SettingsEditorTitleContribution, WorkbenchPhase.AfterRestored);
 
 registerEditorContribution(SettingsEditorContribution.ID, SettingsEditorContribution, EditorContributionInstantiation.AfterFirstRender);
-
-// Preferences menu
 
 MenuRegistry.appendMenuItem(MenuId.MenubarFileMenu, {
 	title: nls.localize({ key: 'miPreferences', comment: ['&& denotes a mnemonic'] }, "&&Preferences"),

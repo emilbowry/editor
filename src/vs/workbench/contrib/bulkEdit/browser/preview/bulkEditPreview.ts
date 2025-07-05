@@ -364,7 +364,6 @@ export class BulkEditPreviewProvider implements ITextModelContentProvider {
 
 	static emptyPreview = URI.from({ scheme: this.Schema, fragment: 'empty' });
 
-
 	static fromPreviewUri(uri: URI): URI {
 		return URI.parse(uri.query);
 	}

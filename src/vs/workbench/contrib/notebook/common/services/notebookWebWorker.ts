@@ -294,8 +294,6 @@ export class NotebookWorker implements IWebWorkerServerRequestHandler, IDisposab
 			 * F => F
 			 */
 
-
-
 			// Note, if cells are swapped, then this compilicates things
 			// Trying to solve diff manually is not easy.
 			// Lets instead use LCS find the cells that haven't changed,
@@ -310,8 +308,6 @@ export class NotebookWorker implements IWebWorkerServerRequestHandler, IDisposab
 			// Code Cell = print("Foo BarZ")
 			// LCS will tell us that everything changed.
 			// But using similarity algorithms we can tell that the first cell is new and last 2 changed.
-
-
 
 			// Lets try the similarity algorithms on all cells.
 			// We might fare better.
@@ -453,7 +449,6 @@ export class NotebookWorker implements IWebWorkerServerRequestHandler, IDisposab
 		});
 		return true;
 	}
-
 
 	isOriginalCellMatchedWithModifiedCell(originalCell: MirrorCell) {
 		return (originalCell.internalMetadata?.internalId as string || '').startsWith(PREFIX_FOR_UNMATCHED_ORIGINAL_CELLS);

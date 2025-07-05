@@ -32,7 +32,6 @@ export class FindMatchDecorationModel extends Disposable {
 		this.setAllFindMatchesDecorations([]);
 	}
 
-
 	public async highlightCurrentFindMatchDecorationInCell(cell: ICellViewModel, cellRange: Range): Promise<number | null> {
 
 		this.clearCurrentFindMatchDecoration();

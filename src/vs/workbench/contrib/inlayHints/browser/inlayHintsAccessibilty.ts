@@ -21,7 +21,6 @@ import { IInstantiationService, ServicesAccessor } from '../../../../platform/in
 import { KeybindingWeight } from '../../../../platform/keybinding/common/keybindingsRegistry.js';
 import { Link } from '../../../../platform/opener/browser/link.js';
 
-
 export class InlayHintsAccessibility implements IEditorContribution {
 
 	static readonly IsReading = new RawContextKey<boolean>('isReadingLineWithInlayHints', false, { type: 'boolean', description: localize('isReadingLineWithInlayHints', "Whether the current line and its inlay hints are currently focused") });
@@ -147,8 +146,6 @@ export class InlayHintsAccessibility implements IEditorContribution {
 		}));
 	}
 
-
-
 	startInlayHintsReading(): void {
 		if (!this._editor.hasModel()) {
 			return;
@@ -167,7 +164,6 @@ export class InlayHintsAccessibility implements IEditorContribution {
 		this._editor.focus();
 	}
 }
-
 
 registerAction2(class StartReadHints extends EditorAction2 {
 

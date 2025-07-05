@@ -53,8 +53,7 @@ import { stripIcons } from '../../../../base/common/iconLabels.js';
 import { Lazy } from '../../../../base/common/lazy.js';
 import { IKeybindingService } from '../../../../platform/keybinding/common/keybinding.js';
 import { Registry } from '../../../../platform/registry/common/platform.js';
-// import { ASK_QUICK_QUESTION_ACTION_ID } from '../../chat/browser/actions/chatQuickInputActions.js';
-// import { IQuickChatService } from '../../chat/browser/chat.js';
+
 import { ILogService } from '../../../../platform/log/common/log.js';
 import { ICustomEditorLabelService } from '../../../services/editor/common/customEditorLabelService.js';
 
@@ -91,7 +90,6 @@ interface IAnythingPickState extends IDisposable {
 	 */
 	set(picker: IQuickPick<IAnythingQuickPickItem, { useSeparators: true }>): void;
 }
-
 
 export class AnythingQuickAccessProvider extends PickerQuickAccessProvider<IAnythingQuickPickItem> {
 
@@ -491,7 +489,6 @@ export class AnythingQuickAccessProvider extends PickerQuickAccessProvider<IAnyt
 		return filteredAnythingPicks;
 	}
 
-
 	//#region Editor History
 
 	private readonly labelOnlyEditorHistoryPickAccessor = new QuickPickItemScorerAccessor({ skipDescription: true });
@@ -542,7 +539,6 @@ export class AnythingQuickAccessProvider extends PickerQuickAccessProvider<IAnyt
 	}
 
 	//#endregion
-
 
 	//#region File Search
 
@@ -876,7 +872,6 @@ export class AnythingQuickAccessProvider extends PickerQuickAccessProvider<IAnyt
 
 	//#endregion
 
-
 	//#region Editor Symbols (if narrowing down into a global pick via `@`)
 
 	private readonly editorSymbolsQuickAccess: GotoSymbolQuickAccessProvider;
@@ -980,7 +975,6 @@ export class AnythingQuickAccessProvider extends PickerQuickAccessProvider<IAnyt
 	}
 
 	//#endregion
-
 
 	//#region Helpers
 

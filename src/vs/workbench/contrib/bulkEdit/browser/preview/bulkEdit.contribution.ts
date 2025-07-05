@@ -160,8 +160,6 @@ class BulkEditPreviewContribution {
 	}
 }
 
-
-// CMD: accept
 registerAction2(class ApplyAction extends Action2 {
 
 	constructor() {
@@ -190,7 +188,6 @@ registerAction2(class ApplyAction extends Action2 {
 	}
 });
 
-// CMD: discard
 registerAction2(class DiscardAction extends Action2 {
 
 	constructor() {
@@ -214,8 +211,6 @@ registerAction2(class DiscardAction extends Action2 {
 	}
 });
 
-
-// CMD: toggle change
 registerAction2(class ToggleAction extends Action2 {
 
 	constructor() {
@@ -243,8 +238,6 @@ registerAction2(class ToggleAction extends Action2 {
 	}
 });
 
-
-// CMD: toggle category
 registerAction2(class GroupByFile extends Action2 {
 
 	constructor() {

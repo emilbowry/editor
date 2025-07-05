@@ -51,7 +51,6 @@ class AccessibleViewNextAction extends Action2 {
 }
 registerAction2(AccessibleViewNextAction);
 
-
 class AccessibleViewNextCodeBlockAction extends Action2 {
 	constructor() {
 		super({
@@ -76,7 +75,6 @@ class AccessibleViewNextCodeBlockAction extends Action2 {
 	}
 }
 registerAction2(AccessibleViewNextCodeBlockAction);
-
 
 class AccessibleViewPreviousCodeBlockAction extends Action2 {
 	constructor() {
@@ -127,7 +125,6 @@ class AccessibleViewPreviousAction extends Action2 {
 	}
 }
 registerAction2(AccessibleViewPreviousAction);
-
 
 class AccessibleViewGoToSymbolAction extends Action2 {
 	constructor() {
@@ -180,7 +177,6 @@ export const AccessibilityHelpAction = registerCommand(new MultiCommand({
 		order: 1
 	}],
 }));
-
 
 export const AccessibleViewAction = registerCommand(new MultiCommand({
 	id: AccessibilityCommandId.OpenAccessibleView,
@@ -281,7 +277,6 @@ class AccessibilityHelpConfigureAssignedKeybindingsAction extends Action2 {
 	}
 }
 registerAction2(AccessibilityHelpConfigureAssignedKeybindingsAction);
-
 
 class AccessibilityHelpOpenHelpLinkAction extends Action2 {
 	constructor() {

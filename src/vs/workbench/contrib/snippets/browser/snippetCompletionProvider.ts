@@ -21,7 +21,6 @@ import { ExtensionIdentifier } from '../../../../platform/extensions/common/exte
 import { CommandsRegistry } from '../../../../platform/commands/common/commands.js';
 import { IWordAtPosition } from '../../../../editor/common/core/wordHelper.js';
 
-
 const markSnippetAsUsed = '_snippet.markAsUsed';
 
 CommandsRegistry.registerCommand(markSnippetAsUsed, (accessor, ...args) => {

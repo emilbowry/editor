@@ -158,7 +158,6 @@ export class FindModel extends Disposable {
 			}
 		};
 
-
 		if (e.isReplaceRevealed && !this._state.isReplaceRevealed) {
 			// replace is hidden, we need to switch all markdown cells to preview mode
 			const viewModel = this._notebookEditor.getViewModel() as NotebookViewModel | undefined;
@@ -359,7 +358,6 @@ export class FindModel extends Disposable {
 		const oldCurrCell = this._findMatches[oldCurrIndex.index].cell;
 		const oldCurrMatchCellIndex = this._notebookEditor.getCellIndex(oldCurrCell);
 
-
 		if (oldCurrMatchCellIndex < 0) {
 			// the cell containing the active match is deleted
 			if (this._notebookEditor.getLength() === 0) {
@@ -530,7 +528,6 @@ export class FindModel extends Disposable {
 			this._findMatchesStarts = null;
 		}
 	}
-
 
 	private async highlightCurrentFindMatchDecoration(cellIndex: number, matchIndex: number): Promise<number | null> {
 		const cell = this._findMatches[cellIndex].cell;

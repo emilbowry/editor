@@ -204,7 +204,6 @@ class TrimFinalNewLinesParticipant extends NotebookSaveParticipant {
 		super(editorService);
 	}
 
-
 	async participate(workingCopy: IStoredFileWorkingCopy<IStoredFileWorkingCopyModel>, context: IStoredFileWorkingCopySaveParticipantContext, progress: IProgress<IProgressStep>, _token: CancellationToken): Promise<void> {
 		if (this.configurationService.getValue<boolean>('files.trimFinalNewlines') && this.canParticipate()) {
 			await this.doTrimFinalNewLines(workingCopy, context.reason === SaveReason.AUTO, progress);

@@ -71,7 +71,6 @@ registerColors();
 registerSingleton(IDebugService, DebugService, InstantiationType.Delayed);
 registerSingleton(IDebugVisualizerService, DebugVisualizerService, InstantiationType.Delayed);
 
-// Register Debug Workbench Contributions
 Registry.as<IWorkbenchContributionsRegistry>(WorkbenchExtensions.Workbench).registerWorkbenchContribution(DebugStatusContribution, LifecyclePhase.Eventually);
 Registry.as<IWorkbenchContributionsRegistry>(WorkbenchExtensions.Workbench).registerWorkbenchContribution(DebugProgressContribution, LifecyclePhase.Eventually);
 if (isWeb) {
@@ -83,7 +82,6 @@ Registry.as<IWorkbenchContributionsRegistry>(WorkbenchExtensions.Workbench).regi
 Registry.as<IWorkbenchContributionsRegistry>(WorkbenchExtensions.Workbench).registerWorkbenchContribution(DisassemblyViewContribution, LifecyclePhase.Eventually);
 Registry.as<IWorkbenchContributionsRegistry>(WorkbenchExtensions.Workbench).registerWorkbenchContribution(DebugLifecycle, LifecyclePhase.Eventually);
 
-// Register Quick Access
 Registry.as<IQuickAccessRegistry>(QuickAccessExtensions.Quickaccess).registerQuickAccessProvider({
 	ctor: StartDebugQuickAccessProvider,
 	prefix: DEBUG_QUICK_ACCESS_PREFIX,
@@ -96,7 +94,6 @@ Registry.as<IQuickAccessRegistry>(QuickAccessExtensions.Quickaccess).registerQui
 	}]
 });
 
-// Register quick access for debug console
 Registry.as<IQuickAccessRegistry>(QuickAccessExtensions.Quickaccess).registerQuickAccessProvider({
 	ctor: DebugConsoleQuickAccess,
 	prefix: DEBUG_CONSOLE_QUICK_ACCESS_PREFIX,
@@ -152,7 +149,6 @@ registerDebugCommandPaletteItem(CALLSTACK_BOTTOM_ID, CALLSTACK_BOTTOM_LABEL, CON
 registerDebugCommandPaletteItem(CALLSTACK_UP_ID, CALLSTACK_UP_LABEL, CONTEXT_IN_DEBUG_MODE, CONTEXT_DEBUG_STATE.isEqualTo('stopped'));
 registerDebugCommandPaletteItem(CALLSTACK_DOWN_ID, CALLSTACK_DOWN_LABEL, CONTEXT_IN_DEBUG_MODE, CONTEXT_DEBUG_STATE.isEqualTo('stopped'));
 
-// Debug callstack context menu
 const registerDebugViewMenuItem = (menuId: MenuId, id: string, title: string | ICommandActionTitle, order: number, when?: ContextKeyExpression, precondition?: ContextKeyExpression, group = 'navigation', icon?: Icon) => {
 	MenuRegistry.appendMenuItem(menuId, {
 		group,
@@ -220,7 +216,6 @@ KeybindingsRegistry.registerKeybindingRule({
 	primary: KeyMod.CtrlCmd | KeyCode.KeyC
 });
 
-// Touch Bar
 if (isMacintosh) {
 
 	const registerTouchBarEntry = (id: string, title: string | ICommandActionTitle, order: number, when: ContextKeyExpression | undefined, iconUri: URI) => {
@@ -247,11 +242,7 @@ if (isMacintosh) {
 	registerTouchBarEntry(STOP_ID, STOP_LABEL, 6, CONTEXT_IN_DEBUG_MODE, FileAccess.asFileUri('vs/workbench/contrib/debug/browser/media/stop-tb.png'));
 }
 
-// Editor Title Menu's "Run/Debug" dropdown item
-
 MenuRegistry.appendMenuItem(MenuId.EditorTitle, { submenu: MenuId.EditorTitleRun, rememberDefaultAction: true, title: nls.localize2('run', "Run or Debug..."), icon: icons.debugRun, group: 'navigation', order: -1 });
-
-// Debug menu
 
 MenuRegistry.appendMenuItem(MenuId.MenubarMainMenu, {
 	submenu: MenuId.MenubarDebugMenu,
@@ -304,8 +295,6 @@ MenuRegistry.appendMenuItem(MenuId.MenubarDebugMenu, {
 	when: CONTEXT_DEBUGGERS_AVAILABLE
 });
 
-// Configuration
-
 MenuRegistry.appendMenuItem(MenuId.MenubarDebugMenu, {
 	group: '2_configuration',
 	command: {
@@ -316,7 +305,6 @@ MenuRegistry.appendMenuItem(MenuId.MenubarDebugMenu, {
 	when: CONTEXT_DEBUGGERS_AVAILABLE
 });
 
-// Step Commands
 MenuRegistry.appendMenuItem(MenuId.MenubarDebugMenu, {
 	group: '3_step',
 	command: {
@@ -361,8 +349,6 @@ MenuRegistry.appendMenuItem(MenuId.MenubarDebugMenu, {
 	when: CONTEXT_DEBUGGERS_AVAILABLE
 });
 
-// New Breakpoints
-
 MenuRegistry.appendMenuItem(MenuId.MenubarNewBreakpointMenu, {
 	group: '1_breakpoints',
 	command: {
@@ -380,8 +366,6 @@ MenuRegistry.appendMenuItem(MenuId.MenubarDebugMenu, {
 	order: 2,
 	when: CONTEXT_DEBUGGERS_AVAILABLE
 });
-
-// Disassembly
 
 MenuRegistry.appendMenuItem(MenuId.DebugDisassemblyContext, {
 	group: '1_edit',
@@ -403,9 +387,6 @@ MenuRegistry.appendMenuItem(MenuId.DebugDisassemblyContext, {
 	when: CONTEXT_DEBUGGERS_AVAILABLE
 });
 
-// Breakpoint actions are registered from breakpointsView.ts
-
-// Install Debuggers
 MenuRegistry.appendMenuItem(MenuId.MenubarDebugMenu, {
 	group: 'z_install',
 	command: {
@@ -414,8 +395,6 @@ MenuRegistry.appendMenuItem(MenuId.MenubarDebugMenu, {
 	},
 	order: 1
 });
-
-// register repl panel
 
 const VIEW_CONTAINER: ViewContainer = Registry.as<IViewContainersRegistry>(ViewExtensions.ViewContainersRegistry).registerViewContainer({
 	id: DEBUG_PANEL_ID,
@@ -443,7 +422,6 @@ Registry.as<IViewsRegistry>(ViewExtensions.ViewsRegistry).registerViews([{
 	}
 }], VIEW_CONTAINER);
 
-
 const viewContainer = Registry.as<IViewContainersRegistry>(ViewExtensions.ViewContainersRegistry).registerViewContainer({
 	id: VIEWLET_ID,
 	title: nls.localize2('run and debug', "Run and Debug"),
@@ -459,7 +437,6 @@ const viewContainer = Registry.as<IViewContainersRegistry>(ViewExtensions.ViewCo
 	order: 3,
 }, ViewContainerLocation.Sidebar);
 
-// Register default debug views
 const viewsRegistry = Registry.as<IViewsRegistry>(ViewExtensions.ViewsRegistry);
 viewsRegistry.registerViews([{ id: VARIABLES_VIEW_ID, name: nls.localize2('variables', "Variables"), containerIcon: icons.variablesViewIcon, ctorDescriptor: new SyncDescriptor(VariablesView), order: 10, weight: 40, canToggleVisibility: true, canMoveView: true, focusCommand: { id: 'workbench.debug.action.focusVariablesView' }, when: CONTEXT_DEBUG_UX.isEqualTo('default') }], viewContainer);
 viewsRegistry.registerViews([{ id: WATCH_VIEW_ID, name: nls.localize2('watch', "Watch"), containerIcon: icons.watchViewIcon, ctorDescriptor: new SyncDescriptor(WatchExpressionsView), order: 20, weight: 10, canToggleVisibility: true, canMoveView: true, focusCommand: { id: 'workbench.debug.action.focusWatchView' }, when: CONTEXT_DEBUG_UX.isEqualTo('default') }], viewContainer);
@@ -468,14 +445,11 @@ viewsRegistry.registerViews([{ id: BREAKPOINTS_VIEW_ID, name: nls.localize2('bre
 viewsRegistry.registerViews([{ id: WelcomeView.ID, name: WelcomeView.LABEL, containerIcon: icons.runViewIcon, ctorDescriptor: new SyncDescriptor(WelcomeView), order: 1, weight: 40, canToggleVisibility: true, when: CONTEXT_DEBUG_UX.isEqualTo('simple') }], viewContainer);
 viewsRegistry.registerViews([{ id: LOADED_SCRIPTS_VIEW_ID, name: nls.localize2('loadedScripts', "Loaded Scripts"), containerIcon: icons.loadedScriptsViewIcon, ctorDescriptor: new SyncDescriptor(LoadedScriptsView), order: 35, weight: 5, canToggleVisibility: true, canMoveView: true, collapsed: true, when: ContextKeyExpr.and(CONTEXT_LOADED_SCRIPTS_SUPPORTED, CONTEXT_DEBUG_UX.isEqualTo('default')) }], viewContainer);
 
-// Register disassembly view
-
 Registry.as<IEditorPaneRegistry>(EditorExtensions.EditorPane).registerEditorPane(
 	EditorPaneDescriptor.create(DisassemblyView, DISASSEMBLY_VIEW_ID, nls.localize('disassembly', "Disassembly")),
 	[new SyncDescriptor(DisassemblyViewInput)]
 );
 
-// Register configuration
 const configurationRegistry = Registry.as<IConfigurationRegistry>(ConfigurationExtensions.Configuration);
 configurationRegistry.registerConfiguration({
 	id: 'debug',

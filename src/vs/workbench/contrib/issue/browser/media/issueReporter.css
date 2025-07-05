@@ -159,7 +159,6 @@
 	font-family: "Segoe WPC", "Segoe UI", "Malgun Gothic", "Dotom", sans-serif;
 }
 
-
 /* Linux: add `system-ui` as first font and not `Ubuntu` to allow other distribution pick their standard OS font */
 .issue-reporter-body .linux.web {
 	font-family: system-ui, "Ubuntu", "Droid Sans", sans-serif;
@@ -266,7 +265,6 @@ body.issue-reporter-body  {
 	margin-top: 10px;
 }
 
-
 .issue-reporter-body .validation-error {
 	font-size: 12px;
 	padding: 10px;
@@ -276,7 +274,6 @@ body.issue-reporter-body  {
 .issue-reporter-body .system-info {
 	margin-bottom: 10px;
 }
-
 
 .issue-reporter-body .issue-reporter input[type="checkbox"] {
 	width: auto;
@@ -531,7 +528,6 @@ body.issue-reporter-body  {
 .issue-reporter-body::-webkit-scrollbar-thumb:active {
 	background-color: var(--vscode-scrollbarSlider-activeBackground)
 }
-
 
 .issue-reporter-body::-webkit-scrollbar-thumb,
 .issue-reporter-body::-webkit-scrollbar-thumb:hover {

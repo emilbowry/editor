@@ -18,7 +18,6 @@ import { isEqual } from '../../../../base/common/resources.js';
 
 const schemaRegistry = Registry.as<JSONContributionRegistry.IJSONContributionRegistry>(JSONContributionRegistry.Extensions.JSONContribution);
 
-
 export class SettingsFileSystemProvider extends Disposable implements IFileSystemProviderWithFileReadWriteCapability {
 
 	static readonly SCHEMA = Schemas.vscode;

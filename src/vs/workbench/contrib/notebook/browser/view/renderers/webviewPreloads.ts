@@ -10,16 +10,6 @@ import type { NotebookCellMetadata } from '../../../common/notebookCommon.js';
 import type * as rendererApi from 'vscode-notebook-renderer';
 import type { NotebookCellOutputTransferData } from '../../../../../../platform/dnd/browser/dnd.js';
 
-// !! IMPORTANT !! ----------------------------------------------------------------------------------
-// import { RenderOutputType } from 'vs/workbench/contrib/notebook/browser/notebookBrowser';
-// We can ONLY IMPORT as type in this module. This also applies to const enums that would evaporate
-// in normal compiles but remain a dependency in transpile-only compiles
-// !! IMPORTANT !! ----------------------------------------------------------------------------------
-
-// !! IMPORTANT !! everything must be in-line within the webviewPreloads
-// function. Imports are not allowed. This is stringified and injected into
-// the webview.
-
 declare module globalThis {
 	const acquireVsCodeApi: () => ({
 		getState(): { [key: string]: unknown };
@@ -47,7 +37,6 @@ interface CSSHighlights {
 declare namespace CSS {
 	let highlights: CSSHighlights | undefined;
 }
-
 
 type Listener<T> = { fn: (evt: T) => void; thisArg: unknown };
 
@@ -1425,7 +1414,6 @@ async function webviewPreloads(ctx: PreloadContext) {
 			return offset;
 		}
 
-
 		// count the number of chars before the current dom elem and the start of the dom
 		let prevSibling = currentNode.previousSibling;
 		while (prevSibling) {
@@ -1563,7 +1551,6 @@ async function webviewPreloads(ctx: PreloadContext) {
 		} catch (e) {
 			console.log(e);
 		}
-
 
 		matches = matches.filter(match => options.findIds.length ? options.findIds.includes(match.cellId) : true);
 		_highlighter.addHighlights(matches, options.ownerID);

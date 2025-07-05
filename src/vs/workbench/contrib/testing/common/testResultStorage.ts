@@ -247,7 +247,6 @@ export class TestResultStorage extends BaseTestResultStorage {
 		}
 	}
 
-
 	protected async readOutputForResultId(id: string): Promise<VSBufferReadableStream> {
 		try {
 			const { value } = await this.fileService.readFileStream(this.getResultOutputPath(id));

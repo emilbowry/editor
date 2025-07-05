@@ -153,7 +153,6 @@
 	color: var(--vscode-chat-slashCommandForeground);
 }
 
-
 .monaco-workbench .notebookOverlay .cell-chat-part .inline-chat .markdownMessage {
 	padding: 10px 5px;
 }
@@ -239,7 +238,6 @@
 	background-color: var(--vscode-inputOption-activeBackground);
 	outline: 1px solid var(--vscode-inputOption-activeBorder);
 }
-
 
 .monaco-workbench .notebookOverlay .cell-chat-part .inline-chat .status .monaco-toolbar .action-item.button-item .action-label:is(:hover, :focus) {
 	background-color: var(--vscode-button-hoverBackground);

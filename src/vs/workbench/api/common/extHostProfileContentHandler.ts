@@ -13,7 +13,6 @@ import { ISaveProfileResult } from '../../services/userDataProfile/common/userDa
 import type * as vscode from 'vscode';
 import { ExtHostProfileContentHandlersShape, IMainContext, MainContext, MainThreadProfileContentHandlersShape } from './extHost.protocol.js';
 
-
 export class ExtHostProfileContentHandlers implements ExtHostProfileContentHandlersShape {
 
 	private readonly proxy: MainThreadProfileContentHandlersShape;

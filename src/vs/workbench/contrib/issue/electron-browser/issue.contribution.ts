@@ -99,4 +99,3 @@ CommandsRegistry.registerCommand('_issues.getSystemStatus', (accessor) => {
 	return accessor.get(IProcessService).getSystemStatus();
 });
 
-// #endregion

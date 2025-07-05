@@ -93,7 +93,6 @@ class SCMRepositoryActionViewItem extends ActionViewItem {
 			const name = $('.name');
 			name.textContent = this._repository.provider.name;
 
-
 			reset(this.label, icon, name);
 		}
 	}

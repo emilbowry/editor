@@ -19,8 +19,6 @@ import { InputLatencyContrib } from './inputLatencyContrib.js';
 import { IEnvironmentService } from '../../../../platform/environment/common/environment.js';
 import { GCBasedDisposableTracker, setDisposableTracker } from '../../../../base/common/lifecycle.js';
 
-// -- startup performance view
-
 registerWorkbenchContribution2(
 	PerfviewContrib.ID,
 	PerfviewContrib,
@@ -42,7 +40,6 @@ Registry.as<IEditorFactoryRegistry>(EditorExtensions.EditorFactory).registerEdit
 	}
 );
 
-
 registerAction2(class extends Action2 {
 
 	constructor() {
@@ -60,7 +57,6 @@ registerAction2(class extends Action2 {
 		return editorService.openEditor(contrib.getEditorInput(), { pinned: true });
 	}
 });
-
 
 registerAction2(class PrintServiceCycles extends Action2 {
 
@@ -109,7 +105,6 @@ registerAction2(class PrintServiceTraces extends Action2 {
 	}
 });
 
-
 registerAction2(class PrintEventProfiling extends Action2 {
 
 	constructor() {
@@ -132,16 +127,10 @@ registerAction2(class PrintEventProfiling extends Action2 {
 	}
 });
 
-// -- input latency
-
 Registry.as<IWorkbenchContributionsRegistry>(Extensions.Workbench).registerWorkbenchContribution(
 	InputLatencyContrib,
 	LifecyclePhase.Eventually
 );
-
-
-// -- track leaking disposables, those that get GC'ed before having been disposed
-
 
 class DisposableTracking {
 	static readonly Id = 'perf.disposableTracking';

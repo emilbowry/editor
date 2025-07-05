@@ -14,7 +14,6 @@ import { IConfigurationService } from '../../../../../platform/configuration/com
 import { IListView } from '../../../../../base/browser/ui/list/listView.js';
 import { CellViewModel } from '../viewModel/notebookViewModelImpl.js';
 
-
 export class NotebookCellAnchor implements IDisposable {
 
 	private stopAnchoring = false;

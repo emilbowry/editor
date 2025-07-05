@@ -263,7 +263,6 @@ export interface IBaseCommandProperties {
 	args?: CommandString[];
 }
 
-
 export interface ICommandProperties extends IBaseCommandProperties {
 
 	/**
@@ -568,7 +567,6 @@ function fillProperty<T, K extends keyof T>(target: T, source: Partial<T>, key: 
 	}
 }
 
-
 interface IParserType<T> {
 	isEmpty(value: T | undefined): boolean;
 	assignProperties(target: T | undefined, source: T | undefined): T | undefined;
@@ -581,7 +579,6 @@ interface IMetaData<T, U> {
 	property: keyof T;
 	type?: IParserType<U>;
 }
-
 
 function _isEmpty<T>(this: void, value: T | undefined, properties: IMetaData<T, any>[] | undefined, allowEmptyArray: boolean = false): boolean {
 	if (value === undefined || value === null || properties === undefined) {
@@ -761,7 +758,6 @@ export interface IParseContext {
 	taskLoadIssues: string[];
 	contextKeyService: IContextKeyService;
 }
-
 
 namespace ShellConfiguration {
 
@@ -2185,8 +2181,6 @@ export function parse(workspaceFolder: IWorkspaceFolder, workspace: IWorkspace |
 		uuidMap.finish();
 	}
 }
-
-
 
 export function createCustomTask(contributedTask: Tasks.ContributedTask, configuredProps: Tasks.ConfiguringTask | Tasks.CustomTask): Tasks.CustomTask {
 	return CustomTask.createCustomTask(contributedTask, configuredProps);

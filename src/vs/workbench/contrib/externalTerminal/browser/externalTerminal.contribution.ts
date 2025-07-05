@@ -106,7 +106,6 @@ export class ExternalTerminalContribution extends Disposable implements IWorkben
 			ResourceContextKey.Scheme.isEqualTo(Schemas.file),
 			ContextKeyExpr.or(ContextKeyExpr.equals('config.terminal.explorerKind', 'integrated'), ContextKeyExpr.equals('config.terminal.explorerKind', 'both')));
 
-
 		const shouldShowExternalKindOnLocal = ContextKeyExpr.and(
 			ResourceContextKey.Scheme.isEqualTo(Schemas.file),
 			ContextKeyExpr.or(ContextKeyExpr.equals('config.terminal.explorerKind', 'external'), ContextKeyExpr.equals('config.terminal.explorerKind', 'both')));
@@ -121,7 +120,6 @@ export class ExternalTerminalContribution extends Disposable implements IWorkben
 			when: ContextKeyExpr.or(shouldShowIntegratedOnLocal, ResourceContextKey.Scheme.isEqualTo(Schemas.vscodeRemote))
 		};
 
-
 		this._openInTerminalMenuItem = {
 			group: 'navigation',
 			order: 31,
@@ -131,7 +129,6 @@ export class ExternalTerminalContribution extends Disposable implements IWorkben
 			},
 			when: shouldShowExternalKindOnLocal
 		};
-
 
 		MenuRegistry.appendMenuItem(MenuId.ExplorerContext, this._openInTerminalMenuItem);
 		MenuRegistry.appendMenuItem(MenuId.ExplorerContext, this._openInIntegratedTerminalMenuItem);

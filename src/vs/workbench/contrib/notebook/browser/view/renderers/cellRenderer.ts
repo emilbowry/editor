@@ -25,7 +25,7 @@ import { IKeybindingService } from '../../../../../../platform/keybinding/common
 import { INotificationService } from '../../../../../../platform/notification/common/notification.js';
 import { ICellViewModel, INotebookEditorDelegate } from '../../notebookBrowser.js';
 import { CellPartsCollection } from '../cellPart.js';
-// import { CellChatPart } from '../cellParts/chat/cellChatPart.js';
+
 import { CellComments } from '../cellParts/cellComments.js';
 import { CellContextKeyPart } from '../cellParts/cellContextKeys.js';
 import { CellDecorations } from '../cellParts/cellDecorations.js';

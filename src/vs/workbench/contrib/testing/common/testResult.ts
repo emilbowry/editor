@@ -207,7 +207,6 @@ export class TaskRawOutput implements ITaskRawOutput {
 		this.push(end);
 		this.push(data.slice(trimLen));
 
-
 		return { offset, length };
 	}
 

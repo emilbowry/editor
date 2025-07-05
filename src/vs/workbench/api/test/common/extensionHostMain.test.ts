@@ -24,7 +24,6 @@ import { ProxyIdentifier, Proxied } from '../../../services/extensions/common/pr
 import { IExtHostApiDeprecationService, NullApiDeprecationService } from '../../common/extHostApiDeprecationService.js';
 import { ExtensionDescriptionRegistry, IActivationEventsReader } from '../../../services/extensions/common/extensionDescriptionRegistry.js';
 
-
 suite('ExtensionHostMain#ErrorHandler - Wrapping prepareStackTrace can cause slowdown and eventual stack overflow #184926 ', function () {
 
 	if (isFirefox || isSafari) {
@@ -153,7 +152,6 @@ suite('ExtensionHostMain#ErrorHandler - Wrapping prepareStackTrace can cause slo
 		const stack = probeErr.stack;
 		assert.ok(stack);
 
-
 		onUnexpectedError(probeErr);
 		assert.strictEqual(findSubstrCount, 1);
 	});
@@ -186,7 +184,6 @@ suite('ExtensionHostMain#ErrorHandler - Wrapping prepareStackTrace can cause slo
 		assert.strictEqual(findSubstrCount, 2);
 		assert.strictEqual(do_something_count, 2);
 	});
-
 
 	suite('https://gist.github.com/thecrypticace/f0f2e182082072efdaf0f8e1537d2cce', function () {
 

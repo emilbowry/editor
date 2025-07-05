@@ -109,7 +109,6 @@ suite('SettingsTree', () => {
 				label: 'Etc'
 			});
 
-
 		assert.deepStrictEqual(
 			settingKeyToDisplayFormat('fooBar.somethingElse.etc', 'fooBar'),
 			{

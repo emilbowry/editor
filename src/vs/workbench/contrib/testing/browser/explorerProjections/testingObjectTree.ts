@@ -9,7 +9,6 @@ import { TestExplorerTreeElement, TestItemTreeElement } from './index.js';
 import { ISerializedTestTreeCollapseState } from './testingViewState.js';
 import { TestId } from '../../common/testId.js';
 
-
 export class TestingObjectTree<TFilterData = void> extends WorkbenchObjectTree<TestExplorerTreeElement, TFilterData> {
 
 	/**

@@ -25,7 +25,6 @@ import { TestConfigurationService } from '../../../../../platform/configuration/
 import { IConfigurationService } from '../../../../../platform/configuration/common/configuration.js';
 const $ = dom.$;
 
-
 suite('Debug - Base Debug View', () => {
 	const disposables = ensureNoDisposablesAreLeakedInTestSuite();
 	let renderer: DebugExpressionRenderer;

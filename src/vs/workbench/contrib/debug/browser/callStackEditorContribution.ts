@@ -25,7 +25,6 @@ export const topStackFrameColor = registerColor('editor.stackFrameHighlightBackg
 export const focusedStackFrameColor = registerColor('editor.focusedStackFrameHighlightBackground', { dark: '#7abd7a4d', light: '#cee7ce73', hcDark: '#7abd7a4d', hcLight: '#cee7ce73' }, localize('focusedStackFrameLineHighlight', 'Background color for the highlight of line at focused stack frame position.'));
 const stickiness = TrackedRangeStickiness.NeverGrowsWhenTypingAtEdges;
 
-// we need a separate decoration for glyph margin, since we do not want it on each line of a multi line statement.
 const TOP_STACK_FRAME_MARGIN: IModelDecorationOptions = {
 	description: 'top-stack-frame-margin',
 	glyphMarginClassName: ThemeIcon.asClassName(debugStackframe),

@@ -98,7 +98,6 @@ export class BetweenCellToolbar extends CellOverlayPart {
 	}
 }
 
-
 export interface ICssClassDelegate {
 	toggle: (className: string, force?: boolean) => void;
 }

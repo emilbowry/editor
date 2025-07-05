@@ -407,8 +407,6 @@ export class MainThreadTextEditors implements MainThreadTextEditorsShape {
 	}
 }
 
-// --- commands
-
 CommandsRegistry.registerCommand('_workbench.revertAllDirty', async function (accessor: ServicesAccessor) {
 	const environmentService = accessor.get(IEnvironmentService);
 	if (!environmentService.extensionTestsLocationURI) {

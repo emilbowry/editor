@@ -122,7 +122,6 @@ export class NotebookKernelService extends Disposable implements INotebookKernel
 
 	private static _storageNotebookBinding = 'notebook.controller2NotebookBindings';
 
-
 	constructor(
 		@INotebookService private readonly _notebookService: INotebookService,
 		@IStorageService private readonly _storageService: IStorageService,

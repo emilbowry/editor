@@ -22,8 +22,6 @@ import { Action } from '../../../../base/common/actions.js';
 import { widgetClose } from '../../../../platform/theme/common/iconRegistry.js';
 const $ = dom.$;
 
-// theming
-
 const debugExceptionWidgetBorder = registerColor('debugExceptionWidget.border', '#a31515', nls.localize('debugExceptionWidgetBorder', 'Exception widget border color.'));
 const debugExceptionWidgetBackground = registerColor('debugExceptionWidget.background', { dark: '#420b0d', light: '#f1dfde', hcDark: '#420b0d', hcLight: '#f1dfde' }, nls.localize('debugExceptionWidgetBackground', 'Exception widget background color.'));
 

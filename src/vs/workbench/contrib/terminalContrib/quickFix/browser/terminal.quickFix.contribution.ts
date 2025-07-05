@@ -20,13 +20,7 @@ import { TerminalQuickFixAddon } from './quickFixAddon.js';
 import { freePort, gitCreatePr, gitFastForwardPull, gitPushSetUpstream, gitSimilar, gitTwoDashes, pwshGeneralError, pwshUnixCommandNotFoundError } from './terminalQuickFixBuiltinActions.js';
 import { TerminalQuickFixService } from './terminalQuickFixService.js';
 
-// #region Services
-
 registerSingleton(ITerminalQuickFixService, TerminalQuickFixService, InstantiationType.Delayed);
-
-// #endregion
-
-// #region Contributions
 
 class TerminalQuickFixContribution extends DisposableStore implements ITerminalContribution {
 	static readonly ID = 'quickFix';
@@ -76,10 +70,6 @@ class TerminalQuickFixContribution extends DisposableStore implements ITerminalC
 }
 registerTerminalContribution(TerminalQuickFixContribution.ID, TerminalQuickFixContribution);
 
-// #endregion
-
-// #region Actions
-
 const enum TerminalQuickFixCommandId {
 	ShowQuickFixes = 'workbench.action.terminal.showQuickFixes',
 }
@@ -95,4 +85,3 @@ registerActiveInstanceAction({
 	run: (activeInstance) => TerminalQuickFixContribution.get(activeInstance)?.addon?.showMenu()
 });
 
-// #endregion

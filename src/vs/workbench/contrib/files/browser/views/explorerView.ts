@@ -56,7 +56,6 @@ import { ResourceMap } from '../../../../../base/common/map.js';
 import { AbstractTreePart } from '../../../../../base/browser/ui/tree/abstractTree.js';
 import { IHoverService } from '../../../../../platform/hover/browser/hover.js';
 
-
 function hasExpandedRootChild(tree: WorkbenchCompressibleAsyncDataTree<ExplorerItem | ExplorerItem[], ExplorerItem, FuzzyScore>, treeInput: ExplorerItem[]): boolean {
 	for (const folder of treeInput) {
 		if (tree.hasNode(folder) && !tree.isCollapsed(folder)) {
@@ -228,7 +227,6 @@ export class ExplorerView extends ViewPane implements IExplorerView {
 		this.compressedFocusLastContext = ExplorerCompressedLastFocusContext.bindTo(contextKeyService);
 		this.viewHasSomeCollapsibleRootItem = ViewHasSomeCollapsibleRootItemContext.bindTo(contextKeyService);
 		this.viewVisibleContextKey = FoldersViewVisibleContext.bindTo(contextKeyService);
-
 
 		this.explorerService.registerView(this);
 	}

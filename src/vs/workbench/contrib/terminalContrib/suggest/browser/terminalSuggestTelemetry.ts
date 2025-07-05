@@ -92,7 +92,6 @@ export class TerminalSuggestTelemetry extends Disposable {
 		});
 	}
 
-
 	private _sendTelemetryInfo(fromInterrupt?: boolean, exitCode?: number): void {
 		const commandLine = this._promptInputModel?.value;
 		for (const completion of this._acceptedCompletions || []) {

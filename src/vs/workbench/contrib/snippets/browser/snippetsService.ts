@@ -325,7 +325,6 @@ export class SnippetsService implements ISnippetsService {
 			result.push(snippet);
 		}
 
-
 		return result.sort((a, b) => {
 			let result = 0;
 			if (!opts?.noRecencySort) {
@@ -499,7 +498,6 @@ export class SnippetsService implements ISnippetsService {
 		};
 	}
 }
-
 
 export interface ISimpleModel {
 	getLineContent(lineNumber: number): string;

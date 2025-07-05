@@ -112,17 +112,11 @@ export function registerSendSequenceKeybinding(text: string, rule: { when?: Cont
 	});
 }
 
-
-
 const enum Constants {
 	/** The text representation of `^<letter>` is `'A'.charCodeAt(0) + 1`. */
 	CtrlLetterOffset = 64
 }
 
-// An extra Windows-only ctrl+v keybinding is used for pwsh that sends ctrl+v directly to the
-// shell, this gets handled by PSReadLine which properly handles multi-line pastes. This is
-// disabled in accessibility mode as PowerShell does not run PSReadLine when it detects a screen
-// reader. This works even when clipboard.readText is not supported.
 if (isWindows) {
 	registerSendSequenceKeybinding(String.fromCharCode('V'.charCodeAt(0) - Constants.CtrlLetterOffset), { // ctrl+v
 		when: ContextKeyExpr.and(TerminalContextKeys.focus, ContextKeyExpr.equals(TerminalContextKeyStrings.ShellType, GeneralShellType.PowerShell), CONTEXT_ACCESSIBILITY_MODE_ENABLED.negate()),
@@ -130,9 +124,6 @@ if (isWindows) {
 	});
 }
 
-// Map certain keybindings in pwsh to unused keys which get handled by PSReadLine handlers in the
-// shell integration script. This allows keystrokes that cannot be sent via VT sequences to work.
-// See https://github.com/microsoft/terminal/issues/879#issuecomment-497775007
 registerSendSequenceKeybinding('\x1b[24~a', { // F12,a -> ctrl+space (MenuComplete)
 	when: ContextKeyExpr.and(TerminalContextKeys.focus, ContextKeyExpr.equals(TerminalContextKeyStrings.ShellType, GeneralShellType.PowerShell), TerminalContextKeys.terminalShellIntegrationEnabled, CONTEXT_ACCESSIBILITY_MODE_ENABLED.negate()),
 	primary: KeyMod.CtrlCmd | KeyCode.Space,
@@ -151,15 +142,11 @@ registerSendSequenceKeybinding('\x1b[24~d', { // F12,d -> shift+end (SelectLine)
 	mac: { primary: KeyMod.Shift | KeyMod.CtrlCmd | KeyCode.RightArrow }
 });
 
-// Always on pwsh keybindings
 registerSendSequenceKeybinding('\x1b[1;2H', { // Shift+home
 	when: ContextKeyExpr.and(TerminalContextKeys.focus, ContextKeyExpr.equals(TerminalContextKeyStrings.ShellType, GeneralShellType.PowerShell)),
 	mac: { primary: KeyMod.Shift | KeyMod.CtrlCmd | KeyCode.LeftArrow }
 });
 
-// Map alt+arrow to ctrl+arrow to allow word navigation in most shells to just work with alt. This
-// is non-standard behavior, but a lot of terminals act like this (see #190629). Note that
-// macOS uses different sequences here to get the desired behavior.
 registerSendSequenceKeybinding('\x1b[1;5A', {
 	when: ContextKeyExpr.and(TerminalContextKeys.focus),
 	primary: KeyMod.Alt | KeyCode.UpArrow
@@ -177,21 +164,18 @@ registerSendSequenceKeybinding('\x1b' + (isMacintosh ? 'b' : '[1;5D'), {
 	primary: KeyMod.Alt | KeyCode.LeftArrow
 });
 
-// Map ctrl+alt+r -> ctrl+r when in accessibility mode due to default run recent command keybinding
 registerSendSequenceKeybinding('\x12', {
 	when: ContextKeyExpr.and(TerminalContextKeys.focus, CONTEXT_ACCESSIBILITY_MODE_ENABLED),
 	primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KeyR,
 	mac: { primary: KeyMod.WinCtrl | KeyMod.Alt | KeyCode.KeyR }
 });
 
-// Map ctrl+alt+g -> ctrl+g due to default go to recent directory keybinding
 registerSendSequenceKeybinding('\x07', {
 	when: TerminalContextKeys.focus,
 	primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KeyG,
 	mac: { primary: KeyMod.WinCtrl | KeyMod.Alt | KeyCode.KeyG }
 });
 
-// send ctrl+c to the iPad when the terminal is focused and ctrl+c is pressed to kill the process (work around for #114009)
 if (isIOS) {
 	registerSendSequenceKeybinding(String.fromCharCode('C'.charCodeAt(0) - Constants.CtrlLetterOffset), { // ctrl+c
 		when: ContextKeyExpr.and(TerminalContextKeys.focus),
@@ -199,7 +183,6 @@ if (isIOS) {
 	});
 }
 
-// Delete word left: ctrl+w
 registerSendSequenceKeybinding(String.fromCharCode('W'.charCodeAt(0) - Constants.CtrlLetterOffset), {
 	primary: KeyMod.CtrlCmd | KeyCode.Backspace,
 	mac: { primary: KeyMod.Alt | KeyCode.Backspace }
@@ -212,34 +195,34 @@ if (isWindows) {
 		primary: KeyMod.CtrlCmd | KeyCode.Backspace,
 	});
 }
-// Delete word right: alt+d [27, 100]
+
 registerSendSequenceKeybinding('\u001bd', {
 	primary: KeyMod.CtrlCmd | KeyCode.Delete,
 	mac: { primary: KeyMod.Alt | KeyCode.Delete }
 });
-// Delete to line start: ctrl+u
+
 registerSendSequenceKeybinding('\u0015', {
 	mac: { primary: KeyMod.CtrlCmd | KeyCode.Backspace }
 });
-// Move to line start: ctrl+A
+
 registerSendSequenceKeybinding(String.fromCharCode('A'.charCodeAt(0) - 64), {
 	mac: { primary: KeyMod.CtrlCmd | KeyCode.LeftArrow }
 });
-// Move to line end: ctrl+E
+
 registerSendSequenceKeybinding(String.fromCharCode('E'.charCodeAt(0) - 64), {
 	mac: { primary: KeyMod.CtrlCmd | KeyCode.RightArrow }
 });
-// NUL: ctrl+shift+2
+
 registerSendSequenceKeybinding('\u0000', {
 	primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.Digit2,
 	mac: { primary: KeyMod.WinCtrl | KeyMod.Shift | KeyCode.Digit2 }
 });
-// RS: ctrl+shift+6
+
 registerSendSequenceKeybinding('\u001e', {
 	primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.Digit6,
 	mac: { primary: KeyMod.WinCtrl | KeyMod.Shift | KeyCode.Digit6 }
 });
-// US (Undo): ctrl+/
+
 registerSendSequenceKeybinding('\u001f', {
 	primary: KeyMod.CtrlCmd | KeyCode.Slash,
 	mac: { primary: KeyMod.WinCtrl | KeyCode.Slash }

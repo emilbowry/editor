@@ -934,7 +934,6 @@ class WordsToLineNumbersCache {
 	}
 }
 
-
 CommandsRegistry.registerCommand(
 	'_executeInlineValueProvider',
 	async (

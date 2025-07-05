@@ -91,7 +91,6 @@ registerAction2(AcceptAllCombination);
 
 registerAction2(ToggleBetweenInputs);
 
-// Dev Commands
 registerAction2(MergeEditorCopyContentsToJSON);
 registerAction2(MergeEditorSaveContentsToFolder);
 registerAction2(MergeEditorLoadContentsFromFolder);

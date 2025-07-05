@@ -36,7 +36,6 @@ export const getCoverageColor = (pct: number, thresholds: ITestingCoverageBarThr
 	return best;
 };
 
-
 const epsilon = 10e-8;
 
 export const displayPercent = (value: number, precision = 2) => {

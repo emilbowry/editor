@@ -12,7 +12,6 @@ import { ExtensionIdentifier } from '../../../platform/extensions/common/extensi
 import type * as vscode from 'vscode';
 import { ExtHostUriOpenersShape, IMainContext, MainContext, MainThreadUriOpenersShape } from './extHost.protocol.js';
 
-
 export class ExtHostUriOpeners implements ExtHostUriOpenersShape {
 
 	private static readonly supportedSchemes = new Set<string>([Schemas.http, Schemas.https]);

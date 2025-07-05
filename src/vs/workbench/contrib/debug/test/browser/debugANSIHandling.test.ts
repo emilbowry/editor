@@ -242,8 +242,6 @@ suite('Debug - ANSI Handling', () => {
 			assert.strictEqual(10, child.classList.length, 'Incorrect number of classes found for each style code sent twice ANSI codes.');
 		});
 
-
-
 		// More Different codes do not cancel each other
 		assertSingleSequenceElement('\x1b[1;2;5;6;21;8;9m', (child) => {
 			assert.strictEqual(7, child.classList.length, 'Incorrect number of classes found for different ANSI codes.');
@@ -256,8 +254,6 @@ suite('Debug - ANSI Handling', () => {
 			assert(child.classList.contains('code-hidden'), 'Different ANSI codes should not cancel each other.');
 			assert(child.classList.contains('code-strike-through'), 'Different ANSI codes should not cancel each other.');
 		});
-
-
 
 		// New foreground codes don't remove old background codes and vice versa
 		assertSingleSequenceElement('\x1b[40;31;42;33m', (child) => {
@@ -382,7 +378,6 @@ suite('Debug - ANSI Handling', () => {
 			assertInlineColor(child, 'background', new RGBA(100, 42, 77), `Color code "48;2;100;42;77;99;200;75" should  style background-color as rgb(100,42,77).`);
 		});
 	});
-
 
 	/**
 	 * Assert that a given ANSI sequence produces the expected number of {@link HTMLSpanElement} children. For

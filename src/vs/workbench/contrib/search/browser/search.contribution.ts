@@ -32,7 +32,6 @@ import { CommandsRegistry } from '../../../../platform/commands/common/commands.
 import { assertType } from '../../../../base/common/types.js';
 import { getWorkspaceSymbols, IWorkspaceSymbol } from '../common/search.js';
 import * as Constants from '../common/constants.js';
-// import { SearchChatContextContribution } from './chatContributions.js';
 
 import './searchActionsCopy.js';
 import './searchActionsFind.js';
@@ -43,7 +42,6 @@ import './searchActionsTopBar.js';
 import './searchActionsTextQuickAccess.js';
 import { TEXT_SEARCH_QUICK_ACCESS_PREFIX, TextSearchQuickAccess } from './quickTextSearch/textSearchQuickAccess.js';
 import { Extensions, IConfigurationMigrationRegistry } from '../../../common/configuration.js';
-// import { registerWorkbenchContribution2, WorkbenchPhase } from '../../../common/contributions.js';
 
 registerSingleton(ISearchViewModelWorkbenchService, SearchViewModelWorkbenchService, InstantiationType.Delayed);
 registerSingleton(ISearchHistoryService, SearchHistoryService, InstantiationType.Delayed);
@@ -51,8 +49,6 @@ registerSingleton(ISearchHistoryService, SearchHistoryService, InstantiationType
 replaceContributions();
 notebookSearchContributions();
 searchWidgetContributions();
-
-// registerWorkbenchContribution2(SearchChatContextContribution.ID, SearchChatContextContribution, WorkbenchPhase.AfterRestored);
 
 const SEARCH_MODE_CONFIG = 'search.mode';
 
@@ -84,10 +80,8 @@ const viewDescriptor: IViewDescriptor = {
 	}
 };
 
-// Register search default location to sidebar
 Registry.as<IViewsRegistry>(ViewExtensions.ViewsRegistry).registerViews([viewDescriptor], viewContainer);
 
-// Register Quick Access Handler
 const quickAccessRegistry = Registry.as<IQuickAccessRegistry>(QuickAccessExtensions.Quickaccess);
 
 quickAccessRegistry.registerQuickAccessProvider({
@@ -124,7 +118,6 @@ quickAccessRegistry.registerQuickAccessProvider({
 	]
 });
 
-// Configuration
 const configurationRegistry = Registry.as<IConfigurationRegistry>(ConfigurationExtensions.Configuration);
 configurationRegistry.registerConfiguration({
 	id: 'search',
@@ -416,7 +409,6 @@ CommandsRegistry.registerCommand('_executeWorkspaceSymbolProvider', async functi
 	return result.map(item => item.symbol);
 });
 
-// todo: @andreamah get rid of this after a few iterations
 Registry.as<IConfigurationMigrationRegistry>(Extensions.ConfigurationMigration)
 	.registerConfigurationMigrations([{
 		key: 'search.experimental.quickAccess.preserveInput',

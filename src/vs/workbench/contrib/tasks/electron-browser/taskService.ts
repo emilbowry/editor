@@ -47,9 +47,6 @@ import { IPaneCompositePartService } from '../../../services/panecomposite/brows
 import { IThemeService } from '../../../../platform/theme/common/themeService.js';
 import { IInstantiationService } from '../../../../platform/instantiation/common/instantiation.js';
 import { IRemoteAgentService } from '../../../services/remote/common/remoteAgentService.js';
-// import { IAccessibilitySignalService } from '../../../../platform/accessibilitySignal/browser/accessibilitySignalService.js';
-// import { IChatService } from '../../chat/common/chatService.js';
-// import { IChatAgentService } from '../../chat/common/chatAgents.js';
 
 interface IWorkspaceFolderConfigurationResult {
 	workspaceFolder: IWorkspaceFolder;

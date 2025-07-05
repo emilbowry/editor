@@ -13,7 +13,6 @@ import { convertInternalMediaPathToFileURI } from '../../browser/gettingStartedS
 import { TestFileService } from '../../../../test/browser/workbenchTestServices.js';
 import { TestExtensionService } from '../../../../test/common/workbenchTestServices.js';
 
-
 suite('Getting Started Markdown Renderer', () => {
 
 	ensureNoDisposablesAreLeakedInTestSuite();

@@ -142,6 +142,5 @@ export class ExternalTerminalContribution implements IWorkbenchContribution {
 	}
 }
 
-// Register workbench contributions
 const workbenchRegistry = Registry.as<IWorkbenchContributionsRegistry>(WorkbenchExtensions.Workbench);
 workbenchRegistry.registerWorkbenchContribution(ExternalTerminalContribution, LifecyclePhase.Restored);

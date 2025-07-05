@@ -26,9 +26,8 @@ import { LineRangeMapping } from '../../../../editor/common/diff/rangeMapping.js
 import { IDiffEditorModel } from '../../../../editor/common/editorCommon.js';
 import { IConfigurationService } from '../../../../platform/configuration/common/configuration.js';
 import { IProgressService, ProgressLocation } from '../../../../platform/progress/common/progress.js';
-// import { IChatEditingService, ModifiedFileEntryState } from '../../chat/common/chatEditingService.js';
+
 import { Emitter, Event } from '../../../../base/common/event.js';
-// import { autorun, autorunWithStore } from '../../../../base/common/observable.js';
 
 export const IQuickDiffModelService = createDecorator<IQuickDiffModelService>('IQuickDiffModelService');
 

@@ -67,7 +67,6 @@ suite('BulkEditPreview', function () {
 			new ResourceFileEdit(undefined, URI.parse('some:///uri2'), undefined, { label: 'uri2', needsConfirmation: false }),
 		];
 
-
 		const ops = await instaService.invokeFunction(BulkFileOperations.create, edits);
 		store.add(ops);
 		assert.strictEqual(ops.categories.length, 2);
@@ -95,7 +94,6 @@ suite('BulkEditPreview', function () {
 			new ResourceFileEdit(undefined, URI.parse('some:///uri1'), undefined, { label: 'C1', needsConfirmation: false }),
 			new ResourceTextEdit(URI.parse('some:///uri2'), { text: 'foo', range: new Range(1, 1, 1, 1) }, undefined, { label: 'C2', needsConfirmation: false }),
 		];
-
 
 		const ops = await instaService.invokeFunction(BulkFileOperations.create, edits);
 		store.add(ops);

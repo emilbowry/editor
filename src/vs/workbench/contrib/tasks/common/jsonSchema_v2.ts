@@ -45,7 +45,6 @@ const shellCommand: IJSONSchema = {
 	deprecationMessage: nls.localize('JsonSchema.tasks.isShellCommand.deprecated', 'The property isShellCommand is deprecated. Use the type property of the task and the shell property in the options instead. See also the 1.14 release notes.')
 };
 
-
 const hide: IJSONSchema = {
 	type: 'boolean',
 	description: nls.localize('JsonSchema.hide', 'Hide this task from the run task quick pick'),
@@ -514,7 +513,7 @@ taskDescriptionProperties.taskName.deprecationMessage = nls.localize(
 	'JsonSchema.tasks.taskName.deprecated',
 	'The task\'s name property is deprecated. Use the label property instead.'
 );
-// Clone the taskDescription for process task before setting a default to prevent two defaults #115281
+
 const processTask = Objects.deepClone(taskDescription);
 taskDescription.default = {
 	label: 'My Task',
@@ -543,7 +542,6 @@ taskDescriptionProperties.isTestCommand.deprecationMessage = nls.localize(
 	'The property isTestCommand is deprecated. Use the group property instead. See also the 1.14 release notes.'
 );
 
-// Process tasks are almost identical schema-wise to shell tasks, but they are required to have a command
 processTask.properties!.type = {
 	type: 'string',
 	enum: ['process'],

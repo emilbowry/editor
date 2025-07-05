@@ -166,7 +166,6 @@ export class InternalTerminalShellIntegration extends Disposable {
 	private _currentExecution: InternalTerminalShellExecution | undefined;
 	get currentExecution(): InternalTerminalShellExecution | undefined { return this._currentExecution; }
 
-
 	private _env: vscode.TerminalShellIntegrationEnvironment | undefined;
 	private _cwd: URI | undefined;
 

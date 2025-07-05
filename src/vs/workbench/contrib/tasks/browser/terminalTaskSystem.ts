@@ -107,7 +107,6 @@ class VariableResolver {
 	}
 }
 
-
 export class TerminalTaskSystem extends Disposable implements ITaskSystem {
 
 	public static TelemetryEventName: string = 'taskService';
@@ -323,7 +322,6 @@ export class TerminalTaskSystem extends Disposable implements ITaskSystem {
 		const isPanelShowingTerminal = !!this._viewsService.getActiveViewWithId(TERMINAL_VIEW_ID);
 		return isPanelShowingTerminal && (activeTerminalInstance?.instanceId === terminalData.terminal.instanceId);
 	}
-
 
 	public revealTask(task: Task): boolean {
 		const terminalData = this._activeTasks[task.getMapKey()];

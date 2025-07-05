@@ -86,7 +86,6 @@ export class ViewModel implements IViewModel {
 		const shouldEmitForSession = this._focusedSession !== session;
 		const shouldEmitForThread = this._focusedThread !== thread;
 
-
 		this._focusedStackFrame = stackFrame;
 		this._focusedThread = thread;
 		this._focusedSession = session;

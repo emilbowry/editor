@@ -83,7 +83,6 @@ export class NotebookFindFilters extends Disposable {
 		}
 	}
 
-
 	private readonly _initialMarkupInput: boolean;
 	private readonly _initialMarkupPreview: boolean;
 	private readonly _initialCodeInput: boolean;

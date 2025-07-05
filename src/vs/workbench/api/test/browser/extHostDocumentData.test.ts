@@ -311,7 +311,6 @@ suite('ExtHostDocumentData', () => {
 		assert.strictEqual(range.end.character, 10);
 	});
 
-
 	test('getWordRangeAtPosition can freeze the extension host #95319', function () {
 
 		const regex = /(https?:\/\/github\.com\/(([^\s]+)\/([^\s]+))\/([^\s]+\/)?(issues|pull)\/([0-9]+))|(([^\s]+)\/([^\s]+))?#([1-9][0-9]*)($|[\s\:\;\-\(\=])/;

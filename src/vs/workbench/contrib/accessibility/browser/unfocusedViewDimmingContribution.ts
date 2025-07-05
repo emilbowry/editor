@@ -89,7 +89,6 @@ export class UnfocusedViewDimmingContribution extends Disposable implements IWor
 	}
 }
 
-
 function ensureBoolean(value: unknown, defaultValue: boolean): boolean {
 	return typeof value === 'boolean' ? value : defaultValue;
 }

@@ -59,4 +59,3 @@ export class MainThreadTelemetry extends Disposable implements MainThreadTelemet
 	}
 }
 
-

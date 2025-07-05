@@ -24,8 +24,6 @@ import { clearShellFileHistory, getCommandHistory, getDirectoryHistory } from '.
 import { TerminalHistoryCommandId } from '../common/terminal.history.js';
 import { showRunRecentQuickPick } from './terminalRunRecentQuickPick.js';
 
-// #region Terminal Contributions
-
 class TerminalHistoryContribution extends Disposable implements ITerminalContribution {
 	static readonly ID = 'terminal.history';
 
@@ -88,10 +86,6 @@ class TerminalHistoryContribution extends Disposable implements ITerminalContrib
 }
 
 registerTerminalContribution(TerminalHistoryContribution.ID, TerminalHistoryContribution);
-
-// #endregion
-
-// #region Actions
 
 const precondition = ContextKeyExpr.or(TerminalContextKeys.processSupported, TerminalContextKeys.terminalHasBeenCreated);
 
@@ -195,4 +189,3 @@ registerTerminalAction({
 	}
 });
 
-// #endregion

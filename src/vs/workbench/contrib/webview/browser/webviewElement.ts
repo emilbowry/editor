@@ -143,7 +143,6 @@ export class WebviewElement extends Disposable implements IWebview, WebviewFindD
 
 	private _disposed = false;
 
-
 	public extension: WebviewExtensionDescription | undefined;
 	private readonly _options: WebviewOptions;
 
@@ -664,7 +663,6 @@ export class WebviewElement extends Disposable implements IWebview, WebviewFindD
 
 		this._send('styles', { styles, activeTheme, themeId, themeLabel, reduceMotion, screenReader });
 	}
-
 
 	protected handleFocusChange(isFocused: boolean): void {
 		this._focused = isFocused;

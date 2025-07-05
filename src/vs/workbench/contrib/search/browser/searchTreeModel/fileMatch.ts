@@ -105,7 +105,6 @@ export class FileMatchImpl extends Disposable implements ISearchTreeFileMatch {
 		this._name = new Lazy(() => labelService.getUriBasenameLabel(this.resource));
 	}
 
-
 	get closestRoot(): ISearchTreeFolderMatchWorkspaceRoot | null {
 		return this._closestRoot;
 	}
@@ -174,8 +173,6 @@ export class FileMatchImpl extends Disposable implements ISearchTreeFileMatch {
 		this.updateMatches(matches, true, this._model, false);
 	}
 
-
-
 	protected async updatesMatchesForLineAfterReplace(lineNumber: number, modelChange: boolean): Promise<void> {
 		if (!this._model) {
 			return;
@@ -193,8 +190,6 @@ export class FileMatchImpl extends Disposable implements ISearchTreeFileMatch {
 		const matches = this._model.findMatches(this._query.pattern, range, !!this._query.isRegExp, !!this._query.isCaseSensitive, wordSeparators, false, this._maxResults ?? DEFAULT_MAX_SEARCH_RESULTS);
 		this.updateMatches(matches, modelChange, this._model, false);
 	}
-
-
 
 	private updateMatches(matches: FindMatch[], modelChange: boolean, model: ITextModel, isAiContributed: boolean): void {
 		const textSearchResults = editorMatchesToTextSearchResults(matches, model, this._previewOptions);

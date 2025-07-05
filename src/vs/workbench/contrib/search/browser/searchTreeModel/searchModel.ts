@@ -3,7 +3,6 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-
 import { CancellationToken, CancellationTokenSource } from '../../../../../base/common/cancellation.js';
 import * as errors from '../../../../../base/common/errors.js';
 import { Emitter, Event, PauseableEmitter } from '../../../../../base/common/event.js';
@@ -406,7 +405,6 @@ export class SearchModelImpl extends Disposable implements ISearchModel {
 	}
 
 }
-
 
 export class SearchViewModelWorkbenchService implements ISearchViewModelWorkbenchService {
 

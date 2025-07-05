@@ -45,7 +45,6 @@ import { renderViewTree } from './baseDebugView.js';
 
 const NEW_STYLE_COMPRESS = true;
 
-// RFC 2396, Appendix A: https://www.ietf.org/rfc/rfc2396.txt
 const URI_SCHEMA_PATTERN = /^[a-zA-Z][a-zA-Z0-9\+\-\.]+:/;
 
 type LoadedScriptsItem = BaseTreeItem;

@@ -125,7 +125,6 @@ interface BacklayerWebviewOptions {
 	readonly markupFontFamily: string;
 }
 
-
 export class BackLayerWebView<T extends ICommonCellInfo> extends Themable {
 
 	private static _originStore?: WebviewOriginStore;
@@ -1871,7 +1870,6 @@ export class BackLayerWebView<T extends ICommonCellInfo> extends Themable {
 			ownerID
 		});
 	}
-
 
 	deltaCellOutputContainerClassNames(cellId: string, added: string[], removed: string[]) {
 		this._sendMessageToWebview({

@@ -241,7 +241,6 @@ export class BulkTextEdits {
 				}
 				tasks.push(task);
 
-
 				if (!makeMinimal) {
 					edits.forEach(task.addEdit, task);
 					return;

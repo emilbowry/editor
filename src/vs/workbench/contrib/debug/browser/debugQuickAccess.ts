@@ -143,7 +143,6 @@ export class StartDebugQuickAccessProvider extends PickerQuickAccessProvider<IPi
 			});
 		});
 
-
 		// Entries: launches
 		const visibleLaunches = configManager.getLaunches().filter(launch => !launch.hidden);
 

@@ -152,7 +152,6 @@ function setupTest(disposables: Pick<DisposableStore, 'add'>) {
 	instantiationService.stub(IWorkspaceTrustManagementService, disposables.add(new TestWorkspaceTrustManagementService()));
 }
 
-
 suite('ExtensionsActions', () => {
 
 	const disposables = ensureNoDisposablesAreLeakedInTestSuite();

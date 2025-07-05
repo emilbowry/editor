@@ -16,7 +16,6 @@ import { ExtensionIdentifier } from '../../../../platform/extensions/common/exte
 import { ContextKeyExpr } from '../../../../platform/contextkey/common/contextkey.js';
 import { Emitter, Event } from '../../../../base/common/event.js';
 
-
 const taskDefinitionSchema: IJSONSchema = {
 	type: 'object',
 	additionalProperties: false,
@@ -79,7 +78,6 @@ namespace Configuration {
 		};
 	}
 }
-
 
 const taskDefinitionsExtPoint = ExtensionsRegistry.registerExtensionPoint<Configuration.ITaskDefinition[]>({
 	extensionPoint: 'taskDefinitions',

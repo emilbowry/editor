@@ -3,18 +3,15 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-// Pinched form chat
+
 import { IDisposable } from '../../../../../../base/common/lifecycle.js';
 import { IObservable } from '../../../../../../base/common/observable.js';
 import { URI } from '../../../../../..//base/common/uri.js';
 import { IEditorPane } from '../../../../../common/editor.js';
-
-
 
 export const enum ModifiedFileEntryState {
 	Modified,
@@ -22,9 +19,6 @@ export const enum ModifiedFileEntryState {
 	Rejected,
 }
 
-// /**
-//  * Represents a part of a change
-//  */
 export interface IModifiedFileEntryChangeHunk {
 	accept(): Promise<boolean>;
 	reject(): Promise<boolean>;
@@ -107,17 +101,13 @@ export interface IModifiedFileEntry {
 	getEditorIntegration(editor: IEditorPane): IModifiedFileEntryEditorIntegration;
 }
 
-
-
-
 import { AsyncReferenceCollection, IReference, ReferenceCollection } from '../../../../../../base/common/lifecycle.js';
-// import { IModifiedFileEntry } from '../../../../chat/common/chatEditingService.js';
+
 import { INotebookService } from '../../../common/notebookService.js';
 import { bufferToStream, VSBuffer } from '../../../../../../base/common/buffer.js';
 import { NotebookTextModel } from '../../../common/model/notebookTextModel.js';
 import { createDecorator, IInstantiationService } from '../../../../../../platform/instantiation/common/instantiation.js';
 import { ITextModelService } from '../../../../../../editor/common/services/resolverService.js';
-
 
 export const INotebookOriginalModelReferenceFactory = createDecorator<INotebookOriginalModelReferenceFactory>('INotebookOriginalModelReferenceFactory');
 
@@ -125,7 +115,6 @@ export interface INotebookOriginalModelReferenceFactory {
 	readonly _serviceBrand: undefined;
 	getOrCreate(fileEntry: IModifiedFileEntry, viewType: string): Promise<IReference<NotebookTextModel>>;
 }
-
 
 export class OriginalNotebookModelReferenceCollection extends ReferenceCollection<Promise<NotebookTextModel>> {
 	private readonly modelsToDispose = new Set<string>();

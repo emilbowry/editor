@@ -69,7 +69,6 @@ export class InstallRemoteExtensionsContribution implements IWorkbenchContributi
 			.filter(ext => settingValue.some(id => areSameExtensions(ext.identifier, { id })))
 			.filter(ext => !alreadyInstalledRemotely.some(e => areSameExtensions(e.identifier, ext.identifier)));
 
-
 		if (!extensionsToInstall.length) {
 			return;
 		}

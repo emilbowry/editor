@@ -22,7 +22,6 @@ import { Cache } from './cache.js';
 import * as extHostProtocol from './extHost.protocol.js';
 import * as extHostTypes from './extHostTypes.js';
 
-
 class CustomDocumentStoreEntry {
 
 	private _backupCounter = 1;

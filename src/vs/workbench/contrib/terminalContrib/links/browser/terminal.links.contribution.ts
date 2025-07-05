@@ -27,13 +27,7 @@ import { TerminalLinkProviderService } from './terminalLinkProviderService.js';
 import { TerminalLinkQuickpick } from './terminalLinkQuickpick.js';
 import { TerminalLinkResolver } from './terminalLinkResolver.js';
 
-// #region Services
-
 registerSingleton(ITerminalLinkProviderService, TerminalLinkProviderService, InstantiationType.Delayed);
-
-// #endregion
-
-// #region Terminal Contributions
 
 class TerminalLinkContribution extends DisposableStore implements ITerminalContribution {
 	static readonly ID = 'terminal.link';
@@ -108,10 +102,6 @@ class TerminalLinkContribution extends DisposableStore implements ITerminalContr
 
 registerTerminalContribution(TerminalLinkContribution.ID, TerminalLinkContribution, true);
 
-// #endregion
-
-// #region Actions
-
 const category = terminalStrings.actionCategory;
 
 registerActiveInstanceAction({
@@ -152,4 +142,3 @@ registerActiveInstanceAction({
 	run: (activeInstance) => TerminalLinkContribution.get(activeInstance)?.openRecentLink('localFile')
 });
 
-// #endregion

@@ -50,7 +50,6 @@ import { ICellModelDecorations, ICellModelDeltaDecorations, ICellViewModel, INot
 import { NotebookFindScopeType, NotebookSetting } from '../../../common/notebookCommon.js';
 import { ICellRange } from '../../../common/notebookRange.js';
 
-
 const NLS_FIND_INPUT_LABEL = nls.localize('label.find', "Find");
 const NLS_FIND_INPUT_PLACEHOLDER = nls.localize('placeholder.find', "Find");
 const NLS_PREVIOUS_MATCH_BTN_LABEL = nls.localize('label.previousMatchButton', "Previous Match");
@@ -389,8 +388,6 @@ export abstract class SimpleFindReplaceWidget extends Widget {
 		this._toggleReplaceBtn.setEnabled(!isInteractiveWindow);
 		this._toggleReplaceBtn.setExpanded(this._isReplaceVisible);
 		this._domNode.appendChild(this._toggleReplaceBtn.domNode);
-
-
 
 		this._innerFindDomNode = document.createElement('div');
 		this._innerFindDomNode.classList.add('simple-fr-find-part');
@@ -918,7 +915,6 @@ export abstract class SimpleFindReplaceWidget extends Widget {
 	}
 }
 
-// theming
 registerThemingParticipant((theme, collector) => {
 	collector.addRule(`
 	.notebook-editor {

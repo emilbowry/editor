@@ -54,24 +54,6 @@ const assertTreesEqual = (a: TestItemImpl | undefined, b: TestItemImpl | undefin
 	aChildren.forEach(key => assertTreesEqual(a.children.get(key) as TestItemImpl, b.children.get(key) as TestItemImpl));
 };
 
-// const assertTreeListEqual = (a: ReadonlyArray<TestItem>, b: ReadonlyArray<TestItem>) => {
-// 	assert.strictEqual(a.length, b.length, `expected a.length == n.length`);
-// 	a.forEach((_, i) => assertTreesEqual(a[i], b[i]));
-// };
-
-// class TestMirroredCollection extends MirroredTestCollection {
-// 	public changeEvent!: TestChangeEvent;
-
-// 	constructor() {
-// 		super();
-// 		this.onDidChangeTests(evt => this.changeEvent = evt);
-// 	}
-
-// 	public get length() {
-// 		return this.items.size;
-// 	}
-// }
-
 suite('ExtHost Testing', () => {
 	class TestExtHostTestItemCollection extends ExtHostTestItemCollection {
 		public setDiff(diff: TestsDiff) {
@@ -490,7 +472,6 @@ suite('ExtHost Testing', () => {
 			]);
 		});
 	});
-
 
 	suite('MirroredTestCollection', () => {
 		// todo@connor4312: re-renable when we figure out what observing looks like we async children

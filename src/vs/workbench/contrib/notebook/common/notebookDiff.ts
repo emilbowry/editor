@@ -25,10 +25,6 @@ interface ICell {
 	getHashValue(): number;
 	equal(cell: ICell): boolean;
 }
-// interface INotebookDiffResult {
-// 	cellsDiff: IDiffResult;
-// 	metadataChanged: boolean;
-// }
 
 export function computeDiff(originalModel: { readonly cells: readonly ICell[] }, modifiedModel: { readonly cells: readonly ICell[] }, diffResult: INotebookDiffResult) {
 	const cellChanges = diffResult.cellsDiff.changes;

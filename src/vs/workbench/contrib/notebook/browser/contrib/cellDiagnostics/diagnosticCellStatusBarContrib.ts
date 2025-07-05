@@ -15,9 +15,6 @@ import { registerNotebookContribution } from '../../notebookEditorExtensions.js'
 import { CodeCellViewModel } from '../../viewModel/codeCellViewModel.js';
 import { INotebookCellStatusBarItem, CellStatusbarAlignment } from '../../../common/notebookCommon.js';
 import { ICellExecutionError } from '../../../common/notebookExecutionStateService.js';
-// import { assertReturnsAllDefined } from '../../../../../../base/common/types.js';
-// import { IChatAgentService } from '../../../../chat/common/chatAgents.js';
-// import { ChatAgentLocation } from '../../../../chat/common/constants.js';
 
 export class DiagnosticCellStatusBarContrib extends Disposable implements INotebookEditorContribution {
 	static id: string = 'workbench.notebook.statusBar.diagtnostic';
@@ -35,7 +32,6 @@ export class DiagnosticCellStatusBarContrib extends Disposable implements INoteb
 	}
 }
 registerNotebookContribution(DiagnosticCellStatusBarContrib.id, DiagnosticCellStatusBarContrib);
-
 
 class DiagnosticCellStatusBarItem extends Disposable {
 	private _currentItemIds: string[] = [];

@@ -47,7 +47,6 @@ export function filterExceptionsFromTelemetry<T extends { [key: string]: unknown
 	return output;
 }
 
-
 export function isSessionAttach(session: IDebugSession): boolean {
 	return session.configuration.request === 'attach' && !getExtensionHostDebugSession(session) && (!session.parentSession || isSessionAttach(session.parentSession));
 }
@@ -73,7 +72,6 @@ export function getExtensionHostDebugSession(session: IDebugSession): IDebugSess
 	return session.parentSession ? getExtensionHostDebugSession(session.parentSession) : undefined;
 }
 
-// only a debugger contributions with a label, program, or runtime attribute is considered a "defining" or "main" debugger contribution
 export function isDebuggerMainContribution(dbg: IDebuggerContribution) {
 	return dbg.type && (dbg.label || dbg.program || dbg.runtime);
 }
@@ -171,7 +169,6 @@ export async function getEvaluatableExpressionAtPosition(languageFeaturesService
 	return null;
 }
 
-// RFC 2396, Appendix A: https://www.ietf.org/rfc/rfc2396.txt
 const _schemePattern = /^[a-zA-Z][a-zA-Z0-9\+\-\.]+:/;
 
 export function isUri(s: string | undefined): boolean {
@@ -213,8 +210,6 @@ function uriToString(source: PathContainer): string | undefined {
 	}
 	return source.path;
 }
-
-// path hooks helpers
 
 interface PathContainer {
 	path?: string;

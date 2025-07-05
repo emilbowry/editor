@@ -147,7 +147,6 @@ suite('NotebookKernel', function () {
 		disposables.add(notebook);
 		disposables.add(extHostDocuments);
 
-
 		extHostNotebookKernels = new ExtHostNotebookKernels(
 			rpcProtocol,
 			new class extends mock<IExtHostInitDataService>() { },
@@ -315,7 +314,6 @@ suite('NotebookKernel', function () {
 
 		const kernel = extHostNotebookKernels.createNotebookController(nullExtensionDescription, 'foo', '*', 'Foo');
 		extHostNotebookKernels.$acceptNotebookAssociation(0, notebook.uri, true);
-
 
 		const cell1 = notebook.apiNotebook.cellAt(0);
 		const task = kernel.createNotebookCellExecution(cell1);

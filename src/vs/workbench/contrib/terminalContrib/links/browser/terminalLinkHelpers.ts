@@ -200,20 +200,6 @@ export function getXtermRangesByAttr(buffer: IBuffer, lineStart: number, lineEnd
 	return ranges;
 }
 
-
-// export function positionIsInRange(position: IBufferCellPosition, range: IBufferRange): boolean {
-// 	if (position.y < range.start.y || position.y > range.end.y) {
-// 		return false;
-// 	}
-// 	if (position.y === range.start.y && position.x < range.start.x) {
-// 		return false;
-// 	}
-// 	if (position.y === range.end.y && position.x > range.end.x) {
-// 		return false;
-// 	}
-// 	return true;
-// }
-
 /**
  * For shells with the CommandDetection capability, the cwd for a command relative to the line of
  * the particular link can be used to narrow down the result for an exact file match.

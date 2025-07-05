@@ -155,9 +155,6 @@ const compareCompletionsFn = (leadingLineContent: string, a: TerminalCompletionI
 	return a.labelLow.localeCompare(b.labelLow, undefined, { ignorePunctuation: true });
 };
 
-// TODO: This should be based on the process OS, not the local OS
-// File score boosts for specific file extensions on Windows. This only applies when the file is the
-// _first_ part of the command line.
 const fileExtScores = new Map<string, number>(isWindows ? [
 	// Windows - .ps1 > .exe > .bat > .cmd. This is the command precedence when running the files
 	//           without an extension, tested manually in pwsh v7.4.4

@@ -14,7 +14,6 @@ import { IWebviewViewService, WebviewView } from '../../contrib/webviewView/brow
 import { ITelemetryService } from '../../../platform/telemetry/common/telemetry.js';
 import { IExtHostContext } from '../../services/extensions/common/extHostCustomers.js';
 
-
 export class MainThreadWebviewsViews extends Disposable implements extHostProtocol.MainThreadWebviewViewsShape {
 
 	private readonly _proxy: extHostProtocol.ExtHostWebviewViewsShape;

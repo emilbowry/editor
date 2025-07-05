@@ -5,13 +5,11 @@
 
 declare module 'vscode' {
 
-
 	// @API extension ship a d.ts files for their options
 
 	// @API the LanguageModelChatProvider2 is an alternative that combines a source, like ollama etc, with
 	// concrete models. The `provideLanguageModelChatData` would do the discovery and auth dances and later
 	// the model data is passed to the concrete function for making a requested or counting token
-
 
 	// TODO@API name scheme
 	export interface LanguageModelChatRequestHandleOptions {
@@ -139,13 +137,10 @@ declare module 'vscode' {
 	// 	// export function registerChatModelProvider(vendor: string, provider: LanguageModelChatProvider2): Disposable;
 	// }
 
-
-
 	export interface ChatResponseFragment2 {
 		index: number;
 		part: LanguageModelTextPart | LanguageModelToolCallPart;
 	}
-
 
 	/**
 	 * Represents a large language model that accepts ChatML messages and produces a streaming response

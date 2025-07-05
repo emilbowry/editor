@@ -17,7 +17,6 @@ import { INotebookCellExecution, INotebookExecutionStateService } from '../../co
 import { INotebookKernelHistoryService, INotebookKernelService } from '../../common/notebookKernelService.js';
 import { INotebookLoggingService } from '../../common/notebookLoggingService.js';
 
-
 export class NotebookExecutionService implements INotebookExecutionService, IDisposable {
 	declare _serviceBrand: undefined;
 	private _activeProxyKernelExecutionToken: CancellationTokenSource | undefined;

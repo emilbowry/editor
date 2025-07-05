@@ -97,7 +97,6 @@ export interface CellDiffSingleSideRenderTemplate extends CellDiffCommonRenderTe
 	readonly outputInfoContainer: HTMLElement;
 }
 
-
 export interface NotebookDocumentDiffElementRenderTemplate extends CellDiffCommonRenderTemplate {
 	readonly container: HTMLElement;
 	readonly body: HTMLElement;

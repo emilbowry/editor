@@ -269,7 +269,6 @@ suite('ExtHostEditorTabs', function () {
 		assert.strictEqual(apiTab1.input.uri.toString(), URI.revive(dtoResource).toString());
 		assert.strictEqual(apiTab1.isDirty, true);
 
-
 		// NOT DIRTY anymore
 
 		const tabDto2: IEditorTabDto = { ...tabDto, isDirty: false };
@@ -448,7 +447,6 @@ suite('ExtHostEditorTabs', function () {
 		assert.strictEqual(extHostEditorTabs.tabGroups.all.map(g => g.tabs).flat().length, 1);
 
 		const tab = extHostEditorTabs.tabGroups.all[0].tabs[0];
-
 
 		const p = new Promise<vscode.TabChangeEvent>(resolve => store.add(extHostEditorTabs.tabGroups.onDidChangeTabs(resolve)));
 

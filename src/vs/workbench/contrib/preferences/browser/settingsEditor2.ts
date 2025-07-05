@@ -13,7 +13,7 @@ import { ToggleActionViewItem } from '../../../../base/browser/ui/toggle/toggle.
 import { ITreeElement } from '../../../../base/browser/ui/tree/tree.js';
 import { CodeWindow } from '../../../../base/browser/window.js';
 import { Action } from '../../../../base/common/actions.js';
-// import { CancelablePromise, createCancelablePromise, Delayer, raceTimeout } from '../../../../base/common/async.js';
+
 import { Delayer, raceTimeout } from '../../../../base/common/async.js';
 
 import { CancellationToken, CancellationTokenSource } from '../../../../base/common/cancellation.js';
@@ -99,7 +99,6 @@ interface IFocusEventFromScroll extends KeyboardEvent {
 const searchBoxLabel = localize('SearchSettings.AriaLabel', "Search settings");
 const SEARCH_TOC_BEHAVIOR_KEY = 'workbench.settings.settingsSearchTocBehavior';
 
-// const SHOW_AI_RESULTS_ENABLED_LABEL = localize('showAiResultsEnabled', "Show AI-recommended results");
 const SHOW_AI_RESULTS_DISABLED_LABEL = localize('showAiResultsDisabled', "No AI results available at this time...");
 
 const SETTINGS_EDITOR_STATE_KEY = 'settingsEditorState';

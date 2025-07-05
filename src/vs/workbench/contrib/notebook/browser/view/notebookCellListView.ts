@@ -75,7 +75,6 @@ export class NotebookCellsLayout implements IRangeMap {
 			const insertIndex = i + index;
 			const existingWhitespaces = this._whitespace.filter(ws => ws.afterPosition === insertIndex + 1);
 
-
 			if (existingWhitespaces.length > 0) {
 				newSizes.push(inserts[i].size + existingWhitespaces.reduce((acc, ws) => acc + ws.size, 0));
 			} else {

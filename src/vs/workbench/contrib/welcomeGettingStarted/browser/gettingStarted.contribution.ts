@@ -242,7 +242,6 @@ registerAction2(class extends Action2 {
 	}
 });
 
-
 registerAction2(class extends Action2 {
 	constructor() {
 		super({

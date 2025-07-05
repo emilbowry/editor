@@ -152,7 +152,6 @@ export class FoldingController extends Disposable implements INotebookEditorCont
 
 registerNotebookContribution(FoldingController.id, FoldingController);
 
-
 const NOTEBOOK_FOLD_COMMAND_LABEL = localize('fold.cell', "Fold Cell");
 const NOTEBOOK_UNFOLD_COMMAND_LABEL = localize2('unfold.cell', "Unfold Cell");
 

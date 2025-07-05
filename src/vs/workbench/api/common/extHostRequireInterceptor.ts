@@ -18,7 +18,6 @@ import { ExtensionPaths, IExtHostExtensionService } from './extHostExtensionServ
 import { ILogService } from '../../../platform/log/common/log.js';
 import { escapeRegExpCharacters } from '../../../base/common/strings.js';
 
-
 interface LoadFunction {
 	(request: string): any;
 }

@@ -23,7 +23,7 @@ import { ServicesAccessor } from '../../../../platform/instantiation/common/inst
 import { KeybindingWeight } from '../../../../platform/keybinding/common/keybindingsRegistry.js';
 import { IUriIdentityService } from '../../../../platform/uriIdentity/common/uriIdentity.js';
 import { PanelFocusContext } from '../../../common/contextkeys.js';
-// import { ChatContextKeys } from '../../chat/common/chatContextKeys.js';
+
 import { openBreakpointSource } from './breakpointsView.js';
 import { DisassemblyView, IDisassembledInstructionEntry } from './disassemblyView.js';
 import { Repl } from './repl.js';
@@ -500,7 +500,6 @@ class StepIntoTargetsAction extends EditorAction {
 			}
 			return;
 		}
-
 
 		const targets = await session.stepInTargets(frame.frameId);
 		if (!targets?.length) {

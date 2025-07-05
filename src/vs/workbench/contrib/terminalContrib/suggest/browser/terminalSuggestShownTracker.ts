@@ -9,7 +9,6 @@ import { IStorageService, StorageScope, StorageTarget } from '../../../../../pla
 import { TerminalShellType } from '../../../../../platform/terminal/common/terminal.js';
 import { IExtensionService } from '../../../../services/extensions/common/extensions.js';
 
-
 export const TERMINAL_SUGGEST_DISCOVERABILITY_KEY = 'terminal.suggest.increasedDiscoverability';
 export const TERMINAL_SUGGEST_DISCOVERABILITY_COUNT_KEY = 'terminal.suggest.increasedDiscoverabilityCount';
 const TERMINAL_SUGGEST_DISCOVERABILITY_MAX_COUNT = 10;

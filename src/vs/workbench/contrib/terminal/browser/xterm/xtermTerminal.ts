@@ -50,7 +50,6 @@ const enum RenderConstants {
 	SmoothScrollDuration = 125
 }
 
-
 function getFullBufferLineAsString(lineIndex: number, buffer: IBuffer): { lineData: string | undefined; lineIndex: number } {
 	let line = buffer.getLine(lineIndex);
 	if (!line) {

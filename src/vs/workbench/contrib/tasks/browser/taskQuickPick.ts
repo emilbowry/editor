@@ -307,8 +307,6 @@ export class TaskQuickPick extends Disposable {
 		return;
 	}
 
-
-
 	private async _doPickerFirstLevel(picker: IQuickPick<ITaskTwoLevelQuickPickEntry, { useSeparators: true }>, taskQuickPickEntries: QuickPickInput<ITaskTwoLevelQuickPickEntry>[], disposables: DisposableStore): Promise<Task | ConfiguringTask | string | null | undefined> {
 		picker.items = taskQuickPickEntries;
 		disposables.add(showWithPinnedItems(this._storageService, runTaskStorageKey, picker, true));

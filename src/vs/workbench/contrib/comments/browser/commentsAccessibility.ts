@@ -15,7 +15,6 @@ import { IAccessibleViewContentProvider, AccessibleViewProviderId, IAccessibleVi
 import { IAccessibleViewImplementation } from '../../../../platform/accessibility/browser/accessibleViewRegistry.js';
 import { Disposable } from '../../../../base/common/lifecycle.js';
 
-
 export namespace CommentAccessibilityHelpNLS {
 	export const intro = nls.localize('intro', "The editor contains commentable range(s). Some useful commands include:");
 	export const tabFocus = nls.localize('introWidget', "This widget contains a text area, for composition of new comments, and actions, that can be tabbed to once tab moves focus mode has been enabled with the command Toggle Tab Key Moves Focus{0}.", `<keybinding:${ToggleTabFocusModeAction.ID}>`);

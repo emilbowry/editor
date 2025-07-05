@@ -323,7 +323,6 @@ suite('TerminalCompletionModel', function () {
 			});
 		});
 
-
 	});
 
 	suite('git branch priority sorting', () => {

@@ -85,12 +85,10 @@ import { ExtensionGalleryResourceType, ExtensionGalleryServiceUrlConfigKey, getE
 import { ILanguageModelToolsService } from '../common/languageModelToolsService.js';
 import { SearchExtensionsTool, SearchExtensionsToolData } from '../common/searchExtensionsTool.js';
 
-// Singletons
 registerSingleton(IExtensionsWorkbenchService, ExtensionsWorkbenchService, InstantiationType.Eager /* Auto updates extensions */);
 registerSingleton(IExtensionRecommendationNotificationService, ExtensionRecommendationNotificationService, InstantiationType.Delayed);
 registerSingleton(IExtensionRecommendationsService, ExtensionRecommendationsService, InstantiationType.Eager /* Prompts recommendations in the background */);
 
-// Quick Access
 Registry.as<IQuickAccessRegistry>(Extensions.Quickaccess).registerQuickAccessProvider({
 	ctor: ManageExtensionsQuickAccessProvider,
 	prefix: ManageExtensionsQuickAccessProvider.PREFIX,
@@ -98,7 +96,6 @@ Registry.as<IQuickAccessRegistry>(Extensions.Quickaccess).registerQuickAccessPro
 	helpEntries: [{ description: localize('manageExtensionsHelp', "Manage Extensions") }]
 });
 
-// Editor
 Registry.as<IEditorPaneRegistry>(EditorExtensions.EditorPane).registerEditorPane(
 	EditorPaneDescriptor.create(
 		ExtensionEditor,
@@ -299,7 +296,6 @@ Registry.as<IConfigurationRegistry>(ConfigurationExtensions.Configuration)
 const jsonRegistry = <jsonContributionRegistry.IJSONContributionRegistry>Registry.as(jsonContributionRegistry.Extensions.JSONContribution);
 jsonRegistry.registerSchema(ExtensionsConfigurationSchemaId, ExtensionsConfigurationSchema);
 
-// Register Commands
 CommandsRegistry.registerCommand('_extensions.manage', (accessor: ServicesAccessor, extensionId: string, tab?: ExtensionEditorTab, preserveFocus?: boolean, feature?: string) => {
 	const extensionService = accessor.get(IExtensionsWorkbenchService);
 	const extension = extensionService.local.find(e => areSameExtensions(e.identifier, { id: extensionId }));
@@ -493,7 +489,6 @@ overrideActionForActiveExtensionEditorWebview(CopyAction, webview => webview.cop
 overrideActionForActiveExtensionEditorWebview(CutAction, webview => webview.cut());
 overrideActionForActiveExtensionEditorWebview(PasteAction, webview => webview.paste());
 
-// Contexts
 export const CONTEXT_HAS_LOCAL_SERVER = new RawContextKey<boolean>('hasLocalServer', false);
 export const CONTEXT_HAS_REMOTE_SERVER = new RawContextKey<boolean>('hasRemoteServer', false);
 export const CONTEXT_HAS_WEB_SERVER = new RawContextKey<boolean>('hasWebServer', false);
@@ -2029,8 +2024,6 @@ if (isWeb) {
 
 registerWorkbenchContribution2(ExtensionToolsContribution.ID, ExtensionToolsContribution, WorkbenchPhase.AfterRestored);
 
-
-// Running Extensions
 registerAction2(ShowRuntimeExtensionsAction);
 
 Registry.as<IConfigurationMigrationRegistry>(ConfigurationMigrationExtensions.ConfigurationMigration)

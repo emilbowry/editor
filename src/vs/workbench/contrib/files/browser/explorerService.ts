@@ -246,7 +246,6 @@ export class ExplorerService implements IExplorerService {
 			return;
 		}
 
-
 		if (!this.editable && this.fileChangeEvents.length && !this.onFileChangesScheduler.isScheduled()) {
 			this.onFileChangesScheduler.schedule();
 		}

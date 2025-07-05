@@ -48,7 +48,6 @@ class ExtHostSaveParticipant implements ITextFileSaveParticipant {
 	}
 }
 
-// The save participant can change a model before its saved to support various scenarios like trimming trailing whitespace
 @extHostCustomer
 export class SaveParticipant {
 

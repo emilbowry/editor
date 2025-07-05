@@ -129,7 +129,6 @@ suite('PreTrie', () => {
 		assert.deepStrictEqual(t.get('a.b.c.d.npmrc', fakeFilenameAttributes), ['Key1.a.b.c.d.js', 'Key3.a.b.c..js']);
 	});
 
-
 	test('emptyMatches', () => {
 		const t = new PreTrie();
 		t.add('package*json', 'package');

@@ -546,7 +546,6 @@ export class NotebookEditorWorkbenchToolbar extends Disposable {
 		this._notebookRightToolbar.setActions(primaryRightActions, []);
 		this._secondaryActions = secondaryActions;
 
-
 		if (this._dimension && this._dimension.width >= 0 && this._dimension.height >= 0) {
 			this._cacheItemSizes(this._notebookLeftToolbar);
 		}
@@ -698,7 +697,6 @@ function actionOverflowHelper(initialPrimaryActions: IActionModel[], initialSeco
 			continue;
 		}
 
-
 		if (currentSize + itemSize <= leftToolbarContainerMaxWidth && !containerFull) {
 			currentSize += ACTION_PADDING + itemSize;
 			renderActions.push(actionModel);
@@ -731,7 +729,6 @@ function actionOverflowHelper(initialPrimaryActions: IActionModel[], initialSeco
 		}
 		break;
 	}
-
 
 	if (renderActions.length && renderActions[renderActions.length - 1].action instanceof Separator) {
 		renderActions.pop();

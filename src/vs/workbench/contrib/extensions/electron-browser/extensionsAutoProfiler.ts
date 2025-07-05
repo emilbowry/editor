@@ -86,12 +86,10 @@ export class ExtensionsAutoProfiler implements IWorkbenchContribution {
 			this._session.cancel();
 			this._logService.info('UNRESPONSIVE extension host: received responsive event and cancelling profiling session');
 
-
 		} else if (!event.isResponsive && !this._session) {
 			// start profiling if not yet profiling
 			const cts = new CancellationTokenSource();
 			this._session = cts;
-
 
 			let session: ProfileSession;
 			try {
@@ -172,7 +170,6 @@ export class ExtensionsAutoProfiler implements IWorkbenchContribution {
 			return;
 		}
 
-
 		const profilingSessionId = generateUuid();
 
 		// print message to log
@@ -200,7 +197,6 @@ export class ExtensionsAutoProfiler implements IWorkbenchContribution {
 			data: data.map(tuple => tuple[0]).flat(),
 			id: ExtensionIdentifier.toKey(extension.identifier),
 		});
-
 
 		// add to running extensions view
 		this._extensionProfileService.setUnresponsiveProfile(extension.identifier, profile);

@@ -174,7 +174,6 @@ export class TerminalMultiLineLinkDetector implements ITerminalLinkDetector {
 
 				this._logService.trace('terminalMultiLineLinkDetector#detect candidate', link);
 
-
 				// Scan up looking for the first line that could be a path
 				let possiblePath: string | undefined;
 				for (let index = startLine - 1; index >= 0; index--) {

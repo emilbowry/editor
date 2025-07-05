@@ -18,7 +18,6 @@ export interface ICellRange {
 	end: number;
 }
 
-
 export function isICellRange(candidate: any): candidate is ICellRange {
 	if (!candidate || typeof candidate !== 'object') {
 		return false;

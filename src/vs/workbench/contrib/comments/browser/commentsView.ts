@@ -471,7 +471,6 @@ export class CommentsPanel extends FilterViewPane implements ICommentsView {
 			this.openFile(e.element, e.editorOptions.pinned, e.editorOptions.preserveFocus, e.sideBySide);
 		}));
 
-
 		this._register(this.tree.onDidChangeModel(() => {
 			this.updateSomeCommentsExpanded();
 		}));

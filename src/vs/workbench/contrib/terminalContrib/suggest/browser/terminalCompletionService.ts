@@ -60,7 +60,6 @@ export interface TerminalResourceRequestConfig {
 	env?: { [key: string]: string | null | undefined };
 }
 
-
 export interface ITerminalCompletionProvider {
 	id: string;
 	shellTypes?: TerminalShellType[];
@@ -276,7 +275,6 @@ export class TerminalCompletionService extends Disposable implements ITerminalCo
 		if (useWindowsStylePath) {
 			lastWordFolder = lastWordFolder.replaceAll('/', '\\');
 		}
-
 
 		// Determine the current folder being shown
 		let lastWordFolderResource: URI | string | undefined;

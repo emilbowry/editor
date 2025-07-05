@@ -12,8 +12,6 @@ import type { IXtermCore } from './xterm-private.js';
 import { DEFAULT_BOLD_FONT_WEIGHT, DEFAULT_FONT_WEIGHT, DEFAULT_LETTER_SPACING, DEFAULT_LINE_HEIGHT, FontWeight, ITerminalConfiguration, MAXIMUM_FONT_WEIGHT, MINIMUM_FONT_WEIGHT, MINIMUM_LETTER_SPACING, TERMINAL_CONFIG_SECTION, type ITerminalFont } from '../common/terminal.js';
 import { isMacintosh } from '../../../../base/common/platform.js';
 
-// #region TerminalConfigurationService
-
 export class TerminalConfigurationService extends Disposable implements ITerminalConfigurationService {
 	declare _serviceBrand: undefined;
 
@@ -58,10 +56,6 @@ export class TerminalConfigurationService extends Disposable implements ITermina
 		return clampInt(input, MINIMUM_FONT_WEIGHT, MAXIMUM_FONT_WEIGHT, defaultWeight);
 	}
 }
-
-// #endregion TerminalConfigurationService
-
-// #region TerminalFontMetrics
 
 const enum FontConstants {
 	MinimumFontSize = 6,
@@ -231,10 +225,6 @@ export class TerminalFontMetrics extends Disposable {
 	}
 }
 
-// #endregion TerminalFontMetrics
-
-// #region Utils
-
 function clampInt<T>(source: any, minimum: number, maximum: number, fallback: T): number | T {
 	let r = parseInt(source, 10);
 	if (isNaN(r)) {
@@ -249,4 +239,3 @@ function clampInt<T>(source: any, minimum: number, maximum: number, fallback: T)
 	return r;
 }
 
-// #endregion Utils

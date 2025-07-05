@@ -277,7 +277,6 @@ export class ExtHostDiagnostics implements ExtHostDiagnosticsShape {
 			}
 		};
 
-
 		let owner: string;
 		if (!name) {
 			name = '_generated_diagnostic_collection_name_#' + ExtHostDiagnostics._idPool++;

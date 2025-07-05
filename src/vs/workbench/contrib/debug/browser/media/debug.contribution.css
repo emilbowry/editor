@@ -31,7 +31,6 @@
 	margin-top: -1px;
 }
 
-
 .codicon-debug-breakpoint-conditional.codicon-debug-stackframe-focused::after,
 .codicon-debug-breakpoint-conditional.codicon-debug-stackframe::after,
 .codicon-debug-breakpoint.codicon-debug-stackframe-focused::after,
@@ -81,7 +80,6 @@
 }
 
 /* Expressions */
-
 
 .monaco-workbench .monaco-list-row .expression {
 	display: flex;

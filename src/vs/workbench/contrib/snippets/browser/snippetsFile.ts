@@ -140,7 +140,6 @@ export class Snippet {
 	}
 }
 
-
 interface JsonSerializedSnippet {
 	isFileTemplate?: boolean;
 	body: string | string[];

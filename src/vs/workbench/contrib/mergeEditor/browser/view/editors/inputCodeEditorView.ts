@@ -207,7 +207,6 @@ export class InputCodeEditorView extends CodeEditorView {
 			reset(this.htmlElements.detail, ...(detail ? renderLabelWithIcons(detail) : []));
 		}));
 
-
 		this._register(applyObservableDecorations(this.editor, this.decorations));
 	}
 

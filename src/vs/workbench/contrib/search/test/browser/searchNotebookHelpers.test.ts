@@ -109,7 +109,6 @@ suite('searchNotebookHelpers', () => {
 
 		];
 
-
 		mdCellFindMatch = new CellFindMatchModel(
 			mdInputCell,
 			0,
@@ -156,7 +155,6 @@ suite('searchNotebookHelpers', () => {
 			assertRangesEqual(markdownContentResults[0].rangeLocations.map(e => e.preview), [new Range(0, 14, 0, 18)]);
 			assertRangesEqual(markdownContentResults[0].rangeLocations.map(e => e.source), [new Range(0, 14, 0, 18)]);
 
-
 			assert.strictEqual(codeContentResults.length, 2);
 			assert.strictEqual(codeContentResults[0].previewText, 'print("test! testing!!")\n');
 			assert.strictEqual(codeContentResults[1].previewText, 'print("this is a Test")\n');
@@ -184,7 +182,6 @@ suite('searchNotebookHelpers', () => {
 			const codeCellContentMatchObjs = textSearchMatchesToNotebookMatches(codeContentResults, codeCellMatch);
 			const codeWebviewContentMatchObjs = textSearchMatchesToNotebookMatches(codeWebviewResults, codeCellMatch);
 
-
 			assert.strictEqual(markdownCellContentMatchObjs[0].cell?.id, mdCellMatch.id);
 			assertRangesEqual(markdownCellContentMatchObjs[0].range(), [new Range(1, 15, 1, 19)]);
 
@@ -202,7 +199,6 @@ suite('searchNotebookHelpers', () => {
 			assertRangesEqual(codeWebviewContentMatchObjs[2].range(), [new Range(1, 12, 1, 16)]);
 
 		});
-
 
 		function aFileMatch(): INotebookFileInstanceMatch {
 			const rawMatch: IFileMatch = {

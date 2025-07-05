@@ -209,7 +209,6 @@ export class MainThreadTesting extends Disposable implements MainThreadTestingSh
 		this.withLiveRun(runId, r => r.appendOutput(output, taskId, location, testId));
 	}
 
-
 	/**
 	 * @inheritdoc
 	 */

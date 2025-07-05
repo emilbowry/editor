@@ -154,7 +154,6 @@ export class NotebookMultiTextDiffEditor extends EditorPane {
 			});
 		}));
 
-
 		this._multiDiffEditorWidget!.setViewModel(this.widgetViewModel);
 	}
 
@@ -248,7 +247,6 @@ export class NotebookMultiTextDiffEditor extends EditorPane {
 		});
 	}
 }
-
 
 class WorkbenchUIElementFactory implements IWorkbenchUIElementFactory {
 	constructor(

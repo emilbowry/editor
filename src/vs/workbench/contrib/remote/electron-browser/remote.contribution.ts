@@ -117,7 +117,6 @@ class RemoteTelemetryEnablementUpdater extends Disposable implements IWorkbenchC
 	}
 }
 
-
 class RemoteEmptyWorkbenchPresentation extends Disposable implements IWorkbenchContribution {
 
 	static readonly ID = 'workbench.contrib.remoteEmptyWorkbenchPresentation';

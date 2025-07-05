@@ -345,7 +345,6 @@ class SCMInputHistory {
 	}
 }
 
-
 export class SCMService implements ISCMService {
 
 	declare readonly _serviceBrand: undefined;

@@ -345,7 +345,6 @@ export class NotebookEditorWidget extends Disposable implements INotebookEditorD
 			this._onDidChangeCellState.fire(e);
 		}));
 
-
 		this._register(_notebookService.onDidChangeOutputRenderers(() => {
 			this._updateOutputRenderers();
 		}));
@@ -873,7 +872,6 @@ export class NotebookEditorWidget extends Disposable implements INotebookEditorD
 			}
 		`);
 
-
 		styleSheets.push(`
 			.monaco-workbench .notebookOverlay > .cell-list-container > .monaco-list > .monaco-scrollable-element > .monaco-list-rows > .monaco-list-row .input-collapse-container .cell-collapse-preview {
 				line-height: ${collapsedIndicatorHeight}px;
@@ -1372,7 +1370,6 @@ export class NotebookEditorWidget extends Disposable implements INotebookEditorD
 		this._list.clear();
 	}
 
-
 	private _updateForOptions(): void {
 		if (!this.viewModel) {
 			return;
@@ -1642,7 +1639,6 @@ export class NotebookEditorWidget extends Disposable implements INotebookEditorD
 
 		return store;
 	}
-
 
 	private _lastCellWithEditorFocus: ICellViewModel | null = null;
 	private _validateCellFocusMode(cell: ICellViewModel) {
@@ -3384,7 +3380,6 @@ export const notebookOutputContainerBorderColor = registerColor('notebook.output
 
 export const notebookOutputContainerColor = registerColor('notebook.outputContainerBackgroundColor', null, nls.localize('notebook.outputContainerBackgroundColor', "The color of the notebook output container background."));
 
-// TODO@rebornix currently also used for toolbar border, if we keep all of this, pick a generic name
 export const CELL_TOOLBAR_SEPERATOR = registerColor('notebook.cellToolbarSeparator', {
 	dark: Color.fromHex('#808080').transparent(0.35),
 	light: Color.fromHex('#808080').transparent(0.35),
@@ -3400,7 +3395,6 @@ export const selectedCellBackground = registerColor('notebook.selectedCellBackgr
 	hcDark: null,
 	hcLight: null
 }, nls.localize('selectedCellBackground', "The background color of a cell when the cell is selected."));
-
 
 export const cellHoverBackground = registerColor('notebook.cellHoverBackground', {
 	dark: transparent(focusedCellBackground, .5),

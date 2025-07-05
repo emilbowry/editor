@@ -64,7 +64,6 @@ export class IssueQuickAccess extends PickerQuickAccessProvider<IPickerQuickAcce
 
 		issuePicksConst.push({ type: 'separator', label: localize('extensions', "Extensions") });
 
-
 		// gets menu actions from contributed
 		const actions = this.menuService.getMenuActions(MenuId.IssueReporter, this.contextKeyService, { renderShortTitle: true }).flatMap(entry => entry[1]);
 
@@ -79,7 +78,6 @@ export class IssueQuickAccess extends PickerQuickAccessProvider<IPickerQuickAcce
 				issuePicksParts.push(pick);
 			}
 		});
-
 
 		// create picks from extensions
 		this.extensionService.extensions.forEach(extension => {

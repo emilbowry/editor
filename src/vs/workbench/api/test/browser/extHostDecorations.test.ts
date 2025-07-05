@@ -66,7 +66,6 @@ suite('ExtHostDecorations', function () {
 			}
 		}, nullExtensionDescription);
 
-
 		const requests = [...providers.values()].map((handle, idx) => {
 			return extHostDecorations.$provideDecorations(handle, [{ id: idx, uri: URI.parse('test:///file') }], CancellationToken.None);
 		});
@@ -82,7 +81,6 @@ suite('ExtHostDecorations', function () {
 
 		const secondResult = await Promise.race([second, timeout(30).then(() => false)]);
 		assert.strictEqual(typeof secondResult, 'object');
-
 
 		await timeout(30);
 	});

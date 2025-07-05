@@ -15,7 +15,6 @@ import { TestTextResourcePropertiesService } from '../../../../../editor/test/co
 import { ExtensionIdentifier, IExtensionDescription, TargetPlatform } from '../../../../../platform/extensions/common/extensions.js';
 import { ensureNoDisposablesAreLeakedInTestSuite } from '../../../../../base/test/common/utils.js';
 
-
 suite('Debug - Debugger', () => {
 	let _debugger: Debugger;
 
@@ -130,7 +129,6 @@ suite('Debug - Debugger', () => {
 		enabledApiProposals: undefined,
 		preRelease: false,
 	};
-
 
 	const adapterManager = <IAdapterManager>{
 		getDebugAdapterDescriptor(session: IDebugSession, config: IConfig): Promise<IDebugAdapterExecutable | undefined> {

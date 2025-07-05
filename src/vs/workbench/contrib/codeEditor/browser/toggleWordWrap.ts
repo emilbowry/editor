@@ -332,8 +332,6 @@ MenuRegistry.appendMenuItem(MenuId.EditorTitle, {
 	)
 });
 
-
-// View menu
 MenuRegistry.appendMenuItem(MenuId.MenubarViewMenu, {
 	command: {
 		id: TOGGLE_WORD_WRAP_ID,

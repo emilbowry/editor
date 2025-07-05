@@ -339,7 +339,6 @@ export class MainThreadCommentController extends Disposable implements ICommentC
 			this.proxy.$updateCommentThread(this.handle, thread.commentThreadHandle, { collapseState: thread.collapsibleState });
 		}));
 
-
 		if (thread.isDocumentCommentThread()) {
 			this._commentService.updateComments(this._uniqueId, {
 				added: [thread],
@@ -528,7 +527,6 @@ export class MainThreadCommentController extends Disposable implements ICommentC
 		};
 	}
 }
-
 
 const commentsViewIcon = registerIcon('comments-view-icon', Codicon.commentDiscussion, localize('commentsViewIcon', 'View icon of the comments view.'));
 

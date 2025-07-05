@@ -79,7 +79,6 @@ class TestObjectTree<T> extends ObjectTree<T, any> {
 
 const pos = (element: Element) => Number(element.parentElement!.parentElement!.getAttribute('aria-posinset'));
 
-
 class ByLabelTreeSorter implements ITreeSorter<TestExplorerTreeElement> {
 	public compare(a: TestExplorerTreeElement, b: TestExplorerTreeElement): number {
 		if (a instanceof TestTreeErrorMessage || b instanceof TestTreeErrorMessage) {
@@ -97,7 +96,6 @@ class ByLabelTreeSorter implements ITreeSorter<TestExplorerTreeElement> {
 	}
 }
 
-// names are hard
 export class TestTreeTestHarness<T extends ITestTreeProjection = ITestTreeProjection> extends Disposable {
 	private readonly onDiff = this._register(new Emitter<TestsDiff>());
 	public readonly onFolderChange = this._register(new Emitter<IWorkspaceFoldersChangeEvent>());

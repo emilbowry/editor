@@ -35,11 +35,9 @@ export function createExtHostComments(mainContext: IMainContext, commands: ExtHo
 
 		private static handlePool = 0;
 
-
 		private _commentControllers: Map<ProviderHandle, ExtHostCommentController> = new Map<ProviderHandle, ExtHostCommentController>();
 
 		private _commentControllersByExtension: ExtensionIdentifierMap<ExtHostCommentController[]> = new ExtensionIdentifierMap<ExtHostCommentController[]>();
-
 
 		constructor(
 		) {

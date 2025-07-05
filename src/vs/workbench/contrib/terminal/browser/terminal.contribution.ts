@@ -47,7 +47,6 @@ import { TerminalService } from './terminalService.js';
 import { TerminalTelemetryContribution } from './terminalTelemetry.js';
 import { TerminalViewPane } from './terminalView.js';
 
-// Register services
 registerSingleton(ITerminalLogService, TerminalLogService, InstantiationType.Delayed);
 registerSingleton(ITerminalConfigurationService, TerminalConfigurationService, InstantiationType.Delayed);
 registerSingleton(ITerminalService, TerminalService, InstantiationType.Delayed);
@@ -56,17 +55,13 @@ registerSingleton(ITerminalGroupService, TerminalGroupService, InstantiationType
 registerSingleton(ITerminalInstanceService, TerminalInstanceService, InstantiationType.Delayed);
 registerSingleton(ITerminalProfileService, TerminalProfileService, InstantiationType.Delayed);
 
-// Register workbench contributions
-// This contribution blocks startup as it's critical to enable the web embedder window.createTerminal API
 registerWorkbenchContribution2(TerminalMainContribution.ID, TerminalMainContribution, WorkbenchPhase.BlockStartup);
 registerWorkbenchContribution2(RemoteTerminalBackendContribution.ID, RemoteTerminalBackendContribution, WorkbenchPhase.AfterRestored);
 registerWorkbenchContribution2(TerminalTelemetryContribution.ID, TerminalTelemetryContribution, WorkbenchPhase.AfterRestored);
 
-// Register configurations
 registerTerminalPlatformConfiguration();
 registerTerminalConfiguration(getFontSnippets);
 
-// Register editor/dnd contributions
 Registry.as<IEditorFactoryRegistry>(EditorExtensions.EditorFactory).registerEditorSerializer(TerminalEditorInput.ID, TerminalInputSerializer);
 Registry.as<IEditorPaneRegistry>(EditorExtensions.EditorPane).registerEditorPane(
 	EditorPaneDescriptor.create(
@@ -100,7 +95,6 @@ Registry.as<IDragAndDropContributionRegistry>(DragAndDropExtensions.DragAndDropC
 	}
 });
 
-// Register views
 const VIEW_CONTAINER = Registry.as<IViewContainersRegistry>(ViewContainerExtensions.ViewContainersRegistry).registerViewContainer({
 	id: TERMINAL_VIEW_ID,
 	title: nls.localize2('terminal', "Terminal"),

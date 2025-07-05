@@ -84,11 +84,6 @@ import { IPathService } from '../../../services/path/common/pathService.js';
 import { IPreferencesService } from '../../../services/preferences/common/preferences.js';
 import { IRemoteAgentService } from '../../../services/remote/common/remoteAgentService.js';
 import { isCancellationError } from '../../../../base/common/errors.js';
-// import { IChatService } from '../../chat/common/chatService.js';
-// import { ChatAgentLocation, ChatModeKind } from '../../chat/common/constants.js';
-// import { CHAT_OPEN_ACTION_ID } from '../../chat/browser/actions/chatActions.js';
-// import { IChatAgentService } from '../../chat/common/chatAgents.js';
-
 
 const QUICKOPEN_HISTORY_LIMIT_CONFIG = 'task.quickOpen.history';
 const PROBLEM_MATCHER_NEVER_CONFIG = 'task.problemMatchers.neverPrompt';
@@ -709,7 +704,6 @@ export abstract class AbstractTaskService extends Disposable implements ITaskSer
 				// 		const customMessage = message === errorMessage
 				// 			? `\`${message}\``
 				// 			: `\`${message}\`\n\`\`\`json${errorMessage}\`\`\``;
-
 
 				// 		// const defaultAgent = this._chatAgentService.getDefaultAgent(ChatAgentLocation.Panel);
 				// 		// const providerName = defaultAgent?.fullName;
@@ -3058,7 +3052,6 @@ export abstract class AbstractTaskService extends Disposable implements ITaskSer
 			}
 		});
 	}
-
 
 	rerun(terminalInstanceId: number): void {
 		const task = this._taskSystem?.getTaskForTerminal(terminalInstanceId);

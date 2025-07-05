@@ -16,7 +16,6 @@ import { IOpenerService } from '../../../../../platform/opener/common/opener.js'
 import { IPickOptions, IQuickInputService, IQuickPickItem, QuickPickInput } from '../../../../../platform/quickinput/common/quickInput.js';
 import { ExternalUriOpenerService, IExternalOpenerProvider, IExternalUriOpener } from '../../common/externalUriOpenerService.js';
 
-
 class MockQuickInputService implements Partial<IQuickInputService> {
 
 	constructor(

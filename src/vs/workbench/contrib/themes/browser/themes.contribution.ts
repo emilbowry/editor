@@ -266,7 +266,6 @@ class MarketplaceThemesPicker implements IDisposable {
 		}
 	}
 
-
 	public dispose() {
 		if (this._tokenSource) {
 			this._tokenSource.cancel();

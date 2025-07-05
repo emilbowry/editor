@@ -227,7 +227,6 @@ interface IDiffElementLayoutState {
 	outputTotalHeight?: boolean;
 }
 
-
 export class NotebookDocumentMetadataElement extends Disposable {
 	private readonly _editor: DiffEditorWidget;
 	private _editorViewStateChanged: boolean;
@@ -492,7 +491,6 @@ export class NotebookDocumentMetadataElement extends Disposable {
 		super.dispose();
 	}
 }
-
 
 abstract class AbstractElementRenderer extends Disposable {
 	protected readonly _metadataLocalDisposable = this._register(new DisposableStore());
@@ -790,7 +788,6 @@ abstract class AbstractElementRenderer extends Disposable {
 					this._metadataEditor.updateOptions({ hideUnchangedRegions: unchangedRegions.options });
 				}
 			}));
-
 
 			this.layout({ metadataHeight: true });
 			this._metadataEditorDisposeStore.add(this._metadataEditor);
@@ -1384,7 +1381,6 @@ export class DeletedElement extends SingleSideDiffElement {
 			this.layoutNotebookCell();
 		});
 	}
-
 
 	_buildOutputRendererContainer() {
 		if (!this._outputViewContainer) {
@@ -2109,7 +2105,6 @@ export class ModifiedElement extends AbstractElementRenderer {
 		super.dispose();
 	}
 }
-
 
 export class CollapsedCellOverlayWidget extends Disposable implements IDiffCellMarginOverlay {
 	private readonly _nodes = DOM.h('div.diff-hidden-cells', [

@@ -24,7 +24,6 @@ export enum TerminalCompletionItemKind {
 	InlineSuggestionAlwaysOnTop = 101,
 }
 
-// Maps CompletionItemKind from language server based completion to TerminalCompletionItemKind
 export function mapLspKindToTerminalKind(lspKind: CompletionItemKind): TerminalCompletionItemKind {
 	// TODO: Add more types for different [LSP providers](https://github.com/microsoft/vscode/issues/249480)
 

@@ -25,7 +25,6 @@ import { CellViewModelStateChangeEvent } from '../notebookViewEvents.js';
 import { ViewContext } from './viewContext.js';
 import { NotebookCellTextModel } from '../../common/model/notebookCellTextModel.js';
 import { CellKind, INotebookCellStatusBarItem, INotebookFindOptions } from '../../common/notebookCommon.js';
-// import { IInlineChatSessionService } from '../../../inlineChat/browser/inlineChatSessionService.js';
 
 export abstract class BaseCellViewModel extends Disposable {
 
@@ -228,7 +227,6 @@ export abstract class BaseCellViewModel extends Disposable {
 			}
 		}));
 	}
-
 
 	updateOptions(e: NotebookOptionsChangeEvent): void {
 		if (this._textEditor && typeof e.readonly === 'boolean') {
@@ -578,7 +576,6 @@ export abstract class BaseCellViewModel extends Disposable {
 		if (!this._textEditor) {
 			return 0;
 		}
-
 
 		const position = range instanceof Selection ? range.getPosition() : range.getStartPosition();
 

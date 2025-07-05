@@ -11,9 +11,6 @@ import { ContextKeyExpr } from '../../../../platform/contextkey/common/contextke
 import { ServicesAccessor } from '../../../../platform/instantiation/common/instantiation.js';
 import { ctxAllCollapsed, ctxFilterOnType, ctxFollowsCursor, ctxSortMode, IOutlinePane, OutlineSortOrder } from './outline.js';
 
-
-// --- commands
-
 registerAction2(class CollapseAll extends ViewAction<IOutlinePane> {
 	constructor() {
 		super({
@@ -95,7 +92,6 @@ registerAction2(class FilterOnType extends ViewAction<IOutlinePane> {
 		view.outlineViewState.filterOnType = !view.outlineViewState.filterOnType;
 	}
 });
-
 
 registerAction2(class SortByPosition extends ViewAction<IOutlinePane> {
 	constructor() {

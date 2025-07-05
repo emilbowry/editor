@@ -239,7 +239,6 @@ class NotebookWorkerClient extends Disposable {
 	private _worker: IWebWorkerClient<NotebookWorker> | null;
 	private _modelManager: NotebookEditorModelManager | null;
 
-
 	constructor(private readonly _notebookService: INotebookService, private readonly _modelService: IModelService) {
 		super();
 		this._worker = null;

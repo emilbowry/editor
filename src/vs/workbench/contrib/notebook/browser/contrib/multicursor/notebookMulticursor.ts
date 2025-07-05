@@ -585,7 +585,6 @@ export class NotebookMultiCursorController extends Disposable implements INotebo
 				const trackedCell = await this.updateTrackedCell(focusedCell, selections);
 				findResultCellViewModel.setSelections(trackedCell.matchSelections);
 
-
 			} else if (findResult.cell.handle !== focusedCell.handle) {	// result is in a different cell, move focus there and apply selection, then update anchor
 				await this.notebookEditor.revealRangeInViewAsync(findResultCellViewModel, findResult.match.range);
 				await this.notebookEditor.focusNotebookCell(findResultCellViewModel, 'editor');

@@ -451,7 +451,6 @@ export function performCellDropEdits(editor: INotebookEditorDelegate, draggedCel
 		originalToIdx = droppedInSelection.start;
 	}
 
-
 	let numCells = 0;
 	let focusNewIdx = originalToIdx;
 	let newInsertionIdx = originalToIdx;

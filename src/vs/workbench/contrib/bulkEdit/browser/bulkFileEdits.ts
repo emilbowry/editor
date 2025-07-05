@@ -3,7 +3,6 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-
 import { WorkspaceFileEditOptions } from '../../../../editor/common/languages.js';
 import { IFileService, FileSystemProviderCapabilities, IFileContent, IFileStatWithMetadata } from '../../../../platform/files/common/files.js';
 import { IProgress } from '../../../../platform/progress/common/progress.js';
@@ -251,7 +250,6 @@ class DeleteOperation implements IFileOperation {
 				recursive: edit.options.recursive,
 				useTrash: !edit.options.skipTrashBin && this._fileService.hasCapability(edit.oldUri, FileSystemProviderCapabilities.Trash) && this._configurationService.getValue<boolean>('files.enableTrash')
 			});
-
 
 			// read file contents for undo operation. when a file is too large it won't be restored
 			let fileContent: IFileContent | undefined;

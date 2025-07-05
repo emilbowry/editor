@@ -43,8 +43,6 @@ import { IOpenerService } from '../../../../../platform/opener/common/opener.js'
 
 registerSingleton(ITerminalCompletionService, TerminalCompletionService, InstantiationType.Delayed);
 
-// #region Terminal Contributions
-
 class TerminalSuggestContribution extends DisposableStore implements ITerminalContribution {
 	static readonly ID = 'terminal.suggest';
 
@@ -265,10 +263,6 @@ class TerminalSuggestContribution extends DisposableStore implements ITerminalCo
 
 registerTerminalContribution(TerminalSuggestContribution.ID, TerminalSuggestContribution);
 
-// #endregion
-
-// #region Actions
-
 registerTerminalAction({
 	id: TerminalSuggestCommandId.ConfigureSettings,
 	title: localize2('workbench.action.terminal.configureSuggestSettings', 'Configure'),
@@ -487,4 +481,3 @@ registerActiveInstanceAction({
 	}
 });
 
-// #endregion

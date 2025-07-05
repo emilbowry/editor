@@ -364,7 +364,6 @@ export class NotebookDiffViewModel extends Disposable implements INotebookDiffVi
 
 }
 
-
 /**
  * making sure that swapping cells are always translated to `insert+delete`.
  */

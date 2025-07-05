@@ -15,7 +15,6 @@ import { ExtHostContext, ExtHostEditorInsetsShape, IWebviewContentOptions, MainC
 import { IWebviewService, IWebviewElement } from '../../contrib/webview/browser/webview.js';
 import { extHostNamedCustomer, IExtHostContext } from '../../services/extensions/common/extHostCustomers.js';
 
-// todo@jrieken move these things back into something like contrib/insets
 class EditorWebviewZone implements IViewZone {
 
 	readonly domNode: HTMLElement;

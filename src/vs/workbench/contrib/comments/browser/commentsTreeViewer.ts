@@ -80,7 +80,6 @@ class CommentsModelVirtualDelegate implements IListVirtualDelegate<ResourceWithC
 	private static readonly RESOURCE_ID = 'resource-with-comments';
 	private static readonly COMMENT_ID = 'comment-node';
 
-
 	getHeight(element: any): number {
 		if ((element instanceof CommentNode) && element.hasReply()) {
 			return 44;

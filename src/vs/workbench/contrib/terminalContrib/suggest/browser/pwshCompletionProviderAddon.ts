@@ -285,8 +285,6 @@ function getIcon(resultType: number, customIconId?: string): ThemeIcon {
 	return pwshTypeToIconMap[resultType] ?? Codicon.symbolText;
 }
 
-
-
 /**
  * A map of the pwsh result type enum's value to the corresponding icon to use in completions.
  *

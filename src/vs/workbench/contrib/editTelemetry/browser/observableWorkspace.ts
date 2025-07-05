@@ -12,7 +12,6 @@ import { TextModelEditReason } from '../../../../editor/common/textModelEditReas
 export abstract class ObservableWorkspace {
 	abstract get documents(): IObservableWithChange<readonly IObservableDocument[]>;
 
-
 	getFirstOpenDocument(): IObservableDocument | undefined {
 		return this.documents.get()[0];
 	}

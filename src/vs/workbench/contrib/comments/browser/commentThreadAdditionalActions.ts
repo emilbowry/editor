@@ -73,7 +73,6 @@ export class CommentThreadAdditionalActions<T extends IRange | ICellRange> exten
 		this._hideMenu();
 	}
 
-
 	private _createAdditionalActions(container: HTMLElement) {
 		const menu = this._commentMenus.getCommentThreadAdditionalActions(this._contextKeyService);
 		this._register(menu);

@@ -33,7 +33,6 @@ export class DebugConsoleQuickAccess extends PickerQuickAccessProvider<IPickerQu
 			}
 		});
 
-
 		if (debugConsolePicks.length > 0) {
 			debugConsolePicks.push({ type: 'separator' });
 		}

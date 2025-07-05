@@ -264,7 +264,6 @@ class MainThreadSCMProvider implements ISCMProvider {
 	// 	// 	.filter(g => g.resources.elements.length > 0 || !g.features.hideWhenEmpty);
 	// }
 
-
 	private features: SCMProviderFeatures = {};
 
 	get handle(): number { return this._handle; }

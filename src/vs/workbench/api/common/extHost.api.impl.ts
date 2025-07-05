@@ -29,16 +29,15 @@ import { checkProposedApiEnabled, isProposedApiEnabled } from '../../services/ex
 import { ProxyIdentifier } from '../../services/extensions/common/proxyIdentifier.js';
 import { ExcludeSettingOptions, TextSearchCompleteMessageType, TextSearchContext2, TextSearchMatch2, AISearchKeyword } from '../../services/search/common/searchExtTypes.js';
 import { CandidatePortSource, ExtHostContext, ExtHostLogLevelServiceShape, MainContext } from './extHost.protocol.js';
-// import { ExtHostRelatedInformation } from './extHostAiRelatedInformation.js';
+
 import { ExtHostApiCommands } from './extHostApiCommands.js';
 import { IExtHostApiDeprecationService } from './extHostApiDeprecationService.js';
 import { IExtHostAuthentication } from './extHostAuthentication.js';
 import { ExtHostBulkEdits } from './extHostBulkEdits.js';
-// import { ExtHostChatAgents2 } from './extHostChatAgents2.js';
-// import { ExtHostChatStatus } from './extHostChatStatus.js';
+
 import { ExtHostClipboard } from './extHostClipboard.js';
 import { ExtHostEditorInsets } from './extHostCodeInsets.js';
-// import { ExtHostCodeMapper } from './extHostCodeMapper.js';
+
 import { IExtHostCommands } from './extHostCommands.js';
 import { createExtHostComments } from './extHostComments.js';
 import { ExtHostConfigProvider, IExtHostConfiguration } from './extHostConfiguration.js';
@@ -52,8 +51,7 @@ import { ExtHostDocumentSaveParticipant } from './extHostDocumentSaveParticipant
 import { ExtHostDocuments } from './extHostDocuments.js';
 import { IExtHostDocumentsAndEditors } from './extHostDocumentsAndEditors.js';
 import { IExtHostEditorTabs } from './extHostEditorTabs.js';
-// import { ExtHostEmbeddings } from './extHostEmbedding.js';
-// import { ExtHostAiEmbeddingVector } from './extHostEmbeddingVector.js';
+
 import { Extension, IExtHostExtensionService } from './extHostExtensionService.js';
 import { ExtHostFileSystem } from './extHostFileSystem.js';
 import { IExtHostConsumerFileSystem } from './extHostFileSystemConsumer.js';
@@ -63,12 +61,11 @@ import { IExtHostInitDataService } from './extHostInitDataService.js';
 import { ExtHostInteractive } from './extHostInteractive.js';
 import { ExtHostLabelService } from './extHostLabelService.js';
 import { ExtHostLanguageFeatures } from './extHostLanguageFeatures.js';
-// import { ExtHostLanguageModelTools } from './extHostLanguageModelTools.js';
-// import { IExtHostLanguageModels } from './extHostLanguageModels.js';
+
 import { ExtHostLanguages } from './extHostLanguages.js';
 import { IExtHostLocalizationService } from './extHostLocalizationService.js';
 import { IExtHostManagedSockets } from './extHostManagedSockets.js';
-// import { IExtHostMpcService } from './extHostMcp.js';
+
 import { ExtHostMessageService } from './extHostMessageService.js';
 import { ExtHostNotebookController } from './extHostNotebook.js';
 import { ExtHostNotebookDocumentSaveParticipant } from './extHostNotebookDocumentSaveParticipant.js';
@@ -86,7 +83,7 @@ import { ExtHostSCM } from './extHostSCM.js';
 import { IExtHostSearch } from './extHostSearch.js';
 import { IExtHostSecretState } from './extHostSecretState.js';
 import { ExtHostShare } from './extHostShare.js';
-// import { ExtHostSpeech } from './extHostSpeech.js';
+
 import { ExtHostStatusBar } from './extHostStatusBar.js';
 import { IExtHostStorage } from './extHostStorage.js';
 import { IExtensionStoragePaths } from './extHostStoragePaths.js';
@@ -110,7 +107,6 @@ import { ExtHostWebviewPanels } from './extHostWebviewPanels.js';
 import { ExtHostWebviewViews } from './extHostWebviewView.js';
 import { IExtHostWindow } from './extHostWindow.js';
 import { IExtHostWorkspace } from './extHostWorkspace.js';
-// import { ExtHostAiSettingsSearch } from './extHostAiSettingsSearch.js';
 
 export interface IExtensionRegistries {
 	mine: ExtensionDescriptionRegistry;
@@ -259,7 +255,6 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 				return handle;
 			};
 		}
-
 
 		// Check document selectors for being overly generic. Technically this isn't a problem but
 		// in practice many extensions say they support `fooLang` but need fs-access to do so. Those

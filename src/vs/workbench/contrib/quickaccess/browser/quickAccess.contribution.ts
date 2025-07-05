@@ -49,7 +49,6 @@ quickAccessRegistry.registerQuickAccessProvider({
 
 //#endregion
 
-
 //#region Menu contributions
 
 MenuRegistry.appendMenuItem(MenuId.MenubarViewMenu, {
@@ -108,7 +107,6 @@ MenuRegistry.appendMenuItem(MenuId.EditorContext, {
 });
 
 //#endregion
-
 
 //#region Workbench actions and commands
 

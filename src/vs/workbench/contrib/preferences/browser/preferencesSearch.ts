@@ -16,13 +16,12 @@ import { IExtensionManagementService, ILocalExtension } from '../../../../platfo
 import { ExtensionType } from '../../../../platform/extensions/common/extensions.js';
 import { InstantiationType, registerSingleton } from '../../../../platform/instantiation/common/extensions.js';
 import { IInstantiationService } from '../../../../platform/instantiation/common/instantiation.js';
-// import { IAiSettingsSearchService } from '../../../services/aiSettingsSearch/common/aiSettingsSearch.js';
+
 import { IWorkbenchExtensionEnablementService } from '../../../services/extensionManagement/common/extensionManagement.js';
 import { IGroupFilter, ISearchResult, ISetting, ISettingMatch, ISettingMatcher, ISettingsEditorModel, ISettingsGroup, SettingKeyMatchTypes, SettingMatchType } from '../../../services/preferences/common/preferences.js';
 import { nullRange } from '../../../services/preferences/common/preferencesModels.js';
-// import { IAiSearchProvider, IPreferencesSearchService, IRemoteSearchProvider, ISearchProvider, IWorkbenchSettingsConfiguration } from '../common/preferences.js';
-import {  IPreferencesSearchService, IRemoteSearchProvider, ISearchProvider, IWorkbenchSettingsConfiguration } from '../common/preferences.js';
 
+import {  IPreferencesSearchService, IRemoteSearchProvider, ISearchProvider, IWorkbenchSettingsConfiguration } from '../common/preferences.js';
 
 export interface IEndpointDetails {
 	urlBase?: string;
@@ -365,103 +364,6 @@ export class SettingMatches {
 	}
 }
 
-// class SettingsRecordProvider {
-// 	private _settingsRecord: IStringDictionary<ISetting> = {};
-// 	private _currentPreferencesModel: ISettingsEditorModel | undefined;
-
-// 	constructor() { }
-
-// 	updateModel(preferencesModel: ISettingsEditorModel) {
-// 		if (preferencesModel === this._currentPreferencesModel) {
-// 			return;
-// 		}
-
-// 		this._currentPreferencesModel = preferencesModel;
-// 		this.refresh();
-// 	}
-
-// 	private refresh() {
-// 		this._settingsRecord = {};
-
-// 		if (!this._currentPreferencesModel) {
-// 			return;
-// 		}
-
-// 		for (const group of this._currentPreferencesModel.settingsGroups) {
-// 			if (group.id === 'mostCommonlyUsed') {
-// 				continue;
-// 			}
-// 			for (const section of group.sections) {
-// 				for (const setting of section.settings) {
-// 					this._settingsRecord[setting.key] = setting;
-// 				}
-// 			}
-// 		}
-// 	}
-
-// 	getSettingsRecord(): IStringDictionary<ISetting> {
-// 		return this._settingsRecord;
-// 	}
-// }
-
-// class EmbeddingsSearchProvider implements IRemoteSearchProvider {
-// 	private static readonly EMBEDDINGS_SETTINGS_SEARCH_MAX_PICKS = 10;
-
-// 	private readonly _recordProvider: SettingsRecordProvider;
-// 	private _filter: string = '';
-
-// 	constructor(
-// 		// private readonly _aiSettingsSearchService: IAiSettingsSearchService,
-// 		private readonly _excludeSelectionStep: boolean
-// 	) {
-// 		this._recordProvider = new SettingsRecordProvider();
-// 	}
-
-// 	setFilter(filter: string) {
-// 		this._filter = cleanFilter(filter);
-// 	}
-
-// 	async searchModel(preferencesModel: ISettingsEditorModel, token: CancellationToken): Promise<ISearchResult | null> {
-// 		if (!this._filter || !this._aiSettingsSearchService.isEnabled()) {
-// 			return null;
-// 		}
-
-// 		this._recordProvider.updateModel(preferencesModel);
-// 		this._aiSettingsSearchService.startSearch(this._filter, this._excludeSelectionStep, token);
-
-// 		return {
-// 			filterMatches: await this.getEmbeddingsItems(token),
-// 			exactMatch: false
-// 		};
-// 	}
-
-// 	private async getEmbeddingsItems(token: CancellationToken): Promise<ISettingMatch[]> {
-// 		const settingsRecord = this._recordProvider.getSettingsRecord();
-// 		const filterMatches: ISettingMatch[] = [];
-// 		const settings = await this._aiSettingsSearchService.getEmbeddingsResults(this._filter, token);
-// 		if (!settings) {
-// 			return [];
-// 		}
-
-// 		const providerName = this._excludeSelectionStep ? 'embeddingsOnly' : 'embeddingsFull';
-// 		for (const settingKey of settings) {
-// 			if (filterMatches.length === EmbeddingsSearchProvider.EMBEDDINGS_SETTINGS_SEARCH_MAX_PICKS) {
-// 				break;
-// 			}
-// 			filterMatches.push({
-// 				setting: settingsRecord[settingKey],
-// 				matches: [settingsRecord[settingKey].range],
-// 				matchType: SettingMatchType.RemoteMatch,
-// 				keyMatchScore: 0,
-// 				score: 0, // the results are sorted upstream.
-// 				providerName
-// 			});
-// 		}
-
-// 		return filterMatches;
-// 	}
-// }
-
 class TfIdfSearchProvider implements IRemoteSearchProvider {
 	private static readonly TF_IDF_PRE_NORMALIZE_THRESHOLD = 50;
 	private static readonly TF_IDF_POST_NORMALIZE_THRESHOLD = 0.7;
@@ -582,71 +484,5 @@ class RemoteSearchProvider implements IRemoteSearchProvider {
 		return results;
 	}
 }
-
-// class AiSearchProvider implements IAiSearchProvider {
-// 	private readonly _embeddingsSearchProvider: EmbeddingsSearchProvider;
-// 	private readonly _recordProvider: SettingsRecordProvider;
-// 	private _filter: string = '';
-
-// 	constructor(
-// 		@IAiSettingsSearchService private readonly aiSettingsSearchService: IAiSettingsSearchService
-// 	) {
-// 		this._embeddingsSearchProvider = new EmbeddingsSearchProvider(this.aiSettingsSearchService, false);
-// 		this._recordProvider = new SettingsRecordProvider();
-// 	}
-
-// 	setFilter(filter: string): void {
-// 		this._filter = filter;
-// 		this._embeddingsSearchProvider.setFilter(filter);
-// 	}
-
-// 	async searchModel(preferencesModel: ISettingsEditorModel, token: CancellationToken): Promise<ISearchResult | null> {
-// 		if (!this._filter || !this.aiSettingsSearchService.isEnabled()) {
-// 			return null;
-// 		}
-
-// 		this._recordProvider.updateModel(preferencesModel);
-// 		const results = await this._embeddingsSearchProvider.searchModel(preferencesModel, token);
-// 		return results;
-// 	}
-
-// 	async getLLMRankedResults(token: CancellationToken): Promise<ISearchResult | null> {
-// 		if (!this._filter || !this.aiSettingsSearchService.isEnabled()) {
-// 			return null;
-// 		}
-
-// 		const items = await this.getLLMRankedItems(token);
-// 		return {
-// 			filterMatches: items,
-// 			exactMatch: false
-// 		};
-// 	}
-
-// 	private async getLLMRankedItems(token: CancellationToken): Promise<ISettingMatch[]> {
-// 		const settingsRecord = this._recordProvider.getSettingsRecord();
-// 		const filterMatches: ISettingMatch[] = [];
-// 		const settings = await this.aiSettingsSearchService.getLLMRankedResults(this._filter, token);
-// 		if (!settings) {
-// 			return [];
-// 		}
-
-// 		for (const settingKey of settings) {
-// 			if (!settingsRecord[settingKey]) {
-// 				// Non-existent setting.
-// 				continue;
-// 			}
-// 			filterMatches.push({
-// 				setting: settingsRecord[settingKey],
-// 				matches: [settingsRecord[settingKey].range],
-// 				matchType: SettingMatchType.RemoteMatch,
-// 				keyMatchScore: 0,
-// 				score: 0, // the results are sorted upstream.
-// 				providerName: 'llmRanked'
-// 			});
-// 		}
-
-// 		return filterMatches;
-// 	}
-// }
 
 registerSingleton(IPreferencesSearchService, PreferencesSearchService, InstantiationType.Delayed);

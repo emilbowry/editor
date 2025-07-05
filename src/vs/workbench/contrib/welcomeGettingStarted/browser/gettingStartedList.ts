@@ -121,7 +121,6 @@ export class GettingStartedIndexList<T extends { id: string; when?: ContextKeyEx
 		this.lastRendered = toRender;
 		this.itemCount = limitedEntries.length;
 
-
 		while (this.list.firstChild) {
 			this.list.firstChild.remove();
 		}

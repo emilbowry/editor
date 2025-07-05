@@ -710,7 +710,6 @@ class ExtHostSourceControl implements vscode.SourceControl {
 		this.#proxy.$updateSourceControl(this.handle, { actionButton: actionButtonDto ?? null });
 	}
 
-
 	private readonly _statusBarDisposables = new MutableDisposable<DisposableStore>();
 	private _statusBarCommands: vscode.Command[] | undefined = undefined;
 

@@ -70,7 +70,6 @@ class NotebookBreakpoints extends Disposable implements IWorkbenchContribution {
 					return;
 				}
 
-
 				const cell = editor.getCellByHandle(parsed.handle);
 				if (!cell) {
 					return;

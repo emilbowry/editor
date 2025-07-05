@@ -20,7 +20,6 @@ import { AccessibilityVerbositySettingId } from '../../accessibility/browser/acc
 import { AccessibilityCommandId } from '../../accessibility/common/accessibilityCommands.js';
 import { ReplEditorSettings } from './interactiveCommon.js';
 
-
 export class ReplInputHintContentWidget extends Disposable implements IContentWidget {
 
 	private static readonly ID = 'replInput.widget.emptyHint';

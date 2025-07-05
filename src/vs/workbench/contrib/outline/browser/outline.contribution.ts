@@ -15,11 +15,7 @@ import { registerIcon } from '../../../../platform/theme/common/iconRegistry.js'
 import { OutlineConfigKeys } from '../../../services/outline/browser/outline.js';
 import { IOutlinePane } from './outline.js';
 
-// --- actions
-
 import './outlineActions.js';
-
-// --- view
 
 const outlineViewIcon = registerIcon('outline-view-icon', Codicon.symbolClass, localize('outlineViewIcon', 'View icon of the outline view.'));
 
@@ -36,8 +32,6 @@ Registry.as<IViewsRegistry>(ViewExtensions.ViewsRegistry).registerViews([{
 	weight: 30,
 	focusCommand: { id: 'outline.focus' }
 }], VIEW_CONTAINER);
-
-// --- configurations
 
 Registry.as<IConfigurationRegistry>(ConfigurationExtensions.Configuration).registerConfiguration({
 	'id': 'outline',

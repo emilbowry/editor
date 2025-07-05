@@ -191,7 +191,6 @@ export class PortRestore implements IWorkbenchContribution {
 	}
 }
 
-
 export class AutomaticPortForwarding extends Disposable implements IWorkbenchContribution {
 	private procForwarder: ProcAutomaticPortForwarding | undefined;
 	private outputForwarder: OutputAutomaticPortForwarding | undefined;
@@ -294,7 +293,6 @@ export class AutomaticPortForwarding extends Disposable implements IWorkbenchCon
 			this.portListener = undefined;
 		}
 	}
-
 
 	private setup(environment: IRemoteAgentEnvironment | null) {
 		const alreadyForwarded = this.procForwarder?.forwarded;

@@ -19,7 +19,6 @@ import { getIconRegistry } from '../../../../platform/theme/common/iconRegistry.
 import { basename } from '../../../../base/common/path.js';
 import { INotificationService, Severity } from '../../../../platform/notification/common/notification.js';
 
-
 type DefaultProfileName = string;
 export class TerminalProfileQuickpick {
 	constructor(

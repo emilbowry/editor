@@ -42,20 +42,17 @@ export const CHANGE_CELL_LANGUAGE = 'notebook.cell.changeLanguage';
 export const QUIT_EDIT_CELL_COMMAND_ID = 'notebook.cell.quitEdit';
 export const EXPAND_CELL_OUTPUT_COMMAND_ID = 'notebook.cell.expandCellOutput';
 
-
 //#endregion
 
 //#region Notebook extensions
 
-// Hardcoding viewType/extension ID for now. TODO these should be replaced once we can
-// look them up in the marketplace dynamically.
 export const IPYNB_VIEW_TYPE = 'jupyter-notebook';
 export const JUPYTER_EXTENSION_ID = 'ms-toolsai.jupyter';
 /** @deprecated use the notebookKernel<Type> "keyword" instead */
 export const KERNEL_EXTENSIONS = new Map<string, string>([
 	[IPYNB_VIEW_TYPE, JUPYTER_EXTENSION_ID],
 ]);
-// @TODO lramos15, place this in a similar spot to our normal recommendations.
+
 export const KERNEL_RECOMMENDATIONS = new Map<string, Map<string, INotebookExtensionRecommendation>>();
 KERNEL_RECOMMENDATIONS.set(IPYNB_VIEW_TYPE, new Map<string, INotebookExtensionRecommendation>());
 KERNEL_RECOMMENDATIONS.get(IPYNB_VIEW_TYPE)?.set('python', {
@@ -75,11 +72,6 @@ export interface INotebookExtensionRecommendation {
 
 //#region  Output related types
 
-// !! IMPORTANT !! ----------------------------------------------------------------------------------
-// NOTE that you MUST update vs/workbench/contrib/notebook/browser/view/renderers/webviewPreloads.ts#L1986
-// whenever changing the values of this const enum. The webviewPreloads-files manually inlines these values
-// because it cannot have dependencies.
-// !! IMPORTANT !! ----------------------------------------------------------------------------------
 export const enum RenderOutputType {
 	Html = 0,
 	Extension = 1
@@ -119,7 +111,6 @@ export interface ICellOutputViewModel extends IDisposable {
 export interface IDisplayOutputViewModel extends ICellOutputViewModel {
 	resolveMimeTypes(textModel: NotebookTextModel, kernelProvides: readonly string[] | undefined): [readonly IOrderedMimeType[], number];
 }
-
 
 //#endregion
 

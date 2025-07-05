@@ -311,7 +311,6 @@ export class ExtHostFileSystemEventService implements ExtHostFileSystemEventServ
 		}
 	}
 
-
 	getOnWillRenameFileEvent(extension: IExtensionDescription): Event<vscode.FileWillRenameEvent> {
 		return this._createWillExecuteEvent(extension, this._onWillRenameFile);
 	}

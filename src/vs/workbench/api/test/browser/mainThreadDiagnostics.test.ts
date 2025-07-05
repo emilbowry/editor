@@ -16,7 +16,6 @@ import { IExtHostContext } from '../../../services/extensions/common/extHostCust
 import { ExtensionHostKind } from '../../../services/extensions/common/extensionHostKind.js';
 import { mock } from '../../../test/common/workbenchTestServices.js';
 
-
 suite('MainThreadDiagnostics', function () {
 
 	let markerService: MarkerService;

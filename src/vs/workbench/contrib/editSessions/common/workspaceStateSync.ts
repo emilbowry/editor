@@ -20,7 +20,6 @@ import { IRemoteUserData, IResourceRefHandle, IUserDataSyncLocalStoreService, IU
 import { EditSession, IEditSessionsStorageService } from './editSessions.js';
 import { IWorkspaceIdentityService } from '../../../services/workspaces/common/workspaceIdentityService.js';
 
-
 class NullBackupStoreService implements IUserDataSyncLocalStoreService {
 	_serviceBrand: undefined;
 	async writeResource(): Promise<void> {

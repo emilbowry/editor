@@ -376,5 +376,4 @@ registerAction2(class extends Action2 {
 	}
 });
 
-
 registerSingleton(ITroubleshootIssueService, TroubleshootIssueService, InstantiationType.Delayed);

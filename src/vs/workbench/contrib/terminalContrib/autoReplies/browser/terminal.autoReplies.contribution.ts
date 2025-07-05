@@ -11,8 +11,6 @@ import { ITerminalInstanceService } from '../../../terminal/browser/terminal.js'
 import { TERMINAL_CONFIG_SECTION } from '../../../terminal/common/terminal.js';
 import { TerminalAutoRepliesSettingId, type ITerminalAutoRepliesConfiguration } from '../common/terminalAutoRepliesConfiguration.js';
 
-// #region Workbench contributions
-
 export class TerminalAutoRepliesContribution extends Disposable implements IWorkbenchContribution {
 	static ID = 'terminalAutoReplies';
 
@@ -57,4 +55,3 @@ export class TerminalAutoRepliesContribution extends Disposable implements IWork
 
 registerWorkbenchContribution2(TerminalAutoRepliesContribution.ID, TerminalAutoRepliesContribution, WorkbenchPhase.AfterRestored);
 
-// #endregion Contributions

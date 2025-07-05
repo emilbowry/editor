@@ -607,7 +607,6 @@ export class SearchView extends ViewPane {
 		const isInNotebookCellInput = this.viewletState['query.isInNotebookCellInput'] ?? true;
 		const isInNotebookCellOutput = this.viewletState['query.isInNotebookCellOutput'] ?? true;
 
-
 		this.searchWidget = this._register(this.instantiationService.createInstance(SearchWidget, container, {
 			value: contentPattern,
 			replaceValue: replaceText,
@@ -1666,7 +1665,6 @@ export class SearchView extends ViewPane {
 			.then(() => undefined, () => undefined);
 	}
 
-
 	private async _updateResults() {
 		if (this.state === SearchUIState.Idle) {
 			return;
@@ -1730,7 +1728,6 @@ export class SearchView extends ViewPane {
 			this.tree.expand(this.searchResult.aiTextSearchResult);
 			return;
 		}
-
 
 		if (this.shouldShowAIResults() && !allResults) {
 			const messageEl = this.clearMessage();
@@ -1828,7 +1825,6 @@ export class SearchView extends ViewPane {
 			// Indicate final search result count for ARIA
 			aria.status(nls.localize('ariaSearchResultsStatus', "Search returned {0} results in {1} files", this.viewModel.searchResult.count(), this.viewModel.searchResult.fileCount()));
 		}
-
 
 		if (completed && completed.limitHit) {
 			completed.messages.push({ type: TextSearchCompleteMessageType.Warning, text: nls.localize('searchMaxResultsWarning', "The result set only contains a subset of all matches. Be more specific in your search to narrow down the results.") });
@@ -2397,7 +2393,6 @@ export class SearchView extends ViewPane {
 		this.searchHistoryService.save(history);
 	}
 
-
 	private async updateFileStats(elements: ISearchTreeFileMatch[]): Promise<void> {
 		const files = elements.map(f => f.resolveFileStat(this.fileService));
 		await Promise.all(files);
@@ -2418,7 +2413,6 @@ export class SearchView extends ViewPane {
 		super.dispose();
 	}
 }
-
 
 class SearchLinkButton extends Disposable {
 	public readonly element: HTMLElement;
@@ -2529,7 +2523,6 @@ class SearchViewDataSource implements IAsyncDataSource<ISearchResult, Renderable
 		private searchView: SearchView,
 		@IConfigurationService private configurationService: IConfigurationService,
 	) { }
-
 
 	private get searchConfig(): ISearchConfigurationProperties {
 		return this.configurationService.getValue<ISearchConfigurationProperties>('search');

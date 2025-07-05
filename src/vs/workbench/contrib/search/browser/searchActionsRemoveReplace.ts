@@ -26,13 +26,11 @@ import { arrayContainsElementOrParent, RenderableMatch, ISearchResult, isSearchT
 import { MatchInNotebook } from './notebookSearch/notebookSearchModel.js';
 import { AITextSearchHeadingImpl } from './AISearch/aiSearchModel.js';
 
-
 //#region Interfaces
 export interface ISearchActionContext {
 	readonly viewer: WorkbenchCompressibleAsyncDataTree<ISearchResult, RenderableMatch>;
 	readonly element: RenderableMatch;
 }
-
 
 export interface IFindInFilesArgs {
 	query?: string;

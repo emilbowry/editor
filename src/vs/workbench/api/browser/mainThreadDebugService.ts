@@ -416,7 +416,6 @@ export class MainThreadDebugService implements MainThreadDebugServiceShape, IDeb
 		this._extHostKnownSessions.add(sessionID);
 	}
 
-
 	getSessionDto(session: undefined): undefined;
 	getSessionDto(session: IDebugSession): IDebugSessionDto;
 	getSessionDto(session: IDebugSession | undefined): IDebugSessionDto | undefined;

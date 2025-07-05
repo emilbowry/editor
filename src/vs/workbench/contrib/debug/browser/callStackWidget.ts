@@ -44,7 +44,6 @@ import { IEditorService, SIDE_GROUP } from '../../../services/editor/common/edit
 import { makeStackFrameColumnDecoration, TOP_STACK_FRAME_DECORATION } from './callStackEditorContribution.js';
 import './media/callStackWidget.css';
 
-
 export class CallStackFrame {
 	constructor(
 		public readonly name: string,
@@ -341,7 +340,6 @@ abstract class AbstractFrameRenderer<T extends IAbstractFrameRendererTemplateDat
 	renderTemplate(container: HTMLElement): T {
 		const elements = makeFrameElements();
 		container.appendChild(elements.root);
-
 
 		const templateStore = new DisposableStore();
 		container.classList.add('multiCallStackFrameContainer');

@@ -904,8 +904,6 @@ class ReplOptions extends Disposable implements IReplOptions {
 	}
 }
 
-// Repl actions and commands
-
 class AcceptReplInputAction extends EditorAction {
 
 	constructor() {
@@ -948,7 +946,6 @@ class FilterReplAction extends ViewAction<Repl> {
 		repl.focusFilter();
 	}
 }
-
 
 class FindReplAction extends ViewAction<Repl> {
 

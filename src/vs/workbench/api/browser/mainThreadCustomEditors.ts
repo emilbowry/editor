@@ -325,7 +325,6 @@ namespace HotExitState {
 	export type State = typeof Allowed | typeof NotAllowed | Pending;
 }
 
-
 class MainThreadCustomEditorModel extends ResourceWorkingCopy implements ICustomEditorModel {
 
 	private _fromBackup: boolean = false;

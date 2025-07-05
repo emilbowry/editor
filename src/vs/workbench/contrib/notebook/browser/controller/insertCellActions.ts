@@ -17,7 +17,7 @@ import { INotebookActionContext, NotebookAction } from './coreActions.js';
 import { NOTEBOOK_CELL_LIST_FOCUSED, NOTEBOOK_EDITOR_EDITABLE } from '../../common/notebookContextKeys.js';
 import { CellViewModel } from '../viewModel/notebookViewModelImpl.js';
 import { CellKind, NotebookSetting } from '../../common/notebookCommon.js';
-// import { CTX_NOTEBOOK_CHAT_OUTER_FOCUS_POSITION } from './chat/notebookChatContext.js';
+
 import { INotebookKernelHistoryService } from '../../common/notebookKernelService.js';
 
 const INSERT_CODE_CELL_ABOVE_COMMAND_ID = 'notebook.cell.insertCodeCellAbove';
@@ -91,8 +91,6 @@ registerAction2(class InsertCodeCellAboveAction extends InsertCellCommand {
 	}
 });
 
-
-
 registerAction2(class InsertCodeCellAboveAndFocusContainerAction extends InsertCellCommand {
 	constructor() {
 		super(
@@ -143,7 +141,6 @@ registerAction2(class InsertCodeCellBelowAndFocusContainerAction extends InsertC
 	}
 });
 
-
 registerAction2(class InsertMarkdownCellAboveAction extends InsertCellCommand {
 	constructor() {
 		super(
@@ -177,7 +174,6 @@ registerAction2(class InsertMarkdownCellBelowAction extends InsertCellCommand {
 			true);
 	}
 });
-
 
 registerAction2(class InsertCodeCellAtTopAction extends NotebookAction {
 	constructor() {
@@ -309,7 +305,6 @@ MenuRegistry.appendMenuItem(MenuId.NotebookCellListTop, {
 		ContextKeyExpr.equals('config.notebook.experimental.insertToolbarAlignment', 'left')
 	)
 });
-
 
 MenuRegistry.appendMenuItem(MenuId.NotebookCellBetween, {
 	command: {

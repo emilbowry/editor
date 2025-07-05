@@ -719,7 +719,6 @@ export const createTestItemChildren = <T extends ITestItemLike>(api: ITestItemAp
 			mapped = newMapped;
 		},
 
-
 		/** @inheritdoc */
 		add(item: T) {
 			if (!(item instanceof checkCtor)) {

@@ -76,7 +76,6 @@ export class OutputElement extends Disposable {
 		const innerContainer = DOM.$('.output-inner-container');
 		DOM.append(outputItemDiv, innerContainer);
 
-
 		if (mimeTypes.length !== 0) {
 			const renderer = this._notebookService.getRendererInfo(pickedMimeTypeRenderer.rendererId);
 			result = renderer

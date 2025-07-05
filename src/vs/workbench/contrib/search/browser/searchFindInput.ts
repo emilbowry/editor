@@ -14,7 +14,6 @@ import { NotebookFindInputFilterButton } from '../../notebook/browser/contrib/fi
 import * as nls from '../../../../nls.js';
 import { Emitter } from '../../../../base/common/event.js';
 
-
 export class SearchFindInput extends ContextScopedFindInput {
 	private _findFilter: NotebookFindInputFilterButton;
 	private _filterChecked: boolean = false;
@@ -40,7 +39,6 @@ export class SearchFindInput extends ContextScopedFindInput {
 				options,
 				nls.localize('searchFindInputNotebookFilter.label', "Notebook Find Filters")
 			));
-
 
 		this._updatePadding();
 

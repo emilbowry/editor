@@ -35,8 +35,6 @@ import { ICommandWithEditorLine, TerminalAccessibleBufferProvider } from './term
 import { TextAreaSyncAddon } from './textAreaSyncAddon.js';
 import { alert } from '../../../../../base/browser/ui/aria/aria.js';
 
-// #region Terminal Contributions
-
 class TextAreaSyncContribution extends DisposableStore implements ITerminalContribution {
 	static readonly ID = 'terminal.textAreaSync';
 	static get(instance: ITerminalInstance): TextAreaSyncContribution | null {
@@ -265,10 +263,6 @@ export class TerminalAccessibilityHelpContribution extends Disposable {
 }
 registerTerminalContribution(TerminalAccessibilityHelpContribution.ID, TerminalAccessibilityHelpContribution);
 
-// #endregion
-
-// #region Actions
-
 class FocusAccessibleBufferAction extends Action2 {
 	constructor() {
 		super({
@@ -373,4 +367,3 @@ registerTerminalAction({
 	run: (c, accessor) => accessor.get(IAccessibleViewService)?.setPosition(new Position(1, 1), true)
 });
 
-// #endregion

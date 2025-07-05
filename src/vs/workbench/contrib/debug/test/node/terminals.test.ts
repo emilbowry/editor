@@ -7,7 +7,6 @@ import assert from 'assert';
 import { ensureNoDisposablesAreLeakedInTestSuite } from '../../../../../base/test/common/utils.js';
 import { prepareCommand } from '../../node/terminals.js';
 
-
 suite('Debug - prepareCommand', () => {
 	ensureNoDisposablesAreLeakedInTestSuite();
 

@@ -141,7 +141,6 @@ export class CommentThreadWidget<T extends IRange | ICellRange = IRange> extends
 		this._setAriaLabel();
 		this._styleElement = domStylesheets.createStyleSheet(this.container);
 
-
 		this._commentThreadContextValue = CommentContextKeys.commentThreadContext.bindTo(this._contextKeyService);
 		this._commentThreadContextValue.set(_commentThread.contextValue);
 

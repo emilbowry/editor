@@ -48,7 +48,6 @@ const createNotebookCodeActionsAutoSave = (description: string): IJSONSchema => 
 	};
 };
 
-
 const codeActionsOnSaveSchema: IConfigurationPropertySchema = {
 	oneOf: [
 		{

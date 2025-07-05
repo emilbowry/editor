@@ -153,7 +153,6 @@ export class ExtHostCell {
 	}
 }
 
-
 export class ExtHostNotebookDocument {
 
 	private static _handlePool: number = 0;

@@ -182,7 +182,6 @@ MenuRegistry.appendMenuItem(MenuId.MenubarTerminalMenu, {
 	when: TaskExecutionSupportedContext
 });
 
-// Manage Tasks
 MenuRegistry.appendMenuItem(MenuId.MenubarTerminalMenu, {
 	group: TerminalMenuBarGroup.Manage,
 	command: {
@@ -216,7 +215,6 @@ MenuRegistry.appendMenuItem(MenuId.MenubarTerminalMenu, {
 	when: TaskExecutionSupportedContext
 });
 
-// Configure Tasks
 MenuRegistry.appendMenuItem(MenuId.MenubarTerminalMenu, {
 	group: TerminalMenuBarGroup.Configure,
 	command: {
@@ -236,7 +234,6 @@ MenuRegistry.appendMenuItem(MenuId.MenubarTerminalMenu, {
 	order: 2,
 	when: TaskExecutionSupportedContext
 });
-
 
 MenuRegistry.appendMenuItem(MenuId.CommandPalette, {
 	command: {
@@ -382,9 +379,6 @@ class UserTasksGlobalActionContribution extends Disposable implements IWorkbench
 }
 workbenchRegistry.registerWorkbenchContribution(UserTasksGlobalActionContribution, LifecyclePhase.Restored);
 
-// MenuRegistry.addCommand( { id: 'workbench.action.tasks.rebuild', title: nls.localize('RebuildAction.label', 'Run Rebuild Task'), category: tasksCategory });
-// MenuRegistry.addCommand( { id: 'workbench.action.tasks.clean', title: nls.localize('CleanAction.label', 'Run Clean Task'), category: tasksCategory });
-
 KeybindingsRegistry.registerKeybindingRule({
 	id: 'workbench.action.tasks.build',
 	weight: KeybindingWeight.WorkbenchContrib,
@@ -392,12 +386,9 @@ KeybindingsRegistry.registerKeybindingRule({
 	primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KeyB
 });
 
-// Tasks Output channel. Register it before using it in Task Service.
 const outputChannelRegistry = Registry.as<IOutputChannelRegistry>(OutputExt.OutputChannels);
 outputChannelRegistry.registerChannel({ id: AbstractTaskService.OutputChannelId, label: AbstractTaskService.OutputChannelLabel, log: false });
 
-
-// Register Quick Access
 const quickAccessRegistry = (Registry.as<IQuickAccessRegistry>(QuickAccessExtensions.Quickaccess));
 const tasksPickerContextKey = 'inTasksPicker';
 
@@ -409,7 +400,6 @@ quickAccessRegistry.registerQuickAccessProvider({
 	helpEntries: [{ description: nls.localize('tasksQuickAccessHelp', "Run Task"), commandCenterOrder: 60 }]
 });
 
-// tasks.json validation
 const schema: IJSONSchema = {
 	id: tasksSchemaId,
 	description: 'Task definition file',
@@ -460,7 +450,6 @@ export class TaskRegistryContribution extends Disposable implements IWorkbenchCo
 	}
 }
 registerWorkbenchContribution2(TaskRegistryContribution.ID, TaskRegistryContribution, WorkbenchPhase.AfterRestored);
-
 
 const configurationRegistry = Registry.as<IConfigurationRegistry>(ConfigurationExtensions.Configuration);
 configurationRegistry.registerConfiguration({

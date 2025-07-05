@@ -23,7 +23,6 @@ import { MarshalledId } from '../../../../../base/common/marshallingIds.js';
 import { ICodeEditor } from '../../../../../editor/browser/editorBrowser.js';
 import { isEqual } from '../../../../../base/common/resources.js';
 
-// Kernel Command
 export const SELECT_KERNEL_ID = '_notebook.selectKernel';
 export const NOTEBOOK_ACTIONS_CATEGORY = localize2('notebookActions.category', 'Notebook');
 
@@ -180,7 +179,6 @@ export abstract class NotebookAction extends Action2 {
 	}
 }
 
-// todo@rebornix, replace NotebookAction with this
 export abstract class NotebookMultiCellAction extends Action2 {
 	constructor(desc: IAction2Options) {
 		if (desc.f1 !== false) {
@@ -239,7 +237,6 @@ export abstract class NotebookMultiCellAction extends Action2 {
 		const editor = getEditorFromArgsOrActivePane(accessor);
 		if (editor) {
 			const selectedCellRange: ICellRange[] = editor.getSelections().length === 0 ? [editor.getFocus()] : editor.getSelections();
-
 
 			return this.runWithContext(accessor, {
 				ui: false,
@@ -438,7 +435,6 @@ export const cellExecutionArgs: ReadonlyArray<{
 			}
 		}
 	];
-
 
 MenuRegistry.appendMenuItem(MenuId.NotebookCellTitle, {
 	submenu: MenuId.NotebookCellInsert,

@@ -580,8 +580,6 @@ class BreakpointsRenderer implements IListRenderer<IBreakpoint, IBreakpointTempl
 		breakpointIdToActionBarDomeNode.set(breakpoint.getId(), data.actionBar.domNode);
 	}
 
-
-
 	disposeElement(a: any, index: number, template: IBreakpointTemplateData): void {
 		template.elementDisposables.clear();
 	}
@@ -933,7 +931,6 @@ class InstructionBreakpointsRenderer implements IListRenderer<IInstructionBreakp
 		}
 	}
 
-
 	disposeElement(element: IInstructionBreakpoint, index: number, templateData: IInstructionBreakpointTemplateData): void {
 		templateData.elementDisposables.clear();
 	}
@@ -971,7 +968,6 @@ class FunctionBreakpointInputRenderer implements IListRenderer<IFunctionBreakpoi
 		dom.append(breakpoint, template.checkbox);
 		this.view.breakpointInputFocused.set(true);
 		const inputBoxContainer = dom.append(breakpoint, $('.inputBoxContainer'));
-
 
 		const inputBox = new InputBox(inputBoxContainer, this.contextViewService, { inputBoxStyles: defaultInputBoxStyles });
 
@@ -1096,7 +1092,6 @@ class DataBreakpointInputRenderer implements IListRenderer<IDataBreakpoint, IDat
 		this.view.breakpointInputFocused.set(true);
 		const inputBoxContainer = dom.append(breakpoint, $('.inputBoxContainer'));
 
-
 		const inputBox = new InputBox(inputBoxContainer, this.contextViewService, { inputBoxStyles: defaultInputBoxStyles });
 		toDispose.add(inputBox);
 
@@ -1212,7 +1207,6 @@ class ExceptionBreakpointInputRenderer implements IListRenderer<IExceptionBreakp
 			ariaLabel: localize('exceptionBreakpointAriaLabel', "Type exception breakpoint condition"),
 			inputBoxStyles: defaultInputBoxStyles
 		});
-
 
 		toDispose.add(inputBox);
 		const wrapUp = (success: boolean) => {
@@ -1890,7 +1884,6 @@ registerAction2(class extends ViewAction<BreakpointsView> {
 		}
 	}
 });
-
 
 registerAction2(class extends ViewAction<BreakpointsView> {
 	constructor() {

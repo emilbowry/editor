@@ -616,7 +616,6 @@ export class AcceptAllCombination extends MergeEditorAction2 {
 	}
 }
 
-// this is an API command
 export class AcceptMerge extends MergeEditorAction2 {
 	constructor() {
 		super({

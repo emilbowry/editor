@@ -107,11 +107,9 @@ export class NotebookCellDiffDecorator extends DisposableStore {
 			'advanced'
 		);
 
-
 		if (this.isDisposed) {
 			return;
 		}
-
 
 		if (diff && !diff.identical && this.modifiedCell.textModel && originalModel && model === editor.getModel() && editor.getModel()?.getVersionId() === version) {
 			this._updateWithDiff(editor, originalModel, diff, this.modifiedCell.textModel);

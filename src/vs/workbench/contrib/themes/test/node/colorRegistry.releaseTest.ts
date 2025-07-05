@@ -13,7 +13,7 @@ import assert from 'assert';
 import { CancellationToken } from '../../../../../base/common/cancellation.js';
 import { RequestService } from '../../../../../platform/request/node/requestService.js';
 import { TestConfigurationService } from '../../../../../platform/configuration/test/common/testConfigurationService.js';
-// eslint-disable-next-line local/code-import-patterns
+
 import '../../../../workbench.desktop.main.js';
 import { NullLogService } from '../../../../../platform/log/common/log.js';
 import { mock } from '../../../../../base/test/common/mock.js';
@@ -32,7 +32,6 @@ interface DescriptionDiff {
 }
 
 export const experimental: string[] = []; // 'settings.modifiedItemForeground', 'editorUnnecessary.foreground' ];
-
 
 const knwonVariablesFileName = 'vscode-known-variables.json';
 
@@ -141,7 +140,6 @@ suite('Color Registry', function () {
 		}
 		const superfluousKeys = Object.keys(colorsInDoc);
 		const undocumentedKeys = Object.keys(missing).map(k => `\`${k}\`: ${missing[k]}`);
-
 
 		let errorText = '';
 		if (undocumentedKeys.length > 0) {

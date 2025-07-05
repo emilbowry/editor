@@ -197,7 +197,6 @@ suite('ExtHostWebview', () => {
 	});
 });
 
-
 function createNoopMainThreadWebviews() {
 	return new class extends mock<MainThreadWebviewManager>() {
 		$disposeWebview() { /* noop */ }

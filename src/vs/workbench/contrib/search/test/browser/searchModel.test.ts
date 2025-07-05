@@ -250,7 +250,6 @@ suite('SearchModel', () => {
 		};
 	}
 
-
 	function notebookSearchServiceWithInfo(results: INotebookFileMatchWithModel[], tokenSource: CancellationTokenSource | undefined): INotebookSearchService {
 		return <INotebookSearchService>{
 			_serviceBrand: undefined,
@@ -315,7 +314,6 @@ suite('SearchModel', () => {
 		assert.strictEqual('preview 2', actuaMatches[0].text());
 		assert.ok(new Range(2, 1, 2, 2).equalsRange(actuaMatches[0].range()));
 	});
-
 
 	test('Search Model: Search can return notebook results', async () => {
 		const results = [

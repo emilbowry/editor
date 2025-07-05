@@ -29,9 +29,6 @@ import { Codicon } from '../../../../../base/common/codicons.js';
 import type { URI } from '../../../../../base/common/uri.js';
 import { TextEditorSelectionRevealType, type ITextEditorOptions } from '../../../../../platform/editor/common/editor.js';
 import product from '../../../../../platform/product/common/product.js';
-// import { ctxHasEditorModification, ctxHasRequestInProgress } from '../../../chat/browser/chatEditing/chatEditingEditorContextKeys.js';
-
-// ActiveEditorContext.isEqualTo(SearchEditorConstants.SearchEditorID)
 
 registerAction2(class extends Action2 {
 	constructor() {
@@ -86,7 +83,6 @@ registerAction2(class extends Action2 {
 	}
 });
 
-
 registerAction2(class extends Action2 {
 	constructor() {
 		super({
@@ -125,7 +121,6 @@ registerAction2(class extends Action2 {
 		}
 	}
 });
-
 
 registerAction2(class extends Action2 {
 	constructor() {
@@ -212,7 +207,6 @@ registerAction2(class GoToFileAction extends Action2 {
 		});
 	}
 });
-
 
 registerAction2(class extends Action2 {
 	constructor() {
@@ -377,7 +371,6 @@ registerAction2(class extends Action2 {
 	}
 });
 
-
 registerAction2(class extends Action2 {
 	constructor() {
 		super(
@@ -419,30 +412,6 @@ registerAction2(class extends Action2 {
 		context.modifiedDocument.applyEdits(rawEdits, true, undefined, () => undefined, undefined, true);
 	}
 });
-
-// registerAction2(class extends Action2 {
-// 	constructor() {
-// 		super(
-// 			{
-// 				id: 'notebook.diff.cell.switchOutputRenderingStyle',
-// 				title: localize('notebook.diff.cell.switchOutputRenderingStyle', "Switch Outputs Rendering"),
-// 				icon: renderOutputIcon,
-// 				f1: false,
-// 				menu: {
-// 					id: MenuId.NotebookDiffCellOutputsTitle
-// 				}
-// 			}
-// 		);
-// 	}
-// 	run(accessor: ServicesAccessor, context?: DiffElementViewModelBase) {
-// 		if (!context) {
-// 			return;
-// 		}
-
-// 		context.renderOutput = true;
-// 	}
-// });
-
 
 registerAction2(class extends Action2 {
 	constructor() {
@@ -506,7 +475,6 @@ registerAction2(class extends Action2 {
 		}], true, undefined, () => undefined, undefined, true);
 	}
 });
-
 
 registerAction2(class extends Action2 {
 	constructor() {
@@ -725,8 +693,6 @@ registerAction2(class extends Action2 {
 		editor?.toggleInlineView();
 	}
 });
-
-
 
 Registry.as<IConfigurationRegistry>(ConfigurationExtensions.Configuration).registerConfiguration({
 	id: 'notebook',

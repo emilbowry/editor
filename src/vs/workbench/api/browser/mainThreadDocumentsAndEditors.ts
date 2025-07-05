@@ -34,7 +34,6 @@ import { ViewContainerLocation } from '../../common/views.js';
 import { IConfigurationService } from '../../../platform/configuration/common/configuration.js';
 import { IQuickDiffModelService } from '../../contrib/scm/browser/quickDiffModel.js';
 
-
 class TextEditorSnapshot {
 
 	readonly id: string;

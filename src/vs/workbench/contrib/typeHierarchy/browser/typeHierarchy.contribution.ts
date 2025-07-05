@@ -25,7 +25,6 @@ import { IStorageService, StorageScope, StorageTarget } from '../../../../platfo
 import { TypeHierarchyTreePeekWidget } from './typeHierarchyPeek.js';
 import { TypeHierarchyDirection, TypeHierarchyModel, TypeHierarchyProviderRegistry } from '../common/typeHierarchy.js';
 
-
 const _ctxHasTypeHierarchyProvider = new RawContextKey<boolean>('editorHasTypeHierarchyProvider', false, localize('editorHasTypeHierarchyProvider', 'Whether a type hierarchy provider is available'));
 const _ctxTypeHierarchyVisible = new RawContextKey<boolean>('typeHierarchyVisible', false, localize('typeHierarchyVisible', 'Whether type hierarchy peek is currently showing'));
 const _ctxTypeHierarchyDirection = new RawContextKey<string>('typeHierarchyDirection', undefined, { type: 'string', description: localize('typeHierarchyDirection', 'whether type hierarchy shows super types or subtypes') });
@@ -171,7 +170,6 @@ class TypeHierarchyController implements IEditorContribution {
 
 registerEditorContribution(TypeHierarchyController.Id, TypeHierarchyController, EditorContributionInstantiation.Eager); // eager because it needs to define a context key
 
-// Peek
 registerAction2(class PeekTypeHierarchyAction extends EditorAction2 {
 
 	constructor() {
@@ -200,7 +198,6 @@ registerAction2(class PeekTypeHierarchyAction extends EditorAction2 {
 	}
 });
 
-// actions for peek widget
 registerAction2(class extends EditorAction2 {
 
 	constructor() {

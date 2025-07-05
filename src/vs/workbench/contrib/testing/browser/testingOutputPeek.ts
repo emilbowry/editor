@@ -71,7 +71,6 @@ import { InspectSubject, MessageSubject, TaskSubject, TestOutputSubject, inspect
 import { TestResultsViewContent } from './testResultsView/testResultsViewContent.js';
 import { testingMessagePeekBorder, testingPeekBorder, testingPeekHeaderBackground, testingPeekMessageHeaderBackground } from './theme.js';
 
-
 /** Iterates through every message in every result */
 function* allMessages([result]: readonly ITestResult[]) {
 	if (!result) {
@@ -676,7 +675,6 @@ export class TestingOutputPeekController extends Disposable implements IEditorCo
 	}
 }
 
-
 class TestResultsPeek extends PeekViewWidget {
 	public readonly current = observableValue<InspectSubject | undefined>('testPeekCurrent', undefined);
 	private resizeOnNextContentHeightUpdate = false;
@@ -981,7 +979,6 @@ export class CloseTestPeek extends EditorAction2 {
 		TestingOutputPeekController.get(parent ?? editor)?.removePeek();
 	}
 }
-
 
 const navWhen = ContextKeyExpr.and(
 	EditorContextKeys.focus,

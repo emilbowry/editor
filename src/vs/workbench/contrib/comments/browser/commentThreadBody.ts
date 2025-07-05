@@ -200,7 +200,6 @@ export class CommentThreadBody<T extends IRange | ICellRange = IRange> extends D
 			commentToDelete.domNode.remove();
 		}
 
-
 		let lastCommentElement: HTMLElement | null = null;
 		const newCommentNodeList: CommentNode<T>[] = [];
 		const newCommentsInEditMode: CommentNode<T>[] = [];

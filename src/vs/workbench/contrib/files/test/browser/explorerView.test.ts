@@ -26,7 +26,6 @@ suite('Files - ExplorerView', () => {
 	const fileService = new TestFileService();
 	const configService = new TestConfigurationService();
 
-
 	function createStat(this: any, path: string, name: string, isFolder: boolean, hasChildren: boolean, size: number, mtime: number, isSymLink = false, isUnknown = false): ExplorerItem {
 		return new ExplorerItem(toResource.call(this, path), fileService, configService, NullFilesConfigurationService, undefined, isFolder, isSymLink, false, false, name, mtime, isUnknown);
 	}

@@ -37,8 +37,6 @@ interface ParsedExtHostArgs {
 	useHostProxy?: 'true' | 'false'; // use a string, as undefined is also a valid value
 }
 
-// workaround for https://github.com/microsoft/vscode/issues/85490
-// remove --inspect-port=0 after start so that it doesn't trigger LSP debugging
 (function removeInspectPort() {
 	for (let i = 0; i < process.execArgv.length; i++) {
 		if (process.execArgv[i] === '--inspect-port=0') {
@@ -59,11 +57,6 @@ const args = minimist(process.argv.slice(2), {
 	]
 }) as ParsedExtHostArgs;
 
-// With Electron 2.x and node.js 8.x the "natives" module
-// can cause a native crash (see https://github.com/nodejs/node/issues/19891 and
-// https://github.com/electron/electron/issues/10905). To prevent this from
-// happening we essentially blocklist this module from getting loaded in any
-// extension by patching the node require() function.
 (function () {
 	const Module = require('module');
 	const originalLoad = Module._load;
@@ -77,7 +70,6 @@ const args = minimist(process.argv.slice(2), {
 	};
 })();
 
-// custom process.exit logic...
 const nativeExit: IExitFn = process.exit.bind(process);
 const nativeOn = process.on.bind(process);
 function patchProcess(allowExit: boolean) {
@@ -121,8 +113,6 @@ function patchProcess(allowExit: boolean) {
 
 }
 
-// NodeJS since v21 defines navigator as a global object. This will likely surprise many extensions and potentially break them
-// because `navigator` has historically often been used to check if running in a browser (vs running inside NodeJS)
 if (!args.supportGlobalNavigator) {
 	Object.defineProperty(globalThis, 'navigator', {
 		get: () => {
@@ -132,14 +122,11 @@ if (!args.supportGlobalNavigator) {
 	});
 }
 
-
 interface IRendererConnection {
 	protocol: IMessagePassingProtocol;
 	initData: IExtensionHostInitData;
 }
 
-// This calls exit directly in case the initialization is not finished and we need to exit
-// Otherwise, if initialization completed we go to extensionHostMain.terminate()
 let onTerminate = function (reason: string) {
 	nativeExit();
 };

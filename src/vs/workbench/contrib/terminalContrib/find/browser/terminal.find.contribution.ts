@@ -21,8 +21,6 @@ import { TerminalFindCommandId } from '../common/terminal.find.js';
 import './media/terminalFind.css';
 import { TerminalFindWidget } from './terminalFindWidget.js';
 
-// #region Terminal Contributions
-
 class TerminalFindContribution extends Disposable implements ITerminalContribution {
 	static readonly ID = 'terminal.find';
 
@@ -96,10 +94,6 @@ class TerminalFindContribution extends Disposable implements ITerminalContributi
 
 }
 registerTerminalContribution(TerminalFindContribution.ID, TerminalFindContribution, true);
-
-// #endregion
-
-// #region Actions
 
 registerActiveXtermAction({
 	id: TerminalFindCommandId.FindFocus,
@@ -237,7 +231,6 @@ registerActiveXtermAction({
 	}
 });
 
-// Global workspace file search
 registerActiveInstanceAction({
 	id: TerminalFindCommandId.SearchWorkspace,
 	title: localize2('workbench.action.terminal.searchWorkspace', 'Search Workspace'),
@@ -251,4 +244,3 @@ registerActiveInstanceAction({
 	run: (activeInstance, c, accessor) => findInFilesCommand(accessor, { query: activeInstance.selection })
 });
 
-// #endregion

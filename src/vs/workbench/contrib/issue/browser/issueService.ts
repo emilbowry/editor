@@ -24,7 +24,6 @@ import { IWorkbenchExtensionEnablementService } from '../../../services/extensio
 import { IExtensionService } from '../../../services/extensions/common/extensions.js';
 import { IIntegrityService } from '../../../services/integrity/common/integrity.js';
 
-
 export class BrowserIssueService implements IWorkbenchIssueService {
 	declare readonly _serviceBrand: undefined;
 

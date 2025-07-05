@@ -86,7 +86,6 @@ export class MergeMarkersController extends Disposable {
 				);
 				updateWidth();
 
-
 				this.disposableStore.add(autorun(reader => {
 					/** @description update classname */
 					const vm = this.mergeEditorViewModel.read(reader);
@@ -111,7 +110,6 @@ export class MergeMarkersController extends Disposable {
 		});
 	}
 }
-
 
 function getBlocks(document: ITextModel, configuration: ProjectionConfiguration): { blocks: Block[]; transformedContent: string } {
 	const blocks: Block[] = [];

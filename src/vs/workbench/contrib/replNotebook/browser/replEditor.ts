@@ -469,7 +469,6 @@ export class ReplEditor extends EditorPane implements IEditorPaneWithScrolling {
 		this._widgetDisposableStore.add(this._codeEditorWidget.onDidChangeCursorPosition(e => this._onDidChangeSelection.fire({ reason: this._toEditorPaneSelectionChangeReason(e) })));
 		this._widgetDisposableStore.add(this._codeEditorWidget.onDidChangeModelContent(() => this._onDidChangeSelection.fire({ reason: EditorPaneSelectionChangeReason.EDIT })));
 
-
 		this._widgetDisposableStore.add(this._notebookKernelService.onDidChangeNotebookAffinity(this._syncWithKernel, this));
 		this._widgetDisposableStore.add(this._notebookKernelService.onDidChangeSelectedNotebooks(this._syncWithKernel, this));
 
@@ -532,7 +531,6 @@ export class ReplEditor extends EditorPane implements IEditorPaneWithScrolling {
 		}));
 
 		this._widgetDisposableStore.add(this._notebookWidget.value!.onDidScroll(() => this._onDidChangeScroll.fire()));
-
 
 		this._widgetDisposableStore.add(this._notebookWidget.value!.onDidChangeViewCells(this.handleViewCellChange, this));
 

@@ -17,7 +17,6 @@ import { IUndoRedoService } from '../../../../../platform/undoRedo/common/undoRe
 import { NotebookOptionsChangeEvent } from '../notebookOptions.js';
 import { ICodeEditorService } from '../../../../../editor/browser/services/codeEditorService.js';
 import { NotebookCellStateChangedEvent, NotebookLayoutInfo } from '../notebookViewEvents.js';
-// import { IInlineChatSessionService } from '../../../inlineChat/browser/inlineChatSessionService.js';
 
 export class MarkupCellViewModel extends BaseCellViewModel implements ICellViewModel {
 
@@ -126,7 +125,6 @@ export class MarkupCellViewModel extends BaseCellViewModel implements ICellViewM
 	) {
 		// super(viewType, model, UUID.generateUuid(), viewContext, configurationService, textModelService, undoRedoService, codeEditorService, inlineChatSessionService);
 		super(viewType, model, UUID.generateUuid(), viewContext, configurationService, textModelService, undoRedoService, codeEditorService);
-
 
 		const { bottomToolbarGap } = this.viewContext.notebookOptions.computeBottomToolbarDimensions(this.viewType);
 
@@ -302,7 +300,6 @@ export class MarkupCellViewModel extends BaseCellViewModel implements ICellViewM
 
 	onDeselect() {
 	}
-
 
 	private readonly _hasFindResult = this._register(new Emitter<boolean>());
 	public readonly hasFindResult: Event<boolean> = this._hasFindResult.event;

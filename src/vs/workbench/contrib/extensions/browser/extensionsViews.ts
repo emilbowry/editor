@@ -1404,7 +1404,6 @@ function toSpecificWorkspaceUnsupportedQuery(query: string, qualifier: string): 
 	return undefined;
 }
 
-
 export class UntrustedWorkspaceUnsupportedExtensionsView extends ExtensionsListView {
 	override async show(query: string): Promise<IPagedModel<IExtension>> {
 		const updatedQuery = toSpecificWorkspaceUnsupportedQuery(query, 'untrusted');

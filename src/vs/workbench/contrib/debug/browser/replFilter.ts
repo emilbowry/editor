@@ -10,7 +10,6 @@ import { IReplElement } from '../common/debug.js';
 import { ReplEvaluationResult, ReplEvaluationInput } from '../common/replModel.js';
 import { Variable } from '../common/debugModel.js';
 
-
 type ParsedQuery = {
 	type: 'include' | 'exclude';
 	query: string;

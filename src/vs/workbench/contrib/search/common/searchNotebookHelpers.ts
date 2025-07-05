@@ -3,7 +3,6 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-
 import { FindMatch, IReadonlyTextBuffer } from '../../../../editor/common/model.js';
 import { TextSearchMatch, IFileMatch, ITextSearchMatch } from '../../../services/search/common/search.js';
 import { Range } from '../../../../editor/common/core/range.js';

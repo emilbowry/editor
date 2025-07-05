@@ -91,5 +91,4 @@ suite('MainThreadHostTreeView', function () {
 		assert((<CustomTreeItem>children![0]).customProp === customValue, 'Tree Items should keep custom properties');
 	});
 
-
 });

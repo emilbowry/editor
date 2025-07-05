@@ -343,7 +343,6 @@ export async function preparePathForShell(resource: string | URI, executable: st
 		pathBasename === 'powershell' ||
 		title === 'powershell';
 
-
 	if (isPowerShell && (hasSpace || originalPath.includes('\''))) {
 		return `& '${originalPath.replace(/'/g, '\'\'')}'`;
 	}

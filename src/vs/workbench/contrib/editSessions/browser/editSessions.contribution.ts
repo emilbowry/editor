@@ -73,7 +73,6 @@ import { ResourceSet } from '../../../../base/common/map.js';
 registerSingleton(IEditSessionsLogService, EditSessionsLogService, InstantiationType.Delayed);
 registerSingleton(IEditSessionsStorageService, EditSessionsWorkbenchService, InstantiationType.Delayed);
 
-
 const continueWorkingOnCommand: IAction2Options = {
 	id: '_workbench.editSessions.actions.continueEditSession',
 	title: localize2('continue working on', 'Continue Working On...'),
@@ -733,7 +732,6 @@ export class EditSessionsContribution extends Disposable implements IWorkbenchCo
 				} catch { }
 
 				hasEdits = true;
-
 
 				if (await this.fileService.exists(uri)) {
 					const contents = encodeBase64((await this.fileService.readFile(uri)).value);

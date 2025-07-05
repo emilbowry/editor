@@ -502,7 +502,6 @@ export class SettingsTreeSettingElement extends SettingsTreeElement {
 	}
 }
 
-
 function createSettingMatchRegExp(pattern: string): RegExp {
 	pattern = escapeRegExpCharacters(pattern)
 		.replace(/\\\*/g, '.*');
@@ -797,7 +796,6 @@ function isIncludeSetting(setting: ISetting): boolean {
 	return setting.key === 'files.readonlyInclude';
 }
 
-// The values of the following settings when a default values has been removed
 export function objectSettingSupportsRemoveDefaultValue(key: string): boolean {
 	return key === 'workbench.editor.customLabels.patterns';
 }

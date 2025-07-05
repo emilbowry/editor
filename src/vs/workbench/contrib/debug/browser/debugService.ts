@@ -1234,7 +1234,6 @@ export class DebugService implements IDebugService {
 			}
 		}
 
-
 		/** Makes its triggeree states match the state of this breakpoint */
 		await Promise.all(this.model.getBreakpoints()
 			.filter(bp => bp.triggeredBy === breakpoint.getId() && bp.enabled !== enable)

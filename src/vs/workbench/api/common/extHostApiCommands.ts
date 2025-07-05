@@ -569,7 +569,6 @@ type InlineChatRunOptions = {
 
 //#endregion
 
-
 //#region OLD world
 
 export class ExtHostApiCommands {

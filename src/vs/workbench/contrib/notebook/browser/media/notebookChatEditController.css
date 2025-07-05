@@ -37,7 +37,6 @@
 	outline: solid 1px var(--vscode-notebook-cellBorderColor);
 }
 
-
 .monaco-workbench .notebookOverlay .view-zones .cell-editor-container > div > div {
 	line-height: initial;
 	overflow-x: hidden;

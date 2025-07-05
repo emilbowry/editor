@@ -53,7 +53,6 @@ interface IMarkerFileColumnTemplateData {
 	readonly positionLabel: HighlightedLabel;
 }
 
-
 interface IMarkerHighlightedLabelColumnTemplateData {
 	readonly columnElement: HTMLElement;
 	readonly highlightedLabel: HighlightedLabel;

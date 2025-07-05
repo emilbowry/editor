@@ -60,7 +60,6 @@ class ListTestItemElement extends TestItemTreeElement {
 	}
 }
 
-
 /**
  * Projection that lists tests in their traditional tree view.
  */

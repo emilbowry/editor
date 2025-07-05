@@ -795,7 +795,6 @@ export class NotebookOptions extends Disposable {
 		};
 	}
 
-
 	computeEditorStatusbarHeight(internalMetadata: NotebookCellInternalMetadata, cellUri: URI) {
 		return this.statusBarIsVisible(internalMetadata, cellUri) ? this.computeStatusBarHeight() : 0;
 	}

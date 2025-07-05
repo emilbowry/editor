@@ -48,8 +48,6 @@ export interface TypeHierarchyProvider {
 
 export const TypeHierarchyProviderRegistry = new LanguageFeatureRegistry<TypeHierarchyProvider>();
 
-
-
 export class TypeHierarchyModel {
 
 	static async create(model: ITextModel, position: IPosition, token: CancellationToken): Promise<TypeHierarchyModel | undefined> {
@@ -112,8 +110,6 @@ export class TypeHierarchyModel {
 		return [];
 	}
 }
-
-// --- API command support
 
 const _models = new Map<string, TypeHierarchyModel>();
 

@@ -96,5 +96,4 @@ suite('ExtHostDocumentContentProvider', () => {
 		});
 	});
 
-
 });

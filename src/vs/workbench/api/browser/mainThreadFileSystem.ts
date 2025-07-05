@@ -55,7 +55,6 @@ export class MainThreadFileSystem implements MainThreadFileSystemShape {
 		fileProvider.$onFileSystemChange(changes);
 	}
 
-
 	// --- consumer fs, vscode.workspace.fs
 
 	async $stat(uri: UriComponents): Promise<IStat> {

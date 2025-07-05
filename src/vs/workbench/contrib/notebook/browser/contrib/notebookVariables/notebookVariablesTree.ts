@@ -35,7 +35,6 @@ export class NotebookVariablesDelegate implements IListVirtualDelegate<INotebook
 	}
 }
 
-
 export interface IVariableTemplateData {
 	expression: HTMLElement;
 	name: HTMLSpanElement;
@@ -82,7 +81,6 @@ export class NotebookVariableRenderer implements ITreeRenderer<INotebookVariable
 	disposeElement(element: ITreeNode<INotebookVariableElement, FuzzyScore>, index: number, templateData: IVariableTemplateData): void {
 		templateData.elementDisposables.clear();
 	}
-
 
 	disposeTemplate(templateData: IVariableTemplateData): void {
 		templateData.elementDisposables.dispose();

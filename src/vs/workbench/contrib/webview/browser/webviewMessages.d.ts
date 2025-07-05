@@ -87,7 +87,6 @@ export type ToWebviewMessage = {
 	'find-stop': { clearSelection?: boolean };
 };
 
-
 export interface WebviewHostMessaging {
 	postMessage<K extends keyof FromWebviewMessage>(channel: K, data: FromWebviewMessage[K], transfer?: []): void;
 

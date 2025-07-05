@@ -194,7 +194,6 @@ export class ExtHostTerminal extends Disposable {
 		});
 	}
 
-
 	public async createExtensionTerminal(location?: TerminalLocation | vscode.TerminalEditorLocationOptions | vscode.TerminalSplitLocationOptions, internalOptions?: ITerminalInternalOptions, parentTerminal?: ExtHostTerminalIdentifier, iconPath?: TerminalIcon, color?: ThemeColor): Promise<number> {
 		if (typeof this._id !== 'string') {
 			throw new Error('Terminal has already been created');
@@ -741,7 +740,6 @@ export abstract class BaseExtHostTerminalService extends Disposable implements I
 	public $acceptProcessRequestLatency(id: number): Promise<number> {
 		return Promise.resolve(id);
 	}
-
 
 	public registerProfileProvider(extension: IExtensionDescription, id: string, provider: vscode.TerminalProfileProvider): vscode.Disposable {
 		if (this._profileProviders.has(id)) {

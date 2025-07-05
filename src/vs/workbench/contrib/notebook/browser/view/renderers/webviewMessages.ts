@@ -403,7 +403,6 @@ export interface IFindMessage {
 	readonly options: { wholeWord?: boolean; caseSensitive?: boolean; includeMarkup: boolean; includeOutput: boolean; shouldGetSearchPreviewInfo: boolean; ownerID: string; findIds: string[] };
 }
 
-
 export interface IFindHighlightCurrentMessage {
 	readonly type: 'findHighlightCurrent';
 	readonly index: number;
@@ -489,7 +488,6 @@ export interface IPerformanceMessage extends BaseToWebviewMessage {
 	readonly outputSize?: number;
 }
 
-
 export type FromWebviewMessage = WebviewInitialized |
 	IDimensionMessage |
 	IMouseEnterMessage |
@@ -558,6 +556,5 @@ export type ToWebviewMessage = IClearMessage |
 	IReturnOutputItemMessage |
 	ISelectOutputItemMessage |
 	ISelectInputOutputItemMessage;
-
 
 export type AnyMessage = FromWebviewMessage | ToWebviewMessage;

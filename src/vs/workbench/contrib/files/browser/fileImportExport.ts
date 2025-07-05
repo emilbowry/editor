@@ -519,7 +519,6 @@ export class ExternalFileImport {
 				});
 			}
 
-
 			let inaccessibleFileCount = 0;
 			const resourcesFiltered = coalesce((await Promises.settled(resources.map(async resource => {
 				const fileDoesNotExist = !(await this.fileService.exists(resource));

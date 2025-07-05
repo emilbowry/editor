@@ -109,7 +109,6 @@ export const openNewSearchEditor =
 		const activeWorkspaceRootUri = historyService.getLastActiveWorkspaceRoot(Schemas.file);
 		const lastActiveWorkspaceRoot = activeWorkspaceRootUri ? workspaceContextService.getWorkspaceFolder(activeWorkspaceRootUri) ?? undefined : undefined;
 
-
 		const activeEditorControl = editorService.activeTextEditorControl;
 		let activeModel: ICodeEditor | undefined;
 		let selected = '';

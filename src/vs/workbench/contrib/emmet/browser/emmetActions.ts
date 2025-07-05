@@ -125,5 +125,4 @@ export abstract class EmmetEditorAction extends EditorAction {
 		};
 	}
 
-
 }

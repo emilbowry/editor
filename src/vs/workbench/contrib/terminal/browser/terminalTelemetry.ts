@@ -99,8 +99,6 @@ export class TerminalTelemetryContribution extends Disposable implements IWorkbe
 	}
 }
 
-// #region Shell Type
-
 const enum AllowedShellType {
 	Unknown = 'unknown',
 
@@ -111,7 +109,6 @@ const enum AllowedShellType {
 	Msys2 = 'msys2-bash',
 	WindowsPowerShell = 'windows-powershell',
 	Wsl = 'wsl',
-
 
 	// Common Unix shells
 	Bash = 'bash',
@@ -170,7 +167,6 @@ const enum AllowedShellType {
 	TsNode = 'ts-node',
 }
 
-// Types that match the executable name directly
 const shellTypeExecutableAllowList: Set<string> = new Set([
 	// Windows only
 	AllowedShellType.CommandPrompt,
@@ -231,13 +227,11 @@ const shellTypeExecutableAllowList: Set<string> = new Set([
 	AllowedShellType.TsNode,
 ]) satisfies Set<AllowedShellType>;
 
-// Dynamic executables that map to a single type
 const shellTypeExecutableRegexAllowList: { regex: RegExp; type: AllowedShellType }[] = [
 	{ regex: /^(?:pwsh|powershell)-preview$/i, type: AllowedShellType.PwshPreview },
 	{ regex: /^python(?:\d+(?:\.\d+)?)?$/i, type: AllowedShellType.Python },
 ];
 
-// Path-based look ups
 const shellTypePathRegexAllowList: { regex: RegExp; type: AllowedShellType }[] = [
 	// Cygwin uses bash.exe, so look up based on the path
 	{ regex: /\\Cygwin(?:64)?\\.+\\bash\.exe$/i, type: AllowedShellType.Cygwin },
@@ -275,4 +269,3 @@ function getSanitizedShellType(slc: IShellLaunchConfig): AllowedShellType {
 	return AllowedShellType.Unknown;
 }
 
-// #endregion Shell Type

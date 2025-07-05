@@ -39,7 +39,6 @@ type ExtHostSelectKernelArgs = ControllerInfo | { notebookEditor: vscode.Noteboo
 type SelectKernelReturnArgs = ControllerInfo | { notebookEditorId: string } | ControllerInfo & { notebookEditorId: string } | undefined;
 type ControllerInfo = { id: string; extension: string };
 
-
 export class ExtHostNotebookKernels implements ExtHostNotebookKernelsShape {
 
 	private readonly _proxy: MainThreadNotebookKernelsShape;
@@ -123,7 +122,6 @@ export class ExtHostNotebookKernels implements ExtHostNotebookKernelsShape {
 				throw new Error(`notebook controller with id '${id}' ALREADY exist`);
 			}
 		}
-
 
 		const handle = this._handlePool++;
 		const that = this;
@@ -467,7 +465,6 @@ export class ExtHostNotebookKernels implements ExtHostNotebookKernelsShape {
 			this.variableStore = {};
 		}
 
-
 		const requestKind = kind === 'named' ? NotebookVariablesRequestKind.Named : NotebookVariablesRequestKind.Indexed;
 		const variableResults = variableProvider.provideVariables(document.apiNotebook, parent, requestKind, start, token);
 
@@ -507,7 +504,6 @@ export class ExtHostNotebookKernels implements ExtHostNotebookKernelsShape {
 		const editor = this._extHostNotebook.getEditorById(editorId);
 		obj.onDidReceiveMessage.fire(Object.freeze({ editor: editor.apiEditor, message }));
 	}
-
 
 	// ---
 
@@ -561,7 +557,6 @@ export class ExtHostNotebookKernels implements ExtHostNotebookKernelsShape {
 		return execution.asApiObject();
 	}
 }
-
 
 enum NotebookCellExecutionTaskState {
 	Init,
@@ -777,7 +772,6 @@ enum NotebookExecutionTaskState {
 	Started,
 	Resolved
 }
-
 
 class NotebookExecutionTask extends Disposable {
 	private static HANDLE = 0;

@@ -103,7 +103,6 @@ export class PreferencesContribution extends Disposable implements IWorkbenchCon
 	}
 }
 
-
 const registry = Registry.as<IConfigurationRegistry>(Extensions.Configuration);
 registry.registerConfiguration({
 	...workbenchConfigurationNodeBase,

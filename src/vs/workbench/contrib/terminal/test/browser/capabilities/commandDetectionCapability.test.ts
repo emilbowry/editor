@@ -61,7 +61,6 @@ suite('CommandDetectionCapability', () => {
 		capability.handleCommandStart();
 	}
 
-
 	setup(async () => {
 		const TerminalCtor = (await importAMDNodeModule<typeof import('@xterm/xterm')>('@xterm/xterm', 'lib/xterm.js')).Terminal;
 

@@ -17,7 +17,6 @@ import { ISearchTreeMatch, ISearchTreeFileMatch, ISearchResult, ISearchTreeFolde
 import { searchMatchComparer } from '../../search/browser/searchCompare.js';
 import { ICellMatch, isNotebookFileMatch } from '../../search/browser/notebookSearch/notebookSearchModelBase.js';
 
-// Using \r\n on Windows inserts an extra newline between results.
 const lineDelimiter = '\n';
 
 const translateRangeLines =
@@ -29,7 +28,6 @@ const matchToSearchResultFormat = (match: ISearchTreeMatch, longestLineNumber: n
 	const getLinePrefix = (i: number) => `${match.range().startLineNumber + i}`;
 
 	const fullMatchLines = match.fullPreviewLines();
-
 
 	const results: { line: string; ranges: Range[]; lineNumber: string }[] = [];
 

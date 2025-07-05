@@ -385,7 +385,6 @@ export class DebugHoverWidget implements IContentWidget {
 		}
 	}
 
-
 	hide(): void {
 		if (this.showCancellationSource) {
 			this.showCancellationSource.dispose(true);

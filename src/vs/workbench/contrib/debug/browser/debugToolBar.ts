@@ -390,8 +390,6 @@ export function createDisconnectMenuItemAction(action: MenuItemAction, disposabl
 	return item;
 }
 
-// Debug toolbar
-
 const debugViewTitleItems: IDisposable[] = [];
 const registerDebugToolBarItem = (id: string, title: string | ICommandActionTitle, order: number, icon?: { light?: URI; dark?: URI } | ThemeIcon, when?: ContextKeyExpression, precondition?: ContextKeyExpression, alt?: ICommandAction) => {
 	MenuRegistry.appendMenuItem(MenuId.DebugToolBar, {
@@ -434,7 +432,6 @@ markAsSingleton(MenuRegistry.onDidChangeMenu(e => {
 		}
 	}
 }));
-
 
 const CONTEXT_TOOLBAR_COMMAND_CENTER = ContextKeyExpr.equals('config.debug.toolBarLocation', 'commandCenter');
 

@@ -13,7 +13,6 @@ import { INotebookEditorModelResolverService } from '../../common/notebookEditor
 import { isEqual } from '../../../../../base/common/resources.js';
 import { NotebookCellTextModel } from '../../common/model/notebookCellTextModel.js';
 
-
 class ResolvedNotebookOutputEditorInputModel implements IDisposable {
 	constructor(
 		readonly resolvedNotebookEditorModel: IResolvedNotebookEditorModel,
@@ -26,11 +25,6 @@ class ResolvedNotebookOutputEditorInputModel implements IDisposable {
 		this.resolvedNotebookEditorModel.dispose();
 	}
 }
-
-// TODO @Yoyokrazy -- future feat. for viewing static outputs -- encode mime + data
-// export class NotebookOutputViewerInput extends EditorInput {
-// 	static readonly ID: string = 'workbench.input.notebookOutputViewerInput';
-// }
 
 export class NotebookOutputEditorInput extends EditorInput {
 	static readonly ID: string = 'workbench.input.notebookOutputEditorInput';

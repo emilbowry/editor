@@ -129,7 +129,6 @@ export abstract class AbstractExpressionDataSource<Input, Element extends IExpre
 				return vizOrTree as Element;
 			}
 
-
 			return r;
 		}));
 	}

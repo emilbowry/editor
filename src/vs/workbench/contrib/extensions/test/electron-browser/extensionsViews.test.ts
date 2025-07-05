@@ -450,7 +450,6 @@ suite('ExtensionsViews Tests', () => {
 		}
 	});
 
-
 	test('Test @recommended:all query', async () => {
 		const allRecommendedExtensions = [
 			workspaceRecommendationA,

@@ -442,7 +442,6 @@ suite('ExtHostLanguageFeatures', function () {
 		assert.deepStrictEqual(entry.range, { startLineNumber: 1, startColumn: 1, endLineNumber: 1, endColumn: 5 });
 	});
 
-
 	test('HoverProvider, given range', async () => {
 
 		disposables.add(extHost.registerHoverProvider(defaultExtension, defaultSelector, new class implements vscode.HoverProvider {
@@ -458,14 +457,12 @@ suite('ExtHostLanguageFeatures', function () {
 		assert.deepStrictEqual(entry.range, { startLineNumber: 4, startColumn: 1, endLineNumber: 9, endColumn: 8 });
 	});
 
-
 	test('HoverProvider, registration order', async () => {
 		disposables.add(extHost.registerHoverProvider(defaultExtension, defaultSelector, new class implements vscode.HoverProvider {
 			provideHover(): any {
 				return new types.Hover('registered first');
 			}
 		}));
-
 
 		disposables.add(extHost.registerHoverProvider(defaultExtension, defaultSelector, new class implements vscode.HoverProvider {
 			provideHover(): any {
@@ -480,7 +477,6 @@ suite('ExtHostLanguageFeatures', function () {
 		assert.strictEqual(first.contents[0].value, 'registered second');
 		assert.strictEqual(second.contents[0].value, 'registered first');
 	});
-
 
 	test('HoverProvider, evil provider', async () => {
 
@@ -689,7 +685,6 @@ suite('ExtHostLanguageFeatures', function () {
 			value.dispose();
 		});
 	});
-
 
 	test('Cannot read property \'id\' of undefined, #29469', async () => {
 		return runWithFakedTimers({ useFakeTimers: true }, async () => {
@@ -1052,7 +1047,6 @@ suite('ExtHostLanguageFeatures', function () {
 					return [new types.CompletionItem('testing')];
 				}
 			}, []));
-
 
 			await rpcProtocol.sync();
 			const value = await provideSuggestionItems(languageFeaturesService.completionProvider, model, new EditorPosition(1, 1), new CompletionOptions(undefined, new Set<languages.CompletionItemKind>().add(languages.CompletionItemKind.Snippet)));

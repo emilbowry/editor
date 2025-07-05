@@ -36,7 +36,7 @@ import { showLoadedScriptMenu } from '../common/loadedScriptsPicker.js';
 import { showDebugSessionMenu } from './debugSessionPicker.js';
 import { TEXT_FILE_EDITOR_ID } from '../../files/common/files.js';
 import { ILocalizedString } from '../../../../platform/action/common/action.js';
-// import { ChatContextKeys } from '../../chat/common/chatContextKeys.js';
+
 import { DisposableStore } from '../../../../base/common/lifecycle.js';
 
 export const ADD_CONFIGURATION_ID = 'debug.addConfiguration';
@@ -305,10 +305,6 @@ function findNextVisibleFrame(down: boolean, callStack: readonly IStackFrame[], 
 	return undefined;
 }
 
-// These commands are used in call stack context menu, call stack inline actions, command palette, debug toolbar, mac native touch bar
-// When the command is exectued in the context of a thread(context menu on a thread, inline call stack action) we pass the thread id
-// Otherwise when it is executed "globaly"(using the touch bar, debug toolbar, command palette) we do not pass any id and just take whatever is the focussed thread
-// Same for stackFrame commands and session commands.
 CommandsRegistry.registerCommand({
 	id: COPY_STACK_TRACE_ID,
 	handler: async (accessor: ServicesAccessor, _: string, context: CallStackContext | unknown) => {
@@ -386,7 +382,6 @@ CommandsRegistry.registerCommand({
 		return notificationService.warn(nls.localize('noExecutableCode', "No executable code is associated at the current cursor position."));
 	}
 });
-
 
 CommandsRegistry.registerCommand({
 	id: CALLSTACK_TOP_ID,
@@ -498,7 +493,6 @@ KeybindingsRegistry.registerCommandAndKeybindingRule({
 	}
 });
 
-// Windows browsers use F11 for full screen, thus use alt+F11 as the default shortcut
 const STEP_INTO_KEYBINDING = (isWeb && isWindows) ? (KeyMod.Alt | KeyCode.F11) : KeyCode.F11;
 
 KeybindingsRegistry.registerCommandAndKeybindingRule({
@@ -541,7 +535,6 @@ KeybindingsRegistry.registerCommandAndKeybindingRule({
 		await getThreadAndRun(accessor, context, thread => thread.pause());
 	}
 });
-
 
 KeybindingsRegistry.registerCommandAndKeybindingRule({
 	id: STEP_INTO_TARGET_ID,
@@ -1036,7 +1029,6 @@ KeybindingsRegistry.registerCommandAndKeybindingRule({
 	}
 });
 
-// When there are no debug extensions, open the debug viewlet when F5 is pressed so the user can read the limitations
 KeybindingsRegistry.registerCommandAndKeybindingRule({
 	id: 'debug.openView',
 	weight: KeybindingWeight.WorkbenchContrib,

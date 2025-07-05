@@ -67,7 +67,6 @@ export class ResultCodeEditorView extends CodeEditorView {
 			reset(this.htmlElements.description, ...renderLabelWithIcons(this._labelService.getUriLabel(vm.model.resultTextModel.uri, { relative: true })));
 		}));
 
-
 		const remainingConflictsActionBar = this._register(new ActionBar(this.htmlElements.detail));
 
 		this._register(autorun(reader => {
@@ -110,7 +109,6 @@ export class ResultCodeEditorView extends CodeEditorView {
 					: localize('allConflictHandled', 'All conflicts handled, the merge can be completed now.'),
 			});
 		}));
-
 
 		this._register(applyObservableDecorations(this.editor, this.decorations));
 

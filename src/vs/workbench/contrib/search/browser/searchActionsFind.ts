@@ -79,7 +79,6 @@ registerAction2(class RestrictSearchToFolderAction extends Action2 {
 	}
 });
 
-
 registerAction2(class ExpandSelectedTreeCommandAction extends Action2 {
 	constructor(
 	) {
@@ -177,7 +176,6 @@ registerAction2(class RevealInSideBarForSearchResultsAction extends Action2 {
 	}
 });
 
-// Find in Files by default is the same as View: Show Search, but can be configured to open a search editor instead with the `search.mode` binding
 registerAction2(class FindInFilesAction extends Action2 {
 
 	constructor(

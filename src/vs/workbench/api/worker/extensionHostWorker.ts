@@ -77,7 +77,6 @@ function patchFetching(asBrowserUri: (uri: URI) => Promise<URI>) {
 
 self.importScripts = () => { throw new Error(`'importScripts' has been blocked`); };
 
-// const nativeAddEventListener = addEventListener.bind(self);
 self.addEventListener = () => console.trace(`'addEventListener' has been blocked`);
 
 (<any>self)['AMDLoader'] = undefined;
@@ -160,7 +159,6 @@ const hostUtil = new class implements IHostUtils {
 		nativeClose();
 	}
 };
-
 
 class ExtensionWorker {
 

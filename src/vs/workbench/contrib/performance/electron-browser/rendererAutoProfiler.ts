@@ -104,7 +104,6 @@ export class RendererProfiling {
 		this._observer?.disconnect();
 	}
 
-
 	private async _store(profile: IV8Profile, sessionId: string): Promise<void> {
 		const path = joinPath(this._environmentService.tmpDir, `renderer-${Math.random().toString(16).slice(2, 8)}.cpuprofile.json`);
 		await this._fileService.writeFile(path, VSBuffer.fromString(JSON.stringify(profile)));

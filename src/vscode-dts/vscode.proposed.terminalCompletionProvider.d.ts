@@ -19,7 +19,6 @@ declare module 'vscode' {
 		provideTerminalCompletions(terminal: Terminal, context: TerminalCompletionContext, token: CancellationToken): ProviderResult<T[] | TerminalCompletionList<T>>;
 	}
 
-
 	export interface TerminalCompletionItem {
 		/**
 		 * The label of the completion.
@@ -41,7 +40,6 @@ declare module 'vscode' {
 		 */
 		detail?: string;
 
-
 		/**
 		 * A human-readable string that represents a doc-comment.
 		 */
@@ -52,7 +50,6 @@ declare module 'vscode' {
 		 */
 		kind?: TerminalCompletionItemKind;
 	}
-
 
 	/**
 	 * Terminal item kinds.

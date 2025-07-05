@@ -286,7 +286,6 @@ export abstract class ExtHostDebugServiceBase extends DisposableCls implements I
 
 	// extension debug API
 
-
 	get activeStackItem(): vscode.DebugThread | vscode.DebugStackFrame | undefined {
 		return this._activeStackItem;
 	}
@@ -1269,7 +1268,6 @@ class DirectDebugAdapter extends AbstractDebugAdapter {
 	}
 }
 
-
 export class WorkerExtHostDebugService extends ExtHostDebugServiceBase {
 	constructor(
 		@IExtHostRpcService extHostRpcService: IExtHostRpcService,
@@ -1285,7 +1283,6 @@ export class WorkerExtHostDebugService extends ExtHostDebugServiceBase {
 	}
 }
 
-// Collecting info for #233167 specifically
 type DebugProtocolMessageErrorClassification = {
 	from: { classification: 'SystemMetaData'; purpose: 'PerformanceAndHealth'; comment: 'The type of the debug adapter that the event is from.' };
 	type: { classification: 'SystemMetaData'; purpose: 'PerformanceAndHealth'; comment: 'The type of the event that was malformed.' };

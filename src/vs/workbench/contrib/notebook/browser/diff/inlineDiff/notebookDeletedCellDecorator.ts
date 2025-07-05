@@ -28,7 +28,6 @@ export interface INotebookDeletedCellDecorator {
 	getTop(deletedIndex: number): number | undefined;
 }
 
-
 export class NotebookDeletedCellDecorator extends Disposable implements INotebookDeletedCellDecorator {
 	private readonly zoneRemover = this._register(new DisposableStore());
 	private readonly createdViewZones = new Map<number, string>();
@@ -106,7 +105,6 @@ export class NotebookDeletedCellDecorator extends Disposable implements INoteboo
 		this.deletedCellInfos.clear();
 		this.zoneRemover.clear();
 	}
-
 
 	private _createWidget(index: number, cells: { cell: NotebookCellTextModel; originalIndex: number; previousIndex: number }[]) {
 		this._createWidgetImpl(index, cells);

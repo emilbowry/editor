@@ -796,7 +796,6 @@ export class TestingViewAsTreeAction extends ViewAction<TestingExplorerView> {
 	}
 }
 
-
 export class TestingSortByStatusAction extends ViewAction<TestingExplorerView> {
 	constructor() {
 		super({
@@ -1092,7 +1091,6 @@ abstract class ExecuteTestAtCursor extends Action2 {
 			await editorService.save({ editor: activeEditorPane.input, groupId: activeEditorPane.group.id });
 			await testService.syncTests();
 		}
-
 
 		// testsInFile will descend in the test tree. We assume that as we go
 		// deeper, ranges get more specific. We'll want to run all tests whose
@@ -1428,7 +1426,6 @@ abstract class RunOrDebugFailedTests extends RunOrDebugExtsByPath {
 		return ids;
 	}
 }
-
 
 abstract class RunOrDebugLastRun extends Action2 {
 	constructor(options: IAction2Options) {

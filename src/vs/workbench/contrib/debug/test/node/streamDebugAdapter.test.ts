@@ -13,7 +13,6 @@ import * as ports from '../../../../../base/node/ports.js';
 import { SocketDebugAdapter, NamedPipeDebugAdapter, StreamDebugAdapter } from '../../node/debugAdapter.js';
 import { ensureNoDisposablesAreLeakedInTestSuite } from '../../../../../base/test/common/utils.js';
 
-
 function sendInitializeRequest(debugAdapter: StreamDebugAdapter): Promise<DebugProtocol.Response> {
 	return new Promise((resolve, reject) => {
 		debugAdapter.sendRequest('initialize', { adapterID: 'test' }, (result) => {

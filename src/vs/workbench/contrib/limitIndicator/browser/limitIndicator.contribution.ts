@@ -55,7 +55,6 @@ export class LimitIndicatorContribution extends Disposable implements IWorkbench
 
 }
 
-
 export interface LimitInfo {
 	readonly onDidChange: Event<void>;
 
@@ -123,7 +122,6 @@ class LanguageStatusEntry {
 		}
 		return false;
 	}
-
 
 	private updateStatusItem(info: LimitInfo | undefined) {
 		if (this._limitStatusItem) {

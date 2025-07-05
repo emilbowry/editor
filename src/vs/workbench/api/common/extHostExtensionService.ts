@@ -36,7 +36,7 @@ import { IExtHostRpcService } from './extHostRpcService.js';
 import { ServiceCollection } from '../../../platform/instantiation/common/serviceCollection.js';
 import { IExtHostTunnelService } from './extHostTunnelService.js';
 import { IExtHostTerminalService } from './extHostTerminalService.js';
-// import { IExtHostLanguageModels } from './extHostLanguageModels.js';
+
 import { Emitter, Event } from '../../../base/common/event.js';
 import { IExtensionActivationHost, checkActivateWorkspaceContainsExtension } from '../../services/extensions/common/workspaceContains.js';
 import { ExtHostSecretState, IExtHostSecretState } from './extHostSecretState.js';

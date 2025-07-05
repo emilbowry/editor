@@ -734,10 +734,10 @@ const TunnelPrivacyEnabledContextKey = new RawContextKey<boolean>('tunnelPrivacy
 const TunnelProtocolContextKey = new RawContextKey<TunnelProtocol | undefined>('tunnelProtocol', TunnelProtocol.Http, true);
 const TunnelViewFocusContextKey = new RawContextKey<boolean>('tunnelViewFocus', false, nls.localize('tunnel.focusContext', "Whether the Ports view has focus."));
 const TunnelViewSelectionKeyName = 'tunnelViewSelection';
-// host:port
+
 const TunnelViewSelectionContextKey = new RawContextKey<string | undefined>(TunnelViewSelectionKeyName, undefined, true);
 const TunnelViewMultiSelectionKeyName = 'tunnelViewMultiSelection';
-// host:port[]
+
 const TunnelViewMultiSelectionContextKey = new RawContextKey<string[] | undefined>(TunnelViewMultiSelectionKeyName, undefined, true);
 const PortChangableContextKey = new RawContextKey<boolean>('portChangable', false, true);
 const ProtocolChangeableContextKey = new RawContextKey<boolean>('protocolChangable', true, true);
@@ -1678,7 +1678,7 @@ MenuRegistry.appendMenuItem(MenuId.TunnelContext, ({
 		isForwardedOrDetectedExpr,
 		isNotMultiSelectionExpr)
 }));
-// The group 0_manage is used by extensions, so try not to change it
+
 MenuRegistry.appendMenuItem(MenuId.TunnelContext, ({
 	group: '0_manage',
 	order: 1,
@@ -1755,7 +1755,6 @@ MenuRegistry.appendMenuItem(MenuId.TunnelProtocol, ({
 		toggled: TunnelProtocolContextKey.isEqualTo(TunnelProtocol.Https)
 	}
 }));
-
 
 MenuRegistry.appendMenuItem(MenuId.TunnelPortInline, ({
 	group: '0_manage',

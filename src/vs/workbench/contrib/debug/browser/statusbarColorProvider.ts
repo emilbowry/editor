@@ -14,9 +14,6 @@ import { IStatusbarService } from '../../../services/statusbar/browser/statusbar
 import { IConfigurationService } from '../../../../platform/configuration/common/configuration.js';
 import { ILayoutService } from '../../../../platform/layout/browser/layoutService.js';
 
-
-// colors for theming
-
 export const STATUS_BAR_DEBUGGING_BACKGROUND = registerColor('statusBar.debuggingBackground', {
 	dark: '#CC6633',
 	light: '#CC6633',

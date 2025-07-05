@@ -19,7 +19,6 @@ declare module 'vscode' {
 		provideTerminalQuickFixes(commandMatchResult: TerminalCommandMatchResult, token: CancellationToken): ProviderResult<SingleOrMany<TerminalQuickFixTerminalCommand | TerminalQuickFixOpener | Command>>;
 	}
 
-
 	export interface TerminalCommandMatchResult {
 		commandLine: string;
 		commandLineMatch: RegExpMatchArray;

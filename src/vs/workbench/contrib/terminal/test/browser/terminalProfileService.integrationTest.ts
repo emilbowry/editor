@@ -62,7 +62,6 @@ class MockTerminalProfileService implements Partial<ITerminalProfileService> {
 	}
 }
 
-
 class MockQuickInputService implements Partial<IQuickInputService> {
 	_pick: IProfileQuickPickItem = powershellPick;
 	pick(picks: QuickPickInput<IProfileQuickPickItem>[] | Promise<QuickPickInput<IProfileQuickPickItem>[]>, options?: IPickOptions<IProfileQuickPickItem> & { canPickMany: true }, token?: CancellationToken): Promise<IProfileQuickPickItem[] | undefined>;

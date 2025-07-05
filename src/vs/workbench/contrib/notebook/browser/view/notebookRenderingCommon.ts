@@ -21,7 +21,6 @@ import { CellPartsCollection } from './cellPart.js';
 import { CellViewModel, NotebookViewModel } from '../viewModel/notebookViewModelImpl.js';
 import { ICellRange } from '../../common/notebookRange.js';
 
-
 export interface INotebookCellList extends ICoordinatesConverter {
 	isDisposed: boolean;
 	inRenderingTransaction: boolean;

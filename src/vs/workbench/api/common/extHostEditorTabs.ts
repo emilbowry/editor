@@ -288,7 +288,6 @@ export class ExtHostEditorTabs implements IExtHostEditorTabs {
 		const opened: vscode.TabGroup[] = [];
 		const changed: vscode.TabGroup[] = [];
 
-
 		this._extHostTabGroups = tabGroups.map(tabGroup => {
 			const group = new ExtHostEditorTabGroup(tabGroup, () => this._activeGroupId);
 			if (diff.added.includes(group.groupId)) {

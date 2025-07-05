@@ -209,7 +209,6 @@ export class NotebookDocumentMetadataDiffRenderer implements IListRenderer<Noteb
 	}
 }
 
-
 export class CellDiffSingleSideRenderer implements IListRenderer<SingleSideDiffElementViewModel, CellDiffSingleSideRenderTemplate | CellDiffSideBySideRenderTemplate> {
 	static readonly TEMPLATE_ID = 'cell_diff_single';
 
@@ -295,7 +294,6 @@ export class CellDiffSingleSideRenderer implements IListRenderer<SingleSideDiffE
 		templateData.elementDisposables.clear();
 	}
 }
-
 
 export class CellDiffSideBySideRenderer implements IListRenderer<SideBySideDiffElementViewModel, CellDiffSideBySideRenderTemplate> {
 	static readonly TEMPLATE_ID = 'cell_diff_side_by_side';
@@ -471,7 +469,6 @@ export class NotebookTextDiffList extends WorkbenchList<IDiffElementViewModelBas
 		super.splice(0, this.length);
 	}
 
-
 	updateElementHeight2(element: IDiffElementViewModelBase, size: number) {
 		const viewIndex = this.indexOf(element);
 		const focused = this.getFocus();
@@ -578,7 +575,6 @@ export class NotebookTextDiffList extends WorkbenchList<IDiffElementViewModelBas
 		}
 	}
 }
-
 
 function buildDiffEditorWidget(instantiationService: IInstantiationService, notebookEditor: INotebookTextDiffEditor, sourceContainer: HTMLElement, options: IDiffEditorConstructionOptions = {}) {
 	const editorContainer = DOM.append(sourceContainer, DOM.$('.editor-container'));

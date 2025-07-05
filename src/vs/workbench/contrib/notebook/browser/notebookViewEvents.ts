@@ -54,7 +54,6 @@ export class NotebookLayoutChangedEvent {
 	}
 }
 
-
 export class NotebookMetadataChangedEvent {
 	public readonly type = NotebookViewEventType.MetadataChanged;
 

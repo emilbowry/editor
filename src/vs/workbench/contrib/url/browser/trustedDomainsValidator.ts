@@ -67,7 +67,6 @@ export class OpenerValidatorContributions implements IWorkbenchContribution {
 
 			const linkTail = `${query ? '?' + query : ''}${fragment ? '#' + fragment : ''}`;
 
-
 			const remainingLength = Math.max(0, 60 - formattedLink.length);
 			const linkTailLengthToKeep = Math.min(Math.max(5, remainingLength), linkTail.length);
 

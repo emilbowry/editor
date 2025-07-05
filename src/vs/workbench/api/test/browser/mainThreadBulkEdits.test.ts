@@ -20,7 +20,6 @@ suite('MainThreadBulkEdits', function () {
 
 	test('"Rename failed to apply edits" in monorepo with pnpm #158845', function () {
 
-
 		const fileService = new class extends mock<IFileService>() {
 			override onDidChangeFileSystemProviderCapabilities = Event.None;
 			override onDidChangeFileSystemProviderRegistrations = Event.None;
@@ -46,7 +45,6 @@ suite('MainThreadBulkEdits', function () {
 			{ resource: URI.from({ scheme: 'case', path: '/other/path.txt' }), textEdit: { range: { startLineNumber: 1, startColumn: 1, endLineNumber: 1, endColumn: 1 }, text: 'sss' }, versionId: undefined },
 			{ resource: URI.from({ scheme: 'foo', path: '/other/path.txt' }), textEdit: { range: { startLineNumber: 1, startColumn: 1, endLineNumber: 1, endColumn: 1 }, text: 'sss' }, versionId: undefined },
 		];
-
 
 		const out = reviveWorkspaceEditDto({ edits }, uriIdentityService);
 

@@ -487,8 +487,6 @@ function namedDetailLabel(name: string, detail: IStatementCoverage | IDeclaratio
 	);
 }
 
-// 'tidies' the range by normalizing it into a range and removing leading
-// and trailing whitespace.
 function tidyLocation(location: Range | Position): Range {
 	if (location instanceof Position) {
 		return Range.fromPositions(location, new Position(location.lineNumber, 0x7FFFFFFF));
@@ -551,7 +549,6 @@ class CoverageToolbarWidget extends Disposable implements IOverlayWidget {
 				return vm;
 			}
 		}));
-
 
 		this._register(autorun(reader => {
 			coverage.showInline.read(reader);

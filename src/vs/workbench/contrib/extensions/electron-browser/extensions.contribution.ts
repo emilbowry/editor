@@ -26,10 +26,8 @@ import { ExtensionsAutoProfiler } from './extensionsAutoProfiler.js';
 import { InstallRemoteExtensionsContribution, RemoteExtensionsInitializerContribution } from './remoteExtensionsInit.js';
 import { IExtensionHostProfileService, OpenExtensionHostProfileACtion, RuntimeExtensionsEditor, SaveExtensionHostProfileAction, StartExtensionHostProfileAction, StopExtensionHostProfileAction } from './runtimeExtensionsEditor.js';
 
-// Singletons
 registerSingleton(IExtensionHostProfileService, ExtensionHostProfileService, InstantiationType.Delayed);
 
-// Running Extensions Editor
 Registry.as<IEditorPaneRegistry>(EditorExtensions.EditorPane).registerEditorPane(
 	EditorPaneDescriptor.create(RuntimeExtensionsEditor, RuntimeExtensionsEditor.ID, localize('runtimeExtension', "Running Extensions")),
 	[new SyncDescriptor(RuntimeExtensionsInput)]
@@ -48,9 +46,6 @@ class RuntimeExtensionsInputSerializer implements IEditorSerializer {
 }
 
 Registry.as<IEditorFactoryRegistry>(EditorExtensions.EditorFactory).registerEditorSerializer(RuntimeExtensionsInput.ID, RuntimeExtensionsInputSerializer);
-
-
-// Global actions
 
 class ExtensionsContributions extends Disposable implements IWorkbenchContribution {
 
@@ -73,8 +68,6 @@ workbenchRegistry.registerWorkbenchContribution(ExtensionsAutoProfiler, Lifecycl
 workbenchRegistry.registerWorkbenchContribution(RemoteExtensionsInitializerContribution, LifecyclePhase.Restored);
 workbenchRegistry.registerWorkbenchContribution(InstallRemoteExtensionsContribution, LifecyclePhase.Restored);
 workbenchRegistry.registerWorkbenchContribution(DebugExtensionsContribution, LifecyclePhase.Restored);
-
-// Register Commands
 
 registerAction2(DebugExtensionHostAction);
 registerAction2(StartExtensionHostProfileAction);

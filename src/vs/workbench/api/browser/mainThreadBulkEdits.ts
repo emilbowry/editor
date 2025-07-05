@@ -15,7 +15,6 @@ import { CellEditType } from '../../contrib/notebook/common/notebookCommon.js';
 import { IExtHostContext, extHostNamedCustomer } from '../../services/extensions/common/extHostCustomers.js';
 import { SerializableObjectWithBuffers } from '../../services/extensions/common/proxyIdentifier.js';
 
-
 @extHostNamedCustomer(MainContext.MainThreadBulkEdits)
 export class MainThreadBulkEdits implements MainThreadBulkEditsShape {
 

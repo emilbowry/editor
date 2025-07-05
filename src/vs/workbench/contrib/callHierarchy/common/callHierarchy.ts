@@ -61,7 +61,6 @@ export interface CallHierarchyProvider {
 
 export const CallHierarchyProviderRegistry = new LanguageFeatureRegistry<CallHierarchyProvider>();
 
-
 export class CallHierarchyModel {
 
 	static async create(model: ITextModel, position: IPosition, token: CancellationToken): Promise<CallHierarchyModel | undefined> {
@@ -124,8 +123,6 @@ export class CallHierarchyModel {
 		return [];
 	}
 }
-
-// --- API command support
 
 const _models = new Map<string, CallHierarchyModel>();
 

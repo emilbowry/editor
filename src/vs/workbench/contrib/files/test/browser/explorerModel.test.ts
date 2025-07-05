@@ -14,7 +14,6 @@ import { TestFileService, TestPathService } from '../../../../test/browser/workb
 import { TestConfigurationService } from '../../../../../platform/configuration/test/common/testConfigurationService.js';
 import { NullFilesConfigurationService } from '../../../../test/common/workbenchTestServices.js';
 
-
 suite('Files - View Model', function () {
 
 	const fileService = new TestFileService();

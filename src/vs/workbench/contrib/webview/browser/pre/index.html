@@ -798,7 +798,6 @@
 			}
 		}
 
-
 		function handleInnerDragEvent(/** @type {DragEvent} */ e) {
 			/**
 			 * To ensure that the drop event always fires as expected, you should always include a preventDefault() call in the part of your code which handles the dragover event.
@@ -809,7 +808,6 @@
 			if (!e.dataTransfer) {
 				return;
 			}
-
 
 			// Only handle drags from outside editor for now
 			if (e.dataTransfer.items.length && Array.prototype.every.call(e.dataTransfer.items, item => item.kind === 'file')) {
@@ -917,7 +915,6 @@
 		window.addEventListener('dragover', handleInnerDragEvent);
 		window.addEventListener('drag', handleInnerDragEvent);
 		window.addEventListener('drop', handleInnerDropEvent);
-
 
 		onDomReady(() => {
 			if (!document.body) {

@@ -12,11 +12,9 @@ import { IWorkbenchContributionsRegistry, Extensions as WorkbenchExtensions } fr
 import { SashSettingsController } from './sash.js';
 import { isIOS } from '../../../../base/common/platform.js';
 
-// Sash size contribution
 Registry.as<IWorkbenchContributionsRegistry>(WorkbenchExtensions.Workbench)
 	.registerWorkbenchContribution(SashSettingsController, LifecyclePhase.Restored);
 
-// Sash size configuration contribution
 Registry.as<IConfigurationRegistry>(ConfigurationExtensions.Configuration)
 	.registerConfiguration({
 		...workbenchConfigurationNodeBase,

@@ -17,7 +17,6 @@ import { isNumber } from '../../../base/common/types.js';
 import * as htmlContent from '../../../base/common/htmlContent.js';
 import { checkProposedApiEnabled } from '../../services/extensions/common/extensions.js';
 
-
 export class ExtHostStatusBarEntry implements vscode.StatusBarItem {
 
 	private static ID_GEN = 0;

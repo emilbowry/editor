@@ -68,7 +68,6 @@ suite('ExtHostTypes', function () {
 		types.Disposable.from(undefined!, { dispose() { count += 1; } }).dispose();
 		assert.strictEqual(count, 2);
 
-
 		assert.throws(() => {
 			new types.Disposable(() => {
 				throw new Error();

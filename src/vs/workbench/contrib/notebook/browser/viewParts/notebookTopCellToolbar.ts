@@ -73,7 +73,6 @@ export class ListTopCellToolbar extends Disposable {
 			return;
 		}
 
-
 		this.notebookEditor.changeViewZones(accessor => {
 			const height = this.notebookOptions.computeTopInsertToolbarHeight(this.notebookEditor.textModel?.viewType);
 			const id = accessor.addZone({

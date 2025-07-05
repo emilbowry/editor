@@ -45,7 +45,6 @@ import { ITestMessage, TestMessageType, getMarkId } from '../../common/testTypes
 import { colorizeTestMessageInEditor } from '../testMessageColorizer.js';
 import { InspectSubject, MessageSubject, TaskSubject, TestOutputSubject } from './testResultsSubject.js';
 
-
 class SimpleDiffEditorModel extends EditorModel {
 	public readonly original: ITextModel;
 	public readonly modified: ITextModel;
@@ -65,7 +64,6 @@ class SimpleDiffEditorModel extends EditorModel {
 		this._modified.dispose();
 	}
 }
-
 
 export interface IPeekOutputRenderer extends IDisposable {
 	onDidContentSizeChange?: Event<void>;
@@ -250,7 +248,6 @@ export class DiffContentProvider extends Disposable implements IPeekOutputRender
 	}
 }
 
-
 export class MarkdownTestMessagePeek extends Disposable implements IPeekOutputRenderer {
 	private readonly markdown = new Lazy(
 		() => this.instantiationService.createInstance(MarkdownRenderer, {}),
@@ -274,7 +271,6 @@ export class MarkdownTestMessagePeek extends Disposable implements IPeekOutputRe
 		if (ITestMessage.isDiffable(message) || typeof message.message === 'string') {
 			return false;
 		}
-
 
 		const rendered = this.rendered.add(this.markdown.value.render(message.message, {}));
 		rendered.element.style.userSelect = 'text';

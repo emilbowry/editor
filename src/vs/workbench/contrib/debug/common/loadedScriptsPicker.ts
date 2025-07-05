@@ -70,7 +70,6 @@ async function _getPicksFromSession(session: IDebugSession, filter: string, edit
 async function _getPicks(filter: string, sessions: IDebugSession[], editorService: IEditorService, modelService: IModelService, languageService: ILanguageService, labelService: ILabelService): Promise<Array<IPickerDebugItem | IQuickPickSeparator>> {
 	const loadedScriptPicks: Array<IPickerDebugItem | IQuickPickSeparator> = [];
 
-
 	const picks = await Promise.all(
 		sessions.map((session) => _getPicksFromSession(session, filter, editorService, modelService, languageService, labelService))
 	);

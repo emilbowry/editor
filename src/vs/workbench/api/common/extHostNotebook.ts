@@ -509,7 +509,6 @@ export class ExtHostNotebookController implements ExtHostNotebookShape {
 					));
 				}
 
-
 				if (token.isCancellationRequested) {
 					return;
 				}
@@ -557,8 +556,6 @@ export class ExtHostNotebookController implements ExtHostNotebookShape {
 		};
 	}
 
-
-
 	private async _validateWriteFile(uri: URI, options: files.IWriteFileOptions) {
 		const stat = await this._extHostFileSystem.value.stat(uri);
 		// Dirty write prevention
@@ -578,7 +575,6 @@ export class ExtHostNotebookController implements ExtHostNotebookShape {
 	}
 
 	// --- open, save, saveAs, backup
-
 
 	private _createExtHostEditor(document: ExtHostNotebookDocument, editorId: string, data: INotebookEditorAddData) {
 

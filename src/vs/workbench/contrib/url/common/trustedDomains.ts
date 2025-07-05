@@ -5,7 +5,6 @@
 import { URI } from '../../../../base/common/uri.js';
 import { testUrlMatchesGlob } from './urlGlob.js';
 
-
 /**
  * Check whether a domain like https://www.microsoft.com matches
  * the list of trusted domains.

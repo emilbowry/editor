@@ -264,7 +264,6 @@ export abstract class AbstractListSettingWidget<TDataItem extends object> extend
 			selectListBorder: settingsSelectListBorder
 		});
 
-
 		const selectBox = new SelectBox(selectBoxOptions, selected, this.contextViewService, styles, {
 			useCustomDrawn: !hasNativeContextMenu(this.configurationService) || !(isIOS && BrowserFeatures.pointerEvents)
 		});

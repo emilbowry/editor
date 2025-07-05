@@ -223,7 +223,6 @@ export class ViewQuickAccessProvider extends PickerQuickAccessProvider<IViewQuic
 	}
 }
 
-
 //#region Actions
 
 export class OpenViewPickerAction extends Action2 {

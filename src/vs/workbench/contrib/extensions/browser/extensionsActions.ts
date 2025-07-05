@@ -1327,7 +1327,6 @@ function toActions(actionsGroups: [string, Array<MenuItemAction | SubmenuItemAct
 	return result;
 }
 
-
 export async function getContextMenuActions(extension: IExtension | undefined | null, contextKeyService: IContextKeyService, instantiationService: IInstantiationService): Promise<IAction[][]> {
 	const actionsGroups = await getContextMenuActionsGroups(extension, contextKeyService, instantiationService);
 	return toActions(actionsGroups, instantiationService);

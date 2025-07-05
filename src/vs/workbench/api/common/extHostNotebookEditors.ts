@@ -10,7 +10,6 @@ import { ExtHostNotebookController } from './extHostNotebook.js';
 import * as typeConverters from './extHostTypeConverters.js';
 import type * as vscode from 'vscode';
 
-
 export class ExtHostNotebookEditors implements ExtHostNotebookEditorsShape {
 
 	private readonly _onDidChangeNotebookEditorSelection = new Emitter<vscode.NotebookEditorSelectionChangeEvent>();

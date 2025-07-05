@@ -127,7 +127,6 @@ export class DebugTaskRunner implements IDisposable {
 				}
 			});
 
-
 			const debugAnyway = result === DebugChoice.DebugAnyway;
 			const abort = result === DebugChoice.Cancel;
 			if (checkboxChecked) {

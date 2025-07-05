@@ -230,7 +230,6 @@ export class TextSearchQuickAccess extends PickerQuickAccessProvider<ITextSearch
 		}
 	}
 
-
 	private _getPicksFromMatches(matches: ISearchTreeFileMatch[], limit: number, firstFile?: URI): (IPickerQuickAccessSeparator | ITextSearchQuickAccessItem)[] {
 		matches = matches.sort((a, b) => {
 			if (firstFile) {
@@ -267,7 +266,6 @@ export class TextSearchQuickAccess extends PickerQuickAccessProvider<ITextSearch
 
 			const label = basenameOrAuthority(iFileInstanceMatch.resource);
 			const description = this._labelService.getUriLabel(dirname(iFileInstanceMatch.resource), { relative: true });
-
 
 			picks.push({
 				label,

@@ -15,10 +15,6 @@ import { registerActiveInstanceAction } from '../../../terminal/browser/terminal
 import { TerminalCommandId } from '../../../terminal/common/terminal.js';
 import { IEditorService } from '../../../../services/editor/common/editorService.js';
 
-// TODO: The rest of the terminal environment changes feature should move here https://github.com/microsoft/vscode/issues/177241
-
-// #region Actions
-
 registerActiveInstanceAction({
 	id: TerminalCommandId.ShowEnvironmentContributions,
 	title: localize2('workbench.action.terminal.showEnvironmentContributions', 'Show Environment Contributions'),
@@ -46,8 +42,6 @@ registerActiveInstanceAction({
 		}
 	}
 });
-
-// #endregion
 
 function describeEnvironmentChanges(collection: IMergedEnvironmentVariableCollection, scope: EnvironmentVariableScope | undefined): string {
 	let content = `# ${localize('envChanges', 'Terminal Environment Changes')}`;

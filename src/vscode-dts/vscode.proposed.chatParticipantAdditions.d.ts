@@ -233,7 +233,6 @@ declare module 'vscode' {
 		Omitted = 3
 	}
 
-
 	/**
 	 * Does this piggy-back on the existing ChatRequest, or is it a different type of request entirely?
 	 * Does it show up in history?

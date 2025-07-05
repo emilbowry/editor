@@ -78,8 +78,6 @@ export const newWindowCommand = (accessor: ServicesAccessor, options?: IOpenEmpt
 	hostService.openWindow(options);
 };
 
-// Command registration
-
 KeybindingsRegistry.registerCommandAndKeybindingRule({
 	weight: KeybindingWeight.WorkbenchContrib,
 	when: ExplorerFocusCondition,
@@ -361,8 +359,6 @@ CommandsRegistry.registerCommand({
 	}
 });
 
-// Save / Save As / Save All / Revert
-
 async function saveSelectedEditors(accessor: ServicesAccessor, options?: ISaveEditorsOptions): Promise<void> {
 	const editorGroupService = accessor.get(IEditorGroupsService);
 	const codeEditorService = accessor.get(ICodeEditorService);
@@ -580,8 +576,6 @@ CommandsRegistry.registerCommand({
 		return workspaceEditingService.removeFolders(resources);
 	}
 });
-
-// Compressed item navigation
 
 KeybindingsRegistry.registerCommandAndKeybindingRule({
 	weight: KeybindingWeight.WorkbenchContrib + 10,

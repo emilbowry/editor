@@ -50,7 +50,6 @@ export class CommentsAccessibleView extends Disposable implements IAccessibleVie
 	}
 }
 
-
 export class CommentThreadAccessibleView extends Disposable implements IAccessibleViewImplementation {
 	readonly priority = 85;
 	readonly name = 'commentThread';
@@ -70,7 +69,6 @@ export class CommentThreadAccessibleView extends Disposable implements IAccessib
 		super();
 	}
 }
-
 
 class CommentsAccessibleContentProvider extends Disposable implements IAccessibleViewContentProvider {
 	public readonly actions: IAction[];

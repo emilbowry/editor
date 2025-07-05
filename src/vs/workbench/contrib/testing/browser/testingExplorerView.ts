@@ -183,7 +183,6 @@ export class TestingExplorerView extends ViewPane {
 			return value;
 		};
 
-
 		const attempt = (element: TestExplorerTreeElement, alreadyIncluded: boolean) => {
 			// sanity check hasElement since updates are debounced and they may exist
 			// but not be rendered yet
@@ -726,7 +725,6 @@ class TestingExplorerViewModel extends Disposable {
 		this.storageService.store('testing.viewMode', newMode, StorageScope.WORKSPACE, StorageTarget.MACHINE);
 	}
 
-
 	public get viewSorting() {
 		return this._viewSorting.get() ?? TestExplorerViewSorting.ByStatus;
 	}
@@ -794,7 +792,6 @@ class TestingExplorerViewModel extends Disposable {
 				filter: this.filter,
 				findWidgetEnabled: false,
 			}) as TestingObjectTree<FuzzyScore>;
-
 
 		// saves the collapse state so that if items are removed or refreshed, they
 		// retain the same state (#170169)

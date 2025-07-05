@@ -7,7 +7,6 @@ import { IContextKeyService } from '../../../../platform/contextkey/common/conte
 import { CONTEXT_DEBUG_PROTOCOL_VARIABLE_MENU_CONTEXT, CONTEXT_VARIABLE_EVALUATE_NAME_PRESENT, CONTEXT_CAN_VIEW_MEMORY, CONTEXT_VARIABLE_IS_READONLY, CONTEXT_DEBUG_TYPE } from './debug.js';
 import { Variable } from './debugModel.js';
 
-
 /**
  * Gets a context key overlay that has context for the given variable.
  */

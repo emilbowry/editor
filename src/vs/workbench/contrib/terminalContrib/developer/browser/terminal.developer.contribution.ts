@@ -136,7 +136,6 @@ registerTerminalAction({
 				resolve();
 			};
 
-
 			const timer = store.add(new Delayer(5000));
 			store.add(Event.runAndSubscribe(instance.onDimensionsChanged, () => {
 				events.push({

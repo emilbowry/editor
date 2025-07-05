@@ -292,7 +292,6 @@ export class TestResultsViewContent extends Disposable {
 			},
 		}, Sizing.Distribute);
 
-
 		this.splitView.setViewVisible(SubView.History, historyVisible.value);
 		this._register(historyVisible.onDidChange(visible => {
 			this.splitView.setViewVisible(SubView.History, visible);
@@ -501,7 +500,6 @@ class FollowupActionWidget extends Disposable {
 			resultId: subject.result.id,
 			taskIndex: subject.taskIndex,
 		}, cts.token);
-
 
 		if (!followups.followups.length || cts.token.isCancellationRequested) {
 			followups.dispose();

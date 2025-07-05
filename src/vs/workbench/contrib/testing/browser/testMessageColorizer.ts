@@ -27,7 +27,6 @@ const enum Classes {
 export const renderTestMessageAsText = (tm: string | IMarkdownString) =>
 	typeof tm === 'string' ? removeAnsiEscapeCodes(tm) : renderStringAsPlaintext(tm);
 
-
 /**
  * Applies decorations based on ANSI styles from the test message in the editor.
  * ANSI sequences are stripped from the text displayed in editor, and this

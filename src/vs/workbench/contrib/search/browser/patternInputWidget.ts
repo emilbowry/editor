@@ -88,7 +88,6 @@ export class PatternInputWidget extends Widget {
 		}
 	}
 
-
 	select(): void {
 		this.inputBox.select();
 	}

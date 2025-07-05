@@ -12,7 +12,6 @@ import { Dto, SerializableObjectWithBuffers } from '../../services/extensions/co
 import { ExtHostCommandsShape, ExtHostContext, MainContext, MainThreadCommandsShape } from '../common/extHost.protocol.js';
 import { isString } from '../../../base/common/types.js';
 
-
 @extHostNamedCustomer(MainContext.MainThreadCommands)
 export class MainThreadCommands implements MainThreadCommandsShape {
 
@@ -96,8 +95,6 @@ export class MainThreadCommands implements MainThreadCommandsShape {
 		return Promise.resolve([...CommandsRegistry.getCommands().keys()]);
 	}
 }
-
-// --- command doc
 
 function _generateMarkdown(description: string | Dto<ICommandMetadata> | ICommandMetadata): string {
 	if (typeof description === 'string') {

@@ -28,7 +28,6 @@ export function arrayContainsElementOrParent(element: RenderableMatch, testArray
 	return false;
 }
 
-
 export interface IChangeEvent {
 	elements: ISearchTreeFileMatch[];
 	added?: boolean;
@@ -39,7 +38,6 @@ export enum SearchModelLocation {
 	PANEL,
 	QUICK_ACCESS
 }
-
 
 export const PLAIN_TEXT_SEARCH__RESULT_ID = 'plainTextSearch';
 export const AI_TEXT_SEARCH_RESULT_ID = 'aiTextSearch';
@@ -109,7 +107,6 @@ export interface ISearchModel {
 	clearAiSearchResults(): void;
 	dispose(): void;
 }
-
 
 export interface ISearchResult {
 	readonly onChange: Event<IChangeEvent>;

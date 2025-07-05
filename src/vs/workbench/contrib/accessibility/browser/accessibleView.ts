@@ -44,8 +44,7 @@ import { IOpenerService } from '../../../../platform/opener/common/opener.js';
 import { IQuickInputService, IQuickPick, IQuickPickItem } from '../../../../platform/quickinput/common/quickInput.js';
 import { IStorageService, StorageScope, StorageTarget } from '../../../../platform/storage/common/storage.js';
 import { FloatingEditorClickMenu } from '../../../browser/codeeditor.js';
-// import { IChatCodeBlockContextProviderService } from '../../chat/browser/chat.js';
-// import { ICodeBlockActionContext } from '../../chat/browser/codeBlockPart.js';
+
 import { getSimpleEditorOptions } from '../../codeEditor/browser/simpleEditorOptions.js';
 import { AccessibilityCommandId } from '../common/accessibilityCommands.js';
 import { AccessibilityVerbositySettingId, AccessibilityWorkbenchSettingId, accessibilityHelpIsShown, accessibleViewContainsCodeBlocks, accessibleViewCurrentProviderId, accessibleViewGoToSymbolSupported, accessibleViewHasAssignedKeybindings, accessibleViewHasUnassignedKeybindings, accessibleViewInCodeBlock, accessibleViewIsShown, accessibleViewOnLastLine, accessibleViewSupportsNavigation, accessibleViewVerbosityEnabled } from './accessibilityConfiguration.js';
@@ -94,7 +93,6 @@ export class AccessibleView extends Disposable implements ITextModelContentProvi
 	private _lastProvider: AccesibleViewContentProvider | undefined;
 
 	private _viewContainer: HTMLElement | undefined;
-
 
 	constructor(
 		@IOpenerService private readonly _openerService: IOpenerService,
@@ -984,7 +982,6 @@ class AccessibleViewSymbolQuickPick {
 		}));
 	}
 }
-
 
 function shouldHide(event: KeyboardEvent, keybindingService: IKeybindingService, configurationService: IConfigurationService): boolean {
 	if (!configurationService.getValue(AccessibilityWorkbenchSettingId.AccessibleViewCloseOnKeyPress)) {

@@ -610,7 +610,6 @@ class CursorMovePrediction implements IPrediction {
 		const direction = this._direction;
 		const { amount, rollForward } = this._applied;
 
-
 		// arg can be omitted to move one character. We don't eatGradually() here
 		// or below moves that don't go as far as the cursor would be buffered
 		// indefinitely

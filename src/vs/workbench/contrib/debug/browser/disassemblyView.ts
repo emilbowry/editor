@@ -68,7 +68,6 @@ export interface IDisassembledInstructionEntry {
 	address: bigint;
 }
 
-// Special entry as a placeholer when disassembly is not available
 const disassemblyNotAvailable: IDisassembledInstructionEntry = {
 	allowBreakpoint: false,
 	isBreakpointSet: false,

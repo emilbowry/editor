@@ -125,7 +125,6 @@ registerAction2(class extends NotebookCellAction {
 	}
 });
 
-
 //#endregion
 
 //#region Join/Split
@@ -134,7 +133,6 @@ const SPLIT_CELL_COMMAND_ID = 'notebook.cell.split';
 const JOIN_SELECTED_CELLS_COMMAND_ID = 'notebook.cell.joinSelected';
 const JOIN_CELL_ABOVE_COMMAND_ID = 'notebook.cell.joinAbove';
 const JOIN_CELL_BELOW_COMMAND_ID = 'notebook.cell.joinBelow';
-
 
 registerAction2(class extends NotebookCellAction {
 	constructor() {
@@ -212,7 +210,6 @@ registerAction2(class extends NotebookCellAction {
 	}
 });
 
-
 registerAction2(class extends NotebookCellAction {
 	constructor() {
 		super(
@@ -238,7 +235,6 @@ registerAction2(class extends NotebookCellAction {
 		return joinCellsWithSurrounds(bulkEditService, context, 'above');
 	}
 });
-
 
 registerAction2(class extends NotebookCellAction {
 	constructor() {

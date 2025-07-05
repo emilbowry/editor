@@ -204,7 +204,6 @@ export class NotebookDiffOverviewRuler extends Themable {
 					break;
 			}
 
-
 			currentFrom += cellHeight;
 		}
 	}

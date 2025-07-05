@@ -6,8 +6,6 @@
 import { UriComponents } from '../../../../base/common/uri.js';
 import { createDecorator } from '../../../../platform/instantiation/common/instantiation.js';
 
-// Since data sent through the service is serialized to JSON, functions will be lost, so Color objects
-// should not be sent as their 'toString' method will be stripped. Instead convert to strings before sending.
 export interface WindowStyles {
 	backgroundColor?: string;
 	color?: string;

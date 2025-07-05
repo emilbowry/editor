@@ -38,7 +38,6 @@ suite('Debug - Hover', () => {
 			}
 		}(thread, 1, firstSource, 'app.js', 'normal', { startLineNumber: 1, startColumn: 1, endLineNumber: 1, endColumn: 10 }, 1, true);
 
-
 		const scope = new class extends Scope {
 			override getChildren(): Promise<IExpression[]> {
 				return Promise.resolve([variableA]);

@@ -59,7 +59,6 @@ import { NotebookRendererMessagingService } from './services/notebookRendererMes
 import { INotebookRendererMessagingService } from '../common/notebookRendererMessagingService.js';
 import { INotebookCellOutlineDataSourceFactory, NotebookCellOutlineDataSourceFactory } from './viewModel/notebookOutlineDataSourceFactory.js';
 
-// Editor Controller
 import './controller/coreActions.js';
 import './controller/insertCellActions.js';
 import './controller/executeActions.js';
@@ -69,10 +68,9 @@ import './controller/editActions.js';
 import './controller/cellOutputActions.js';
 import './controller/apiActions.js';
 import './controller/foldingController.js';
-// import './controller/chat/notebook.chat.contribution.js';
+
 import './controller/variablesActions.js';
 
-// Editor Contribution
 import './contrib/editorHint/emptyCellEditorHint.js';
 import './contrib/clipboard/notebookClipboard.js';
 import './contrib/find/notebookFind.js';
@@ -102,10 +100,8 @@ import './contrib/multicursor/notebookMulticursor.js';
 import './contrib/multicursor/notebookSelectionHighlight.js';
 import './contrib/notebookVariables/notebookInlineVariables.js';
 
-// Diff Editor Contribution
 import './diff/notebookDiffActions.js';
 
-// Services
 import { editorOptionsRegistry } from '../../../../editor/common/config/editorOptions.js';
 import { NotebookExecutionStateService } from './services/notebookExecutionStateServiceImpl.js';
 import { NotebookExecutionService } from './services/notebookExecutionServiceImpl.js';

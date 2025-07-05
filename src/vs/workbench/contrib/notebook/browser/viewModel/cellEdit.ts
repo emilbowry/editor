@@ -13,7 +13,6 @@ import { CellFocusMode } from '../notebookBrowser.js';
 import { NotebookCellTextModel } from '../../common/model/notebookCellTextModel.js';
 import { ITextCellEditingDelegate } from '../../common/model/cellEdit.js';
 
-
 export interface IViewCellEditingDelegate extends ITextCellEditingDelegate {
 	createCellViewModel?(cell: NotebookCellTextModel): BaseCellViewModel;
 	createCell?(index: number, source: string, language: string, type: CellKind, metadata: NotebookCellMetadata | undefined, outputs: IOutputDto[]): BaseCellViewModel;

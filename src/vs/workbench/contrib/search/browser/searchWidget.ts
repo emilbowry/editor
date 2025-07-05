@@ -110,7 +110,6 @@ function stopPropagationForMultiLineDownwards(event: IKeyboardEvent, value: stri
 	}
 }
 
-
 export class SearchWidget extends Widget {
 	private static readonly INPUT_MAX_HEIGHT = 134;
 
@@ -460,7 +459,6 @@ export class SearchWidget extends Widget {
 		}));
 		this._register(this.searchInputFocusTracker.onDidBlur(() => this.searchInputBoxFocused.set(false)));
 
-
 		this.showContextToggle = new Toggle({
 			isChecked: false,
 			title: appendKeyBindingLabel(nls.localize('showContext', "Toggle Context Lines"), this.keybindingService.lookupKeybinding(ToggleSearchEditorContextLinesCommandId)),
@@ -624,7 +622,6 @@ export class SearchWidget extends Widget {
 						matchienessHeuristic < 50 ? 1 :
 							matchienessHeuristic < 100 ? 5 : // expressions like `.` or `\w`
 								10; // only things matching empty string
-
 
 					this.submitSearch(true, this.searchConfiguration.searchOnTypeDebouncePeriod * delayMultiplier);
 				} catch {

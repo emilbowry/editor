@@ -20,9 +20,7 @@ import { defaultExternalUriOpenerId, ExternalUriOpenersConfiguration, externalUr
 import { testUrlMatchesGlob } from '../../url/common/urlGlob.js';
 import { IPreferencesService } from '../../../services/preferences/common/preferences.js';
 
-
 export const IExternalUriOpenerService = createDecorator<IExternalUriOpenerService>('externalUriOpenerService');
-
 
 export interface IExternalOpenerProvider {
 	getOpeners(targetUri: URI): AsyncIterable<IExternalUriOpener>;

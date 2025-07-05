@@ -45,7 +45,6 @@ import { RemoteNameContext } from '../../../common/contextkeys.js';
 import { AccessibleViewRegistry } from '../../../../platform/accessibility/browser/accessibleViewRegistry.js';
 import { SCMAccessibilityHelp } from './scmAccessibilityHelp.js';
 import { EditorContextKeys } from '../../../../editor/common/editorContextKeys.js';
-// import { SCMHistoryItemContextContribution } from './scmHistoryChatContext.js';
 
 ModesRegistry.registerLanguage({
 	id: 'scminput',
@@ -164,12 +163,6 @@ registerWorkbenchContribution2(
 	SCMWorkingSetController,
 	WorkbenchPhase.AfterRestored
 );
-
-// registerWorkbenchContribution2(
-// 	SCMHistoryItemContextContribution.ID,
-// 	SCMHistoryItemContextContribution,
-// 	WorkbenchPhase.AfterRestored
-// );
 
 Registry.as<IConfigurationRegistry>(ConfigurationExtensions.Configuration).registerConfiguration({
 	id: 'scm',

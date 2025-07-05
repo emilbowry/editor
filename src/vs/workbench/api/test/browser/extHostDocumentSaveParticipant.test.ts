@@ -388,7 +388,6 @@ suite('ExtHostDocumentSaveParticipant', () => {
 			}
 		}, documents, mainThreadBulkEdits);
 
-
 		const sub = participant.getOnWillSaveTextDocumentEvent(nullExtensionDescription)(function (e) {
 			throw new Error('boom');
 		});

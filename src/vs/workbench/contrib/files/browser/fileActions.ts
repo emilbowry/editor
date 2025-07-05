@@ -326,7 +326,6 @@ function containsBothDirectoryAndFile(distinctElements: ExplorerItem[]): boolean
 	return !!directory && !!file;
 }
 
-
 export async function findValidPasteFileTarget(
 	explorerService: IExplorerService,
 	fileService: IFileService,
@@ -501,7 +500,6 @@ async function askForOverwrite(fileService: IFileService, dialogService: IDialog
 	return confirmed;
 }
 
-// Global Compare with
 export class GlobalCompareResourcesAction extends Action2 {
 
 	static readonly ID = 'workbench.files.action.compareFileWith';

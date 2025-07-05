@@ -557,7 +557,6 @@ suite('ExtHostAuthentication', () => {
 		assert.strictEqual(session2?.account.label, 'test-multiple');
 	});
 
-
 	//#endregion
 
 	//#region Race Condition and Sequencing Tests

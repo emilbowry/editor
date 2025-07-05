@@ -215,7 +215,6 @@ class TrackedDocumentInfo extends Disposable {
 			isTrackedByGit: isTrackedByGit ? 1 : 0,
 		});
 
-
 		const sums = sumByCategory(ranges, r => r.range.length, r => r.sourceKey);
 		const entries = Object.entries(sums).filter(([key, value]) => value !== undefined);
 		entries.sort(reverseOrder(compareBy(([key, value]) => value!, numberComparator)));
@@ -287,7 +286,6 @@ class TrackedDocumentInfo extends Disposable {
 		};
 	}
 }
-
 
 function mapObservableDelta<T, TDelta, TDeltaNew>(obs: IObservableWithChange<T, TDelta>, mapFn: (value: TDelta) => TDeltaNew, store: DisposableStore): IObservableWithChange<T, TDeltaNew> {
 	const obsResult = observableValue<T, TDeltaNew>('mapped', obs.get());

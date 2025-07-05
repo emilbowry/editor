@@ -682,7 +682,6 @@ export class NotebookTextDiffEditor extends EditorPane implements INotebookTextD
 
 	private pendingLayouts = new WeakMap<IDiffElementViewModelBase, IDisposable>();
 
-
 	layoutNotebookCell(cell: IDiffElementViewModelBase, height: number) {
 		const relayout = (cell: IDiffElementViewModelBase, height: number) => {
 			this._list.updateElementHeight2(cell, height);

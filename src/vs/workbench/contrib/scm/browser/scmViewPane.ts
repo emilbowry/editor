@@ -21,7 +21,7 @@ import { IContextKeyService, IContextKey, ContextKeyExpr, RawContextKey } from '
 import { ICommandService } from '../../../../platform/commands/common/commands.js';
 import { IKeybindingService } from '../../../../platform/keybinding/common/keybinding.js';
 import { MenuItemAction, IMenuService, registerAction2, MenuId, IAction2Options, MenuRegistry, Action2, IMenu } from '../../../../platform/actions/common/actions.js';
-// import { IAction, ActionRunner, Action, Separator, IActionRunner, toAction, WorkbenchActionExecutedEvent, WorkbenchActionExecutedClassification } from '../../../../base/common/actions.js';
+
 import { IAction, ActionRunner, Action, Separator, IActionRunner, toAction } from '../../../../base/common/actions.js';
 
 import { ActionBar, IActionViewItemProvider } from '../../../../base/browser/ui/actionbar/actionbar.js';
@@ -110,9 +110,8 @@ import { observableConfigValue } from '../../../../platform/observable/common/pl
 import { AccessibilityVerbositySettingId } from '../../accessibility/browser/accessibilityConfiguration.js';
 import { IAccessibilityService } from '../../../../platform/accessibility/common/accessibility.js';
 import { AccessibilityCommandId } from '../../accessibility/common/accessibilityCommands.js';
-// import { ChatContextKeys } from '../../chat/common/chatContextKeys.js';
+
 import product from '../../../../platform/product/common/product.js';
-// import { CHAT_SETUP_ACTION_ID } from '../../chat/browser/actions/chatActions.js';
 
 type TreeElement = ISCMRepository | ISCMInput | ISCMActionButton | ISCMResourceGroup | ISCMResource | IResourceNode<ISCMResource, ISCMResourceGroup>;
 
@@ -236,7 +235,6 @@ export class ActionButtonRenderer implements ICompressibleTreeRenderer<ISCMActio
 		templateData.templateDisposable.dispose();
 	}
 }
-
 
 class SCMTreeDragAndDrop implements ITreeDragAndDrop<TreeElement> {
 	constructor(private readonly instantiationService: IInstantiationService) { }
@@ -1214,7 +1212,6 @@ abstract class RepositorySortAction extends ViewAction<SCMViewPane> {
 	}
 }
 
-
 class RepositorySortByDiscoveryTimeAction extends RepositorySortAction {
 	constructor() {
 		super(ISCMRepositorySortKey.DiscoveryTime, localize('repositorySortByDiscoveryTime', "Sort by Discovery Time"));
@@ -1332,45 +1329,6 @@ const enum SCMInputWidgetCommandId {
 const enum SCMInputWidgetStorageKey {
 	LastActionId = 'scm.input.lastActionId'
 }
-
-// registerAction2(class extends Action2 {
-// 	constructor() {
-// 		super({
-// 			id: SCMInputWidgetCommandId.SetupAction,
-// 			title: localize('scmInputGenerateCommitMessage', "Generate Commit Message with Copilot"),
-// 			icon: Codicon.sparkle,
-// 			f1: false,
-// 			menu: {
-// 				id: MenuId.SCMInputBox,
-// 				when: ContextKeyExpr.and(
-// 					ChatContextKeys.Setup.hidden.negate(),
-// 					ChatContextKeys.Setup.disabled.negate(),
-// 					ChatContextKeys.Setup.installed.negate(),
-// 					ContextKeyExpr.equals('scmProvider', 'git')
-// 				)
-// 			}
-// 		});
-// 	}
-
-// 	override async run(accessor: ServicesAccessor, ...args: any[]): Promise<void> {
-// 		const commandService = accessor.get(ICommandService);
-// 		const telemetryService = accessor.get(ITelemetryService);
-
-// 		telemetryService.publicLog2<WorkbenchActionExecutedEvent, WorkbenchActionExecutedClassification>('workbenchActionExecuted', { id: CHAT_SETUP_ACTION_ID, from: 'scmInput' });
-
-// 		const result = await commandService.executeCommand(CHAT_SETUP_ACTION_ID);
-// 		if (!result) {
-// 			return;
-// 		}
-
-// 		const command = product.defaultChatAgent?.generateCommitMessageCommand;
-// 		if (!command) {
-// 			return;
-// 		}
-
-// 		await commandService.executeCommand(command, ...args);
-// 	}
-// });
 
 class SCMInputWidgetActionRunner extends ActionRunner {
 

@@ -7,7 +7,6 @@ import assert from 'assert';
 import { ensureNoDisposablesAreLeakedInTestSuite } from '../../../../../base/test/common/utils.js';
 import { ThreadStatusScheduler } from '../../browser/debugSession.js';
 
-
 suite('DebugSession - ThreadStatusScheduler', () => {
 	const ds = ensureNoDisposablesAreLeakedInTestSuite();
 

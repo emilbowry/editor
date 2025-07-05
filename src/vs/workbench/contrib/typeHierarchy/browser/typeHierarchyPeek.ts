@@ -34,7 +34,6 @@ import * as typeHTree from './typeHierarchyTree.js';
 import { TypeHierarchyDirection, TypeHierarchyModel } from '../common/typeHierarchy.js';
 import { IEditorService } from '../../../services/editor/common/editorService.js';
 
-// Todo: copied from call hierarchy, to extract
 const enum State {
 	Loading = 'loading',
 	Message = 'message',

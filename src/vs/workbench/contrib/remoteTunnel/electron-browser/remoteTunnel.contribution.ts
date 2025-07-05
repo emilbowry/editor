@@ -68,7 +68,6 @@ enum RemoteTunnelCommandIds {
 	learnMore = 'workbench.remoteTunnel.actions.learnMore',
 }
 
-// name shown in nofications
 namespace RemoteTunnelCommandLabels {
 	export const turnOn = localize('remoteTunnel.actions.turnOn', 'Turn on Remote Tunnel Access...');
 	export const turnOff = localize('remoteTunnel.actions.turnOff', 'Turn off Remote Tunnel Access...');
@@ -77,7 +76,6 @@ namespace RemoteTunnelCommandLabels {
 	export const copyToClipboard = localize('remoteTunnel.actions.copyToClipboard', 'Copy Browser URI to Clipboard');
 	export const learnMore = localize('remoteTunnel.actions.learnMore', 'Get Started with Tunnels');
 }
-
 
 export class RemoteTunnelWorkbenchContribution extends Disposable implements IWorkbenchContribution {
 
@@ -260,7 +258,6 @@ export class RemoteTunnelWorkbenchContribution extends Disposable implements IWo
 				return;
 			}
 		};
-
 
 		const hasUsed = this.storageService.getBoolean(REMOTE_TUNNEL_HAS_USED_BEFORE, StorageScope.APPLICATION, false);
 
@@ -623,7 +620,6 @@ export class RemoteTunnelWorkbenchContribution extends Disposable implements IWo
 			}
 		}));
 
-
 		this._register(registerAction2(class extends Action2 {
 			constructor() {
 				super({
@@ -746,7 +742,6 @@ export class RemoteTunnelWorkbenchContribution extends Disposable implements IWo
 		return joinPath(link, this.environmentService.userHome.path);
 	}
 
-
 	private async showManageOptions() {
 		const account = await this.remoteTunnelService.getMode();
 
@@ -787,7 +782,6 @@ export class RemoteTunnelWorkbenchContribution extends Disposable implements IWo
 		});
 	}
 }
-
 
 const workbenchRegistry = Registry.as<IWorkbenchContributionsRegistry>(WorkbenchExtensions.Workbench);
 workbenchRegistry.registerWorkbenchContribution(RemoteTunnelWorkbenchContribution, LifecyclePhase.Restored);

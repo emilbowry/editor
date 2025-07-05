@@ -64,7 +64,6 @@ abstract class MainThreadKernel implements INotebookKernel {
 		this.preloads = data.preloads?.map(u => ({ uri: URI.revive(u.uri), provides: u.provides })) ?? [];
 	}
 
-
 	update(data: Partial<INotebookKernelDto2>) {
 
 		const event: INotebookKernelChangeEvent = Object.create(null);

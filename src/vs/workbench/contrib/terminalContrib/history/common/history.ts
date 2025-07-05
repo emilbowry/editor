@@ -189,7 +189,6 @@ export class TerminalPersistedHistory<T> extends Disposable implements ITerminal
 	}
 }
 
-// Shell file history loads once per shell per window
 interface IShellFileHistoryEntry {
 	sourceLabel: string;
 	sourceResource: URI;
@@ -314,7 +313,6 @@ export async function fetchZshHistory(accessor: ServicesAccessor): Promise<IShel
 		commands: Array.from(result.values())
 	};
 }
-
 
 export async function fetchPythonHistory(accessor: ServicesAccessor): Promise<IShellFileHistoryEntry | undefined> {
 	const fileService = accessor.get(IFileService);

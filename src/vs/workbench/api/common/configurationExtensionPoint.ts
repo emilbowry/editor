@@ -131,11 +131,8 @@ const configurationEntrySchema: IJSONSchema = {
 	}
 };
 
-// build up a delta across two ext points and only apply it once
 let _configDelta: IConfigurationDelta | undefined;
 
-
-// BEGIN VSCode extension point `configurationDefaults`
 const defaultConfigurationExtPoint = ExtensionsRegistry.registerExtensionPoint<IConfigurationNode>({
 	extensionPoint: 'configurationDefaults',
 	jsonSchema: {
@@ -188,10 +185,7 @@ defaultConfigurationExtPoint.setHandler((extensions, { added, removed }) => {
 		_configDelta.addedDefaults = addedDefaultConfigurations;
 	}
 });
-// END VSCode extension point `configurationDefaults`
 
-
-// BEGIN VSCode extension point `configuration`
 const configurationExtPoint = ExtensionsRegistry.registerExtensionPoint<IConfigurationNode>({
 	extensionPoint: 'configuration',
 	deps: [defaultConfigurationExtPoint],
@@ -304,7 +298,6 @@ configurationExtPoint.setHandler((extensions, { added, removed }) => {
 	configurationRegistry.deltaConfiguration(_configDelta);
 	_configDelta = undefined;
 });
-// END VSCode extension point `configuration`
 
 jsonRegistry.registerSchema('vscode://schemas/workspaceConfig', {
 	allowComments: true,
@@ -405,7 +398,6 @@ jsonRegistry.registerSchema('vscode://schemas/workspaceConfig', {
 	},
 	errorMessage: nls.localize('unknownWorkspaceProperty', "Unknown workspace configuration property")
 });
-
 
 class SettingsTableRenderer extends Disposable implements IExtensionFeatureTableRenderer {
 

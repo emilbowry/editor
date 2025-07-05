@@ -84,7 +84,6 @@ export class InteractiveEditorInput extends EditorInput implements ICompositeNot
 	private _interactiveDocumentService: IInteractiveDocumentService;
 	private _historyService: IInteractiveHistoryService;
 
-
 	constructor(
 		resource: URI,
 		inputResource: URI,

@@ -871,7 +871,6 @@ class ExpectedLensContentWidget extends TitleLensContentWidget {
 	}
 }
 
-
 class ActualLensContentWidget extends TitleLensContentWidget {
 	public getId() {
 		return 'actualTestingLens';
@@ -1175,7 +1174,6 @@ class MultiRunTestDecoration extends RunTestDecoration implements ITestDecoratio
 
 			return new SubmenuAction(testItem.test.item.extId, label, actions.object);
 		});
-
 
 		const overflow = testSubmenus.length - MAX_TESTS_IN_SUBMENU;
 		if (overflow > 0) {

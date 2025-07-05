@@ -18,7 +18,6 @@ import type * as vscode from 'vscode';
 import * as extHostProtocol from './extHost.protocol.js';
 import * as extHostTypes from './extHostTypes.js';
 
-
 type IconPath = URI | { readonly light: URI; readonly dark: URI };
 
 class ExtHostWebviewPanel extends Disposable implements vscode.WebviewPanel {

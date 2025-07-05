@@ -115,7 +115,6 @@ export interface IWalkthroughsService {
 	markWalkthroughOpened(id: string): void;
 }
 
-// Show walkthrough as "new" for 7 days after first install
 const DAYS = 24 * 60 * 60 * 1000;
 const NEW_WALKTHROUGH_TIME = 7 * DAYS;
 
@@ -731,7 +730,6 @@ const convertRelativeMediaPathsToWebviewURIs = (basePath: URI, path: string | { 
 		};
 	}
 };
-
 
 registerAction2(class extends Action2 {
 	constructor() {

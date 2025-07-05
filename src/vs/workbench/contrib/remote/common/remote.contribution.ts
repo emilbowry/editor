@@ -29,7 +29,6 @@ import { RemoteLoggerChannelClient } from '../../../../platform/log/common/logIp
 import { REMOTE_DEFAULT_IF_LOCAL_EXTENSIONS } from '../../../../platform/remote/common/remote.js';
 import product from '../../../../platform/product/common/product.js';
 
-
 const EXTENSION_IDENTIFIER_PATTERN = '([a-z0-9A-Z][a-z0-9-A-Z]*)\\.([a-z0-9A-Z][a-z0-9-A-Z]*)$';
 
 export class LabelContribution implements IWorkbenchContribution {

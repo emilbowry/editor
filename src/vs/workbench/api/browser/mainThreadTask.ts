@@ -20,7 +20,6 @@ import {
 	TaskSourceKind, IExtensionTaskSource, IRunOptions, ITaskSet, TaskGroup, TaskDefinition, PresentationOptions, RunOptions
 } from '../../contrib/tasks/common/tasks.js';
 
-
 import { IResolveSet, IResolvedVariables } from '../../contrib/tasks/common/taskSystem.js';
 import { ITaskService, ITaskFilter, ITaskProvider } from '../../contrib/tasks/common/taskService.js';
 
@@ -80,8 +79,6 @@ export namespace TaskProblemMatcherEndedDto {
 		};
 	}
 }
-
-
 
 namespace TaskProcessStartedDTO {
 	export function from(value: ITaskExecution, processId: number): ITaskProcessStartedDTO {
@@ -676,7 +673,6 @@ export class MainThreadTask extends Disposable implements MainThreadTaskShape {
 			}
 		});
 	}
-
 
 	public $customExecutionComplete(id: string, result?: number): Promise<void> {
 		return new Promise<void>((resolve, reject) => {

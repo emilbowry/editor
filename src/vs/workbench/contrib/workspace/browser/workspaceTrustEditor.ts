@@ -536,7 +536,6 @@ class TrustedUriPathColumnRenderer implements ITableRenderer<ITrustedUriItem, IT
 			EventHelper.stop(e);
 		}));
 
-
 		const hideInputBox = () => {
 			templateData.element.classList.remove('input-mode');
 			templateData.element.parentElement!.style.paddingLeft = '5px';
@@ -609,7 +608,6 @@ class TrustedUriPathColumnRenderer implements ITableRenderer<ITrustedUriItem, IT
 	}
 
 }
-
 
 interface ITrustedUriHostColumnTemplateData {
 	element: HTMLElement;
@@ -1144,7 +1142,6 @@ export class WorkspaceTrustEditor extends EditorPane {
 	}
 }
 
-// Highly scoped fix for #126614
 function fixBadLocalizedLinks(badString: string): string {
 	const regex = /(.*)\[(.+)\]\s*\((.+)\)(.*)/; // markdown link match with spaces
 	return badString.replace(regex, '$1[$2]($3)$4');

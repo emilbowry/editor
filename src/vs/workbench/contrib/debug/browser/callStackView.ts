@@ -86,7 +86,6 @@ export function getContext(element: CallStackItem | null) {
 	}
 }
 
-// Extensions depend on this context, should not be changed even though it is not fully deterministic
 export function getContextForContributedActions(element: CallStackItem | null): string | number {
 	if (element instanceof StackFrame) {
 		if (element.source.inMemory) {
@@ -850,7 +849,6 @@ class ShowMoreRenderer implements ICompressibleTreeRenderer<IStackFrame[], Fuzzy
 	static readonly ID = 'showMore';
 
 	constructor() { }
-
 
 	get templateId(): string {
 		return ShowMoreRenderer.ID;

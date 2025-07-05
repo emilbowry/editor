@@ -495,7 +495,6 @@ export class Selection extends Range {
 		};
 	}
 
-
 	[Symbol.for('debug.description')]() {
 		return getDebugDescriptionOfSelection(this);
 	}
@@ -525,7 +524,6 @@ const validateConnectionToken = (connectionToken: string) => {
 	}
 };
 
-
 export class ResolvedAuthority {
 	public static isResolvedAuthority(resolvedAuthority: any): resolvedAuthority is ResolvedAuthority {
 		return resolvedAuthority
@@ -554,7 +552,6 @@ export class ResolvedAuthority {
 		this.connectionToken = connectionToken;
 	}
 }
-
 
 export class ManagedResolvedAuthority {
 
@@ -831,14 +828,12 @@ export interface ICellEdit {
 	readonly cells: vscode.NotebookCellData[];
 }
 
-
 type WorkspaceEditEntry = IFileOperation | IFileTextEdit | IFileSnippetTextEdit | IFileCellEdit | ICellEdit;
 
 @es5ClassCompat
 export class WorkspaceEdit implements vscode.WorkspaceEdit {
 
 	private readonly _edits: WorkspaceEditEntry[] = [];
-
 
 	_allEntries(): ReadonlyArray<WorkspaceEditEntry> {
 		return this._edits;
@@ -1074,7 +1069,6 @@ export class SnippetString {
 			this.value += defaultValue;
 		}
 		this.value += '}';
-
 
 		return this;
 	}
@@ -1383,7 +1377,6 @@ export class SymbolInformation {
 	}
 }
 
-
 abstract class AbstractDocumentSymbol {
 	name: string;
 	detail: string;
@@ -1430,8 +1423,6 @@ export class DocumentSymbol extends AbstractDocumentSymbol {
 	}
 }
 
-// This is a special type that's used from the `vscode.executeDocumentSymbolProvider` API
-// command which implements both shapes, vscode.SymbolInformation _and_ vscode.DocumentSymbol
 export class SymbolInformationAndDocumentSymbol extends SymbolInformation implements vscode.DocumentSymbol {
 
 	detail: string;
@@ -1587,7 +1578,6 @@ export enum LanguageStatusSeverity {
 	Error = 2
 }
 
-
 @es5ClassCompat
 export class CodeLens {
 
@@ -1720,7 +1710,6 @@ export enum SignatureHelpTriggerKind {
 	TriggerCharacter = 2,
 	ContentChange = 3,
 }
-
 
 export enum InlayHintKind {
 	Type = 1,
@@ -2300,7 +2289,6 @@ export enum TaskEventKind {
 	ProblemMatcherFoundErrors = 'problemMatcherFoundErrors'
 }
 
-
 export enum TaskPanelKind {
 	Shared = 1,
 
@@ -2385,7 +2373,6 @@ export class ProcessExecution implements vscode.ProcessExecution {
 			}
 		}
 	}
-
 
 	get process(): string {
 		return this._process;
@@ -2799,7 +2786,6 @@ export class Task implements vscode.Task {
 	}
 }
 
-
 export enum ProgressLocation {
 	SourceControl = 1,
 	Window = 10,
@@ -3121,7 +3107,6 @@ export class ThemeIcon {
 ThemeIcon.File = new ThemeIcon('file');
 ThemeIcon.Folder = new ThemeIcon('folder');
 
-
 @es5ClassCompat
 export class ThemeColor {
 	id: string;
@@ -3320,7 +3305,6 @@ export class DebugAdapterInlineImplementation implements vscode.DebugAdapterInli
 	}
 }
 
-
 export class DebugStackFrame implements vscode.DebugStackFrame {
 	constructor(
 		public readonly session: vscode.DebugSession,
@@ -3333,7 +3317,6 @@ export class DebugThread implements vscode.DebugThread {
 		public readonly session: vscode.DebugSession,
 		readonly threadId: number) { }
 }
-
 
 @es5ClassCompat
 export class EvaluatableExpression implements vscode.EvaluatableExpression {
@@ -3992,7 +3975,6 @@ export class NotebookData {
 	}
 }
 
-
 export class NotebookCellOutputItem {
 
 	static isNotebookCellOutputItem(obj: unknown): obj is vscode.NotebookCellOutputItem {
@@ -4148,7 +4130,6 @@ export class NotebookCellStatusBarItem {
 		public alignment: NotebookCellStatusBarAlignment) { }
 }
 
-
 export enum NotebookControllerAffinity {
 	Default = 1,
 	Preferred = 2
@@ -4238,7 +4219,6 @@ export enum StandardTokenType {
 	String = 2,
 	RegEx = 3
 }
-
 
 export class LinkedEditingRanges {
 	constructor(public readonly ranges: Range[], public readonly wordPattern?: RegExp) {
@@ -4983,7 +4963,6 @@ export class LanguageModelChatMessage2 implements vscode.LanguageModelChatMessag
 	}
 }
 
-
 export class LanguageModelToolCallPart implements vscode.LanguageModelToolCallPart {
 	callId: string;
 	name: string;
@@ -5051,7 +5030,6 @@ export enum ChatImageMimeType {
 	BMP = 'image/bmp',
 }
 
-
 export class LanguageModelPromptTsxPart {
 	value: unknown;
 
@@ -5076,7 +5054,6 @@ export class LanguageModelChatSystemMessage {
 		this.content = content;
 	}
 }
-
 
 /**
  * @deprecated
