@@ -195,9 +195,9 @@ declare module 'vscode' {
 		 * The input that the tool is being invoked with.
 		 */
 		input: T;
-		chatRequestId?: string;
-		chatSessionId?: string;
-		chatInteractionId?: string;
+		// chatRequestId?: string;
+		// chatSessionId?: string;
+		// chatInteractionId?: string;
 	}
 
 	export interface PreparedToolInvocation {

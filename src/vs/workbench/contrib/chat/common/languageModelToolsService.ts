@@ -125,9 +125,9 @@ export function isToolInvocationContext(obj: any): obj is IToolInvocationContext
 
 export interface IToolInvocationPreparationContext {
 	parameters: any;
-	chatRequestId?: string;
-	chatSessionId?: string;
-	chatInteractionId?: string;
+	// chatRequestId?: string;
+	// chatSessionId?: string;
+	// chatInteractionId?: string;
 }
 
 export interface IToolResultInputOutputDetails {
