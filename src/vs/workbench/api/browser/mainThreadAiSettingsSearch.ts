@@ -6,11 +6,13 @@
 import { Disposable, DisposableMap } from '../../../base/common/lifecycle.js';
 import { extHostNamedCustomer, IExtHostContext } from '../../services/extensions/common/extHostCustomers.js';
 import { AiSettingsSearchResult, IAiSettingsSearchProvider, IAiSettingsSearchService } from '../../services/aiSettingsSearch/common/aiSettingsSearch.js';
-import { ExtHostContext, ExtHostAiSettingsSearchShape, MainContext, MainThreadAiSettingsSearchShape, } from '../common/extHost.protocol.js';
+// import { ExtHostContext, ExtHostAiSettingsSearchShape, MainContext, MainThreadAiSettingsSearchShape, } from '../common/extHost.protocol.js';
+import {MainContext, MainThreadAiSettingsSearchShape, } from '../common/extHost.protocol.js';
+
 
 @extHostNamedCustomer(MainContext.MainThreadAiSettingsSearch)
 export class MainThreadAiSettingsSearch extends Disposable implements MainThreadAiSettingsSearchShape {
-	private readonly _proxy: ExtHostAiSettingsSearchShape;
+	// private readonly _proxy: ExtHostAiSettingsSearchShape;
 	private readonly _registrations = this._register(new DisposableMap<number>());
 
 	constructor(
@@ -18,13 +20,13 @@ export class MainThreadAiSettingsSearch extends Disposable implements MainThread
 		@IAiSettingsSearchService private readonly _settingsSearchService: IAiSettingsSearchService,
 	) {
 		super();
-		this._proxy = context.getProxy(ExtHostContext.ExtHostAiSettingsSearch);
+		// this._proxy = context.getProxy(ExtHostContext.ExtHostAiSettingsSearch);
 	}
 
 	$registerAiSettingsSearchProvider(handle: number): void {
 		const provider: IAiSettingsSearchProvider = {
 			searchSettings: (query, option, token) => {
-				return this._proxy.$startSearch(handle, query, option, token);
+				// return this._proxy.$startSearch(handle, query, option, token);
 			}
 		};
 		this._registrations.set(handle, this._settingsSearchService.registerSettingsSearchProvider(provider));

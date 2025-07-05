@@ -26,6 +26,6 @@ declare module 'vscode' {
 	}
 
 	export namespace ai {
-		export function registerSettingsSearchProvider(provider: SettingsSearchProvider): Disposable;
+		// export function registerSettingsSearchProvider(provider: SettingsSearchProvider): Disposable;
 	}
 }
