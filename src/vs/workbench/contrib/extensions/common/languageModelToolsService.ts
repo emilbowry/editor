@@ -16,8 +16,8 @@ import { ContextKeyExpression } from '../../../../platform/contextkey/common/con
 import { ExtensionIdentifier } from '../../../../platform/extensions/common/extensions.js';
 import { createDecorator } from '../../../../platform/instantiation/common/instantiation.js';
 import { IProgress } from '../../../../platform/progress/common/progress.js';
-import { IChatExtensionsContent, IChatTerminalToolInvocationData, IChatToolInputInvocationData } from './chatService.js';
-import { PromptElementJSON, stringifyPromptElementJSON } from './tools/promptTsxTypes.js';
+// import { IChatExtensionsContent, IChatTerminalToolInvocationData, IChatToolInputInvocationData } from './chatService.js';
+// import { PromptElementJSON, stringifyPromptElementJSON } from './tools/promptTsxTypes.js';
 import { VSBuffer } from '../../../../base/common/buffer.js';
 import { derived, IObservable, IReader, ITransaction, ObservableSet } from '../../../../base/common/observable.js';
 import { Iterable } from '../../../../base/common/iterator.js';
@@ -111,7 +111,7 @@ export interface IToolInvocation {
 	context: IToolInvocationContext | undefined;
 	chatRequestId?: string;
 	chatInteractionId?: string;
-	toolSpecificData?: IChatTerminalToolInvocationData | IChatToolInputInvocationData | IChatExtensionsContent;
+	// toolSpecificData?: IChatTerminalToolInvocationData | IChatToolInputInvocationData | IChatExtensionsContent;
 	modelId?: string;
 }
 
@@ -166,9 +166,9 @@ export interface IToolResultPromptTsxPart {
 	value: unknown;
 }
 
-export function stringifyPromptTsxPart(part: IToolResultPromptTsxPart): string {
-	return stringifyPromptElementJSON(part.value as PromptElementJSON);
-}
+// export function stringifyPromptTsxPart(part: IToolResultPromptTsxPart): string {
+// 	return stringifyPromptElementJSON(part.value as PromptElementJSON);
+// }
 
 export interface IToolResultTextPart {
 	kind: 'text';
@@ -197,7 +197,7 @@ export interface IPreparedToolInvocation {
 	confirmationMessages?: IToolConfirmationMessages;
 	presentation?: 'hidden' | undefined;
 	// When this gets extended, be sure to update `chatResponseAccessibleView.ts` to handle the new properties.
-	toolSpecificData?: IChatTerminalToolInvocationData | IChatToolInputInvocationData | IChatExtensionsContent;
+	// toolSpecificData?: IChatTerminalToolInvocationData | IChatToolInputInvocationData | IChatExtensionsContent;
 }
 
 export interface IToolImpl {

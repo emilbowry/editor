@@ -7,7 +7,7 @@ import { CancellationToken } from '../../../../base/common/cancellation.js';
 import { MarkdownString } from '../../../../base/common/htmlContent.js';
 import { localize } from '../../../../nls.js';
 import { areSameExtensions } from '../../../../platform/extensionManagement/common/extensionManagementUtil.js';
-import { CountTokensCallback, IPreparedToolInvocation, IToolData, IToolImpl, IToolInvocation, IToolInvocationPreparationContext, IToolResult, ToolDataSource, ToolProgress } from '../../chat/common/languageModelToolsService.js';
+import { CountTokensCallback, IPreparedToolInvocation, IToolData, IToolImpl, IToolInvocation, IToolInvocationPreparationContext, IToolResult, ToolDataSource, ToolProgress } from './languageModelToolsService.js';
 import { IExtensionsWorkbenchService } from './extensions.js';
 
 export const InstallExtensionsToolId = 'vscode_installExtensions';
@@ -45,16 +45,16 @@ export class InstallExtensionsTool implements IToolImpl {
 	) { }
 
 	async prepareToolInvocation(context: IToolInvocationPreparationContext, token: CancellationToken): Promise<IPreparedToolInvocation | undefined> {
-		const parameters = context.parameters as InputParams;
+		// const parameters = context.parameters as InputParams;
 		return {
 			confirmationMessages: {
 				title: localize('installExtensionsTool.confirmationTitle', 'Install Extensions'),
 				message: new MarkdownString(localize('installExtensionsTool.confirmationMessage', "Review the suggested extensions and click the **Install** button for each extension you wish to add. Once you have finished installing the selected extensions, click **Continue** to proceed.")),
 			},
-			toolSpecificData: {
-				kind: 'extensions',
-				extensions: parameters.ids
-			}
+			// toolSpecificData: {
+			// 	kind: 'extensions',
+			// 	extensions: parameters.ids
+			// }
 		};
 	}
 
