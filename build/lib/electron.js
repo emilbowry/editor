@@ -125,6 +125,7 @@ exports.config = {
     companyName: 'Microsoft Corporation',
     copyright: 'Copyright (C) 2024 Microsoft. All rights reserved',
     darwinIcon: 'resources/darwin/code.icns',
+
     darwinBundleIdentifier: product.darwinBundleIdentifier,
     darwinApplicationCategoryType: 'public.app-category.developer-tools',
     darwinHelpBookFolder: 'VS Code HelpBook',
