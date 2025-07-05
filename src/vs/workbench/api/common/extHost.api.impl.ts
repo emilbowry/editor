@@ -52,7 +52,7 @@ import { ExtHostDocumentSaveParticipant } from './extHostDocumentSaveParticipant
 import { ExtHostDocuments } from './extHostDocuments.js';
 import { IExtHostDocumentsAndEditors } from './extHostDocumentsAndEditors.js';
 import { IExtHostEditorTabs } from './extHostEditorTabs.js';
-import { ExtHostEmbeddings } from './extHostEmbedding.js';
+// import { ExtHostEmbeddings } from './extHostEmbedding.js';
 // import { ExtHostAiEmbeddingVector } from './extHostEmbeddingVector.js';
 import { Extension, IExtHostExtensionService } from './extHostExtensionService.js';
 import { ExtHostFileSystem } from './extHostFileSystem.js';
@@ -224,7 +224,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 	// const extHostAiSettingsSearch = rpcProtocol.set(ExtHostContext.ExtHostAiSettingsSearch, new ExtHostAiSettingsSearch(rpcProtocol));
 	const extHostStatusBar = rpcProtocol.set(ExtHostContext.ExtHostStatusBar, new ExtHostStatusBar(rpcProtocol, extHostCommands.converter));
 	// const extHostSpeech = rpcProtocol.set(ExtHostContext.ExtHostSpeech, new ExtHostSpeech(rpcProtocol));
-	const extHostEmbeddings = rpcProtocol.set(ExtHostContext.ExtHostEmbeddings, new ExtHostEmbeddings(rpcProtocol));
+	// const extHostEmbeddings = rpcProtocol.set(ExtHostContext.ExtHostEmbeddings, new ExtHostEmbeddings(rpcProtocol));
 	rpcProtocol.set(ExtHostContext.ExtHostMcp, accessor.get(IExtHostMpcService));
 
 	// Check that no named customers are missing
@@ -1483,57 +1483,57 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 		};
 
 		// namespace: lm
-		const lm: typeof vscode.lm = {
-			// selectChatModels: (selector) => {
-			// 	return extHostLanguageModels.selectLanguageModels(extension, selector ?? {});
-			// },
-			// onDidChangeChatModels: (listener, thisArgs?, disposables?) => {
-			// 	return extHostLanguageModels.onDidChangeProviders(listener, thisArgs, disposables);
-			// },
-			// registerChatModelProvider: (id, provider, metadata) => {
-			// 	checkProposedApiEnabled(extension, 'chatProvider');
-			// 	return extHostLanguageModels.registerLanguageModel(extension, id, provider, metadata);
-			// },
-			// --- embeddings
-			// get embeddingModels() {
-			// 	checkProposedApiEnabled(extension, 'embeddings');
-			// 	return extHostEmbeddings.embeddingsModels;
-			// },
-			// onDidChangeEmbeddingModels: (listener, thisArgs?, disposables?) => {
-			// 	checkProposedApiEnabled(extension, 'embeddings');
-			// 	return extHostEmbeddings.onDidChange(listener, thisArgs, disposables);
-			// },
-			// registerEmbeddingsProvider(embeddingsModel, provider) {
-			// 	checkProposedApiEnabled(extension, 'embeddings');
-			// 	return extHostEmbeddings.registerEmbeddingsProvider(extension, embeddingsModel, provider);
-			// },
-			async computeEmbeddings(embeddingsModel, input, token?): Promise<any> {
-				checkProposedApiEnabled(extension, 'embeddings');
-				if (typeof input === 'string') {
-					return extHostEmbeddings.computeEmbeddings(embeddingsModel, input, token);
-				} else {
-					return extHostEmbeddings.computeEmbeddings(embeddingsModel, input, token);
-				}
-			},
-			// registerTool<T>(name: string, tool: vscode.LanguageModelTool<T>) {
-			// 	return extHostLanguageModelTools.registerTool(extension, name, tool);
-			// },
-			// invokeTool<T>(name: string, parameters: vscode.LanguageModelToolInvocationOptions<T>, token?: vscode.CancellationToken) {
-			// 	return extHostLanguageModelTools.invokeTool(extension, name, parameters, token);
-			// },
-			// get tools() {
-			// 	return extHostLanguageModelTools.getTools(extension);
-			// },
-			// fileIsIgnored(uri: vscode.Uri, token?: vscode.CancellationToken) {
-			// 	return extHostLanguageModels.fileIsIgnored(extension, uri, token);
-			// },
-			// registerIgnoredFileProvider(provider: vscode.LanguageModelIgnoredFileProvider) {
-			// 	return extHostLanguageModels.registerIgnoredFileProvider(extension, provider);
-			// },
-			// registerMcpServerDefinitionProvider(id, provider) {
-			// 	return extHostMcp.registerMcpConfigurationProvider(extension, id, provider);
-			// }
-		};
+		// const lm: typeof vscode.lm = {
+		// 	// selectChatModels: (selector) => {
+		// 	// 	return extHostLanguageModels.selectLanguageModels(extension, selector ?? {});
+		// 	// },
+		// 	// onDidChangeChatModels: (listener, thisArgs?, disposables?) => {
+		// 	// 	return extHostLanguageModels.onDidChangeProviders(listener, thisArgs, disposables);
+		// 	// },
+		// 	// registerChatModelProvider: (id, provider, metadata) => {
+		// 	// 	checkProposedApiEnabled(extension, 'chatProvider');
+		// 	// 	return extHostLanguageModels.registerLanguageModel(extension, id, provider, metadata);
+		// 	// },
+		// 	// --- embeddings
+		// 	// get embeddingModels() {
+		// 	// 	checkProposedApiEnabled(extension, 'embeddings');
+		// 	// 	return extHostEmbeddings.embeddingsModels;
+		// 	// },
+		// 	// onDidChangeEmbeddingModels: (listener, thisArgs?, disposables?) => {
+		// 	// 	checkProposedApiEnabled(extension, 'embeddings');
+		// 	// 	return extHostEmbeddings.onDidChange(listener, thisArgs, disposables);
+		// 	// },
+		// 	// registerEmbeddingsProvider(embeddingsModel, provider) {
+		// 	// 	checkProposedApiEnabled(extension, 'embeddings');
+		// 	// 	return extHostEmbeddings.registerEmbeddingsProvider(extension, embeddingsModel, provider);
+		// 	// },
+		// 	// async computeEmbeddings(embeddingsModel, input, token?): Promise<any> {
+		// 	// 	checkProposedApiEnabled(extension, 'embeddings');
+		// 	// 	if (typeof input === 'string') {
+		// 	// 		return extHostEmbeddings.computeEmbeddings(embeddingsModel, input, token);
+		// 	// 	} else {
+		// 	// 		return extHostEmbeddings.computeEmbeddings(embeddingsModel, input, token);
+		// 	// 	}
+		// 	// },
+		// 	// registerTool<T>(name: string, tool: vscode.LanguageModelTool<T>) {
+		// 	// 	return extHostLanguageModelTools.registerTool(extension, name, tool);
+		// 	// },
+		// 	// invokeTool<T>(name: string, parameters: vscode.LanguageModelToolInvocationOptions<T>, token?: vscode.CancellationToken) {
+		// 	// 	return extHostLanguageModelTools.invokeTool(extension, name, parameters, token);
+		// 	// },
+		// 	// get tools() {
+		// 	// 	return extHostLanguageModelTools.getTools(extension);
+		// 	// },
+		// 	// fileIsIgnored(uri: vscode.Uri, token?: vscode.CancellationToken) {
+		// 	// 	return extHostLanguageModels.fileIsIgnored(extension, uri, token);
+		// 	// },
+		// 	// registerIgnoredFileProvider(provider: vscode.LanguageModelIgnoredFileProvider) {
+		// 	// 	return extHostLanguageModels.registerIgnoredFileProvider(extension, provider);
+		// 	// },
+		// 	// registerMcpServerDefinitionProvider(id, provider) {
+		// 	// 	return extHostMcp.registerMcpConfigurationProvider(extension, id, provider);
+		// 	// }
+		// };
 
 		// // namespace: speech
 		// const speech: typeof vscode.speech = {
@@ -1558,7 +1558,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
 			// interactive,
 			l10n,
 			languages,
-			lm,
+			// lm,
 			notebooks,
 			scm,
 			// speech,

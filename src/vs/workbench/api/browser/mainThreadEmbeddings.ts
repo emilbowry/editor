@@ -8,7 +8,9 @@ import { Emitter, Event } from '../../../base/common/event.js';
 import { DisposableMap, DisposableStore, IDisposable } from '../../../base/common/lifecycle.js';
 import { InstantiationType, registerSingleton } from '../../../platform/instantiation/common/extensions.js';
 import { createDecorator } from '../../../platform/instantiation/common/instantiation.js';
-import { ExtHostContext, ExtHostEmbeddingsShape, MainContext, MainThreadEmbeddingsShape } from '../common/extHost.protocol.js';
+// import { ExtHostContext, ExtHostEmbeddingsShape, MainContext, MainThreadEmbeddingsShape } from '../common/extHost.protocol.js';
+import {  MainContext, MainThreadEmbeddingsShape } from '../common/extHost.protocol.js';
+
 import { extHostNamedCustomer, IExtHostContext } from '../../services/extensions/common/extHostCustomers.js';
 
 
@@ -76,17 +78,17 @@ export class MainThreadEmbeddings implements MainThreadEmbeddingsShape {
 
 	private readonly _store = new DisposableStore();
 	private readonly _providers = this._store.add(new DisposableMap<number>);
-	private readonly _proxy: ExtHostEmbeddingsShape;
+	// private readonly _proxy: ExtHostEmbeddingsShape;
 
 	constructor(
 		context: IExtHostContext,
 		@IEmbeddingsService private readonly embeddingsService: IEmbeddingsService
 	) {
-		this._proxy = context.getProxy(ExtHostContext.ExtHostEmbeddings);
+		// this._proxy = context.getProxy(ExtHostContext.ExtHostEmbeddings);
 
-		this._store.add(embeddingsService.onDidChange((() => {
-			this._proxy.$acceptEmbeddingModels(Array.from(embeddingsService.allProviders));
-		})));
+		// this._store.add(embeddingsService.onDidChange((() => {
+		// 	this._proxy.$acceptEmbeddingModels(Array.from(embeddingsService.allProviders));
+		// })));
 	}
 
 	dispose(): void {
@@ -94,12 +96,12 @@ export class MainThreadEmbeddings implements MainThreadEmbeddingsShape {
 	}
 
 	$registerEmbeddingProvider(handle: number, identifier: string): void {
-		const registration = this.embeddingsService.registerProvider(identifier, {
-			provideEmbeddings: (input: string[], token: CancellationToken): Promise<{ values: number[] }[]> => {
-				return this._proxy.$provideEmbeddings(handle, input, token);
-			}
-		});
-		this._providers.set(handle, registration);
+		// const registration = this.embeddingsService.registerProvider(identifier, {
+		// 	provideEmbeddings: (input: string[], token: CancellationToken): Promise<{ values: number[] }[]> => {
+		// 		return this._proxy.$provideEmbeddings(handle, input, token);
+		// 	}
+		// });
+		// this._providers.set(handle, registration);
 	}
 
 	$unregisterEmbeddingProvider(handle: number): void {
