@@ -27,10 +27,8 @@ import { ILoggerService } from '../../../platform/log/common/log.js';
 import { ExtHostVariableResolverProviderService, IExtHostVariableResolverProvider } from './extHostVariableResolverService.js';
 import { ExtHostLocalizationService, IExtHostLocalizationService } from './extHostLocalizationService.js';
 import { ExtHostManagedSockets, IExtHostManagedSockets } from './extHostManagedSockets.js';
-// import { ExtHostLanguageModels, IExtHostLanguageModels } from './extHostLanguageModels.js';
 import { IExtHostTerminalShellIntegration, ExtHostTerminalShellIntegration } from './extHostTerminalShellIntegration.js';
 import { ExtHostTesting, IExtHostTesting } from './extHostTesting.js';
-// import { ExtHostMcpService, IExtHostMpcService } from './extHostMcp.js';
 import { ExtHostUrls, IExtHostUrlsService } from './extHostUrls.js';
 import { ExtHostProgress, IExtHostProgress } from './extHostProgress.js';
 
@@ -61,4 +59,3 @@ registerSingleton(IExtHostWorkspace, ExtHostWorkspace, InstantiationType.Eager);
 registerSingleton(IExtHostSecretState, ExtHostSecretState, InstantiationType.Eager);
 registerSingleton(IExtHostEditorTabs, ExtHostEditorTabs, InstantiationType.Eager);
 registerSingleton(IExtHostVariableResolverProvider, ExtHostVariableResolverProviderService, InstantiationType.Eager);
-// registerSingleton(IExtHostMpcService, ExtHostMcpService, InstantiationType.Eager);
