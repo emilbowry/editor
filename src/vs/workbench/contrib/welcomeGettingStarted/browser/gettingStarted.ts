@@ -898,50 +898,79 @@ export class GettingStartedPage extends EditorPane {
 		const startList = this.buildStartList();
 		const myFoldersList = await this.buildMyFoldersList(); // Use our renamed function for the left column
 		const recentList = this.buildRecentlyOpenedList(); // Use the new
-		// const gettingStartedList = this.buildGettingStartedWalkthroughsList();
+		
+		const footer = $('.footer.clickable', {
+			role: 'button',
+			title: localize('openScratchpad', "Open Scratchpad File")
+		});
 
-		// const footer = $('.footer', {},
-		// 	$('p.showOnStartup', {},
-		// 		showOnStartupCheckbox.domNode,
-		// 		showOnStartupLabel,
-		// 	));
-		// Create the footer element which will contain our markdown
+		// Define the path to our markdown file
+		const defaultPath = 'vs/workbench/contrib/welcomeGettingStarted/browser/defaultMessage.md';
+		const markdownPath = 'vs/workbench/contrib/welcomeGettingStarted/browser/scratchpad.md';
 
-		const footer = $('.footer', {});
+		const ipynbpath = 'vs/workbench/contrib/welcomeGettingStarted/browser/scratchpad.ipynb';
+
+
+		// Add a click listener to the footer to open the file
+		this.categoriesSlideDisposables.add(addDisposableListener(footer, 'click', () => {
+			// 1. Get the absolute file URI using the FileAccess helper.
+			const fileUri = FileAccess.asFileUri(ipynbpath);
+			// const fileUri = FileAccess.asFileUri(markdownPath);
+
+
+
+			// 2. Construct the custom 'vseditor://' URI from the file path.
+			const vsEditorUri = URI.from({
+				scheme: 'vseditor',
+				authority: 'file',
+				path: fileUri.path
+			});
+
+			// 3. Use the opener service to open the file in a new editor tab.
+			this.openerService.open(vsEditorUri);
+		}));
 
 		const mdRenderer = this.instantiationService.createInstance(MarkdownRenderer, {});
 
-		// Asynchronously load the markdown file and render it.
+		// Asynchronously load the markdown file and render it inside the footer.
+		// (async () => {
+		// 	try {
+		// 		const markdownURI = FileAccess.asFileUri(markdownPath);
+		// 		const fileContent = await this.fileService.readFile(markdownURI);
+		// 		const defaultMessageMarkdown = fileContent.value.toString();
+		// 		const renderedContents = this.categoriesSlideDisposables.add(mdRenderer.render({ value: defaultMessageMarkdown, isTrusted: true }));
+		// 		// Clear any previous content (like a fallback) and append the new rendered markdown
+		// 		clearNode(footer);
+		// 		footer.append(renderedContents.element);
+		// 	} catch (error) {
+		// 		console.error('Error loading defaultMessage.md:', error);
+		// 		const fallbackMarkdown = '### Error\n\nCould not load scratchpad content.';
+		// 		const renderedContents = this.categoriesSlideDisposables.add(mdRenderer.render({ value: fallbackMarkdown, isTrusted: true }));
+		// 		clearNode(footer);
+		// 		footer.append(renderedContents.element);
+		// 	}
+		// })();
+		// Asynchronously load the markdown file, trying scratchpad.md first and falling back to defaultMessage.md.
 		(async () => {
+			let fileContent;
 			try {
-				// 1. Create a URI to the file using the FileAccess helper.
-				//    This correctly resolves the path for the running application.
-				// const markdownURI = URI.parse('./defaultMessage.md');
-				const markdownURI = FileAccess.asFileUri('vs/workbench/contrib/welcomeGettingStarted/browser/defaultMessage.md');
-				// const markdownUri = FileAccess.asFileUri('vs/workbench/contrib/welcome/gettingStarted/browser/defaultMessage.md');
-
-				// 2. Use the injected file service to read the file's content.
-				const fileContent = await this.fileService.readFile(markdownURI);
-				const defaultMessageMarkdown = fileContent.value.toString();
-
-				// 3. Render the loaded content.
-				const renderedContents = this.categoriesSlideDisposables.add(mdRenderer.render({ value: defaultMessageMarkdown, isTrusted: true }));
-				footer.append(renderedContents.element);
-
+				// --- 1. Attempt to load the primary 'scratchpad.md' file ---
+				const primaryUri = FileAccess.asFileUri(markdownPath);
+				fileContent = await this.fileService.readFile(primaryUri);
 			} catch (error) {
-				console.error('Error loading defaultMessage.md:', error);
-				// Optional: Render a fallback message on error
-				const fallbackMarkdown = '### Error\n\nCould not load scratchpad content.';
-				const renderedContents = this.categoriesSlideDisposables.add(mdRenderer.render({ value: fallbackMarkdown, isTrusted: true }));
-				footer.append(renderedContents.element);
+				// --- 2. If primary fails, load the fallback 'defaultMessage.md' ---
+				//    (Assuming this path is always valid, as requested)
+				console.log(`Could not load '${markdownPath}', falling back to default.`, error);
+				const fallbackUri = FileAccess.asFileUri(defaultPath);
+				fileContent = await this.fileService.readFile(fallbackUri);
 			}
+
+			// --- 3. Render the content that was successfully loaded ---
+			const markdownToRender = fileContent.value.toString();
+			const renderedContents = this.categoriesSlideDisposables.add(mdRenderer.render({ value: markdownToRender, isTrusted: true }));
+			clearNode(footer);
+			footer.append(renderedContents.element);
 		})();
-		// Instantiate a markdown renderer
-		// const mdRenderer = this.instantiationService.createInstance(MarkdownRenderer, {});
-		// Render the markdown and add it to the disposables store to be cleaned up properly
-		// const renderedContents = this.categoriesSlideDisposables.add(mdRenderer.render({ value: defaultMessageMarkdown, isTrusted: true }));
-		// Append the rendered markdown to our footer element
-		// footer.append(renderedContents.element);
 		const layoutLists = () => {
 			// if (gettingStartedList.itemCount) {
 			// 	this.container.classList.remove('noWalkthroughs');
