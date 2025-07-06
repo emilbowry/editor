@@ -436,14 +436,13 @@ class ScratchpadSaveContribution extends Disposable implements IWorkbenchContrib
 		this._register(workingCopyService.onDidSave(async e => {
 			if (e.workingCopy.resource.toString() === scratchpadUri.toString()) {
 				const scratchpadPath = scratchpadUri.fsPath;
-				// const markdownOutputPath = scratchpadPath.replace(/\.ipynb$/, '.md');
-				// const commandToRun = `jupytext --opt notebook_metadata_filter="-all" --to md:nometa --output "${markdownOutputPath}" "${scratchpadPath}"`;
 				const commandToRun = `jupytext --opt notebook_metadata_filter="-all"  --to markdown ${scratchpadPath}`;
 				let terminal = terminalService.instances.find(t => t.title === terminalName);
 				if (!terminal) {
 					terminal = await terminalService.createTerminal({ config: { name: terminalName } });
 				}
-				terminalService.focusInstance(terminal);
+				// terminalService.focusInstance(terminal);
+				// Silently fails and runs [TODO] add jupytext instructions to default
 				terminal.sendText(commandToRun, true);
 			}
 		}));
