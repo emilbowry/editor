@@ -906,7 +906,6 @@ export class GettingStartedPage extends EditorPane {
 
 		const homeUri = await this.pathService.userHome();
 		const dataFolderName = this.productService.dataFolderName;
-		// if (!dataFolderName) { return; }
 
 		const userDataUri = URI.joinPath(homeUri, dataFolderName);
 		const scratchpadDirUri = URI.joinPath(userDataUri, 'shared_data');
@@ -915,34 +914,6 @@ export class GettingStartedPage extends EditorPane {
 		const defaultPath = URI.joinPath(scratchpadDirUri, 'defaultMessage.md');
 
 
-		// (async () => {
-
-		// 	// this.categoriesSlideDisposables.add(addDisposableListener(footer, 'click', () => {
-		// 	// 	const vsEditorUri = URI.from({
-		// 	// 		scheme: 'vseditor',
-		// 	// 		authority: 'file',
-		// 	// 		path: ipynbpath.path
-		// 	// 	});
-		// 	// 	this.openerService.open(vsEditorUri);
-		// 	// }));
-
-		// 	const mdRenderer = this.instantiationService.createInstance(MarkdownRenderer, {});
-
-		// 	(async () => {
-		// 		let fileContent;
-		// 		try {
-		// 			fileContent = await this.fileService.readFile(markdownPath);
-		// 		} catch (error) {
-		// 			console.log(`Could not load '${markdownPath}', falling back to default.`, error);
-		// 			fileContent = await this.fileService.readFile(defaultPath);
-		// 		}
-
-		// 		const markdownToRender = fileContent.value.toString();
-		// 		const renderedContents = this.categoriesSlideDisposables.add(mdRenderer.render({ value: markdownToRender, isTrusted: true }));
-		// 		clearNode(footer);
-		// 		footer.append(renderedContents.element);
-		// 	})();
-		// })();
 	
 		this.categoriesSlideDisposables.add(addDisposableListener(footer, 'click', () => {
 

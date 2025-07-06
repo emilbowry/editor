@@ -28,14 +28,9 @@ import { IExtensionManagementServerService } from '../../../services/extensionMa
 import { IExtensionService } from '../../../services/extensions/common/extensions.js';
 import { StartupPageEditorResolverContribution, StartupPageRunnerContribution } from './startupPage.js';
 import { Categories } from '../../../../platform/action/common/actionCommonCategories.js';
-// import { DisposableStore } from '../../../../base/common/lifecycle.js';
 import { AccessibleViewRegistry } from '../../../../platform/accessibility/browser/accessibleViewRegistry.js';
 import { GettingStartedAccessibleView } from './gettingStartedAccessibleView.js';
 import { Disposable, DisposableStore } from '../../../../base/common/lifecycle.js';
-// import { splitRecentLabel } from '../../../../base/common/labels.js';
-// import { INativeEnvironmentService } from '../../../../platform/environment/common/environment.js';
-// Add these new imports:
-// import { FileAccess } from '../../../../base/common/network.js';
 import { URI } from '../../../../base/common/uri.js';
 import { IProductService } from '../../../../platform/product/common/productService.js';
 import { IPathService } from '../../../services/path/common/pathService.js';
@@ -356,56 +351,7 @@ configurationRegistry.registerConfiguration({
 		}
 	}
 });
-// --- Add this entire block at the bottom of the file ---
 
-// class ScratchpadSaveContribution extends Disposable implements IWorkbenchContribution {
-
-// 	static readonly ID = 'workbench.contrib.scratchpadSaveContribution';
-
-// 	constructor(
-// 		@IWorkingCopyService workingCopyService: IWorkingCopyService,
-// 		@ITerminalService terminalService: ITerminalService,
-// 		@IProductService private readonly productService: IProductService,
-
-
-// 	) {
-// 		super();
-// 		const userDataPath = this.productService.dataFolderName;
-
-// 		const userDataUri = URI.file(userDataPath);
-
-// 		const scratchpadDirUri = URI.joinPath(userDataUri, 'shared_data');
-
-// 		const scratchpadUri = URI.joinPath(scratchpadDirUri, 'scratchpad.ipynb');
-
-
-		
-// 		const terminalName = 'Scratchpad Runner';
-
-// 		this._register(workingCopyService.onDidSave(async e => {
-// 			if (e.workingCopy.resource.toString() === scratchpadUri.toString()) {
-
-// 				const scratchpadPath = scratchpadUri.path
-
-// 				// 2. Use a template literal to inject the timestamp directly into the command.
-// 				const commandToRun = `jupytext --opt notebook_metadata_filter="-all"  --to markdown ${scratchpadPath}`;
-
-// 				let terminal = terminalService.instances.find(t => t.title === terminalName);
-
-// 				if (!terminal) {
-// 					terminal = await terminalService.createTerminal({ config: { name: terminalName } });
-// 				}
-
-// 				// This single call will reveal and focus the terminal, whether it's
-// 				// in the panel or an editor.
-// 				terminalService.focusInstance(terminal);
-
-// 				// Now that it's guaranteed to be visible and active, send the text.
-// 				terminal.sendText(commandToRun, true);
-// 			}
-// 		}));
-// 	}
-// }
 class ScratchpadSaveContribution extends Disposable implements IWorkbenchContribution {
 
 	static readonly ID = 'workbench.contrib.scratchpadSaveContribution';
