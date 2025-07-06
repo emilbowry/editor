@@ -65,7 +65,7 @@ if (process.platform === 'win32') {
 	}
 }
 app.setPath('userData', userDataPath);
-createDefaultScratchpadFilesSync()
+
 // Resolve code cache path
 const codeCachePath = getCodeCachePath();
 
@@ -342,7 +342,7 @@ function configureCommandlineSwitchesSync(cliArgs: NativeParsedArgs) {
 	app.commandLine.appendSwitch('disable-blink-features', blinkFeaturesToDisable);
 
 	// Support JS Flags
-	const jsFlags = getJSFlags(cliArgs); 
+	const jsFlags = getJSFlags(cliArgs);
 	if (jsFlags) {
 		app.commandLine.appendSwitch('js-flags', jsFlags);
 	}
@@ -573,45 +573,7 @@ function parseCLIArgs(): NativeParsedArgs {
 		}
 	});
 }
-function createDefaultScratchpadFilesSync(): void {
-	try {
-		// This is the new sub-folder you want inside the main data directory.
 
-		let dataFolderName = product.dataFolderName;
-		if (process.env['VSCODE_DEV']) {
-			dataFolderName = `${dataFolderName}-dev`;
-		}
-
-		const scratchpadDir = path.join(os.homedir(), dataFolderName!, 'shared_data');
-
-		// Ensure the target directory exists.
-		if (!fs.existsSync(scratchpadDir)) {
-			fs.mkdirSync(scratchpadDir, { recursive: true });
-		}
-
-		// --- Define and create defaultMessage.md inside the new sub-folder ---
-		const defaultMessagePath = path.join(scratchpadDir, 'defaultMessage.md');
-		if (!fs.existsSync(defaultMessagePath)) {
-			const defaultMessageContent = '### Scratchpad\n\nYour notes will appear here. Click to open your scratchpad notebook.';
-			fs.writeFileSync(defaultMessagePath, defaultMessageContent);
-		}
-
-		// --- Define and create scratchpad.ipynb inside the new sub-folder ---
-		const scratchpadPath = path.join(scratchpadDir, 'scratchpad.ipynb');
-		if (!fs.existsSync(scratchpadPath)) {
-			const scratchpadContent = `{
- "cells": [],
- "metadata": {},
- "nbformat": 4,
- "nbformat_minor": 5
-}`;
-			fs.writeFileSync(scratchpadPath, scratchpadContent);
-		}
-
-	} catch (error) {
-		console.error(`Unable to create scratchpad files in ${userDataPath}, falling back to defaults (${error})`);
-	}
-}
 function registerListeners(): void {
 
 	/**

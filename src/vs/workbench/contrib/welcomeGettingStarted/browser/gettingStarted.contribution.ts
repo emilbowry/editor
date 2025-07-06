@@ -33,9 +33,13 @@ import { AccessibleViewRegistry } from '../../../../platform/accessibility/brows
 import { GettingStartedAccessibleView } from './gettingStartedAccessibleView.js';
 import { Disposable, DisposableStore } from '../../../../base/common/lifecycle.js';
 // import { splitRecentLabel } from '../../../../base/common/labels.js';
-
+// import { INativeEnvironmentService } from '../../../../platform/environment/common/environment.js';
 // Add these new imports:
-import { FileAccess } from '../../../../base/common/network.js';
+// import { FileAccess } from '../../../../base/common/network.js';
+import { URI } from '../../../../base/common/uri.js';
+import { IProductService } from '../../../../platform/product/common/productService.js';
+import { IPathService } from '../../../services/path/common/pathService.js';
+
 import { ITerminalService } from '../../../../workbench/contrib/terminal/browser/terminal.js';
 import { IWorkingCopyService } from '../../../../workbench/services/workingCopy/common/workingCopyService.js';
 
@@ -354,6 +358,54 @@ configurationRegistry.registerConfiguration({
 });
 // --- Add this entire block at the bottom of the file ---
 
+// class ScratchpadSaveContribution extends Disposable implements IWorkbenchContribution {
+
+// 	static readonly ID = 'workbench.contrib.scratchpadSaveContribution';
+
+// 	constructor(
+// 		@IWorkingCopyService workingCopyService: IWorkingCopyService,
+// 		@ITerminalService terminalService: ITerminalService,
+// 		@IProductService private readonly productService: IProductService,
+
+
+// 	) {
+// 		super();
+// 		const userDataPath = this.productService.dataFolderName;
+
+// 		const userDataUri = URI.file(userDataPath);
+
+// 		const scratchpadDirUri = URI.joinPath(userDataUri, 'shared_data');
+
+// 		const scratchpadUri = URI.joinPath(scratchpadDirUri, 'scratchpad.ipynb');
+
+
+		
+// 		const terminalName = 'Scratchpad Runner';
+
+// 		this._register(workingCopyService.onDidSave(async e => {
+// 			if (e.workingCopy.resource.toString() === scratchpadUri.toString()) {
+
+// 				const scratchpadPath = scratchpadUri.path
+
+// 				// 2. Use a template literal to inject the timestamp directly into the command.
+// 				const commandToRun = `jupytext --opt notebook_metadata_filter="-all"  --to markdown ${scratchpadPath}`;
+
+// 				let terminal = terminalService.instances.find(t => t.title === terminalName);
+
+// 				if (!terminal) {
+// 					terminal = await terminalService.createTerminal({ config: { name: terminalName } });
+// 				}
+
+// 				// This single call will reveal and focus the terminal, whether it's
+// 				// in the panel or an editor.
+// 				terminalService.focusInstance(terminal);
+
+// 				// Now that it's guaranteed to be visible and active, send the text.
+// 				terminal.sendText(commandToRun, true);
+// 			}
+// 		}));
+// 	}
+// }
 class ScratchpadSaveContribution extends Disposable implements IWorkbenchContribution {
 
 	static readonly ID = 'workbench.contrib.scratchpadSaveContribution';
@@ -361,40 +413,42 @@ class ScratchpadSaveContribution extends Disposable implements IWorkbenchContrib
 	constructor(
 		@IWorkingCopyService workingCopyService: IWorkingCopyService,
 		@ITerminalService terminalService: ITerminalService,
+		@IProductService private readonly productService: IProductService,
+		@IPathService private readonly pathService: IPathService,
 	) {
 		super();
+		this.initialize(workingCopyService, terminalService);
+	}
 
-		const scratchpadUri = FileAccess.asFileUri('vs/workbench/contrib/welcomeGettingStarted/browser/scratchpad.ipynb');
+	private async initialize(
+		workingCopyService: IWorkingCopyService,
+		terminalService: ITerminalService
+	): Promise<void> {
+		const homeUri = await this.pathService.userHome();
+		const dataFolderName = this.productService.dataFolderName;
+		if (!dataFolderName) { return; }
 
-
-		
+		const userDataUri = URI.joinPath(homeUri, dataFolderName);
+		const scratchpadDirUri = URI.joinPath(userDataUri, 'shared_data');
+		const scratchpadUri = URI.joinPath(scratchpadDirUri, 'scratchpad.ipynb');
 		const terminalName = 'Scratchpad Runner';
 
 		this._register(workingCopyService.onDidSave(async e => {
 			if (e.workingCopy.resource.toString() === scratchpadUri.toString()) {
-
-				const scratchpadPath = scratchpadUri.path
-
-				// 2. Use a template literal to inject the timestamp directly into the command.
+				const scratchpadPath = scratchpadUri.fsPath;
+				// const markdownOutputPath = scratchpadPath.replace(/\.ipynb$/, '.md');
+				// const commandToRun = `jupytext --opt notebook_metadata_filter="-all" --to md:nometa --output "${markdownOutputPath}" "${scratchpadPath}"`;
 				const commandToRun = `jupytext --opt notebook_metadata_filter="-all"  --to markdown ${scratchpadPath}`;
-
 				let terminal = terminalService.instances.find(t => t.title === terminalName);
-
 				if (!terminal) {
 					terminal = await terminalService.createTerminal({ config: { name: terminalName } });
 				}
-
-				// This single call will reveal and focus the terminal, whether it's
-				// in the panel or an editor.
 				terminalService.focusInstance(terminal);
-
-				// Now that it's guaranteed to be visible and active, send the text.
 				terminal.sendText(commandToRun, true);
 			}
 		}));
 	}
 }
-
 registerWorkbenchContribution2(ScratchpadSaveContribution.ID, ScratchpadSaveContribution, WorkbenchPhase.Eventually);
 registerWorkbenchContribution2(WorkspacePlatformContribution.ID, WorkspacePlatformContribution, WorkbenchPhase.AfterRestored);
 registerWorkbenchContribution2(StartupPageEditorResolverContribution.ID, StartupPageEditorResolverContribution, WorkbenchPhase.BlockRestore);
